@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
-		7E9EE90520E1811B00F1CD79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90420E1811B00F1CD79 /* ViewController.swift */; };
 		7E9EE90820E1811B00F1CD79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90620E1811B00F1CD79 /* Main.storyboard */; };
 		7E9EE90A20E1811C00F1CD79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90920E1811C00F1CD79 /* Assets.xcassets */; };
 		7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */; };
@@ -17,7 +16,6 @@
 /* Begin PBXFileReference section */
 		7E9EE8FF20E1811B00F1CD79 /* Stuffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7E9EE90420E1811B00F1CD79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7E9EE90720E1811B00F1CD79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E9EE90920E1811C00F1CD79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9EE90C20E1811C00F1CD79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +52,61 @@
 		7E9EE90120E1811B00F1CD79 /* Stuffy */ = {
 			isa = PBXGroup;
 			children = (
-				7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */,
-				7E9EE90420E1811B00F1CD79 /* ViewController.swift */,
-				7E9EE90620E1811B00F1CD79 /* Main.storyboard */,
-				7E9EE90920E1811C00F1CD79 /* Assets.xcassets */,
-				7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */,
-				7E9EE90E20E1811C00F1CD79 /* Info.plist */,
+				7E9EE91520E1816400F1CD79 /* StoryBoards */,
+				7E9EE91920E1818800F1CD79 /* View */,
+				7E9EE91820E1818000F1CD79 /* Model View */,
+				7E9EE91720E1817500F1CD79 /* Model Controllers */,
+				7E9EE91620E1816E00F1CD79 /* Model */,
+				7E9EE91420E1814B00F1CD79 /* Resources */,
 			);
 			path = Stuffy;
+			sourceTree = "<group>";
+		};
+		7E9EE91420E1814B00F1CD79 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */,
+				7E9EE90920E1811C00F1CD79 /* Assets.xcassets */,
+				7E9EE90E20E1811C00F1CD79 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7E9EE91520E1816400F1CD79 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				7E9EE90620E1811B00F1CD79 /* Main.storyboard */,
+				7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		7E9EE91620E1816E00F1CD79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7E9EE91720E1817500F1CD79 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		7E9EE91820E1818000F1CD79 /* Model View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model View";
+			sourceTree = "<group>";
+		};
+		7E9EE91920E1818800F1CD79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +180,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E9EE90520E1811B00F1CD79 /* ViewController.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +326,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DBM67E5D74;
-				INFOPLIST_FILE = Stuffy/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Stuffy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +344,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DBM67E5D74;
-				INFOPLIST_FILE = Stuffy/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Stuffy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
