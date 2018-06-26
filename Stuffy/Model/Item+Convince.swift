@@ -8,15 +8,16 @@
 
 import Foundation
 import CoreData
+
 extension ItemCoreData {
     
-    convenience init(category: String, title: String, image: Data, isFavorited: Bool, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: Double, warranty: String, documentName: String, documentImage: Data, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
+    convenience init(category: String, title: String, image: Data, isFavorited: Bool, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, documentName: String, documentImage: Data, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
     {
         self.init(context: context)
         
         self.category = category
         self.title = title
-        self.isFavorite = isFavorited
+        self.isFavorited = isFavorited
         self.modelNumber = modelNumber
         self.notes = notes
         self.price = price

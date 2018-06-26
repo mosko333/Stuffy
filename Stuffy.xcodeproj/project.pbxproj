@@ -11,10 +11,12 @@
 		7E9EE90820E1811B00F1CD79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90620E1811B00F1CD79 /* Main.storyboard */; };
 		7E9EE90A20E1811C00F1CD79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90920E1811C00F1CD79 /* Assets.xcassets */; };
 		7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */; };
-		F78D660520E1872D003407E7 /* ItemCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F78D660320E1872D003407E7 /* ItemCoreData.xcdatamodeld */; };
 		F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660720E18BBC003407E7 /* CoreDataStack.swift */; };
 		F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660920E18C14003407E7 /* Item+Convince.swift */; };
 		F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */; };
+		F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661020E1A142003407E7 /* myStuffViewController.swift */; };
+		F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661320E1A260003407E7 /* myStuffCell.swift */; };
+		F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F78D661620E2B36C003407E7 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,10 +26,12 @@
 		7E9EE90920E1811C00F1CD79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E9EE90C20E1811C00F1CD79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F78D660420E1872D003407E7 /* ItemCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemCoreData.xcdatamodel; sourceTree = "<group>"; };
 		F78D660720E18BBC003407E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F78D660920E18C14003407E7 /* Item+Convince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Convince.swift"; sourceTree = "<group>"; };
 		F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoreDataController.swift; sourceTree = "<group>"; };
+		F78D661020E1A142003407E7 /* myStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStuffViewController.swift; sourceTree = "<group>"; };
+		F78D661320E1A260003407E7 /* myStuffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStuffCell.swift; sourceTree = "<group>"; };
+		F78D661720E2B36C003407E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 			children = (
 				7E9EE91520E1816400F1CD79 /* StoryBoards */,
 				F78D660D20E19202003407E7 /* ModelControllers */,
+				F78D661220E1A14C003407E7 /* ViewControllers */,
 				F78D660620E187E5003407E7 /* Model */,
+				F78D661520E1A265003407E7 /* View */,
 				7E9EE91420E1814B00F1CD79 /* Resources */,
 			);
 			path = Stuffy;
@@ -90,8 +96,8 @@
 		F78D660620E187E5003407E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F78D660320E1872D003407E7 /* ItemCoreData.xcdatamodeld */,
 				F78D660720E18BBC003407E7 /* CoreDataStack.swift */,
+				F78D661620E2B36C003407E7 /* Model.xcdatamodeld */,
 				F78D660920E18C14003407E7 /* Item+Convince.swift */,
 			);
 			path = Model;
@@ -103,6 +109,22 @@
 				F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */,
 			);
 			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		F78D661220E1A14C003407E7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F78D661520E1A265003407E7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F78D661320E1A260003407E7 /* myStuffCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,9 +200,11 @@
 			files = (
 				F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
+				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
+				F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */,
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
-				F78D660520E1872D003407E7 /* ItemCoreData.xcdatamodeld in Sources */,
+				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,13 +404,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F78D660320E1872D003407E7 /* ItemCoreData.xcdatamodeld */ = {
+		F78D661620E2B36C003407E7 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F78D660420E1872D003407E7 /* ItemCoreData.xcdatamodel */,
+				F78D661720E2B36C003407E7 /* Model.xcdatamodel */,
 			);
-			currentVersion = F78D660420E1872D003407E7 /* ItemCoreData.xcdatamodel */;
-			path = ItemCoreData.xcdatamodeld;
+			currentVersion = F78D661720E2B36C003407E7 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
