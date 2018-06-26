@@ -17,6 +17,17 @@
 		F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661020E1A142003407E7 /* myStuffViewController.swift */; };
 		F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661320E1A260003407E7 /* myStuffCell.swift */; };
 		F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F78D661620E2B36C003407E7 /* Model.xcdatamodeld */; };
+		F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661920E2C95A003407E7 /* addItemTableViewController.swift */; };
+		F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661C20E2D2F7003407E7 /* CameraCell.swift */; };
+		F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */; };
+		F78D662120E2D34C003407E7 /* Price&QuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */; };
+		F78D662320E2D36C003407E7 /* ItemDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662220E2D36C003407E7 /* ItemDetailsCell.swift */; };
+		F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662420E2D37F003407E7 /* DocumentsCell.swift */; };
+		F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662620E2D399003407E7 /* Notes&SaveCell.swift */; };
+		F78D662A20E2D622003407E7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662920E2D622003407E7 /* Colors.swift */; };
+		F78D662E20E2F63E003407E7 /* Adam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D662D20E2F63E003407E7 /* Adam.storyboard */; };
+		F78D663020E2F6B3003407E7 /* John.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D662F20E2F6B3003407E7 /* John.storyboard */; };
+		F78D663220E2F6C3003407E7 /* Hayden.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663120E2F6C3003407E7 /* Hayden.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +43,17 @@
 		F78D661020E1A142003407E7 /* myStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStuffViewController.swift; sourceTree = "<group>"; };
 		F78D661320E1A260003407E7 /* myStuffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStuffCell.swift; sourceTree = "<group>"; };
 		F78D661720E2B36C003407E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F78D661920E2C95A003407E7 /* addItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addItemTableViewController.swift; sourceTree = "<group>"; };
+		F78D661C20E2D2F7003407E7 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
+		F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Name&CategoryCell.swift"; sourceTree = "<group>"; };
+		F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Price&QuantityCell.swift"; sourceTree = "<group>"; };
+		F78D662220E2D36C003407E7 /* ItemDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCell.swift; sourceTree = "<group>"; };
+		F78D662420E2D37F003407E7 /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
+		F78D662620E2D399003407E7 /* Notes&SaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes&SaveCell.swift"; sourceTree = "<group>"; };
+		F78D662920E2D622003407E7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F78D662D20E2F63E003407E7 /* Adam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adam.storyboard; sourceTree = "<group>"; };
+		F78D662F20E2F6B3003407E7 /* John.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = John.storyboard; sourceTree = "<group>"; };
+		F78D663120E2F6C3003407E7 /* Hayden.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hayden.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +99,7 @@
 		7E9EE91420E1814B00F1CD79 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F78D662820E2D60A003407E7 /* Colors */,
 				7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */,
 				7E9EE90920E1811C00F1CD79 /* Assets.xcassets */,
 				7E9EE90E20E1811C00F1CD79 /* Info.plist */,
@@ -88,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				7E9EE90620E1811B00F1CD79 /* Main.storyboard */,
+				F78D662D20E2F63E003407E7 /* Adam.storyboard */,
+				F78D662F20E2F6B3003407E7 /* John.storyboard */,
+				F78D663120E2F6C3003407E7 /* Hayden.storyboard */,
 				7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoards;
@@ -114,6 +140,7 @@
 		F78D661220E1A14C003407E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F78D661920E2C95A003407E7 /* addItemTableViewController.swift */,
 				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
 			);
 			path = ViewControllers;
@@ -123,8 +150,30 @@
 			isa = PBXGroup;
 			children = (
 				F78D661320E1A260003407E7 /* myStuffCell.swift */,
+				F78D661B20E2D2B3003407E7 /* AddItemCustomCells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F78D661B20E2D2B3003407E7 /* AddItemCustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				F78D661C20E2D2F7003407E7 /* CameraCell.swift */,
+				F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */,
+				F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */,
+				F78D662220E2D36C003407E7 /* ItemDetailsCell.swift */,
+				F78D662420E2D37F003407E7 /* DocumentsCell.swift */,
+				F78D662620E2D399003407E7 /* Notes&SaveCell.swift */,
+			);
+			path = AddItemCustomCells;
+			sourceTree = "<group>";
+		};
+		F78D662820E2D60A003407E7 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				F78D662920E2D622003407E7 /* Colors.swift */,
+			);
+			path = Colors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,7 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */,
+				F78D662E20E2F63E003407E7 /* Adam.storyboard in Resources */,
 				7E9EE90A20E1811C00F1CD79 /* Assets.xcassets in Resources */,
+				F78D663220E2F6C3003407E7 /* Hayden.storyboard in Resources */,
+				F78D663020E2F6B3003407E7 /* John.storyboard in Resources */,
 				7E9EE90820E1811B00F1CD79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,11 +251,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */,
+				F78D662A20E2D622003407E7 /* Colors.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
+				F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */,
 				F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */,
+				F78D662120E2D34C003407E7 /* Price&QuantityCell.swift in Sources */,
+				F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */,
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
+				F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */,
+				F78D662320E2D36C003407E7 /* ItemDetailsCell.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
+				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,
+				F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */,
 				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

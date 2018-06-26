@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bBd-XM-Pjk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sea-VO-k6g">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,6 +71,132 @@
             </objects>
             <point key="canvasLocation" x="236" y="-206.44677661169416"/>
         </scene>
+        <!--add Item-->
+        <scene sceneID="D3l-HN-QVt">
+            <objects>
+                <tableViewController id="FDp-zB-c9r" customClass="addItemTableViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BlJ-tP-ycu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cameraCell" rowHeight="91" id="H90-7I-pAS" customClass="CameraCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="91"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H90-7I-pAS" id="1sp-WZ-oL7">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-BI-BU8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkS-Pp-Kg0">
+                                                    <rect key="frame" x="164" y="10.5" width="46" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="cameraButtonTapped:" destination="H90-7I-pAS" eventType="touchUpInside" id="lm8-fZ-YPN"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="PkS-Pp-Kg0" secondAttribute="bottom" constant="50" id="CYq-Ue-MaI"/>
+                                                <constraint firstItem="PkS-Pp-Kg0" firstAttribute="leading" secondItem="Sf5-BI-BU8" secondAttribute="leading" constant="164" id="yhM-DW-ciq"/>
+                                                <constraint firstAttribute="trailing" secondItem="PkS-Pp-Kg0" secondAttribute="trailing" constant="165" id="zNB-Z3-dq4"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Sf5-BI-BU8" firstAttribute="leading" secondItem="1sp-WZ-oL7" secondAttribute="leading" id="0bM-ls-DrC"/>
+                                        <constraint firstItem="Sf5-BI-BU8" firstAttribute="top" secondItem="1sp-WZ-oL7" secondAttribute="top" id="42a-q4-RH3"/>
+                                        <constraint firstAttribute="bottom" secondItem="Sf5-BI-BU8" secondAttribute="bottom" id="6yF-xW-lpV"/>
+                                        <constraint firstAttribute="trailing" secondItem="Sf5-BI-BU8" secondAttribute="trailing" id="9z7-rJ-qB5"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cameraButon" destination="PkS-Pp-Kg0" id="jLa-hP-kF5"/>
+                                    <outlet property="cameraView" destination="Sf5-BI-BU8" id="LPY-25-hzB"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" rowHeight="72" id="eJK-Ob-PRY" customClass="Name_CategoryCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="119" width="375" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJK-Ob-PRY" id="UUp-fN-SWS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="priceCell" rowHeight="75" id="R6W-eo-zxs" customClass="Price_QuantityCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="191" width="375" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R6W-eo-zxs" id="stg-Ym-LKn">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemDetailCell" rowHeight="60" id="ucr-hY-mjB" customClass="ItemDetailsCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="266" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucr-hY-mjB" id="9uo-D8-DOv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="documentsCell" rowHeight="83" id="nQe-3C-Eew" customClass="DocumentsCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="326" width="375" height="83"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQe-3C-Eew" id="kHj-xn-LR1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="294" id="YXp-xo-UKf" customClass="Notes_SaveCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="409" width="375" height="294"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXp-xo-UKf" id="ZTz-mo-DgY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="293.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hmi-De-Lbn">
+                                            <rect key="frame" x="16" y="19" width="343" height="82"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnn-ff-Opn">
+                                            <rect key="frame" x="16" y="170" width="343" height="61"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="saveButton:" destination="YXp-xo-UKf" eventType="touchUpInside" id="ogW-Cj-TEe"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="notesTextView" destination="hmi-De-Lbn" id="F35-w6-xRk"/>
+                                    <outlet property="saveButton" destination="lnn-ff-Opn" id="uKD-6b-tYT"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FDp-zB-c9r" id="9gE-vn-Myz"/>
+                            <outlet property="delegate" destination="FDp-zB-c9r" id="PrT-n4-WZR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="add Item" id="L7v-dh-6eO">
+                        <barButtonItem key="leftBarButtonItem" title="back" id="qwP-cV-1bZ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="7HU-Aa-6mp"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tyt-CZ-DfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2020" y="-206.44677661169416"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ddp-m4-iUS">
             <objects>
@@ -88,6 +214,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9Y-be-ZvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-703.20000000000005" y="-206.44677661169416"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="FMA-57-kgE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sea-VO-k6g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GiQ-X6-d0d">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FDp-zB-c9r" kind="relationship" relationship="rootViewController" id="rqp-cJ-AIG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6aG-kW-Dgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1080.8" y="-206.44677661169416"/>
         </scene>
     </scenes>
 </document>
