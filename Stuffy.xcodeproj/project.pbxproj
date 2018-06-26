@@ -25,9 +25,9 @@
 		F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662420E2D37F003407E7 /* DocumentsCell.swift */; };
 		F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662620E2D399003407E7 /* Notes&SaveCell.swift */; };
 		F78D662A20E2D622003407E7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662920E2D622003407E7 /* Colors.swift */; };
-		F78D662E20E2F63E003407E7 /* Adam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D662D20E2F63E003407E7 /* Adam.storyboard */; };
-		F78D663020E2F6B3003407E7 /* John.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D662F20E2F6B3003407E7 /* John.storyboard */; };
-		F78D663220E2F6C3003407E7 /* Hayden.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663120E2F6C3003407E7 /* Hayden.storyboard */; };
+		F78D663420E2F7C6003407E7 /* Hayden.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663320E2F7C6003407E7 /* Hayden.storyboard */; };
+		F78D663620E2F7D5003407E7 /* John.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663520E2F7D5003407E7 /* John.storyboard */; };
+		F78D663820E2F7E1003407E7 /* Adam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663720E2F7E1003407E7 /* Adam.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,9 +51,9 @@
 		F78D662420E2D37F003407E7 /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		F78D662620E2D399003407E7 /* Notes&SaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes&SaveCell.swift"; sourceTree = "<group>"; };
 		F78D662920E2D622003407E7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		F78D662D20E2F63E003407E7 /* Adam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adam.storyboard; sourceTree = "<group>"; };
-		F78D662F20E2F6B3003407E7 /* John.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = John.storyboard; sourceTree = "<group>"; };
-		F78D663120E2F6C3003407E7 /* Hayden.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hayden.storyboard; sourceTree = "<group>"; };
+		F78D663320E2F7C6003407E7 /* Hayden.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hayden.storyboard; sourceTree = "<group>"; };
+		F78D663520E2F7D5003407E7 /* John.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = John.storyboard; sourceTree = "<group>"; };
+		F78D663720E2F7E1003407E7 /* Adam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adam.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,9 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				7E9EE90620E1811B00F1CD79 /* Main.storyboard */,
-				F78D662D20E2F63E003407E7 /* Adam.storyboard */,
-				F78D662F20E2F6B3003407E7 /* John.storyboard */,
-				F78D663120E2F6C3003407E7 /* Hayden.storyboard */,
+				F78D663320E2F7C6003407E7 /* Hayden.storyboard */,
+				F78D663520E2F7D5003407E7 /* John.storyboard */,
+				F78D663720E2F7E1003407E7 /* Adam.storyboard */,
 				7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */,
 			);
 			path = StoryBoards;
@@ -235,10 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */,
-				F78D662E20E2F63E003407E7 /* Adam.storyboard in Resources */,
+				F78D663820E2F7E1003407E7 /* Adam.storyboard in Resources */,
+				F78D663420E2F7C6003407E7 /* Hayden.storyboard in Resources */,
 				7E9EE90A20E1811C00F1CD79 /* Assets.xcassets in Resources */,
-				F78D663220E2F6C3003407E7 /* Hayden.storyboard in Resources */,
-				F78D663020E2F6B3003407E7 /* John.storyboard in Resources */,
+				F78D663620E2F7D5003407E7 /* John.storyboard in Resources */,
 				7E9EE90820E1811B00F1CD79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
