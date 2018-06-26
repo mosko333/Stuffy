@@ -13,7 +13,7 @@ class ItemCoreDataController {
     
     let shared = ItemCoreDataController ()
     
-    func createItem(category: String, title: String, date: Date, documentImage: Data, documentName: String, image: Data, isFavorited: Bool, lastDayToReturn: Date, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: Double, warranty: String ) {
+    func createItem(category: String, title: String, date: Date, documentImage: Data, documentName: String, image: Data, isFavorited: Bool, lastDayToReturn: Date, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String ) {
         
         _ = ItemCoreData(category: category, title: title, image: image, isFavorited: isFavorited, modelNumber: modelNumber, notes: notes, price: price, purchasedFrom: purchasedFrom, quantity: quantity, serialNumber: serialNumber, warranty: warranty, documentName: documentName, documentImage: documentImage, lastDayToReturn: lastDayToReturn)
         
