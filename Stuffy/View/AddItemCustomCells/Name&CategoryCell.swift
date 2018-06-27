@@ -8,17 +8,20 @@
 
 import UIKit
 
+protocol addNewCategoryDelegate:class {
+    func animateNewCategoryView(_ cell: Name_CategoryCell)
+}
+
 class Name_CategoryCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var addCategoryButton: UIButton!
+    
+    weak var delegate: addNewCategoryDelegate?
+ 
+    @IBAction func addNewCategory(_ sender: Any) {
+        delegate?.animateNewCategoryView(self)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

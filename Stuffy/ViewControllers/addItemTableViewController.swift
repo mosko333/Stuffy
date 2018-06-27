@@ -8,18 +8,24 @@
 
 import UIKit
 
-class addItemTableViewController: UITableViewController {
+class addItemTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, addNewCategoryDelegate {
+ 
     
+    
+    let catagories: [String] = ["Unassigned", "Home", "Office", "Garage"]
+    
+
     var isSection0Open = true
     var isSection1Open = true
     var isSection2Open = true
     var isSection3Open = false
     var isSection4Open = false
     var isSection5Open = true
+    var itemCategory = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.separatorColor = Colors.Grey
       
     }
 
@@ -88,6 +94,18 @@ class addItemTableViewController: UITableViewController {
             
             return cell
         }
+        if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as? Name_CategoryCell else {return UITableViewCell()}
+            cell.backgroundColor = Colors.Grey
+            cell.delegate = self
+            cell.addCategoryButton.frame.size = CGSize(width: view.frame.width * 0.9, height: 40)
+            cell.nameTextField.frame.size = CGSize(width: view.frame.width * 0.9, height: 40)
+            cell.categoryPicker.delegate = self
+            cell.categoryPicker.dataSource = self
+            
+            
+            return cell
+        }
        
         if indexPath.section == 5 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as? Notes_SaveCell else {return UITableViewCell()}
@@ -115,7 +133,7 @@ class addItemTableViewController: UITableViewController {
     }
         return UITableViewCell()
     }
-
+    
 
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -123,7 +141,7 @@ class addItemTableViewController: UITableViewController {
         return 374
         }
         if indexPath.section == 1 {
-            return 150
+            return 225
         }
         if indexPath.section == 2 {
             return 150
@@ -321,6 +339,24 @@ class addItemTableViewController: UITableViewController {
     }
     
 
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return catagories.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return catagories[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.itemCategory = catagories[row]
+        print("item's category is \(itemCategory)")
+    }
+    func animateNewCategoryView(_ cell: Name_CategoryCell) {
+        print("add newCategory button tapped")
+    
+    }
 
 }

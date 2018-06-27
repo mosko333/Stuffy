@@ -118,16 +118,45 @@
                                     <outlet property="cameraView" destination="Sf5-BI-BU8" id="LPY-25-hzB"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" rowHeight="72" id="eJK-Ob-PRY" customClass="Name_CategoryCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="119" width="375" height="72"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" rowHeight="207" id="eJK-Ob-PRY" customClass="Name_CategoryCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="119" width="375" height="207"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJK-Ob-PRY" id="UUp-fN-SWS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="206.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Item name " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RwW-6V-TQo">
+                                            <rect key="frame" x="16" y="11" width="343" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ne6-2G-51o">
+                                            <rect key="frame" x="0.0" y="49" width="375" height="92"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        </pickerView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6q8-Ft-DY7">
+                                            <rect key="frame" x="16" y="159" width="343" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="Add New Category">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addNewCategory:" destination="eJK-Ob-PRY" eventType="touchUpInside" id="a6g-gU-y3m"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addCategoryButton" destination="6q8-Ft-DY7" id="r4c-x0-onh"/>
+                                    <outlet property="categoryPicker" destination="Ne6-2G-51o" id="Bgm-n8-mSK"/>
+                                    <outlet property="nameTextField" destination="RwW-6V-TQo" id="09b-X3-knJ"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="priceCell" rowHeight="75" id="R6W-eo-zxs" customClass="Price_QuantityCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="191" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="326" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R6W-eo-zxs" id="stg-Ym-LKn">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -135,7 +164,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemDetailCell" rowHeight="60" id="ucr-hY-mjB" customClass="ItemDetailsCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="266" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="401" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucr-hY-mjB" id="9uo-D8-DOv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -143,7 +172,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="documentsCell" rowHeight="83" id="nQe-3C-Eew" customClass="DocumentsCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="326" width="375" height="83"/>
+                                <rect key="frame" x="0.0" y="461" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQe-3C-Eew" id="kHj-xn-LR1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
@@ -151,7 +180,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="294" id="YXp-xo-UKf" customClass="Notes_SaveCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="409" width="375" height="294"/>
+                                <rect key="frame" x="0.0" y="544" width="375" height="294"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXp-xo-UKf" id="ZTz-mo-DgY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="293.5"/>
