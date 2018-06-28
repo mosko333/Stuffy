@@ -80,23 +80,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cameraCell" rowHeight="91" id="H90-7I-pAS" customClass="CameraCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="91"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cameraCell" rowHeight="374" id="H90-7I-pAS" customClass="CameraCell" customModule="Stuffy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="374"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H90-7I-pAS" id="1sp-WZ-oL7">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="373.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-BI-BU8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkS-Pp-Kg0">
-                                                    <rect key="frame" x="164" y="10.5" width="46" height="30"/>
+                                                    <rect key="frame" x="164" y="294" width="46" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="cameraButtonTapped:" destination="H90-7I-pAS" eventType="touchUpInside" id="lm8-fZ-YPN"/>
                                                     </connections>
                                                 </button>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NnQ-Cu-d2l">
+                                                    <rect key="frame" x="134" y="128" width="108" height="99"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -116,10 +120,11 @@
                                 <connections>
                                     <outlet property="cameraButon" destination="PkS-Pp-Kg0" id="jLa-hP-kF5"/>
                                     <outlet property="cameraView" destination="Sf5-BI-BU8" id="LPY-25-hzB"/>
+                                    <outlet property="thumbnailImageView" destination="NnQ-Cu-d2l" id="IQB-2h-d3l"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="nameCell" rowHeight="207" id="eJK-Ob-PRY" customClass="Name_CategoryCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="119" width="375" height="207"/>
+                                <rect key="frame" x="0.0" y="402" width="375" height="207"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJK-Ob-PRY" id="UUp-fN-SWS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="206.5"/>
@@ -156,7 +161,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="priceCell" rowHeight="75" id="R6W-eo-zxs" customClass="Price_QuantityCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="326" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="609" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R6W-eo-zxs" id="stg-Ym-LKn">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
@@ -164,7 +169,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemDetailCell" rowHeight="60" id="ucr-hY-mjB" customClass="ItemDetailsCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="401" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="684" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucr-hY-mjB" id="9uo-D8-DOv">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
@@ -172,7 +177,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="documentsCell" rowHeight="83" id="nQe-3C-Eew" customClass="DocumentsCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="461" width="375" height="83"/>
+                                <rect key="frame" x="0.0" y="744" width="375" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQe-3C-Eew" id="kHj-xn-LR1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
@@ -180,7 +185,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notesCell" rowHeight="294" id="YXp-xo-UKf" customClass="Notes_SaveCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="544" width="375" height="294"/>
+                                <rect key="frame" x="0.0" y="827" width="375" height="294"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXp-xo-UKf" id="ZTz-mo-DgY">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="293.5"/>
@@ -221,10 +226,45 @@
                         <barButtonItem key="leftBarButtonItem" title="back" id="qwP-cV-1bZ"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="7HU-Aa-6mp"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="zez-pL-xdc" kind="show" identifier="showPhoto" id="cHK-yv-FB3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyt-CZ-DfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2020" y="-206.44677661169416"/>
+        </scene>
+        <!--Camera Preview View Controller-->
+        <scene sceneID="Uix-fM-n4B">
+            <objects>
+                <viewController storyboardIdentifier="cameraPreview" id="zez-pL-xdc" customClass="cameraPreviewViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jxt-F5-vkq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e0R-UG-DEC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RTr-31-209"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hwf-oJ-4OT">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="wMd-On-T2E">
+                            <connections>
+                                <action selector="savePhotoButtonTapped:" destination="zez-pL-xdc" id="LUM-zl-axC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photo" destination="e0R-UG-DEC" id="xaD-Xm-el6"/>
+                        <segue destination="FDp-zB-c9r" kind="show" identifier="addItemVC" id="YrS-Lv-ZN5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4CH-8w-wUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3095" y="-206"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ddp-m4-iUS">
@@ -263,4 +303,7 @@
             <point key="canvasLocation" x="1080.8" y="-206.44677661169416"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YrS-Lv-ZN5"/>
+    </inferredMetricsTieBreakers>
 </document>

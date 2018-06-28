@@ -7,20 +7,79 @@
 //
 
 import UIKit
+import AVFoundation
+protocol cameraCellDelegate: class {
+    func capturePhoto(_ cell: CameraCell)
+}
 
 class CameraCell: UITableViewCell {
 
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraButon: UIButton!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    var captureSession = AVCaptureSession()
+    var backCamera: AVCaptureDevice?
+    var frontCamera: AVCaptureDevice?
+    var currentCamera: AVCaptureDevice?
+    var photoOutput: AVCapturePhotoOutput?
+    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
+  
+    
+    weak var delegate: cameraCellDelegate?
+    
+    func setupCaptureSession() {
+        captureSession.sessionPreset = AVCaptureSession.Preset.photo
     }
     
+    func setupDevice() {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
+        
+        let devices = deviceDiscoverySession.devices
+        
+        for device in devices {
+            if device.position == AVCaptureDevice.Position.back {
+                backCamera = device
+            } else if device.position == AVCaptureDevice.Position.front {
+                frontCamera = device
+            }
+        }
+        currentCamera = backCamera
+        
+    }
+    func setupInputOutput() {
+        do {
+            guard let camera = currentCamera else { return }
+           let captureDeviceInput = try AVCaptureDeviceInput(device: camera)
+            captureSession.addInput(captureDeviceInput)
+            photoOutput = AVCapturePhotoOutput()
+            photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
+            captureSession.addOutput(photoOutput!)
+        } catch  {
+            print(error.localizedDescription)
+        }
+       
+    }
+    
+    func setupPreviewLayer() {
+        
+        guard let layer = cameraPreviewLayer else { return }
+        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+        cameraPreviewLayer?.frame = cameraView.frame
+        cameraView.layer.insertSublayer(layer, at: 0)
+        
+        
+    }
+    
+    func startRunningCaptureSession() {
+        captureSession.startRunning()
+    }
     
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
+       delegate?.capturePhoto(self)
+        
     }
     
 }
