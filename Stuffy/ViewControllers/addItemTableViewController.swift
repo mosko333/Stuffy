@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class addItemTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, addNewCategoryDelegate {
  
@@ -22,6 +23,13 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
     var isSection4Open = false
     var isSection5Open = true
     var itemCategory = ""
+    var pictureTaken = false
+    var image: UIImage? {
+        didSet {
+            print("image has been passed back")
+            pictureTaken = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,9 +95,24 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && pictureTaken == false {
            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
             cell.backgroundColor = Colors.Grey
+            cell.delegate = self
+            cell.setupCaptureSession()
+            cell.setupDevice()
+            cell.setupInputOutput()
+            cell.setupPreviewLayer()
+            cell.startRunningCaptureSession()
+            
+            
+            return cell
+        }
+        if indexPath.section == 0 && pictureTaken == true {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
+            cell.backgroundColor = Colors.Grey
+            cell.imageView?.isHidden = false
+            cell.imageView?.image = image
             
             
             return cell
@@ -137,9 +160,13 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
 
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && pictureTaken == false {
         return 374
         }
+        if indexPath.section == 0 && pictureTaken == true {
+            return 100 
+        }
+        
         if indexPath.section == 1 {
             return 225
         }
@@ -359,4 +386,31 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
     
     }
 
+}
+
+extension addItemTableViewController: cameraCellDelegate, AVCapturePhotoCaptureDelegate {
+    func capturePhoto(_ cell: CameraCell) {
+        let settings = AVCapturePhotoSettings()
+        cell.photoOutput?.capturePhoto(with: settings, delegate: self )
+        
+        
+        
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            print(imageData)
+            image = UIImage(data: imageData)
+            performSegue(withIdentifier: "showPhoto", sender: self)
+        }
+    }
+    
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   if segue.identifier == "showPhoto"{
+       let previewVC = segue.destination as! cameraPreviewViewController
+         previewVC.image = self.image
+       }
+   }
+    
+  
 }
