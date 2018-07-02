@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol SaveItemDelegate: class {
+    func saveItem(_ cell: Notes_SaveCell)
+}
+
 class Notes_SaveCell: UITableViewCell {
 
  
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveButton: UIButton!
+    
+    weak var delegate: SaveItemDelegate?
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -21,5 +27,7 @@ class Notes_SaveCell: UITableViewCell {
     }
 
     @IBAction func saveButton(_ sender: Any) {
+        delegate?.saveItem(self)
+
     }
 }

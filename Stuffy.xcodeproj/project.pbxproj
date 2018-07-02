@@ -15,6 +15,8 @@
 		7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
+		F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */; };
+		F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */; };
 		F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660720E18BBC003407E7 /* CoreDataStack.swift */; };
 		F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660920E18C14003407E7 /* Item+Convince.swift */; };
 		F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */; };
@@ -46,6 +48,8 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
+		F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
+		F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		F78D660720E18BBC003407E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F78D660920E18C14003407E7 /* Item+Convince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Convince.swift"; sourceTree = "<group>"; };
 		F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoreDataController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			children = (
 				F78D662820E2D60A003407E7 /* Colors */,
 				7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */,
+				F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */,
 				7E9EE90920E1811C00F1CD79 /* Assets.xcassets */,
 				7E9EE90E20E1811C00F1CD79 /* Info.plist */,
 			);
@@ -156,6 +161,7 @@
 				F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */,
 				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
 				7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */,
+				F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -270,10 +276,9 @@
 				F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */,
 				F78D662A20E2D622003407E7 /* Colors.swift in Sources */,
 				F78D663A20E421E7003407E7 /* cameraPreviewViewController.swift in Sources */,
-
 				7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
-
+				F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
 				F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */,
@@ -282,6 +287,7 @@
 				F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */,
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
 				F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */,
+				F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */,
 				F78D662320E2D36C003407E7 /* ItemDetailsCell.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
 				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,

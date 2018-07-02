@@ -49,8 +49,8 @@ class CameraCell: UITableViewCell {
     }
     func setupInputOutput() {
         do {
-            guard let camera = currentCamera else { return }
-           let captureDeviceInput = try AVCaptureDeviceInput(device: camera)
+           
+           let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             captureSession.addInput(captureDeviceInput)
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
@@ -63,12 +63,12 @@ class CameraCell: UITableViewCell {
     
     func setupPreviewLayer() {
         
-        guard let layer = cameraPreviewLayer else { return }
+        
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
         cameraPreviewLayer?.frame = cameraView.frame
-        cameraView.layer.insertSublayer(layer, at: 0)
+        cameraView.layer.insertSublayer(cameraPreviewLayer!, at: 0)
         
         
     }
