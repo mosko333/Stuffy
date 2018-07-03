@@ -18,6 +18,9 @@
 		7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
+		7EDBBBE420EC3E1100BCC2AE /* AutoCropCameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDBBBE320EC3E1100BCC2AE /* AutoCropCameraScanner.swift */; };
+		7EDBBBE920EC3EA600BCC2AE /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDBBBE820EC3EA600BCC2AE /* AutoCropViewController.swift */; };
+		7EDBBBEB20EC41B900BCC2AE /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDBBBEA20EC41B900BCC2AE /* PhotoPreviewViewController.swift */; };
 		F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */; };
 		F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */; };
 		F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660720E18BBC003407E7 /* CoreDataStack.swift */; };
@@ -54,6 +57,9 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
+		7EDBBBE320EC3E1100BCC2AE /* AutoCropCameraScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCropCameraScanner.swift; sourceTree = "<group>"; };
+		7EDBBBE820EC3EA600BCC2AE /* AutoCropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
+		7EDBBBEA20EC41B900BCC2AE /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
 		F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		F78D660720E18BBC003407E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -143,6 +149,15 @@
 			path = StoryBoards;
 			sourceTree = "<group>";
 		};
+		7EDBBBE520EC3E5B00BCC2AE /* Scan ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7EDBBBE820EC3EA600BCC2AE /* AutoCropViewController.swift */,
+				7EDBBBEA20EC41B900BCC2AE /* PhotoPreviewViewController.swift */,
+			);
+			path = "Scan ViewControllers";
+			sourceTree = "<group>";
+		};
 		F78D660620E187E5003407E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +181,7 @@
 		F78D661220E1A14C003407E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7EDBBBE520EC3E5B00BCC2AE /* Scan ViewControllers */,
 				F78D661920E2C95A003407E7 /* addItemTableViewController.swift */,
 				F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */,
 				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
@@ -181,6 +197,7 @@
 				F78D661320E1A260003407E7 /* myStuffCell.swift */,
 				F78D661B20E2D2B3003407E7 /* AddItemCustomCells */,
 				7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */,
+				7EDBBBE320EC3E1100BCC2AE /* AutoCropCameraScanner.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,10 +304,7 @@
 				F78D663A20E421E7003407E7 /* cameraPreviewViewController.swift in Sources */,
 				7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
-
 				F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */,
-
-
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
 				F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */,
@@ -299,14 +313,17 @@
 				F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */,
 				1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */,
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
+				7EDBBBE420EC3E1100BCC2AE /* AutoCropCameraScanner.swift in Sources */,
 				F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */,
 				F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */,
+				7EDBBBE920EC3EA600BCC2AE /* AutoCropViewController.swift in Sources */,
 				F78D662320E2D36C003407E7 /* ItemDetailsCell.swift in Sources */,
 				17510F1120E59E7500E706CB /* Item.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
 				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,
 				F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */,
 				1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */,
+				7EDBBBEB20EC41B900BCC2AE /* PhotoPreviewViewController.swift in Sources */,
 				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,7 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4X5NURS3PH;
+				DEVELOPMENT_TEAM = DBM67E5D74;
 				INFOPLIST_FILE = "$(SRCROOT)/Stuffy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -470,7 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4X5NURS3PH;
+				DEVELOPMENT_TEAM = DBM67E5D74;
 				INFOPLIST_FILE = "$(SRCROOT)/Stuffy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
