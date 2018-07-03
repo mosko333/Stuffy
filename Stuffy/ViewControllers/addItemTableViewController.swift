@@ -325,14 +325,14 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
             superview.addConstraints([labelTop, labelCenterX, labelWidth, labelHeight])
             
             let plusImage = UIImageView()
-            plusImage.image = UIImage(named: "plus")
+            plusImage.image = UIImage(named: "xcaPlus")
             
             superview.addSubview(plusImage)
             
             plusImage.translatesAutoresizingMaskIntoConstraints = false
             
             let plusTop = NSLayoutConstraint(item: plusImage, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 12)
-            let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: -190)
+            let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 0.50, constant: 0)
             let plusWidth = NSLayoutConstraint(item: plusImage, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0, constant: 12)
             let plusHeight = NSLayoutConstraint(item: plusImage, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 12)
             
@@ -499,11 +499,12 @@ extension addItemTableViewController: SaveItemDelegate{
         
         let date = Date.init()
         let data = Data.init()
+        let imageData = UIImagePNGRepresentation(image!)
         
         let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! Name_CategoryCell
         guard let title = cell.nameTextField.text, title.count > 0 else { return }
         
-        ItemCoreDataController.shared.createItem(category: itemCategory, title: title, date: date, documentImage: data, documentName: "", image: data, isFavorited: true, lastDayToReturn: date, modelNumber: 0.0, notes: "", price: 0.0, purchasedFrom: "", quantity: 0, serialNumber: "", warranty: "")
+        ItemCoreDataController.shared.createItem(category: itemCategory, title: title, date: date, documentImage: data, documentName: "", image: imageData!, isFavorited: true, lastDayToReturn: date, modelNumber: 0.0, notes: "", price: 0.0, purchasedFrom: "", quantity: 0, serialNumber: "", warranty: "")
     
         print(title)
     }
