@@ -61,10 +61,10 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myStuffCell", for: indexPath) as? myStuffCell else {return UICollectionViewCell()}
         let item = itemsFRC.object(at: indexPath)
-       // let data = item.image
-       // let image = UIImage(data: data!)
+         let data = item.image ?? Data.init()
+        let image = UIImage(data: data)
         cell.namelabel.text = item.category
-       // cell.imageThumbnailView.image = image
+        cell.imageThumbnailView.image = image
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowRadius = 4
         cell.layer.shadowOpacity = 0.25
