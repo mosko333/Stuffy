@@ -364,7 +364,7 @@
                                     <outlet property="quantityTextField" destination="qcY-F1-aqU" id="SXz-mz-fS6"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="437" id="I83-sY-Sbo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemDetailCell" rowHeight="437" id="I83-sY-Sbo" customClass="ItemDetailsCell" customModule="Stuffy" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="631" width="375" height="437"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I83-sY-Sbo" id="rq8-wM-SmR">
@@ -470,8 +470,23 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button"/>
                                         </button>
+                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHI-EL-x4H">
+                                            <rect key="frame" x="11" y="40" width="155" height="48"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="modelTextField" destination="hCT-5S-mAS" id="Tsw-FJ-ey3"/>
+                                    <outlet property="purchaseDateTextField" destination="xHI-EL-x4H" id="GMM-5n-8kw"/>
+                                    <outlet property="returnDateTextField" destination="y2s-TT-NfG" id="fNb-zI-OHq"/>
+                                    <outlet property="serialTextField" destination="X92-kg-TNt" id="wZv-Ug-tbg"/>
+                                    <outlet property="storeVenderTextField" destination="6wy-NY-wMD" id="7xA-qp-oHI"/>
+                                    <outlet property="warrantyExpirationDateTextField" destination="nfT-JW-Hhz" id="FcG-Ja-4VK"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="227" id="wb9-FQ-9IA">
                                 <rect key="frame" x="0.0" y="1068" width="375" height="227"/>

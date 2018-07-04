@@ -111,6 +111,12 @@ class NewAddItemTableViewController: UITableViewController {
             return cell
         }
         
+        if indexPath.section == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell", for: indexPath) as? ItemDetailsCell else {return UITableViewCell()}
+            
+            return cell
+        }
+        
         return UITableViewCell()
     }
 
@@ -124,11 +130,21 @@ class NewAddItemTableViewController: UITableViewController {
         if indexPath.section == 1{
          return 253
         }
-        if indexPath.section == 2 {
-            return 150
+        if indexPath.section == 2 && section2Open == false{
+            return 0
+        }
+        if indexPath.section == 2 && section2Open == true {
+            return 437
         }
         if indexPath.section == 3 {
             return 150
+        }
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 2 {
+            return 43
         }
         return 0
     }
@@ -144,7 +160,7 @@ class NewAddItemTableViewController: UITableViewController {
             cheveronButton.setTitleColor(UIColor.black, for: .normal)
             cheveronButton.backgroundColor = .white
             cheveronButton.addTarget(self, action: #selector(openCloseCell), for: .touchUpInside)
-            cheveronButton.contentMode = .bottom
+            cheveronButton.contentMode = .center
             cheveronButton.tag = 1
             
             
@@ -154,7 +170,7 @@ class NewAddItemTableViewController: UITableViewController {
             superview.addSubview(cheveronButton)
             
             let buttonTop = NSLayoutConstraint(item: cheveronButton, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 0)
-            let buttonCenterX = NSLayoutConstraint(item: cheveronButton, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 150)
+            let buttonCenterX = NSLayoutConstraint(item: cheveronButton, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 130)
             let buttonWidth = NSLayoutConstraint(item: cheveronButton, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0.25, constant: 0)
             let buttonHeight = NSLayoutConstraint(item: cheveronButton, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 36)
             
@@ -177,14 +193,14 @@ class NewAddItemTableViewController: UITableViewController {
             superview.addConstraints([labelTop, labelCenterX, labelWidth, labelHeight])
             
             let plusImage = UIImageView()
-            plusImage.image = UIImage(named: "plus")
+            plusImage.image = UIImage(named: "xcaPlus")
             
             superview.addSubview(plusImage)
             
             plusImage.translatesAutoresizingMaskIntoConstraints = false
             
             let plusTop = NSLayoutConstraint(item: plusImage, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 12)
-            let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: -190)
+            let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 0.05, constant: 0)
             let plusWidth = NSLayoutConstraint(item: plusImage, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0, constant: 12)
             let plusHeight = NSLayoutConstraint(item: plusImage, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 12)
             
