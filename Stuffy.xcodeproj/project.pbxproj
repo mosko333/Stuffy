@@ -10,6 +10,9 @@
 		17510F1120E59E7500E706CB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17510F1020E59E7500E706CB /* Item.swift */; };
 		1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE120E6CC25005DBDF5 /* ItemController.swift */; };
 		1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */; };
+		7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */; };
+		7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */; };
+		7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */; };
 		7E85A84120E5503E00C98048 /* FindTextCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */; };
 		7E85A84320E5568700C98048 /* FilterAndSavePicture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */; };
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
@@ -47,6 +50,9 @@
 		17510F1020E59E7500E706CB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1770ACE120E6CC25005DBDF5 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropCameraScanner.swift; sourceTree = "<group>"; };
+		7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
+		7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
 		7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindTextCamera.storyboard; sourceTree = "<group>"; };
 		7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterAndSavePicture.storyboard; sourceTree = "<group>"; };
 		7E9EE8FF20E1811B00F1CD79 /* Stuffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +99,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E19043C20EC7AAA004DBE2D /* Scan ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */,
+				7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */,
+			);
+			path = "Scan ViewControllers";
+			sourceTree = "<group>";
+		};
 		7E9EE8F620E1811B00F1CD79 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +197,7 @@
 		F78D661220E1A14C003407E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E19043C20EC7AAA004DBE2D /* Scan ViewControllers */,
 				F78D661920E2C95A003407E7 /* addItemTableViewController.swift */,
 				F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */,
 				F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */,
@@ -195,6 +211,7 @@
 		F78D661520E1A265003407E7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */,
 				F78D661320E1A260003407E7 /* myStuffCell.swift */,
 				F78D661B20E2D2B3003407E7 /* AddItemCustomCells */,
 				7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */,
@@ -299,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */,
 				F77BB3ED20EC46A800D2FCD4 /* ItemDetailsCell.swift in Sources */,
 				F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */,
 				F78D662A20E2D622003407E7 /* Colors.swift in Sources */,
@@ -322,7 +340,9 @@
 				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,
 				F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */,
 				1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */,
+				7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */,
 				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
+				7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */,
 				F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */,
 				F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */,
 			);
