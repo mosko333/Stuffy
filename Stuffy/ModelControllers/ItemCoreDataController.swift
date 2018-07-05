@@ -11,7 +11,7 @@ import UIKit
 
 class ItemCoreDataController {
     
-    let shared = ItemCoreDataController ()
+    static let shared = ItemCoreDataController()
     
     func createItem(category: String, title: String, date: Date, documentImage: Data, documentName: String, image: Data, isFavorited: Bool, lastDayToReturn: Date, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String ) {
         

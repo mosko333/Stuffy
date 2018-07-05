@@ -21,6 +21,12 @@
 		7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
+		F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */; };
+		F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */; };
+		F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */; };
+		F77BB3E920EAEC5E00D2FCD4 /* NewCameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E820EAEC5E00D2FCD4 /* NewCameraCell.swift */; };
+		F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */; };
+		F77BB3ED20EC46A800D2FCD4 /* ItemDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */; };
 		F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660720E18BBC003407E7 /* CoreDataStack.swift */; };
 		F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660920E18C14003407E7 /* Item+Convince.swift */; };
 		F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */; };
@@ -31,7 +37,6 @@
 		F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661C20E2D2F7003407E7 /* CameraCell.swift */; };
 		F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */; };
 		F78D662120E2D34C003407E7 /* Price&QuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */; };
-		F78D662320E2D36C003407E7 /* ItemDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662220E2D36C003407E7 /* ItemDetailsCell.swift */; };
 		F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662420E2D37F003407E7 /* DocumentsCell.swift */; };
 		F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662620E2D399003407E7 /* Notes&SaveCell.swift */; };
 		F78D662A20E2D622003407E7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662920E2D622003407E7 /* Colors.swift */; };
@@ -58,6 +63,12 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
+		F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
+		F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddItemTableViewController.swift; sourceTree = "<group>"; };
+		F77BB3E820EAEC5E00D2FCD4 /* NewCameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCameraCell.swift; sourceTree = "<group>"; };
+		F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameandCategoryCell.swift; sourceTree = "<group>"; };
+		F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCell.swift; sourceTree = "<group>"; };
 		F78D660720E18BBC003407E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F78D660920E18C14003407E7 /* Item+Convince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Convince.swift"; sourceTree = "<group>"; };
 		F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoreDataController.swift; sourceTree = "<group>"; };
@@ -68,7 +79,6 @@
 		F78D661C20E2D2F7003407E7 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
 		F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Name&CategoryCell.swift"; sourceTree = "<group>"; };
 		F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Price&QuantityCell.swift"; sourceTree = "<group>"; };
-		F78D662220E2D36C003407E7 /* ItemDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCell.swift; sourceTree = "<group>"; };
 		F78D662420E2D37F003407E7 /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
 		F78D662620E2D399003407E7 /* Notes&SaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes&SaveCell.swift"; sourceTree = "<group>"; };
 		F78D662920E2D622003407E7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -123,6 +133,7 @@
 			children = (
 				F78D662820E2D60A003407E7 /* Colors */,
 				7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */,
+				F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */,
 				7E9EE90920E1811C00F1CD79 /* Assets.xcassets */,
 				7E9EE90E20E1811C00F1CD79 /* Info.plist */,
 			);
@@ -141,6 +152,16 @@
 				7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */,
 			);
 			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		F77BB3E720EAEC2A00D2FCD4 /* NewAddItemCustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				F77BB3E820EAEC5E00D2FCD4 /* NewCameraCell.swift */,
+				F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */,
+				F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */,
+			);
+			path = NewAddItemCustomCells;
 			sourceTree = "<group>";
 		};
 		F78D660620E187E5003407E7 /* Model */ = {
@@ -171,9 +192,11 @@
 			isa = PBXGroup;
 			children = (
 				F78D661920E2C95A003407E7 /* addItemTableViewController.swift */,
+				F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */,
 				F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */,
 				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
 				7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */,
+				F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +207,7 @@
 				F78D661320E1A260003407E7 /* myStuffCell.swift */,
 				F78D661B20E2D2B3003407E7 /* AddItemCustomCells */,
 				7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */,
+				F77BB3E720EAEC2A00D2FCD4 /* NewAddItemCustomCells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,7 +218,6 @@
 				F78D661C20E2D2F7003407E7 /* CameraCell.swift */,
 				F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */,
 				F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */,
-				F78D662220E2D36C003407E7 /* ItemDetailsCell.swift */,
 				F78D662420E2D37F003407E7 /* DocumentsCell.swift */,
 				F78D662620E2D399003407E7 /* Notes&SaveCell.swift */,
 			);
@@ -285,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77BB3ED20EC46A800D2FCD4 /* ItemDetailsCell.swift in Sources */,
 				F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */,
 				170E022020EE8D160012405F /* PhotoController.swift in Sources */,
 				F78D662A20E2D622003407E7 /* Colors.swift in Sources */,
@@ -292,6 +316,8 @@
 				7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */,
 				170E022220EE8D730012405F /* CategoryController.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
+				F77BB3E920EAEC5E00D2FCD4 /* NewCameraCell.swift in Sources */,
+				F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
 				F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */,
@@ -300,7 +326,7 @@
 				F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */,
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
 				F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */,
-				F78D662320E2D36C003407E7 /* ItemDetailsCell.swift in Sources */,
+				F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */,
 				17510F1120E59E7500E706CB /* Item.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
 				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,
@@ -308,7 +334,11 @@
 				170E021E20EE8C1C0012405F /* Photo.swift in Sources */,
 				1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */,
 				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
+
 				170E021C20EE8BFB0012405F /* Category.swift in Sources */,
+
+				F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */,
+				F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

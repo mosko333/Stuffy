@@ -1,22 +1,28 @@
 //
-//  CameraCell.swift
+//  NewCameraCell.swift
 //  Stuffy
 //
-//  Created by Hayden Murdock on 6/26/18.
+//  Created by Hayden Murdock on 7/2/18.
 //  Copyright © 2018 Adam Moskovich. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
-protocol cameraCellDelegate: class {
-    func capturePhoto(_ cell: CameraCell)
+
+protocol CameraDelegate: class {
+    func capturePhoto(_ cell: NewCameraCell)
 }
 
-class CameraCell: UITableViewCell {
-
+class NewCameraCell: UITableViewCell {
+    
+    
     @IBOutlet weak var cameraView: UIView!
-    @IBOutlet weak var cameraButon: UIButton!
-    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var thumbnailImage: UIImageView!
+    @IBOutlet weak var imageBackgroundView: UIImageView!
+    
+    weak var delegate: CameraDelegate?
+    
     
     var captureSession = AVCaptureSession()
     var backCamera: AVCaptureDevice?
@@ -24,9 +30,8 @@ class CameraCell: UITableViewCell {
     var currentCamera: AVCaptureDevice?
     var photoOutput: AVCapturePhotoOutput?
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
-  
     
-    weak var delegate: cameraCellDelegate?
+    
     
     func setupCaptureSession() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
@@ -49,8 +54,8 @@ class CameraCell: UITableViewCell {
     }
     func setupInputOutput() {
         do {
-           
-           let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
+            
+            let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
             captureSession.addInput(captureDeviceInput)
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
@@ -58,7 +63,7 @@ class CameraCell: UITableViewCell {
         } catch  {
             print(error.localizedDescription)
         }
-       
+        
     }
     
     func setupPreviewLayer() {
@@ -76,10 +81,10 @@ class CameraCell: UITableViewCell {
     func startRunningCaptureSession() {
         captureSession.startRunning()
     }
-    
-    @IBAction func cameraButtonTapped(_ sender: UIButton) {
-       delegate?.capturePhoto(self)
+
+    @IBAction func takePictureButtonTapped(_ sender: Any) {
+        
+        delegate?.capturePhoto(self)
         
     }
-    
 }

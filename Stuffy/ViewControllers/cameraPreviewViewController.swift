@@ -31,7 +31,7 @@ class cameraPreviewViewController: UIViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItemVC" {
-            let destinationVC = segue.destination as! addItemTableViewController
+            let destinationVC = segue.destination as! NewAddItemTableViewController
             destinationVC.image = image
             
         }

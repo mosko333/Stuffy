@@ -5,11 +5,13 @@
 //  Created by Hayden Murdock on 6/26/18.
 //  Copyright © 2018 Adam Moskovich. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import AVFoundation
 
 class addItemTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, addNewCategoryDelegate {
+   
+    
  
     
     
@@ -23,7 +25,11 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
     var isSection4Open = false
     var isSection5Open = true
     var itemCategory = ""
+    var itemTitle = ""
     var pictureTaken = false
+    
+    var numberOfItems = 1
+    
     var image: UIImage? {
         didSet {
             print("image has been passed back")
@@ -33,9 +39,10 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.separatorColor = Colors.Grey
+        tableView.separatorColor = .black
       
     }
+    
 
 
     // MARK: - Table view data source
@@ -44,6 +51,7 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
         
         return 6
     }
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -97,7 +105,7 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 && pictureTaken == false {
            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
-            cell.backgroundColor = Colors.Grey
+           
             cell.delegate = self
             cell.setupCaptureSession()
             cell.setupDevice()
@@ -105,38 +113,65 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
             cell.setupPreviewLayer()
             cell.startRunningCaptureSession()
             
+        
             
-            return cell
         }
         if indexPath.section == 0 && pictureTaken == true {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
             cell.backgroundColor = Colors.Grey
-            cell.imageView?.isHidden = false
-            cell.imageView?.image = image
+            cell.delegate = self
             
+            cell.thumbnailImageView.image = image
+            cell.thumbnailImageView.frame.size = CGSize(width: cell.frame.size.height / 1.75, height: cell.frame.size.height / 1.50)
+            
+            cell.thumbnailImageView.center.x = cell.center.x
+            cell.thumbnailImageView.center.y = cell.center.y
+            print(cell.thumbnailImageView.frame.origin.x)
+           
+            cell.cameraButon.isHidden = true
+            cell.cameraButon.isUserInteractionEnabled = false
             
             return cell
         }
         if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as? Name_CategoryCell else {return UITableViewCell()}
+            
             cell.backgroundColor = Colors.Grey
             cell.delegate = self
+            cell.nameTextField.addDoneButtonOnKeyboard()
             cell.addCategoryButton.frame.size = CGSize(width: view.frame.width * 0.9, height: 40)
             cell.nameTextField.frame.size = CGSize(width: view.frame.width * 0.9, height: 40)
+            //cell.nameTextField.text = self.itemTitle
             cell.categoryPicker.delegate = self
             cell.categoryPicker.dataSource = self
             
             
             return cell
         }
-       
+        
+        if indexPath.section == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "priceCell", for: indexPath) as? Price_QuantityCell else {return UITableViewCell()}
+            cell.backgroundColor = Colors.Grey
+            cell.delegate = self
+            cell.priceTextView.keyboardType = .decimalPad
+    
+          
+            cell.quantityTextView.text = ("\(numberOfItems)")
+    
+            print("Cell should read \(numberOfItems)")
+            print("index path is \(indexPath)")
+    
+        }
+        
         if indexPath.section == 5 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "notesCell", for: indexPath) as? Notes_SaveCell else {return UITableViewCell()}
-            cell.backgroundColor = Colors.Grey
+            cell.backgroundColor = .blue
+            cell.delegate = self
             cell.notesTextView.text = "Add Notes"
-            cell.notesTextView.frame.size = CGSize(width: view.frame.width * 0.9, height: 168)
+            cell.notesTextView.addDoneButtonOnKeyboard()
+           cell.notesTextView.frame.size = CGSize(width: view.frame.width * 0.9, height: 168)
             
-            cell.saveButton.frame.size = CGSize(width: view.frame.width * 0.9, height: 61)
+          cell.saveButton.frame.size = CGSize(width: view.frame.width * 0.9, height: 61)
 
             cell.saveButton.backgroundColor = UIColor.blue
         
@@ -144,8 +179,9 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
             cell.notesTextView.layer.shadowColor = UIColor.black.cgColor
             cell.notesTextView.layer.shadowRadius = 4
             cell.notesTextView.layer.shadowOpacity = 0.25
-            cell.notesTextView.layer.masksToBounds = false
+           cell.notesTextView.layer.masksToBounds = false
             cell.notesTextView.clipsToBounds = false
+            
         
 
             
@@ -164,7 +200,7 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
         return 374
         }
         if indexPath.section == 0 && pictureTaken == true {
-            return 100 
+            return 175
         }
         
         if indexPath.section == 1 {
@@ -185,7 +221,7 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
         return 0
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        // this will setup the headers for the item details and documents
         if section == 3 {
             let superview = UIView()
             superview.backgroundColor = .white
@@ -228,16 +264,16 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
             
             superview.addConstraints([labelTop, labelCenterX, labelWidth, labelHeight])
             
-            let plusImage = UIImageView()
-            plusImage.image = UIImage(named: "plus")
+        let plusImage = UIImageView()
+          plusImage.image = UIImage(named: "plus")
             
-            superview.addSubview(plusImage)
+          superview.addSubview(plusImage)
             
-            plusImage.translatesAutoresizingMaskIntoConstraints = false
+        plusImage.translatesAutoresizingMaskIntoConstraints = false
             
             let plusTop = NSLayoutConstraint(item: plusImage, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 12)
             let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: -190)
-            let plusWidth = NSLayoutConstraint(item: plusImage, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0, constant: 12)
+          let plusWidth = NSLayoutConstraint(item: plusImage, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0, constant: 12)
             let plusHeight = NSLayoutConstraint(item: plusImage, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 12)
             
             superview.addConstraints([plusTop, plusCenterX, plusWidth, plusHeight])
@@ -289,14 +325,14 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
             superview.addConstraints([labelTop, labelCenterX, labelWidth, labelHeight])
             
             let plusImage = UIImageView()
-            plusImage.image = UIImage(named: "plus")
+            plusImage.image = UIImage(named: "xcaPlus")
             
             superview.addSubview(plusImage)
             
             plusImage.translatesAutoresizingMaskIntoConstraints = false
             
             let plusTop = NSLayoutConstraint(item: plusImage, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 12)
-            let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: -190)
+            let plusCenterX = NSLayoutConstraint(item: plusImage, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 0.50, constant: 0)
             let plusWidth = NSLayoutConstraint(item: plusImage, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0, constant: 12)
             let plusHeight = NSLayoutConstraint(item: plusImage, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 12)
             
@@ -365,10 +401,10 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
         return 0
     }
     
-
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+   
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return catagories.count
@@ -385,6 +421,28 @@ class addItemTableViewController: UITableViewController, UIPickerViewDelegate, U
         print("add newCategory button tapped")
     
     }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        // this is for customizing the category pickers look.
+        var pickerLabel = view as! UILabel?
+        if view == nil {  //if no label there yet
+            pickerLabel = UILabel()
+            //color the label's background
+            let hue = CGFloat(row)/CGFloat(catagories.count)
+            pickerLabel?.backgroundColor = UIColor(hue: hue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        }
+        let titleData = catagories[row]
+       
+        
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedStringKey.font: UIFont(name: "Georgia", size: 26.0)!])
+
+        //NSAttributedString(string: titleData, attributes: [UIFont(name: "Georgia", size: 26.0)!:UIColor.blackColor()])
+        pickerLabel!.attributedText = myTitle
+        pickerLabel!.textAlignment = .center
+        return pickerLabel!
+        
+    }
+        
 
 }
 
@@ -410,7 +468,47 @@ extension addItemTableViewController: cameraCellDelegate, AVCapturePhotoCaptureD
        let previewVC = segue.destination as! cameraPreviewViewController
          previewVC.image = self.image
        }
-   }
+    }
     
   
+}
+
+extension addItemTableViewController: QuantityChangeDelegate {
+    func addOneToItemQuantity(_ cell: Price_QuantityCell) {
+        numberOfItems += 1
+        print("add one item. The quantity count is now \(numberOfItems)")
+    
+        
+        self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows!, with: .none)
+        tableView.layoutIfNeeded()
+    
+        tableView.endUpdates()
+         print("add one item. The quantity count is now \(numberOfItems)")
+       
+    }
+    
+    func minusOneToItemQuantity(_ cell: Price_QuantityCell) {
+        numberOfItems -= 1
+        print("minus one item. The quantity count is now \(numberOfItems)")
+    }
+    
+}
+
+extension addItemTableViewController: SaveItemDelegate{
+    func saveItem(_ cell: Notes_SaveCell) {
+        
+        let date = Date.init()
+        let data = Data.init()
+        let imageData = UIImagePNGRepresentation(image!)
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! Name_CategoryCell
+        guard let title = cell.nameTextField.text, title.count > 0 else { return }
+        
+        ItemCoreDataController.shared.createItem(category: itemCategory, title: title, date: date, documentImage: data, documentName: "", image: imageData!, isFavorited: true, lastDayToReturn: date, modelNumber: 0.0, notes: "", price: 0.0, purchasedFrom: "", quantity: 0, serialNumber: "", warranty: "")
+    
+        print(title)
+    }
+    
+    
+    
 }

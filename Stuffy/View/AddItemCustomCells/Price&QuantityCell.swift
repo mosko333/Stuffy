@@ -8,17 +8,28 @@
 
 import UIKit
 
+protocol QuantityChangeDelegate: class  {
+    func addOneToItemQuantity(_ cell: Price_QuantityCell)
+    func minusOneToItemQuantity(_ cell: Price_QuantityCell)
+    
+}
+
 class Price_QuantityCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var priceTextView: UITextView!
+    @IBOutlet weak var quantityTextView: UITextView!
+    @IBOutlet weak var minusButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    
+    
+    weak var delegate: QuantityChangeDelegate?
+    
+    
+    @IBAction func minusButtonTapped(_ sender: UIButton) {
+        delegate?.minusOneToItemQuantity(self)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func plusButtonTapped(_ sender: UIButton) {
+        delegate?.addOneToItemQuantity(self)
     }
-
 }
