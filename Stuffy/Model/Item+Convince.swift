@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-extension ItemCoreData {
+extension ItemCD {
     
-    convenience init(category: String, title: String, image: Data, isFavorited: Bool, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, documentName: String, documentImage: Data, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
+    convenience init(category: String, title: String, image: Data, isFavorited: Bool, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, receipt: Data,  purchaseDate: Date, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
     {
         self.init(context: context)
         
@@ -25,10 +25,9 @@ extension ItemCoreData {
         self.quantity = quantity
         self.serialNumber = serialNumber
         self.warranty = warranty
-        self.documentName = documentName
-        self.documentImage = documentImage
+        self.receipt = receipt
         self.lastDayToReturn = lastDayToReturn
-        
+        self.purchaseDate = purchaseDate
         self.image = image
         
     }
