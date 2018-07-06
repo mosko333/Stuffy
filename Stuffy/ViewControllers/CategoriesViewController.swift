@@ -13,8 +13,8 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
    
     
-    let itemsFRC: NSFetchedResultsController<ItemCoreData> = {
-        let request: NSFetchRequest<ItemCoreData> = ItemCoreData.fetchRequest()
+    let itemsFRC: NSFetchedResultsController<ItemCD> = {
+        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
         
         let sortDescriptors = NSSortDescriptor(key: "Categories", ascending: true)
         
