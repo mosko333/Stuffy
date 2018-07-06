@@ -11,8 +11,8 @@ import CoreData
 
 class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate  {
     
-    let itemsFRC: NSFetchedResultsController<ItemCoreData> = {
-        let request: NSFetchRequest<ItemCoreData> = ItemCoreData.fetchRequest()
+    let itemsFRC: NSFetchedResultsController<ItemCD> = {
+        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
         
         let sortDescriptors = NSSortDescriptor(key: "title", ascending: true)
         
@@ -63,7 +63,7 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         let item = itemsFRC.object(at: indexPath)
          let data = item.image ?? Data.init()
         let image = UIImage(data: data)
-        cell.namelabel.text = item.category
+        cell.namelabel.text = item.title
         cell.imageThumbnailView.image = image
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowRadius = 4
@@ -77,7 +77,9 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("there are a total of \(itemsFRC.fetchedObjects?.count)")
         return itemsFRC.fetchedObjects?.count ?? 0
+        
     }
    
 
