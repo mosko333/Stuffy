@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170E021C20EE8BFB0012405F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E021B20EE8BFB0012405F /* Category.swift */; };
+		170E021E20EE8C1C0012405F /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E021D20EE8C1C0012405F /* Photo.swift */; };
+		170E022020EE8D160012405F /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E021F20EE8D160012405F /* PhotoController.swift */; };
+		170E022220EE8D730012405F /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E022120EE8D730012405F /* CategoryController.swift */; };
 		17510F1120E59E7500E706CB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17510F1020E59E7500E706CB /* Item.swift */; };
 		1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE120E6CC25005DBDF5 /* ItemController.swift */; };
+
 		1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */; };
 		7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */; };
 		7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */; };
 		7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */; };
 		7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */; };
+
+
 		7E85A84120E5503E00C98048 /* FindTextCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */; };
 		7E85A84320E5568700C98048 /* FilterAndSavePicture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */; };
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
@@ -28,33 +35,36 @@
 		F77BB3E920EAEC5E00D2FCD4 /* NewCameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E820EAEC5E00D2FCD4 /* NewCameraCell.swift */; };
 		F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */; };
 		F77BB3ED20EC46A800D2FCD4 /* ItemDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */; };
+		F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EE20EE7C1400D2FCD4 /* NotesCell.swift */; };
 		F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660720E18BBC003407E7 /* CoreDataStack.swift */; };
 		F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660920E18C14003407E7 /* Item+Convince.swift */; };
 		F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */; };
 		F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661020E1A142003407E7 /* myStuffViewController.swift */; };
 		F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661320E1A260003407E7 /* myStuffCell.swift */; };
 		F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F78D661620E2B36C003407E7 /* Model.xcdatamodeld */; };
-		F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661920E2C95A003407E7 /* addItemTableViewController.swift */; };
-		F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661C20E2D2F7003407E7 /* CameraCell.swift */; };
-		F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */; };
-		F78D662120E2D34C003407E7 /* Price&QuantityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */; };
-		F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662420E2D37F003407E7 /* DocumentsCell.swift */; };
-		F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662620E2D399003407E7 /* Notes&SaveCell.swift */; };
 		F78D662A20E2D622003407E7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D662920E2D622003407E7 /* Colors.swift */; };
 		F78D663420E2F7C6003407E7 /* Hayden.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663320E2F7C6003407E7 /* Hayden.storyboard */; };
 		F78D663620E2F7D5003407E7 /* John.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663520E2F7D5003407E7 /* John.storyboard */; };
 		F78D663820E2F7E1003407E7 /* Adam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78D663720E2F7E1003407E7 /* Adam.storyboard */; };
 		F78D663A20E421E7003407E7 /* cameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */; };
+		F7A08C2220EEC97200E37754 /* CategoriesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170E021B20EE8BFB0012405F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		170E021D20EE8C1C0012405F /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		170E021F20EE8D160012405F /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		170E022120EE8D730012405F /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		17510F1020E59E7500E706CB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1770ACE120E6CC25005DBDF5 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+
 		1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropCameraScanner.swift; sourceTree = "<group>"; };
 		7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
 		7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CameraCrop.storyboard; sourceTree = "<group>"; };
+
+
 		7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindTextCamera.storyboard; sourceTree = "<group>"; };
 		7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterAndSavePicture.storyboard; sourceTree = "<group>"; };
 		7E9EE8FF20E1811B00F1CD79 /* Stuffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,23 +81,19 @@
 		F77BB3E820EAEC5E00D2FCD4 /* NewCameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCameraCell.swift; sourceTree = "<group>"; };
 		F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameandCategoryCell.swift; sourceTree = "<group>"; };
 		F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCell.swift; sourceTree = "<group>"; };
+		F77BB3EE20EE7C1400D2FCD4 /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
 		F78D660720E18BBC003407E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F78D660920E18C14003407E7 /* Item+Convince.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Convince.swift"; sourceTree = "<group>"; };
 		F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCoreDataController.swift; sourceTree = "<group>"; };
 		F78D661020E1A142003407E7 /* myStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStuffViewController.swift; sourceTree = "<group>"; };
 		F78D661320E1A260003407E7 /* myStuffCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStuffCell.swift; sourceTree = "<group>"; };
 		F78D661720E2B36C003407E7 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		F78D661920E2C95A003407E7 /* addItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addItemTableViewController.swift; sourceTree = "<group>"; };
-		F78D661C20E2D2F7003407E7 /* CameraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCell.swift; sourceTree = "<group>"; };
-		F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Name&CategoryCell.swift"; sourceTree = "<group>"; };
-		F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Price&QuantityCell.swift"; sourceTree = "<group>"; };
-		F78D662420E2D37F003407E7 /* DocumentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCell.swift; sourceTree = "<group>"; };
-		F78D662620E2D399003407E7 /* Notes&SaveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes&SaveCell.swift"; sourceTree = "<group>"; };
 		F78D662920E2D622003407E7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F78D663320E2F7C6003407E7 /* Hayden.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hayden.storyboard; sourceTree = "<group>"; };
 		F78D663520E2F7D5003407E7 /* John.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = John.storyboard; sourceTree = "<group>"; };
 		F78D663720E2F7E1003407E7 /* Adam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adam.storyboard; sourceTree = "<group>"; };
 		F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraPreviewViewController.swift; sourceTree = "<group>"; };
+		F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +153,6 @@
 				F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */,
 				7E9EE90920E1811C00F1CD79 /* Assets.xcassets */,
 				7E9EE90E20E1811C00F1CD79 /* Info.plist */,
-				1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				F77BB3E820EAEC5E00D2FCD4 /* NewCameraCell.swift */,
 				F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */,
 				F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */,
+				F77BB3EE20EE7C1400D2FCD4 /* NotesCell.swift */,
 			);
 			path = NewAddItemCustomCells;
 			sourceTree = "<group>";
@@ -183,7 +189,9 @@
 				F78D660720E18BBC003407E7 /* CoreDataStack.swift */,
 				F78D661620E2B36C003407E7 /* Model.xcdatamodeld */,
 				F78D660920E18C14003407E7 /* Item+Convince.swift */,
+				170E021B20EE8BFB0012405F /* Category.swift */,
 				17510F1020E59E7500E706CB /* Item.swift */,
+				170E021D20EE8C1C0012405F /* Photo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,7 +200,9 @@
 			isa = PBXGroup;
 			children = (
 				F78D660B20E191EC003407E7 /* ItemCoreDataController.swift */,
+				170E022120EE8D730012405F /* CategoryController.swift */,
 				1770ACE120E6CC25005DBDF5 /* ItemController.swift */,
+				170E021F20EE8D160012405F /* PhotoController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -200,13 +210,17 @@
 		F78D661220E1A14C003407E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+
 				7E19043C20EC7AAA004DBE2D /* Scan ViewControllers */,
 				F78D661920E2C95A003407E7 /* addItemTableViewController.swift */,
+
+
 				F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */,
 				F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */,
 				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
 				7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */,
 				F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */,
+				F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -216,23 +230,10 @@
 			children = (
 				7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */,
 				F78D661320E1A260003407E7 /* myStuffCell.swift */,
-				F78D661B20E2D2B3003407E7 /* AddItemCustomCells */,
 				7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */,
 				F77BB3E720EAEC2A00D2FCD4 /* NewAddItemCustomCells */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		F78D661B20E2D2B3003407E7 /* AddItemCustomCells */ = {
-			isa = PBXGroup;
-			children = (
-				F78D661C20E2D2F7003407E7 /* CameraCell.swift */,
-				F78D661E20E2D31C003407E7 /* Name&CategoryCell.swift */,
-				F78D662020E2D34C003407E7 /* Price&QuantityCell.swift */,
-				F78D662420E2D37F003407E7 /* DocumentsCell.swift */,
-				F78D662620E2D399003407E7 /* Notes&SaveCell.swift */,
-			);
-			path = AddItemCustomCells;
 			sourceTree = "<group>";
 		};
 		F78D662820E2D60A003407E7 /* Colors */ = {
@@ -323,32 +324,47 @@
 				7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */,
 				F77BB3ED20EC46A800D2FCD4 /* ItemDetailsCell.swift in Sources */,
 				F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */,
+				170E022020EE8D160012405F /* PhotoController.swift in Sources */,
 				F78D662A20E2D622003407E7 /* Colors.swift in Sources */,
 				F78D663A20E421E7003407E7 /* cameraPreviewViewController.swift in Sources */,
 				7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */,
+				170E022220EE8D730012405F /* CategoryController.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
+				F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */,
 				F77BB3E920EAEC5E00D2FCD4 /* NewCameraCell.swift in Sources */,
 				F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
-				F78D661F20E2D31C003407E7 /* Name&CategoryCell.swift in Sources */,
 				F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */,
+
+				1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */,
+
 				F78D662120E2D34C003407E7 /* Price&QuantityCell.swift in Sources */,
 				F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */,
-				1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */,
+
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
-				F78D661D20E2D2F7003407E7 /* CameraCell.swift in Sources */,
 				F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */,
 				17510F1120E59E7500E706CB /* Item.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
+
+
 				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,
 				F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */,
+				170E021E20EE8C1C0012405F /* Photo.swift in Sources */,
+
 				1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */,
 				7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */,
 				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
+
 				7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */,
+
+
+				170E021C20EE8BFB0012405F /* Category.swift in Sources */,
+
+
 				F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */,
 				F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */,
+				F7A08C2220EEC97200E37754 /* CategoriesDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

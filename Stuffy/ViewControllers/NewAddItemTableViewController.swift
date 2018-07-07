@@ -13,6 +13,12 @@ class NewAddItemTableViewController: UITableViewController {
     
     var pictureTaken = false
     var section2Open = false
+    var itemCategory = "Unassigned"{
+        didSet{
+            print("item category is now \(itemCategory)")
+        }
+    }
+    var isFavorited = false
     var numberOfItems = 1{
         didSet {
             print("There are \(numberOfItems)")
@@ -27,6 +33,15 @@ class NewAddItemTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    var receipt: UIImage? {
+        didSet {
+            print("receipt has been set")
+        }
+    }
+    
+    var datePickerSetPurchaseDate = false
+    var datePickerSetReturnDate = false
+    var datePickerSetWarrantyDate = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,9 +117,11 @@ class NewAddItemTableViewController: UITableViewController {
         }
         
         if indexPath.section == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NameAndCategoryCell", for: indexPath) as? NameandCategoryCell else {return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NameandCategoryCell", for: indexPath) as? NameandCategoryCell else {return UITableViewCell()}
              cell.backgroundColor = Colors.Grey
+            
             cell.priceTextField.addDoneButtonOnKeyboard()
+            cell.categoryNameLabel.text = "Category: \(itemCategory)"
             cell.quantityTextField.text = "\(numberOfItems)"
             cell.priceTextField.keyboardType = .decimalPad
             cell.delegate = self
@@ -113,7 +130,16 @@ class NewAddItemTableViewController: UITableViewController {
         
         if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell", for: indexPath) as? ItemDetailsCell else {return UITableViewCell()}
+            cell.datePickerView.backgroundColor = .white
+            cell.datePickerView.layer.cornerRadius = 10 
+            cell.datePickerView.frame.origin.y += 700
+            cell.delegate = self
+            return cell
+        }
+        if indexPath.section == 3 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NotesCell else {return UITableViewCell()}
             
+            cell.backgroundColor = Colors.Grey
             return cell
         }
         
@@ -137,7 +163,7 @@ class NewAddItemTableViewController: UITableViewController {
             return 437
         }
         if indexPath.section == 3 {
-            return 150
+            return 223
         }
         return 0
     }
@@ -235,7 +261,43 @@ class NewAddItemTableViewController: UITableViewController {
             print("opened itemDetailCell")
             }
         }
+    
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        
+        let imageData = UIImagePNGRepresentation(image!)
+        
+        let itemCategory = self.itemCategory
+        let rd = receipt  ?? #imageLiteral(resourceName: "xcaAdd")
+        let receiptData = UIImagePNGRepresentation(rd)
+        let favorited = isFavorited
+       let nameCell = tableView.dequeueReusableCell(withIdentifier: "NameandCategoryCell") as! NameandCategoryCell
+        guard let title = nameCell.itemNameTextField.text, title.count > 0 else { return }
+        let itemPrice = Double(nameCell.priceTextField.text!)
+        let quantity = Double(nameCell.quantityTextField.text!)
+        let itemCell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! ItemDetailsCell
+        let modelNumber = itemCell.modelTextField.text
+        let dateFormatter = DateFormatter()
+    
+        let purchaseDate = dateFormatter.date(from:"\(itemCell.purchaseDateTextField.text ?? "")") ?? Date()
+        let returnDate =  dateFormatter.date(from:"\(itemCell.returnDateTextField.text ?? "")") ?? Date()
+        let serialNumber =  itemCell.serialTextField.text
+        let vendor = itemCell.storeVenderTextField.text
+        let warranty = itemCell.warrantyExpirationDateTextField.text
+        
+        let noteCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! NotesCell
+        let notes = noteCell.notesTextView.text
+        
+        ItemCoreDataController.shared.createItem(category: itemCategory, title: title, receipt: receiptData!, image: imageData!, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate)
+        
+        print("item was created")
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let DV = storyboard.instantiateViewController(withIdentifier: "myStuffVC")
+        present(DV, animated: true)
+        
     }
+}
 
 extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDelegate {
     func capturePhoto(_ cell: NewCameraCell) {
@@ -250,6 +312,8 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
             image = UIImage(data: imageData)
             performSegue(withIdentifier: "toShowPhoto", sender: self)
         }
+    
+        
     }
 
 
@@ -274,5 +338,115 @@ extension NewAddItemTableViewController: ChangeQuantityDelegate {
         print("one item has been removed")
     }
     
+    func openCategories(_ cell: NameandCategoryCell) {
+        print("open categories button tapped")
+    }
+    
+}
+
+
+extension NewAddItemTableViewController: deleteItemDelegate {
+    func deleteItem(_ cell: NotesCell) {
+        print("Delete item button pressed")
+        
+    }
+    
+    
+}
+
+extension NewAddItemTableViewController: CustomDatePickerDelegate {
+   
+    
+ 
+    
+    func showPurchaseDatePicker(_ cell: ItemDetailsCell) {
+        UIView.animate(withDuration: 0.5) {
+            cell.datePickerView.frame.origin.y -= 700
+        }
+        datePickerSetPurchaseDate = true
+       print("purchase date picker button pushed")
+    }
+    
+    func showReturnDatePicker(_ cell: ItemDetailsCell) {
+        
+        UIView.animate(withDuration: 0.5) {
+            cell.datePickerView.frame.origin.y -= 700
+        }
+        datePickerSetReturnDate = true
+        print("return date picker button pushed")
+    }
+    
+    func showWarrantyDatePicker(_ cell: ItemDetailsCell) {
+        UIView.animate(withDuration: 0.5) {
+            cell.datePickerView.frame.origin.y -= 700
+        }
+        datePickerSetWarrantyDate = true
+        print("warranty date picker button pushed")
+    }
+    
+    func cancelButton(_ cell: ItemDetailsCell) {
+        
+        if datePickerSetPurchaseDate == true {
+           
+            cell.purchaseDateLabel.text = ""
+            
+            
+        }
+        if datePickerSetReturnDate == true {
+           
+            cell.returnDateLabel.text = ""
+            
+        }
+        
+        if datePickerSetWarrantyDate == true {
+            
+            cell.warrantyExpirationDateLabe.text = ""
+        }
+        
+        datePickerSetWarrantyDate = false
+        datePickerSetReturnDate = false
+        datePickerSetPurchaseDate = false
+        
+    
+        UIView.animate(withDuration: 0.5) {
+            cell.datePickerView.frame.origin.y += 700
+        }
+    }
+    
+    func saveButton(_ cell: ItemDetailsCell) {
+        UIView.animate(withDuration: 0.5) {
+            cell.datePickerView.frame.origin.y += 700
+        }
+        datePickerSetWarrantyDate = false
+        datePickerSetReturnDate = false
+        datePickerSetPurchaseDate = false
+        
+    }
+    
+    func dateChanged(_ cell: ItemDetailsCell) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.dateFormat = "M/d/yy"
+        if datePickerSetPurchaseDate == true {
+            cell.purchaseDateLabel.isHidden = false
+            let purchaseDate = dateFormatter.string(from: cell.datePicker.date)
+            cell.purchaseDateLabel.text = purchaseDate
+            
+        }
+        if datePickerSetReturnDate == true {
+            cell.returnDateLabel.isHidden = false
+            let returnDate = dateFormatter.string(from: cell.datePicker.date)
+            cell.returnDateLabel.text = returnDate
+            
+        }
+        
+        if datePickerSetWarrantyDate == true {
+            cell.warrantyExpirationDateLabe.isHidden = false
+            let warrantyDate = dateFormatter.string(from: cell.datePicker.date)
+            cell.warrantyExpirationDateLabe.text = warrantyDate
+        }
+        
+    }
     
 }

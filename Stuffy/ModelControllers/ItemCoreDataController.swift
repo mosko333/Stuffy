@@ -13,14 +13,14 @@ class ItemCoreDataController {
     
     static let shared = ItemCoreDataController()
     
-    func createItem(category: String, title: String, date: Date, documentImage: Data, documentName: String, image: Data, isFavorited: Bool, lastDayToReturn: Date, modelNumber: Double, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String ) {
+    func createItem(category: String, title: String, receipt: Data,  image: Data, isFavorited: Bool, lastDayToReturn: Date, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, purchaseDate: Date ) {
         
-        _ = ItemCoreData(category: category, title: title, image: image, isFavorited: isFavorited, modelNumber: modelNumber, notes: notes, price: price, purchasedFrom: purchasedFrom, quantity: quantity, serialNumber: serialNumber, warranty: warranty, documentName: documentName, documentImage: documentImage, lastDayToReturn: lastDayToReturn)
+        _ = ItemCD(category: category, title: title, image: image, isFavorited: isFavorited, modelNumber: modelNumber, notes: notes, price: price, purchasedFrom: purchasedFrom, quantity: quantity, serialNumber: serialNumber, warranty: warranty, receipt: receipt, purchaseDate: purchaseDate, lastDayToReturn: lastDayToReturn)
         
         CoreDataStack.saveContext()
     }
     
-    func removeItem(with item: ItemCoreData) {
+    func removeItem(with item: ItemCD) {
         CoreDataStack.context.delete(item)
         CoreDataStack.saveContext()
     }
