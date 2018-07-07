@@ -14,7 +14,6 @@
 		7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */; };
 		7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */; };
 		7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */; };
-		7E75F4FF20EE97980069A038 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E75F4FE20EE97980069A038 /* Dashboard.storyboard */; };
 		7E85A84120E5503E00C98048 /* FindTextCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */; };
 		7E85A84320E5568700C98048 /* FilterAndSavePicture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */; };
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
@@ -56,7 +55,6 @@
 		7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
 		7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CameraCrop.storyboard; sourceTree = "<group>"; };
-		7E75F4FE20EE97980069A038 /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindTextCamera.storyboard; sourceTree = "<group>"; };
 		7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterAndSavePicture.storyboard; sourceTree = "<group>"; };
 		7E9EE8FF20E1811B00F1CD79 /* Stuffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +163,6 @@
 				7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */,
 				7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */,
 				7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */,
-				7E75F4FE20EE97980069A038 /* Dashboard.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */,
-				7E75F4FF20EE97980069A038 /* Dashboard.storyboard in Resources */,
 				F78D663820E2F7E1003407E7 /* Adam.storyboard in Resources */,
 				7E85A84320E5568700C98048 /* FilterAndSavePicture.storyboard in Resources */,
 				F78D663420E2F7C6003407E7 /* Hayden.storyboard in Resources */,
