@@ -1041,7 +1041,6 @@
         <image name="xcadatePickerIcon" width="20" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bgN-YC-3F9"/>
         <segue reference="00u-7j-sOv"/>
         <segue reference="avO-0H-poh"/>
     </inferredMetricsTieBreakers>
