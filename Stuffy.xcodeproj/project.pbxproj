@@ -13,14 +13,12 @@
 		170E022220EE8D730012405F /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E022120EE8D730012405F /* CategoryController.swift */; };
 		17510F1120E59E7500E706CB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17510F1020E59E7500E706CB /* Item.swift */; };
 		1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE120E6CC25005DBDF5 /* ItemController.swift */; };
-
-		1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */; };
 		7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */; };
 		7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */; };
 		7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */; };
 		7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */; };
-
-
+		7E7D7FDC20F1501700E820FF /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */; };
+		7E7D7FDE20F1503B00E820FF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */; };
 		7E85A84120E5503E00C98048 /* FindTextCamera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */; };
 		7E85A84320E5568700C98048 /* FilterAndSavePicture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */; };
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
@@ -57,14 +55,12 @@
 		170E022120EE8D730012405F /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		17510F1020E59E7500E706CB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1770ACE120E6CC25005DBDF5 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
-
-		1770ACE320E6CCC3005DBDF5 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropCameraScanner.swift; sourceTree = "<group>"; };
 		7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
 		7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CameraCrop.storyboard; sourceTree = "<group>"; };
-
-
+		7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
+		7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FindTextCamera.storyboard; sourceTree = "<group>"; };
 		7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterAndSavePicture.storyboard; sourceTree = "<group>"; };
 		7E9EE8FF20E1811B00F1CD79 /* Stuffy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuffy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,11 +112,19 @@
 			path = "Scan ViewControllers";
 			sourceTree = "<group>";
 		};
+		7E7D7FDA20F071A200E820FF /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		7E9EE8F620E1811B00F1CD79 = {
 			isa = PBXGroup;
 			children = (
 				7E9EE90120E1811B00F1CD79 /* Stuffy */,
 				7E9EE90020E1811B00F1CD79 /* Products */,
+				7E7D7FDA20F071A200E820FF /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +172,7 @@
 				7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */,
 				7E85A84020E5503E00C98048 /* FindTextCamera.storyboard */,
 				7E85A84220E5568700C98048 /* FilterAndSavePicture.storyboard */,
+				7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -210,17 +215,14 @@
 		F78D661220E1A14C003407E7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-
 				7E19043C20EC7AAA004DBE2D /* Scan ViewControllers */,
-				F78D661920E2C95A003407E7 /* addItemTableViewController.swift */,
-
-
 				F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */,
 				F78D663920E421E7003407E7 /* cameraPreviewViewController.swift */,
 				F78D661020E1A142003407E7 /* myStuffViewController.swift */,
 				7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */,
 				F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */,
 				F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */,
+				7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -303,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */,
+				7E7D7FDC20F1501700E820FF /* Dashboard.storyboard in Resources */,
 				F78D663820E2F7E1003407E7 /* Adam.storyboard in Resources */,
 				7E85A84320E5568700C98048 /* FilterAndSavePicture.storyboard in Resources */,
 				F78D663420E2F7C6003407E7 /* Hayden.storyboard in Resources */,
@@ -328,6 +331,7 @@
 				F78D662A20E2D622003407E7 /* Colors.swift in Sources */,
 				F78D663A20E421E7003407E7 /* cameraPreviewViewController.swift in Sources */,
 				7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */,
+				7E7D7FDE20F1503B00E820FF /* DashboardViewController.swift in Sources */,
 				170E022220EE8D730012405F /* CategoryController.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
 				F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */,
@@ -336,32 +340,16 @@
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
 				F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */,
-
-				1770ACE420E6CCC3005DBDF5 /* CloudKitManager.swift in Sources */,
-
-				F78D662120E2D34C003407E7 /* Price&QuantityCell.swift in Sources */,
-				F78D661A20E2C95A003407E7 /* addItemTableViewController.swift in Sources */,
-
 				F78D660C20E191EC003407E7 /* ItemCoreDataController.swift in Sources */,
 				F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */,
 				17510F1120E59E7500E706CB /* Item.swift in Sources */,
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
-
-
-				F78D662720E2D399003407E7 /* Notes&SaveCell.swift in Sources */,
-				F78D662520E2D37F003407E7 /* DocumentsCell.swift in Sources */,
 				170E021E20EE8C1C0012405F /* Photo.swift in Sources */,
-
 				1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */,
 				7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */,
 				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
-
 				7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */,
-
-
 				170E021C20EE8BFB0012405F /* Category.swift in Sources */,
-
-
 				F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */,
 				F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */,
 				F7A08C2220EEC97200E37754 /* CategoriesDetailViewController.swift in Sources */,
