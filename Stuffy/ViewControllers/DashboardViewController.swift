@@ -9,19 +9,29 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
+    
+    //////////////////////
+    // MARK: Properties
+    //////////////////////
+    
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var totalValueLabel: UILabel!
+    @IBOutlet weak var numberOfCatLabel: UILabel!
+    @IBOutlet var returnItemNameLabel: [UILabel]!
+    @IBOutlet var returnItemDateLabel: [UILabel]!
+    @IBOutlet weak var warrentyNameLabel: UILabel!
+    @IBOutlet weak var warrentyDateLabel: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updateViews() {
+        // TODO - Populate Views using search data
     }
-    
-
     /*
     // MARK: - Navigation
 
