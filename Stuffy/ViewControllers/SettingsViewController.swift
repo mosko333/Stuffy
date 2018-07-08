@@ -12,17 +12,21 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var settingsTable: UITableView!
     
-    
+    let currency = ["$", "£", "₪", "€", "₫", "₱", "р.", "₨", "₣", "¥", "₩", "₴", "kr", "د.إ", "ر.س"]
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsTable.delegate = self
         settingsTable.dataSource = self
+        self.settingsTable.rowHeight = 77
         setupView()
     }
 
     func setupView() {
     }
-
+    @IBAction func backBarButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -36,13 +40,21 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as? TouchIDTableViewCell else { return UITableViewCell() }
-        return cell
+        if indexPath.section == 0 {
+            return tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as! TouchIDTableViewCell
+        }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as? TouchIDTableViewCell else { return UITableViewCell() }
+//        return cell
+        return UITableViewCell()
     }
     
     

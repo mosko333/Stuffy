@@ -12,7 +12,7 @@ class TouchIDTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,4 +21,6 @@ class TouchIDTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func pinSwitchToggled(_ sender: UISwitch) {
+    }
 }
