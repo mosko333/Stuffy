@@ -14,7 +14,7 @@ class cameraPreviewViewController: UIViewController {
     @IBOutlet weak var photo: UIImageView!
     
     var image: UIImage?
-  
+    var categoryPicked:CategoryCD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class cameraPreviewViewController: UIViewController {
         if segue.identifier == "addItemVC" {
             let destinationVC = segue.destination as! NewAddItemTableViewController
             destinationVC.image = image
-            
+            destinationVC.categoryPicked = categoryPicked
         }
     }
 }

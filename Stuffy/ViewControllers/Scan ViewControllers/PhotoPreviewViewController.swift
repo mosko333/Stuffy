@@ -20,6 +20,10 @@ class PhotoPreviewViewController: UIViewController {
         updateView()
     }
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
+       performSegue(withIdentifier: "toNewAddItemVC", sender: self)
+        
+        print("recepit save button pressed")
+        
     }
     
     func updateView() {
@@ -28,6 +32,13 @@ class PhotoPreviewViewController: UIViewController {
         //////////////////////
         DispatchQueue.main.async {
             self.photoImageView.image = self.photo
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNewAddItemVC"{
+            guard let destinationVC = segue.destination as? NewAddItemTableViewController else {return}
+            destinationVC.receipt = photo
         }
     }
     
