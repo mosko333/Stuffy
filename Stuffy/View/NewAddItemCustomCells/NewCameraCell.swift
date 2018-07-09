@@ -11,6 +11,7 @@ import AVFoundation
 
 protocol CameraDelegate: class {
     func capturePhoto(_ cell: NewCameraCell)
+    func toPictureLibrary(_ cell: NewCameraCell)
 }
 
 class NewCameraCell: UITableViewCell {
@@ -34,7 +35,9 @@ class NewCameraCell: UITableViewCell {
     
     
     func setupCaptureSession() {
-        captureSession.sessionPreset = AVCaptureSession.Preset.photo
+    
+            captureSession.sessionPreset = AVCaptureSession.Preset.photo
+    
     }
     
     func setupDevice() {
@@ -56,10 +59,15 @@ class NewCameraCell: UITableViewCell {
         do {
             
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
-            captureSession.addInput(captureDeviceInput)
+            if captureSession.inputs.isEmpty{
+               captureSession.addInput(captureDeviceInput)
+            }
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
-            captureSession.addOutput(photoOutput!)
+            if captureSession.outputs.isEmpty {
+                captureSession.addOutput(photoOutput!)
+            }
+            
         } catch  {
             print(error.localizedDescription)
         }
@@ -86,5 +94,8 @@ class NewCameraCell: UITableViewCell {
         
         delegate?.capturePhoto(self)
         
+    }
+    @IBAction func libraryButtonTapped(_ sender: Any) {
+        delegate?.toPictureLibrary(self)
     }
 }

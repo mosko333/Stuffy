@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17F77" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CategoryCD" representedClassName="CategoryCD" syncable="YES" codeGenerationType="class">
+        <attribute name="isFavorited" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="ItemCD" inverseName="category" inverseEntity="ItemCD" syncable="YES"/>
+    </entity>
     <entity name="ItemCD" representedClassName="ItemCD" syncable="YES" codeGenerationType="class">
-        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="isFavorited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastDayToReturn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -13,10 +17,16 @@
         <attribute name="quantity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="receipt" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="warranty" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryCD" inverseName="items" inverseEntity="CategoryCD" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="pin" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ItemCD" positionX="-45" positionY="0" width="128" height="255"/>
+        <element name="CategoryCD" positionX="-45" positionY="108" width="128" height="90"/>
+        <element name="ItemCD" positionX="-45" positionY="0" width="128" height="253"/>
+        <element name="User" positionX="-36" positionY="108" width="128" height="60"/>
     </elements>
 </model>
