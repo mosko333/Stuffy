@@ -33,9 +33,13 @@ class SettingsViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //1) check the identifier of the segue
+        if segue.identifier == "ResetPinSegue" {
+            if let destinationVC = segue.destination as? PinPadViewController {
+                destinationVC.actionWanted = .resetPin
+            }
+        }
+        
         if segue.identifier == "TurnOnOffPinSegue" {
-            //2) Get the destination of where you want to go
             if let destinationVC = segue.destination as? PinPadViewController {
                 print("settingsVC Pin \(pinIsOn)")
                 if !pinIsOn {

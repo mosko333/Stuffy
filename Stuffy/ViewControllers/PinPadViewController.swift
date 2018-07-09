@@ -15,7 +15,7 @@ class PinPadViewController: UIViewController {
         case login
         case turnOn, turnOff
         case create
-        case requestChange
+        case resetPin
         case enteringNewPin
         case confirmPinChange
         case unassigned
@@ -74,7 +74,7 @@ class PinPadViewController: UIViewController {
     
     func setTitle() {
         switch actionWanted {
-        case .requestChange, .login, .turnOff:
+        case .resetPin, .login, .turnOff:
             titleLabel.text = "Please Enter Your Pin"
             return
         case .create, .turnOn, .enteringNewPin:
@@ -110,7 +110,7 @@ class PinPadViewController: UIViewController {
     
     func determineActionOnCompletePin() {
         switch actionWanted {
-        case .login, .turnOff, .requestChange:
+        case .login, .turnOff, .resetPin:
             checkPin()
             return
         case .enteringNewPin, .turnOn, .create:
@@ -161,7 +161,7 @@ class PinPadViewController: UIViewController {
 //            let destinationVC = storyboard.instantiateViewController(withIdentifier: "StuffyHome")
 //            present(destinationVC, animated: true, completion: nil)
             return
-        case .create, .requestChange:
+        case .create, .resetPin:
             enterNewPinNumber()
             return
         case .confirmPinChange:

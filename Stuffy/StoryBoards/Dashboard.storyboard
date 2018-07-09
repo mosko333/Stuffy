@@ -284,7 +284,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="59k-Tv-dfs">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="59k-Tv-dfs">
                                 <rect key="frame" x="0.0" y="30" width="375" height="573"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -367,7 +367,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="kJ7-Cr-THM" kind="presentation" id="lJt-2x-9zi"/>
+                                            <segue destination="kJ7-Cr-THM" kind="presentation" identifier="ResetPinSegue" id="lJt-2x-9zi"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EraseCell" rowHeight="77" id="ybe-2Y-2fr" customClass="ResetAndEraseTableViewCell" customModule="Stuffy" customModuleProvider="target">
@@ -411,28 +411,28 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CurrencyCell" rowHeight="77" id="sE9-MC-Gup" customClass="CurrencyPickerTableViewCell" customModule="Stuffy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="259" width="375" height="77"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CurrencyCell" rowHeight="100" id="sE9-MC-Gup" customClass="CurrencyPickerTableViewCell" customModule="Stuffy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="259" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sE9-MC-Gup" id="OF3-0k-XPK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="76.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xcaCat" translatesAutoresizingMaskIntoConstraints="NO" id="bjs-9v-o0w">
-                                                    <rect key="frame" x="15" y="28" width="21" height="21"/>
+                                                    <rect key="frame" x="15" y="39.5" width="21" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ba8-FK-1ps"/>
                                                         <constraint firstAttribute="width" constant="21" id="yzs-eF-mPp"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYo-MU-LGs">
-                                                    <rect key="frame" x="49" y="27.5" width="114" height="22"/>
+                                                    <rect key="frame" x="49" y="39" width="114" height="22"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkZ-sc-W7b">
-                                                    <rect key="frame" x="263" y="0.0" width="90" height="77"/>
+                                                    <rect key="frame" x="263" y="0.0" width="90" height="99"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="miN-Px-bpA"/>
                                                     </constraints>
@@ -808,6 +808,6 @@
         <image name="xcaTouchID" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YwD-sT-e0x"/>
+        <segue reference="lJt-2x-9zi"/>
     </inferredMetricsTieBreakers>
 </document>
