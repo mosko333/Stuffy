@@ -20,7 +20,7 @@ class PhotoController {
         
         guard let data = UIImageJPEGRepresentation(image, 0.5) else { return }
         
-        guard let ckRecordID = item.ckID else { return }
+        guard let ckRecordID = item.ckRecordID else { return }
         
         let itemReference = CKReference(recordID: ckRecordID, action: CKReferenceAction.deleteSelf)
         
@@ -35,14 +35,16 @@ class PhotoController {
             
             guard let record = record, let newPhoto = Photo(photoRecord: record) else { completion(false) ; return }
             self.photos.append(newPhoto)
+            //let image = newPhoto.itemPhoto
+            
             completion(true)
             return
         }
     }
-    
+
     
     func fetchPhoto(item: Item, completion: @escaping ((_ success: Bool) -> Void)) {
-        guard let itemID = item.ckID else { return }
+        guard let itemID = item.ckRecordID else { return }
         let itemReference = CKReference(recordID: itemID, action: CKReferenceAction.deleteSelf)
         let predicate = NSPredicate(format: "itemReference == %@", itemReference)
         let query = CKQuery(recordType: "Photo", predicate: predicate)
@@ -55,7 +57,24 @@ class PhotoController {
             
             guard let records = records else { completion(false) ; return }
             self.photos = records.compactMap { Photo(photoRecord: $0)}
+            item.photos = self.photos
+            completion(true)
+        }
+    }
+    
+    
+    func deletePhoto(with photo: Photo, completion: @escaping ((_ success: Bool) -> Void)) {
+        
+        guard let photoID = photo.ckRecordID else { return }
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: photoID) { (_, error) in
+            if let error = error {
+                print("Error deleting photo from cloud: \(error.localizedDescription)")
+                completion(false)
+            }
             
+            guard let indexPath = self.photos.index(of: photo) else { completion(false) ; return }
+            self.photos.remove(at: indexPath)
             completion(true)
         }
     }

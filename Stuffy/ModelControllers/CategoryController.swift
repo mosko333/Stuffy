@@ -15,9 +15,9 @@ class CategoryController {
     
     var categories = [Category]()
     
-    func createCategory(categoryName: String, completion: @escaping ((_ success: Bool)->Void)) {
+    func createCategory(categoryName: String, isFavorited: Bool?, completion: @escaping ((_ success: Bool)->Void)) {
         
-        let category = Category(categoryName: categoryName)
+        let category = Category(categoryName: categoryName, isFavorited: isFavorited)
         
         let categoryRecord = CKRecord(category: category)
         
@@ -50,6 +50,21 @@ class CategoryController {
             guard let records = records else { completion(false) ; return }
             self.categories = records.compactMap { Category(categoryRecord: $0)}
             
+            completion(true)
+        }
+    }
+    
+        func deleteCategory(with category: Category, completion: @escaping ((_ success: Bool) -> Void)) {
+        
+        guard let categoryID = category.ckRecordID else { completion(false) ; return }
+        
+        CKContainer.default().privateCloudDatabase.delete(withRecordID: categoryID) { (_, error) in
+            if let error = error {
+                print("Error deleting category from cloud: \(error.localizedDescription)")
+                completion(false)
+            }
+            guard let indexPath = self.categories.index(of: category) else { completion(false) ; return }
+            self.categories.remove(at: indexPath)
             completion(true)
         }
     }

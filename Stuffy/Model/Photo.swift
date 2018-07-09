@@ -10,7 +10,11 @@ import Foundation
 import UIKit
 import CloudKit
 
-class Photo {
+class Photo: Equatable {
+    static func == (lhs: Photo, rhs: Photo) -> Bool {
+        return lhs.ckRecordID == rhs.ckRecordID
+    }
+    
     
     let itemPhotoData: Data?
     var itemPhoto: UIImage? {
@@ -21,7 +25,6 @@ class Photo {
     
     var ckRecordID: CKRecordID?
     let itemReference: CKReference
-    let photoReference: String
     
     fileprivate var temporaryItemPhotoURL: URL {
         let temporaryDirectory = NSTemporaryDirectory()
@@ -31,29 +34,29 @@ class Photo {
         return fileURL
     }
     
-    init(itemPhoto: Data, itemReference: CKReference, photoReference: String = UUID().uuidString) {
+    init(itemPhoto: Data, itemReference: CKReference) {
         self.itemPhotoData = itemPhoto
         self.itemReference = itemReference
-        self.photoReference = photoReference
     }
     
     init?(photoRecord: CKRecord) {
+        
         guard let itemPhoto = photoRecord["itemPhoto"] as? CKAsset,
-            let itemReference = photoRecord["itemReference"] as? CKReference,
-            let photoReference = photoRecord["photoReference"] as? String
+            let itemReference = photoRecord["itemReference"] as? CKReference
             else { return nil }
         
         let itemPhotoDataContents = try? Data(contentsOf: itemPhoto.fileURL)
         
         self.itemPhotoData = itemPhotoDataContents
         self.itemReference = itemReference
-        self.photoReference = photoReference
+        self.ckRecordID = photoRecord.recordID
     }
 }
 
 extension CKRecord {
     
     convenience init(photo: Photo) {
+        
         let recordID = photo.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         let photoAsset = CKAsset(fileURL: photo.temporaryItemPhotoURL)
         
