@@ -32,11 +32,9 @@
 		7E9EE90D20E1811C00F1CD79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90B20E1811C00F1CD79 /* LaunchScreen.storyboard */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
-		F731E97220F2FD8900ACE318 /* FavCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731E97120F2FD8900ACE318 /* FavCategoryCell.swift */; };
 		F731E97420F2FDA200ACE318 /* FavItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731E97320F2FDA200ACE318 /* FavItemCell.swift */; };
 		F731E97720F2FEE100ACE318 /* HomeScreenCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731E97620F2FEE100ACE318 /* HomeScreenCategoryCell.swift */; };
 		F731E97A20F3176A00ACE318 /* ItemSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731E97920F3176A00ACE318 /* ItemSearchCell.swift */; };
-		F731E97C20F40A5300ACE318 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731E97B20F40A5300ACE318 /* User+Convenience.swift */; };
 		F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */; };
 		F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */; };
 		F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */; };
@@ -58,7 +56,6 @@
 		F7A08C2220EEC97200E37754 /* CategoriesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */; };
 		F7A08C2620EFF7D600E37754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EE90920E1811C00F1CD79 /* Assets.xcassets */; };
 		F7A08C3020F017B100E37754 /* Category+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A08C2F20F017B100E37754 /* Category+Convenience.swift */; };
-		F7D9D97E20F2F75F00F429A1 /* FavoriteItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9D97D20F2F75F00F429A1 /* FavoriteItemsViewController.swift */; };
 		F7D9D98020F2F7A600F429A1 /* SearchItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9D97F20F2F7A600F429A1 /* SearchItemsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,7 +88,6 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
-		F731E97120F2FD8900ACE318 /* FavCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCategoryCell.swift; sourceTree = "<group>"; };
 		F731E97320F2FDA200ACE318 /* FavItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavItemCell.swift; sourceTree = "<group>"; };
 		F731E97620F2FEE100ACE318 /* HomeScreenCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenCategoryCell.swift; sourceTree = "<group>"; };
 		F731E97920F3176A00ACE318 /* ItemSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchCell.swift; sourceTree = "<group>"; };
@@ -116,7 +112,6 @@
 		F78D663920E421E7003407E7 /* CameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewViewController.swift; sourceTree = "<group>"; };
 		F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDetailViewController.swift; sourceTree = "<group>"; };
 		F7A08C2F20F017B100E37754 /* Category+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Convenience.swift"; sourceTree = "<group>"; };
-		F7D9D97D20F2F75F00F429A1 /* FavoriteItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemsViewController.swift; sourceTree = "<group>"; };
 		F7D9D97F20F2F7A600F429A1 /* SearchItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +138,10 @@
 		7E7D7FDA20F071A200E820FF /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				F731E97320F2FDA200ACE318 /* FavItemCell.swift */,
+				F731E97920F3176A00ACE318 /* ItemSearchCell.swift */,
+				F731E97620F2FEE100ACE318 /* HomeScreenCategoryCell.swift */,
+				F7D9D97F20F2F7A600F429A1 /* SearchItemsViewController.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -213,31 +212,6 @@
 				7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */,
 			);
 			path = StoryBoards;
-			sourceTree = "<group>";
-		};
-		F731E97020F2FAA300ACE318 /* FavoritedCustomCells */ = {
-			isa = PBXGroup;
-			children = (
-				F731E97120F2FD8900ACE318 /* FavCategoryCell.swift */,
-				F731E97320F2FDA200ACE318 /* FavItemCell.swift */,
-			);
-			path = FavoritedCustomCells;
-			sourceTree = "<group>";
-		};
-		F731E97520F2FEAA00ACE318 /* HomeScreenCategoryCell */ = {
-			isa = PBXGroup;
-			children = (
-				F731E97620F2FEE100ACE318 /* HomeScreenCategoryCell.swift */,
-			);
-			path = HomeScreenCategoryCell;
-			sourceTree = "<group>";
-		};
-		F731E97820F3174000ACE318 /* SearchScreenItemCell */ = {
-			isa = PBXGroup;
-			children = (
-				F731E97920F3176A00ACE318 /* ItemSearchCell.swift */,
-			);
-			path = SearchScreenItemCell;
 			sourceTree = "<group>";
 		};
 		F77BB3E720EAEC2A00D2FCD4 /* NewAddItemCustomCells */ = {
@@ -425,7 +399,7 @@
 				F7D9D98020F2F7A600F429A1 /* SearchItemsViewController.swift in Sources */,
 				7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */,
 				7E7D7FE020F1B5D700E820FF /* SettingsViewController.swift in Sources */,
-				F78D661120E1A142003407E7 /* myStuffViewController.swift in Sources */,
+				F78D661120E1A142003407E7 /* MyStuffViewController.swift in Sources */,
 				7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */,
 				170E021C20EE8BFB0012405F /* Category.swift in Sources */,
 				F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */,
@@ -577,7 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4X5NURS3PH;
+				DEVELOPMENT_TEAM = DBM67E5D74;
 				INFOPLIST_FILE = "$(SRCROOT)/Stuffy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,7 +569,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4X5NURS3PH;
+				DEVELOPMENT_TEAM = DBM67E5D74;
 				INFOPLIST_FILE = "$(SRCROOT)/Stuffy/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
