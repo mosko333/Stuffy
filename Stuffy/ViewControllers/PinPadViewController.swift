@@ -36,7 +36,7 @@ class PinPadViewController: UIViewController {
     var correctPin = "5555"
     var newPin = ""
     var pinIsOn: Bool?
-    var actionWanted: pinActionWanted = .login
+    var actionWanted: pinActionWanted = .create
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -55,14 +55,14 @@ class PinPadViewController: UIViewController {
     func setupView() {
         for button in pinBtn {
             button.layer.cornerRadius = button.bounds.height/2 + 4
-            button.layer.borderColor = UIColor(named: Constancts.systemBlueColor)?.cgColor
+            button.layer.borderColor = Colors.stuffyNavyBlue.cgColor
             button.layer.borderWidth = Constancts.buttonBorderWidth
         }
         for digit in pinDidgitViews {
             digit.layer.cornerRadius = digit.frame.height / 2 + 2
-            digit.layer.borderColor = UIColor(named: Constancts.systemBlueColor)?.cgColor
+            digit.layer.borderColor = Colors.stuffySoftBlue.cgColor
             digit.layer.borderWidth = Constancts.digitViewBorderWidth
-            digit.layer.backgroundColor = UIColor(white: 1, alpha: 0.01).cgColor
+            digit.layer.backgroundColor = Colors.stuffyBackgroundGray.cgColor
         }
     }
     
@@ -90,7 +90,7 @@ class PinPadViewController: UIViewController {
     }
     
     @IBAction func pinBtnPressed(_ sender: UIButton) {
-        pinDidgitViews[pinNumber.count].backgroundColor = UIColor(named: Constancts.systemBlueColor)
+        pinDidgitViews[pinNumber.count].backgroundColor = Colors.stuffySoftBlue
         switch pinNumber.count {
         case 0, 1, 2:
             pinNumber += "\(sender.tag)"
@@ -100,7 +100,7 @@ class PinPadViewController: UIViewController {
             pinNumber += "\(sender.tag)"
             print(pinNumber)
             pinDidgitViews.forEach {didgit in
-                didgit.backgroundColor = UIColor(white: 1, alpha: 0.01) }
+                didgit.backgroundColor = Colors.stuffyBackgroundGray }
             determineActionOnCompletePin()
             return
         default:

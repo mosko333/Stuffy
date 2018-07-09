@@ -45,16 +45,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.row == 0 {
             return tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as! TouchIDTableViewCell
         }
+        if indexPath.row == 1 {
+            return tableView.dequeueReusableCell(withIdentifier: "ResetCell") as! ResetAndEraseTableViewCell
+        }
+        if indexPath.row == 2 {
+            return tableView.dequeueReusableCell(withIdentifier: "EraseCell") as! ResetAndEraseTableViewCell
+        } else {return UITableViewCell()}
 //        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as? TouchIDTableViewCell else { return UITableViewCell() }
 //        return cell
-        return UITableViewCell()
+        
     }
     
     
