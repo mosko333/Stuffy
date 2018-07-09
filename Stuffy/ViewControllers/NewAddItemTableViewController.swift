@@ -13,9 +13,9 @@ class NewAddItemTableViewController: UITableViewController {
     
     var pictureTaken = false
     var section2Open = false
-    var itemCategory = "Unassigned"{
+    var categoryPicked: CategoryCD? {
         didSet{
-            print("item category is now \(itemCategory)")
+            print("item category name is \(String(describing: categoryPicked?.name))")
         }
     }
     var isFavorited = false
@@ -42,10 +42,15 @@ class NewAddItemTableViewController: UITableViewController {
     var datePickerSetPurchaseDate = false
     var datePickerSetReturnDate = false
     var datePickerSetWarrantyDate = false
+    
+
+    let imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.allowsEditing = false
         
     }
 
@@ -98,16 +103,16 @@ class NewAddItemTableViewController: UITableViewController {
             cell.captureSession.stopRunning()
             cell.cameraPreviewLayer?.removeFromSuperlayer()
             cell.cameraPreviewLayer = nil
-            cell.imageBackgroundView.isHidden = false
+            cell.imageBackgroundView.isHidden = true
             
-          //  cell.imageBackgroundView.frame.size = CGSize(width: cell.frame.size.width * 0.30, height: cell.frame.size.width * 0.30)
-           // cell.thumbnailImage.frame.size = CGSize(width: cell.frame.size.width * 0.25, height: cell.frame.size.width * 0.25)
+         // cell.imageBackgroundView.frame.size = CGSize(width: cell.frame.size.width * 0.30, height: cell.frame.size.width * 0.30)
+            cell.thumbnailImage.frame.size = CGSize(width: cell.frame.size.width, height: cell.frame.size.width - 63)
             
             //cell.imageBackgroundView.center.x = cell.cameraView.center.x
            // cell.imageBackgroundView.center.y = cell.cameraView.center.y - 50
             
-            //cell.thumbnailImage.center.x =  cell.cameraView.center.x
-           // cell.thumbnailImage.center.y = cell.cameraView.center.y - 50
+            cell.thumbnailImage.center.x =  cell.cameraView.center.x
+            cell.thumbnailImage.center.y = cell.cameraView.center.y - 50
             
             
             cell.thumbnailImage.image = image
@@ -121,7 +126,8 @@ class NewAddItemTableViewController: UITableViewController {
              cell.backgroundColor = Colors.Grey
             
             cell.priceTextField.addDoneButtonOnKeyboard()
-            cell.categoryNameLabel.text = "Category: \(itemCategory)"
+            let categoryName = categoryPicked?.name ?? ""
+            cell.categoryNameLabel.text = categoryName
             cell.quantityTextField.text = "\(numberOfItems)"
             cell.priceTextField.keyboardType = .decimalPad
             cell.delegate = self
@@ -265,14 +271,15 @@ class NewAddItemTableViewController: UITableViewController {
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
-        let imageData = UIImagePNGRepresentation(image!)
+        let id = image ?? #imageLiteral(resourceName: "xcaNoImage")
+        let imageData = UIImagePNGRepresentation(id)
+        guard let categoypicked = categoryPicked else { return }
         
-        let itemCategory = self.itemCategory
         let rd = receipt  ?? #imageLiteral(resourceName: "xcaAdd")
         let receiptData = UIImagePNGRepresentation(rd)
         let favorited = isFavorited
        let nameCell = tableView.dequeueReusableCell(withIdentifier: "NameandCategoryCell") as! NameandCategoryCell
-        guard let title = nameCell.itemNameTextField.text, title.count > 0 else { return }
+        guard let title = nameCell.itemNameTextField.text, title != "" else { return }
         let itemPrice = Double(nameCell.priceTextField.text!)
         let quantity = Double(nameCell.quantityTextField.text!)
         let itemCell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! ItemDetailsCell
@@ -288,18 +295,23 @@ class NewAddItemTableViewController: UITableViewController {
         let noteCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as! NotesCell
         let notes = noteCell.notesTextView.text
         
-        ItemCoreDataController.shared.createItem(category: itemCategory, title: title, receipt: receiptData!, image: imageData!, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate)
+        ItemCoreDataController.shared.createItem(category: categoypicked, title: title, receipt: receiptData!, image: imageData!, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate)
+
+        
         
         print("item was created")
        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let DV = storyboard.instantiateViewController(withIdentifier: "myStuffVC")
+        let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
+        let topVC = DV.topViewController as! myStuffViewController
+        topVC.categoryPicked = categoypicked
         present(DV, animated: true)
         
     }
 }
 
 extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDelegate {
+    
     func capturePhoto(_ cell: NewCameraCell) {
         let settings = AVCapturePhotoSettings()
         cell.photoOutput?.capturePhoto(with: settings, delegate: self )
@@ -313,7 +325,7 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
             performSegue(withIdentifier: "toShowPhoto", sender: self)
         }
     
-        
+
     }
 
 
@@ -321,8 +333,14 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "toShowPhoto"{
         let previewVC = segue.destination as! cameraPreviewViewController
         previewVC.image = self.image
+        previewVC.categoryPicked = categoryPicked
         }
     }
+    
+    func toPictureLibrary(_ cell: NewCameraCell) {
+         present(imagePicker, animated: true)
+    }
+    
 }
 
 
@@ -341,6 +359,8 @@ extension NewAddItemTableViewController: ChangeQuantityDelegate {
     func openCategories(_ cell: NameandCategoryCell) {
         print("open categories button tapped")
     }
+    
+    
     
 }
 
@@ -448,5 +468,22 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
         }
         
     }
+    
+}
+
+extension NewAddItemTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        image = info[UIImagePickerControllerOriginalImage] as? UIImage
+       // pickedImage.image = image
+        print("imagePickerController func called")
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("image picker has been canceled")
+        dismiss(animated: true)
+    }
+    
     
 }

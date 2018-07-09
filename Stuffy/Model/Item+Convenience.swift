@@ -11,11 +11,10 @@ import CoreData
 
 extension ItemCD {
     
-    convenience init(category: String, title: String, image: Data, isFavorited: Bool, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, receipt: Data,  purchaseDate: Date, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
+    convenience init(title: String, image: Data, isFavorited: Bool, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, receipt: Data,  purchaseDate: Date, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
     {
         self.init(context: context)
         
-        self.category = category
         self.title = title
         self.isFavorited = isFavorited
         self.modelNumber = modelNumber

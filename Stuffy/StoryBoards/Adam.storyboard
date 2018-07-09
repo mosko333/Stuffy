@@ -10,24 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Custom Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="ZW1-n6-WRp">
             <objects>
-                <tabBarController id="7Cw-hv-LvF" customClass="CustomTabBarViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="86J-ia-XLl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <outlet property="tabView" destination="gfH-fV-QvJ" id="V4X-c1-Aft"/>
-                        <segue destination="GhT-EY-VNX" kind="relationship" relationship="viewControllers" id="1us-86-DyR"/>
-                        <segue destination="inI-h6-cpd" kind="relationship" relationship="viewControllers" id="daa-qu-mKX"/>
-                        <segue destination="Tx5-PB-APo" kind="relationship" relationship="viewControllers" id="EmY-00-gp2"/>
-                        <segue destination="a2y-Si-0pH" kind="relationship" relationship="viewControllers" id="o8u-MY-sRv"/>
-                        <segue destination="D0Q-tL-rqR" kind="relationship" relationship="viewControllers" id="LVz-ut-ZGG"/>
-                    </connections>
-                </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2R-ZB-e2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="gfH-fV-QvJ" customClass="CustomTabBarMainView" customModule="Stuffy" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="376" height="94"/>
@@ -197,12 +182,28 @@
                         <outlet property="tabViewBackgroundView" destination="thu-hK-99u" id="5JR-ZC-iPR"/>
                     </connections>
                 </view>
+                <tabBarController id="7Cw-hv-LvF" sceneMemberID="viewController">
+                    <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="86J-ia-XLl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <outlet property="tabView" destination="gfH-fV-QvJ" id="V4X-c1-Aft"/>
+                        <segue destination="GhT-EY-VNX" kind="relationship" relationship="viewControllers" id="1us-86-DyR"/>
+                        <segue destination="inI-h6-cpd" kind="relationship" relationship="viewControllers" id="daa-qu-mKX"/>
+                        <segue destination="Tx5-PB-APo" kind="relationship" relationship="viewControllers" id="EmY-00-gp2"/>
+                        <segue destination="a2y-Si-0pH" kind="relationship" relationship="viewControllers" id="o8u-MY-sRv"/>
+                        <segue destination="D0Q-tL-rqR" kind="relationship" relationship="viewControllers" id="LVz-ut-ZGG"/>
+                    </connections>
+                </tabBarController>
             </objects>
             <point key="canvasLocation" x="386" y="-492"/>
         </scene>
         <!--Item-->
         <scene sceneID="Z0p-MV-ztN">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DDg-3t-fGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="GhT-EY-VNX" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pqB-Mm-yiC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -212,13 +213,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="V7r-s9-bYE"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DDg-3t-fGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1127" y="269"/>
         </scene>
         <!--Item-->
         <scene sceneID="Kuz-gI-rSy">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ov5-01-mS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="inI-h6-cpd" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G4H-fN-S3y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -228,13 +229,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="FW2-S4-Cdk"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ov5-01-mS0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-380" y="270"/>
         </scene>
         <!--Item-->
         <scene sceneID="Kg1-Mw-6ip">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NIM-tv-PW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Tx5-PB-APo" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jg2-U8-mMy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -245,13 +246,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="C5c-Ex-y9K"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NIM-tv-PW4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="385" y="271"/>
         </scene>
         <!--Item-->
         <scene sceneID="sUf-ee-W4N">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c6f-Dj-NKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="a2y-Si-0pH" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eJ5-2P-qRG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -261,13 +262,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="E6s-ih-Lmj"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c6f-Dj-NKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097" y="270"/>
         </scene>
         <!--Item-->
         <scene sceneID="K46-xV-dMJ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bgk-DF-mFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="D0Q-tL-rqR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aOp-xM-7HE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -277,7 +278,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="UOo-sD-SwX"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bgk-DF-mFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1847" y="270"/>
         </scene>
