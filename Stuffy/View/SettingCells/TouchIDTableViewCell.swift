@@ -7,9 +7,14 @@
 //
 
 import UIKit
+protocol TouchIDTableViewCellDelegate: class {
+    func pinOnOffToggle(pinIsOn: Bool)
+}
 
 class TouchIDTableViewCell: UITableViewCell {
 
+    weak var delegate: TouchIDTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -22,5 +27,6 @@ class TouchIDTableViewCell: UITableViewCell {
     }
 
     @IBAction func pinSwitchToggled(_ sender: UISwitch) {
+        delegate?.pinOnOffToggle(pinIsOn: sender.isOn)
     }
 }

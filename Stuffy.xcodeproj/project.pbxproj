@@ -18,6 +18,7 @@
 		7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */; };
 		7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */; };
 		7E448A5A20F2E11A000C846E /* ResetAndEraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E448A5920F2E11A000C846E /* ResetAndEraseTableViewCell.swift */; };
+		7E448A5E20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E448A5D20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift */; };
 		7E7D7FDC20F1501700E820FF /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */; };
 		7E7D7FDE20F1503B00E820FF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */; };
 		7E7D7FE020F1B5D700E820FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDF20F1B5D700E820FF /* SettingsViewController.swift */; };
@@ -64,6 +65,7 @@
 		7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
 		7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CameraCrop.storyboard; sourceTree = "<group>"; };
 		7E448A5920F2E11A000C846E /* ResetAndEraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAndEraseTableViewCell.swift; sourceTree = "<group>"; };
+		7E448A5D20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerTableViewCell.swift; sourceTree = "<group>"; };
 		7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7E7D7FDF20F1B5D700E820FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				7E7D7FE420F1BCF700E820FF /* TouchIDTableViewCell.swift */,
 				7E448A5920F2E11A000C846E /* ResetAndEraseTableViewCell.swift */,
+				7E448A5D20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift */,
 			);
 			path = SettingCells;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
 				F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */,
 				7E448A5A20F2E11A000C846E /* ResetAndEraseTableViewCell.swift in Sources */,
+				7E448A5E20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift in Sources */,
 				F77BB3E920EAEC5E00D2FCD4 /* NewCameraCell.swift in Sources */,
 				F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convince.swift in Sources */,
