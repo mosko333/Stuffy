@@ -10,27 +10,30 @@ import Foundation
 import UIKit
 import CloudKit
 
-class Item {
-    let itemName: String
-    let quantity: Double?
-    let notes: String?
-    let warrantyExpiration: Date?
-    let dateOfPurchase: Date?
-    let lastDayOfReturn: Date?
-    let purchasePrice: Double?
-    let serialNo: String?
-    let storeVendor: String?
-    let isFavorited: Bool?
-    let photos: [Photo]?
+class Item: Equatable {
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        return lhs.ckRecordID == rhs.ckRecordID
+    }
     
+    var itemName: String
+    var quantity: Double?
+    var notes: String?
+    var warrantyExpiration: Date?
+    var dateOfPurchase: Date?
+    var lastDayOfReturn: Date?
+    var purchasePrice: Double?
+    var serialNo: String?
+    var storeVendor: String?
+    var isFavorited: Bool?
+    var photos: [Photo]?
     
-    var ckID: CKRecordID?
+    var ckRecordID: CKRecordID?
     let categoryReference: CKReference
     let itemReference: String
     
     
     
-    init(itemName: String, quantity: Double?, notes: String?, warrantyExpiration: Date?, dateOfPurchase: Date?, lastDayOfReturn: Date?, purchasePrice: Double?, serialNo: String?, storeVendor: String?, isFavorited: Bool?, photos: [Photo]?, categoryReference: CKReference, itemReference: String = UUID().uuidString) {
+    init(itemName: String, quantity: Double?, notes: String?, warrantyExpiration: Date?, dateOfPurchase: Date?, lastDayOfReturn: Date?, purchasePrice: Double?, serialNo: String?, storeVendor: String?, isFavorited: Bool?, photos: [Photo]? = [], categoryReference: CKReference, itemReference: String = UUID().uuidString) {
         self.itemName = itemName
         self.quantity = quantity
         self.notes = notes
@@ -57,10 +60,10 @@ class Item {
             let serialNo = itemRecord["serialNo"] as? String,
             let storeVendor = itemRecord["storeVendor"] as? String,
             let isFavorited = itemRecord["isFavorited"] as? Bool,
-            let photos = itemRecord["photos"] as? [Photo],
             let categoryReference = itemRecord["categoryReference"] as? CKReference,
             let itemReference = itemRecord["itemReference"] as? String
             else { return nil }
+        
         
         self.itemName = itemName
         self.quantity = quantity
@@ -72,17 +75,17 @@ class Item {
         self.serialNo = serialNo
         self.storeVendor = storeVendor
         self.isFavorited = isFavorited
-        self.photos = photos
         self.categoryReference = categoryReference
         self.itemReference = itemReference
-        self.ckID = itemRecord.recordID
+        self.ckRecordID = itemRecord.recordID
+        
     }
 }
 
 extension CKRecord {
     
     convenience init(item: Item) {
-        let recordID = item.ckID ?? CKRecordID(recordName: UUID().uuidString)
+        let recordID = item.ckRecordID ?? CKRecordID(recordName: UUID().uuidString)
         
         self.init(recordType: "Item", recordID: recordID)
         
