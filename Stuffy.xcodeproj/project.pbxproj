@@ -19,6 +19,7 @@
 		7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */; };
 		7E448A5A20F2E11A000C846E /* ResetAndEraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E448A5920F2E11A000C846E /* ResetAndEraseTableViewCell.swift */; };
 		7E448A5E20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E448A5D20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift */; };
+		7E448A6020F3D82B000C846E /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E448A5F20F3D82B000C846E /* DashboardTableViewCell.swift */; };
 		7E7D7FDC20F1501700E820FF /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */; };
 		7E7D7FDE20F1503B00E820FF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */; };
 		7E7D7FE020F1B5D700E820FF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D7FDF20F1B5D700E820FF /* SettingsViewController.swift */; };
@@ -66,6 +67,7 @@
 		7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CameraCrop.storyboard; sourceTree = "<group>"; };
 		7E448A5920F2E11A000C846E /* ResetAndEraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAndEraseTableViewCell.swift; sourceTree = "<group>"; };
 		7E448A5D20F2FA1D000C846E /* CurrencyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPickerTableViewCell.swift; sourceTree = "<group>"; };
+		7E448A5F20F3D82B000C846E /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		7E7D7FDB20F1501700E820FF /* Dashboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7E7D7FDD20F1503B00E820FF /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		7E7D7FDF20F1B5D700E820FF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				F78D661320E1A260003407E7 /* myStuffCell.swift */,
 				7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */,
 				F77BB3E720EAEC2A00D2FCD4 /* NewAddItemCustomCells */,
+				7E448A5F20F3D82B000C846E /* DashboardTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				7E7D7FE520F1BCF700E820FF /* TouchIDTableViewCell.swift in Sources */,
 				F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */,
 				F7A08C2220EEC97200E37754 /* CategoriesDetailViewController.swift in Sources */,
+				7E448A6020F3D82B000C846E /* DashboardTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
