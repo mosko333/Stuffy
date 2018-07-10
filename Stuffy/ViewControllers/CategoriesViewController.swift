@@ -89,7 +89,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categorypicked = categoryFRC.object(at: indexPath)
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let storyBoard = UIStoryboard(name: "MyStuff", bundle: nil)
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
        let topVC = destinationVC.topViewController as! myStuffViewController
         topVC.categoryPicked = categorypicked

@@ -317,7 +317,13 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
         cell.photoOutput?.capturePhoto(with: settings, delegate: self )
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toShowPhoto"{
+            let previewVC = segue.destination as! cameraPreviewViewController
+            previewVC.image = self.image
+            previewVC.categoryPicked = categoryPicked
+        }
+    }
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
             print(imageData)
@@ -326,15 +332,6 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
         }
     
 
-    }
-
-
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "toShowPhoto"{
-        let previewVC = segue.destination as! cameraPreviewViewController
-        previewVC.image = self.image
-        previewVC.categoryPicked = categoryPicked
-        }
     }
     
     func toPictureLibrary(_ cell: NewCameraCell) {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AYz-hx-jMT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Preview View Controller-->
+        <scene sceneID="KCc-3r-CS7">
+            <objects>
+                <viewController storyboardIdentifier="toDetailVC" id="AYz-hx-jMT" customClass="PhotoPreviewViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mcD-lN-khF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xcaNoImage" translatesAutoresizingMaskIntoConstraints="NO" id="Pm8-c3-ofS" userLabel="PhotoImage">
+                                <rect key="frame" x="16" y="36" width="343" height="615"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pm8-c3-ofS" firstAttribute="top" secondItem="5fJ-N7-B0M" secondAttribute="top" constant="16" id="E9I-ij-RD4"/>
+                            <constraint firstAttribute="trailing" secondItem="Pm8-c3-ofS" secondAttribute="trailing" constant="16" id="SbV-3L-4ez"/>
+                            <constraint firstItem="5fJ-N7-B0M" firstAttribute="bottom" secondItem="Pm8-c3-ofS" secondAttribute="bottom" constant="16" id="gP3-R4-kgz"/>
+                            <constraint firstItem="Pm8-c3-ofS" firstAttribute="leading" secondItem="5fJ-N7-B0M" secondAttribute="leading" constant="16" id="jn1-8t-D0S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5fJ-N7-B0M"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZVN-HA-9H1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="kGB-oJ-RiM">
+                            <connections>
+                                <action selector="saveBtnTapped:" destination="AYz-hx-jMT" id="vkW-we-Zkb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photoImageView" destination="Pm8-c3-ofS" id="257-0O-557"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2fo-3A-7pL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2487" y="-164"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="7fN-BE-dKa">
+            <objects>
+                <viewControllerPlaceholder id="JnF-l0-fV0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTU-6q-oKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3443" y="-158"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xcaNoImage" width="615" height="448"/>
+    </resources>
+</document>

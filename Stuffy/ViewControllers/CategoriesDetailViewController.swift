@@ -109,8 +109,9 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddItemVC2"{
-            guard let destinationVC = segue.destination as? NewAddItemTableViewController else { return }
-            destinationVC.categoryPicked = categoryPicked
+            let destinationVC = segue.destination as! UINavigationController
+            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+            topVC.categoryPicked = categoryPicked
         
     }
 }

@@ -18,6 +18,7 @@ class cameraPreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         guard let image = image else { return }
         DispatchQueue.main.async {
             self.photo.image = image
@@ -31,9 +32,10 @@ class cameraPreviewViewController: UIViewController {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItemVC" {
-            let destinationVC = segue.destination as! NewAddItemTableViewController
-            destinationVC.image = image
-            destinationVC.categoryPicked = categoryPicked
+            let destinationVC = segue.destination as! UINavigationController
+           let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+            topVC.image = image
+            topVC.categoryPicked = categoryPicked
         }
     }
 }

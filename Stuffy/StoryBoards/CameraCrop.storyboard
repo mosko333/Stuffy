@@ -119,13 +119,13 @@
             </objects>
             <point key="canvasLocation" x="3906.4000000000001" y="-152.47376311844079"/>
         </scene>
-        <!--NewAddItemController-->
+        <!--AddItemNavController-->
         <scene sceneID="EPP-1F-8KP">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="NewAddItemController" id="HGM-kD-52Y" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AddItem" referencedIdentifier="AddItemNavController" id="HGM-kD-52Y" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W8T-D4-E3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4830" y="-208"/>
+            <point key="canvasLocation" x="4861" y="-153"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ib4-h1-gG2">

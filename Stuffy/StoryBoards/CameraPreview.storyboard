@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wFa-8e-Kf4">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera Preview View Controller-->
+        <scene sceneID="GIX-Q4-BIg">
+            <objects>
+                <viewController storyboardIdentifier="CameraPreviewViewController" id="wFa-8e-Kf4" customClass="cameraPreviewViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OQB-Uz-dEv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IeA-1F-IXN">
+                                <rect key="frame" x="16" y="115" width="343" height="377"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pLU-mQ-0FN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zb6-dy-2SM">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="uHm-Lk-HqP">
+                            <connections>
+                                <action selector="savePhotoButtonTapped:" destination="wFa-8e-Kf4" id="xro-zr-DHa"/>
+                                <segue destination="NE5-ez-TTg" kind="show" identifier="addItemVC" id="vIM-aj-hsS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="photo" destination="IeA-1F-IXN" id="54b-yY-f9g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x4n-E9-Ilg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="29"/>
+        </scene>
+        <!--AddItemNavController-->
+        <scene sceneID="P36-xw-x8y">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddItem" referencedIdentifier="AddItemNavController" id="NE5-ez-TTg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="81s-Dz-vAe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2188" y="40"/>
+        </scene>
+    </scenes>
+</document>
