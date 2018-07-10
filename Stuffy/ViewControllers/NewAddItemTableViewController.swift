@@ -385,6 +385,8 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
         }
         datePickerSetPurchaseDate = true
        print("purchase date picker button pushed")
+        cell.saveButton.backgroundColor = Colors.Grey
+        cell.saveButton.isUserInteractionEnabled = false
     }
     
     func showReturnDatePicker(_ cell: ItemDetailsCell) {
@@ -394,6 +396,8 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
         }
         datePickerSetReturnDate = true
         print("return date picker button pushed")
+        cell.saveButton.backgroundColor = Colors.Grey
+        cell.saveButton.isUserInteractionEnabled = false
     }
     
     func showWarrantyDatePicker(_ cell: ItemDetailsCell) {
@@ -402,6 +406,8 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
         }
         datePickerSetWarrantyDate = true
         print("warranty date picker button pushed")
+        cell.saveButton.backgroundColor = Colors.Grey
+        cell.saveButton.isUserInteractionEnabled = false
     }
     
     func cancelButton(_ cell: ItemDetailsCell) {
@@ -466,7 +472,8 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
             let warrantyDate = dateFormatter.string(from: cell.datePicker.date)
             cell.warrantyExpirationDateLabe.text = warrantyDate
         }
-        
+        cell.saveButton.backgroundColor = .blue
+        cell.saveButton.isUserInteractionEnabled = true
     }
     
 }

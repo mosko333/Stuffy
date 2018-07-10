@@ -29,7 +29,9 @@ class ItemDetailsCell: UITableViewCell {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var purchaseDateLabel: UILabel!
     @IBOutlet weak var returnDateLabel: UILabel!
-    @IBOutlet weak var warrantyExpirationDateLabe: UILabel!
+    @IBOutlet weak var warrantyExpirationDateLabe:UILabel!
+    @IBOutlet weak var saveButton: UIButton!
+    
     weak var delegate: CustomDatePickerDelegate?
     
     

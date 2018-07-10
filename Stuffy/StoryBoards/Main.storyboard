@@ -886,6 +886,7 @@
                                     <outlet property="purchaseDateTextField" destination="xHI-EL-x4H" id="GMM-5n-8kw"/>
                                     <outlet property="returnDateLabel" destination="W0a-xR-QrF" id="rwe-k9-Lmg"/>
                                     <outlet property="returnDateTextField" destination="y2s-TT-NfG" id="fNb-zI-OHq"/>
+                                    <outlet property="saveButton" destination="ehg-co-Eta" id="E3q-0w-ru2"/>
                                     <outlet property="serialTextField" destination="X92-kg-TNt" id="wZv-Ug-tbg"/>
                                     <outlet property="storeVenderTextField" destination="6wy-NY-wMD" id="7xA-qp-oHI"/>
                                     <outlet property="warrantyExpirationDateLabe" destination="SgK-tm-QGz" id="BK5-dC-BNb"/>

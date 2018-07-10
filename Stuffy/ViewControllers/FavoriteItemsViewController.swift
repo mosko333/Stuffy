@@ -124,7 +124,7 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
 }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 61
+        return 95
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
