@@ -139,6 +139,7 @@ class NewAddItemTableViewController: UITableViewController {
             cell.datePickerView.backgroundColor = .white
             cell.datePickerView.layer.cornerRadius = 10 
             cell.datePickerView.frame.origin.y += 700
+            cell.addDoneButton()
             cell.delegate = self
             return cell
         }
@@ -146,6 +147,7 @@ class NewAddItemTableViewController: UITableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NotesCell else {return UITableViewCell()}
             
             cell.backgroundColor = Colors.Grey
+            cell.addDoneButton()
             return cell
         }
         
@@ -301,7 +303,7 @@ class NewAddItemTableViewController: UITableViewController {
         
         print("item was created")
        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "MyStuff", bundle: nil)
         let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
         let topVC = DV.topViewController as! myStuffViewController
         topVC.categoryPicked = categoypicked
@@ -322,6 +324,12 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
             let previewVC = segue.destination as! cameraPreviewViewController
             previewVC.image = self.image
             previewVC.categoryPicked = categoryPicked
+        }
+        
+        if segue.identifier == "toNavControllerAutoCrop" {
+            let destinationVC = segue.destination as! UINavigationController
+            let topVC = destinationVC.topViewController as! AutoCropViewController
+            topVC.categoryPicked = categoryPicked
         }
     }
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {

@@ -62,6 +62,12 @@ class ItemDetailsCell: UITableViewCell {
         delegate?.dateChanged(self)
         
     }
+    
+    func addDoneButton() {
+        storeVenderTextField.addDoneButtonOnKeyboard()
+        modelTextField.addDoneButtonOnKeyboard()
+        serialTextField.addDoneButtonOnKeyboard()
+    }
 }
     
     

@@ -122,6 +122,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         } catch  {
             print("\(error.localizedDescription)")
         }
+        
         tableView.reloadData()
         showCategoryViewButton.isUserInteractionEnabled = true
         categoryNameTextField.text = ""

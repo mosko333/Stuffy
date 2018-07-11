@@ -30,7 +30,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94L-b0-xRR">
                                                     <rect key="frame" x="157" y="205" width="61" height="61"/>
-                                                    <state key="normal" title="TakePicture" image="xcaCameraButton-2"/>
+                                                    <state key="normal" image="xcaCameraButton-2"/>
                                                     <connections>
                                                         <action selector="takePictureButtonTapped:" destination="Vwt-HK-8a0" eventType="touchUpInside" id="j7A-1j-BVr"/>
                                                         <segue destination="RcP-4B-jgw" kind="show" identifier="toShowPhoto" id="UZc-en-poR"/>
@@ -82,7 +82,7 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="TcZ-QS-YVM" kind="show" id="Cjl-p5-nGM"/>
+                                                        <segue destination="TcZ-QS-YVM" kind="show" identifier="toNavControllerAutoCrop" id="Cjl-p5-nGM"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

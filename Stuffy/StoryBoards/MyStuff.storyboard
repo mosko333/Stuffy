@@ -61,11 +61,15 @@
                         <viewLayoutGuide key="safeArea" id="Dn7-u4-HTe"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Stuff" id="8O7-Gc-bvP">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="gEG-um-vwX"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="gEG-um-vwX">
+                            <connections>
+                                <segue destination="Nj1-3e-cJu" kind="show" id="9SN-9P-Kuy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DZf-12-F5q">
                             <connections>
                                 <action selector="addNewItemButtonPressed:" destination="WOO-e9-ouz" id="DS1-5A-pDd"/>
-                                <segue destination="t4s-13-7b1" kind="show" id="jkt-2I-BaO"/>
+                                <segue destination="t4s-13-7b1" kind="show" identifier="toAddItemNavController" id="jkt-2I-BaO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -101,7 +105,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Dr-qB-5Cs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="258"/>
+            <point key="canvasLocation" x="-388" y="258"/>
+        </scene>
+        <!--CustomTabBarViewContoller-->
+        <scene sceneID="Y23-8U-w5u">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CustomTabBarViewContoller" id="Nj1-3e-cJu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsO-aA-Ra2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="-399"/>
         </scene>
     </scenes>
 </document>

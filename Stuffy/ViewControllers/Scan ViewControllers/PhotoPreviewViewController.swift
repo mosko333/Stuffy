@@ -13,7 +13,10 @@ class PhotoPreviewViewController: UIViewController {
     // TODO: Replace With Model
     //////////////////////
     var photo: UIImage?
+    var categoryPicked: CategoryCD?
+    
     @IBOutlet weak var photoImageView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,7 @@ class PhotoPreviewViewController: UIViewController {
           let destinationVC = segue.destination as! UINavigationController
             let topVC = destinationVC.topViewController as! NewAddItemTableViewController
             topVC.receipt = photo
+            topVC.categoryPicked = categoryPicked
         }
     }
     
