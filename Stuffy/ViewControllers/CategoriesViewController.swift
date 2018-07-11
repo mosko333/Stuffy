@@ -25,7 +25,10 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }()
     
-
+    @IBOutlet weak var categoryTextField: UITextField!
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addCategoryView: UIView!
     @IBOutlet weak var buttonStackView: UIStackView!
@@ -34,39 +37,68 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var categoryPicked: CategoryCD? {
         didSet {
-            print("category picked \(categoryPicked?.name)")
+            //print("category picked \(categoryPicked?.name)")
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-            addCategoryView.frame.origin.y += 700
-        
-        buttonStackView.frame.size.width = addCategoryView.frame.size.width
-        
-        categoryFRC.delegate = self
-        do {
-            try categoryFRC.performFetch()
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
+//            addCategoryView.frame.origin.y += 700
+//
+//        buttonStackView.frame.size.width = addCategoryView.frame.size.width
+//
+//        categoryFRC.delegate = self
+//        do {
+//            try categoryFRC.performFetch()
+//        } catch  {
+//            print("\(error.localizedDescription)")
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryFRC.delegate = self
-        do {
-            try categoryFRC.performFetch()
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
-        tableView.delegate = self
-        tableView.dataSource = self
+        categoryTextField.delegate = self
+        setupView()
         
-        categoryNameTextField.addDoneButtonOnKeyboard()
+//        categoryFRC.delegate = self
+//        do {
+//            try categoryFRC.performFetch()
+//        } catch  {
+//            print("\(error.localizedDescription)")
+//        }
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//
+//        categoryNameTextField.addDoneButtonOnKeyboard()
 
         
+    }
+    
+    func setupView() {
+        // Set logo on Nav Bar
+        let logo = UIImageView(image: #imageLiteral(resourceName: "xcaBannerNeatly"))
+        logo.contentMode = .scaleAspectFit // set imageview's content mode
+        self.navigationItem.titleView = logo
+        
+        // Changing text color of catergory lable text so the "+" is blue and the "Add a Category" is gray
+        let placeHolderText = "+ Add a Category"
+        let attributedText = NSMutableAttributedString(string: placeHolderText)
+        
+        attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.stuffyRoyalBlue, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 16)!], range: getRangeOfSubString(subString: "+", fromString: placeHolderText)) // Blue color attribute
+        
+        attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.stuffyDarkGray, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 16)!], range: getRangeOfSubString(subString: "Add a Category", fromString: placeHolderText)) // Dark Gray color attribute
+        
+        categoryTextField.attributedText = attributedText
+        
+    }
+    
+    func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
+        let sampleLinkRange = fromString.range(of: subString)!
+        let startPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.lowerBound)
+        let endPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.upperBound)
+        let linkRange = NSMakeRange(startPos, endPos - startPos)
+        return linkRange
     }
 
     
@@ -99,57 +131,57 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func presentCategoryView(_ sender: Any) {
-        UIView.animate(withDuration: 0.5) {
-            self.addCategoryView.center.y -= 700
-        }
-        
-        showCategoryViewButton.isUserInteractionEnabled = false
+//        UIView.animate(withDuration: 0.5) {
+//            self.addCategoryView.center.y -= 700
+//        }
+//
+//        showCategoryViewButton.isUserInteractionEnabled = false
     }
     
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        guard let categoryName = categoryNameTextField.text, categoryName.count > 0 else {return}
-        
-        ItemCoreDataController.shared.createCategory(name: categoryName)
-        
-        
-        UIView.animate(withDuration: 0.5) {
-            self.addCategoryView.center.y += 700
-        }
-        
-        do {
-            try categoryFRC.performFetch()
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
-        
-        tableView.reloadData()
-        showCategoryViewButton.isUserInteractionEnabled = true
-        categoryNameTextField.text = ""
+//        guard let categoryName = categoryNameTextField.text, categoryName.count > 0 else {return}
+//
+//        ItemCoreDataController.shared.createCategory(name: categoryName)
+//
+//
+//        UIView.animate(withDuration: 0.5) {
+//            self.addCategoryView.center.y += 700
+//        }
+//
+//        do {
+//            try categoryFRC.performFetch()
+//        } catch  {
+//            print("\(error.localizedDescription)")
+//        }
+//
+//        tableView.reloadData()
+//        showCategoryViewButton.isUserInteractionEnabled = true
+//        categoryNameTextField.text = ""
     }
     
     
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5) {
-            self.addCategoryView.center.y += 700
-        }
-        showCategoryViewButton.isUserInteractionEnabled = true
-        categoryNameTextField.text = ""
+//        UIView.animate(withDuration: 0.5) {
+//            self.addCategoryView.center.y += 700
+//        }
+//        showCategoryViewButton.isUserInteractionEnabled = true
+//        categoryNameTextField.text = ""
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 61
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let category = categoryFRC.object(at: indexPath)
-            ItemCoreDataController.shared.deleteCategory(with: category)
-            
-            print("category was deleted")
-        }
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 61
+//    }
+//    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let category = categoryFRC.object(at: indexPath)
+//            ItemCoreDataController.shared.deleteCategory(with: category)
+//            
+//            print("category was deleted")
+//        }
+//    }
     
 }
 
@@ -203,3 +235,28 @@ extension CategoriesViewController {
             return
         }
     }}
+
+
+
+
+
+
+
+extension CategoriesViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField == categoryTextField {
+            if textField.text == "" {
+                setupView()
+            }
+        }
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
