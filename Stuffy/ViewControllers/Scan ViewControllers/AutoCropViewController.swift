@@ -14,6 +14,7 @@ class AutoCropViewController: UIViewController {
     // TODO: Replace With Model
     //////////////////////
     var photo: UIImage!
+    var categoryPicked: CategoryCD?
     
     @IBOutlet weak var cameraViewController: AutoCropCameraScanner!
     @IBOutlet weak var focusIndicator: UIImageView!
@@ -96,6 +97,7 @@ class AutoCropViewController: UIViewController {
                 // TODO: Replace With Model
                 //////////////////////
                 destinationVC.photo = photo
+                destinationVC.categoryPicked = categoryPicked
             }
         }
     }

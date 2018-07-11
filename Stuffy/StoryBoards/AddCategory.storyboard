@@ -106,7 +106,7 @@
                 <viewControllerPlaceholder storyboardName="AddItem" referencedIdentifier="AddItemNavController" id="68D-nU-VTL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mlp-8j-Gnt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160" y="418"/>
+            <point key="canvasLocation" x="1245" y="444"/>
         </scene>
     </scenes>
 </document>

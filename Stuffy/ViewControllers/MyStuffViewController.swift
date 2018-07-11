@@ -45,7 +45,7 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
                     categoryItems.append(item)
                 }
             }
-            print("number of items fetched \(items.count)")
+            print("number of items fetched \(categoryItems.count)")
         } catch  {
             print("\(error.localizedDescription)")
         }
@@ -82,15 +82,15 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
     
     
     @IBAction func addNewItemButtonPressed(_ sender: UIBarButtonItem) {
-        
-        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let destinationVC = storyBoard.instantiateViewController(withIdentifier: "toNewAddItemNavController") as! UINavigationController
-        let topVC = destinationVC.topViewController as! NewAddItemTableViewController
-        topVC.categoryPicked = categoryPicked
-        
-        present(destinationVC, animated: true)
-        
+        print("add item button pressed")
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddItemNavController" {
+            let destinationVC = segue.destination as! UINavigationController
+            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+            topVC.categoryPicked = categoryPicked
+        }
+    }
 
 }

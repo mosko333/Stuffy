@@ -98,20 +98,25 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
  guard let newCategory = categoryNameTextField.text, newCategory.count > 0 else { return }
         ItemCoreDataController.shared.createCategory(name: newCategory)
         
-        tableView.reloadData()
+       
         
         do {
             try itemsFRC.performFetch()
         } catch  {
             print("\(error.localizedDescription)")
         }
+        tableView.reloadData()
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddItemVC2"{
             let destinationVC = segue.destination as! UINavigationController
             let topVC = destinationVC.topViewController as! NewAddItemTableViewController
-            topVC.categoryPicked = categoryPicked
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            let categorypicked = itemsFRC.object(at: indexPath)
+            
+            topVC.categoryPicked = categorypicked
         
     }
 }
@@ -120,9 +125,6 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        categoryPicked = itemsFRC.object(at: indexPath)
-        performSegue(withIdentifier: "toAddItemVC2", sender: self)
-    }
+    
     
 }
