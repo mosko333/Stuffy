@@ -7,8 +7,48 @@
 //
 
 import UIKit
+import CoreData
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, NSFetchedResultsControllerDelegate {
+        
+        let categoryFRC: NSFetchedResultsController<CategoryCD> = {
+            let request: NSFetchRequest<CategoryCD> = CategoryCD.fetchRequest()
+            
+            let sortDescriptors = NSSortDescriptor(key: "name", ascending: true)
+            
+            request.sortDescriptors = [sortDescriptors]
+            print("Categories were sorted")
+            
+            let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+            
+            return controller
+            
+        }()
+    
+    
+    let itemFRC:NSFetchedResultsController<ItemCD> = {
+        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
+        
+        let sortDescriptors = NSSortDescriptor(key: "title", ascending: true)
+        
+        request.sortDescriptors = [sortDescriptors]
+        
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return controller
+    }()
+    
+    let userFRC:NSFetchedResultsController<User> = {
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        
+        let sortDescriptors = NSSortDescriptor(key: "pin", ascending: true)
+        
+        request.sortDescriptors = [sortDescriptors]
+        
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return controller
+    }()
     
     //////////////////////
     // MARK: Properties
@@ -26,6 +66,7 @@ class DashboardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //warrantyTable.delegate = self
         //warrantyTable.dataSource = self
         updateViews()
@@ -33,6 +74,18 @@ class DashboardViewController: UIViewController {
 
     func updateViews() {
         // TODO - Populate Views using search data
+        
+        try? categoryFRC.performFetch()
+        numberOfCatLabel.text = "\(categoryFRC.fetchedObjects!.count)"
+        
+        try? itemFRC.performFetch()
+        let moneyMoneyMoney = itemFRC.fetchedObjects ?? []
+        for money in moneyMoneyMoney {
+            let value = money.price
+        }
+        
+        try? userFRC.performFetch()
+        let pin = userFRC.fetchedObjects?.first
     }
     /*
     // MARK: - Navigation

@@ -13,46 +13,28 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let categoryFRC: NSFetchedResultsController<CategoryCD> = {
         let request: NSFetchRequest<CategoryCD> = CategoryCD.fetchRequest()
-        
         let sortDescriptors = NSSortDescriptor(key: "name", ascending: true)
-        
         request.sortDescriptors = [sortDescriptors]
         print("Categories were sorted")
-        
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
         return controller
-        
     }()
     
     @IBOutlet weak var categoryTextField: UITextField!
-    
-    
-    
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addCategoryView: UIView!
-    @IBOutlet weak var buttonStackView: UIStackView!
-    @IBOutlet weak var categoryNameTextField: UITextField!
-    @IBOutlet weak var showCategoryViewButton: UIButton!
     
     var categoryPicked: CategoryCD? {
         didSet {
-            //print("category picked \(categoryPicked?.name)")
+            guard let catName = categoryPicked?.name else { return }
+            print("category picked \(catName)")
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//            addCategoryView.frame.origin.y += 700
-//
-//        buttonStackView.frame.size.width = addCategoryView.frame.size.width
-//
-//        categoryFRC.delegate = self
-//        do {
-//            try categoryFRC.performFetch()
-//        } catch  {
-//            print("\(error.localizedDescription)")
-//        }
+        
+        //categoryFRC.delegate = self
+        fetch()
     }
     
     override func viewDidLoad() {
@@ -61,19 +43,16 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         categoryTextField.delegate = self
         setupView()
         
-//        categoryFRC.delegate = self
-//        do {
-//            try categoryFRC.performFetch()
-//        } catch  {
-//            print("\(error.localizedDescription)")
-//        }
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//
-//        categoryNameTextField.addDoneButtonOnKeyboard()
-
+        categoryFRC.delegate = self
+        fetch()
+                tableView.delegate = self
+                tableView.dataSource = self
+        //
+        //categoryNameTextField.addDoneButtonOnKeyboard()
+        
         
     }
+    
     
     func setupView() {
         // Set logo on Nav Bar
@@ -82,7 +61,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         self.navigationItem.titleView = logo
         
         // Changing text color of catergory lable text so the "+" is blue and the "Add a Category" is gray
-        let placeHolderText = "+ Add a Category"
+        let placeHolderText = "+  Add a Category"
         let attributedText = NSMutableAttributedString(string: placeHolderText)
         
         attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.stuffyRoyalBlue, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 16)!], range: getRangeOfSubString(subString: "+", fromString: placeHolderText)) // Blue color attribute
@@ -100,99 +79,67 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         let linkRange = NSMakeRange(startPos, endPos - startPos)
         return linkRange
     }
-
+    
+    func fetch() {
+        do {
+            try categoryFRC.performFetch()
+        } catch  {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
     
     //TABLEVIEW DATA SOURCE FUNCTIONS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     return categoryFRC.fetchedObjects?.count ?? 0
+        return categoryFRC.fetchedObjects?.count ?? 0
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 61
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath) as! HomeScreenCategoryCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
         cell.delegate = self
         let category = categoryFRC.object(at: indexPath)
         cell.updateCell(category)
-       
-        return cell
         
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categorypicked = categoryFRC.object(at: indexPath)
         let storyBoard = UIStoryboard(name: "MyStuff", bundle: nil)
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-       let topVC = destinationVC.topViewController as! myStuffViewController
+        let topVC = destinationVC.topViewController as! myStuffViewController
         topVC.categoryPicked = categorypicked
+        //self.navigationController?.pushViewController(myStuffViewController(), animated: true)
         present(destinationVC, animated: true, completion: nil)
-        
-     
-    }
-    
-    @IBAction func presentCategoryView(_ sender: Any) {
-//        UIView.animate(withDuration: 0.5) {
-//            self.addCategoryView.center.y -= 700
-//        }
-//
-//        showCategoryViewButton.isUserInteractionEnabled = false
     }
     
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
-//        guard let categoryName = categoryNameTextField.text, categoryName.count > 0 else {return}
-//
-//        ItemCoreDataController.shared.createCategory(name: categoryName)
-//
-//
-//        UIView.animate(withDuration: 0.5) {
-//            self.addCategoryView.center.y += 700
-//        }
-//
-//        do {
-//            try categoryFRC.performFetch()
-//        } catch  {
-//            print("\(error.localizedDescription)")
-//        }
-//
-//        tableView.reloadData()
-//        showCategoryViewButton.isUserInteractionEnabled = true
-//        categoryNameTextField.text = ""
-    }
+    // MARK: - Navigation
     
-    
-    
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
-//        UIView.animate(withDuration: 0.5) {
-//            self.addCategoryView.center.y += 700
-//        }
-//        showCategoryViewButton.isUserInteractionEnabled = true
-//        categoryNameTextField.text = ""
-    }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 61
-//    }
-//    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let category = categoryFRC.object(at: indexPath)
-//            ItemCoreDataController.shared.deleteCategory(with: category)
-//            
-//            print("category was deleted")
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "MyStuffSegue" {
+//            if let destinationVC = segue.destination as? myStuffViewController {
+//                destinationVC.categoryPicked = categoryPicked
+//            }
 //        }
 //    }
-    
 }
 
-extension CategoriesViewController: FavoriteCategoryDelegate {
-    func categoryFavorited(_ cell: HomeScreenCategoryCell) {
+
+extension CategoriesViewController: CategoryTableViewCellDelegate {
+    func categoryFavorited(_ cell: CategoryTableViewCell) {
         
         let indexPath = tableView.indexPath(for: cell)
         
         let category = categoryFRC.object(at: indexPath!)
         
         category.isFavorited = !category.isFavorited
+        
         print(category.isFavorited)
         cell.updateCell(category)
         
@@ -214,6 +161,7 @@ extension CategoriesViewController {
             
         case .move:
             tableView.moveRow(at: indexPath!, to: newIndexPath!)
+            
         case .update:
             tableView.reloadRows(at: [indexPath!], with: .automatic)
             
@@ -244,6 +192,10 @@ extension CategoriesViewController {
 
 extension CategoriesViewController: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .black
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField == categoryTextField {
@@ -255,6 +207,16 @@ extension CategoriesViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        guard let categoryName = categoryTextField.text, categoryName.count > 0 else { return true}
+        
+        ItemCoreDataController.shared.createCategory(name: categoryName)
+        
+        fetch()
+        
+        tableView.reloadData()
+        
+        categoryTextField.text = ""
         textField.resignFirstResponder()
         return true
     }
