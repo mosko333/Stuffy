@@ -13,6 +13,7 @@
 		170E022220EE8D730012405F /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170E022120EE8D730012405F /* CategoryController.swift */; };
 		17510F1120E59E7500E706CB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17510F1020E59E7500E706CB /* Item.swift */; };
 		1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1770ACE120E6CC25005DBDF5 /* ItemController.swift */; };
+		17A46CA320F7C512008E9322 /* SearchItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17A46CA220F7C512008E9322 /* SearchItems.storyboard */; };
 		7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */; };
 		7E19043F20EC7AC9004DBE2D /* PhotoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */; };
 		7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */; };
@@ -31,7 +32,6 @@
 		7EFC783020F5814B0096238A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EFC782F20F5814B0096238A /* Settings.storyboard */; };
 		7EFC783220F581630096238A /* PinPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EFC783120F581630096238A /* PinPad.storyboard */; };
 		F713F08820F531880014D505 /* FavoriteItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F713F08720F531880014D505 /* FavoriteItems.storyboard */; };
-		F713F08A20F531D00014D505 /* SearchItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F713F08920F531D00014D505 /* SearchItems.storyboard */; };
 		F713F08E20F532980014D505 /* CameraPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F713F08D20F532980014D505 /* CameraPreview.storyboard */; };
 		F713F09020F5344B0014D505 /* AddCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F713F08F20F5344B0014D505 /* AddCategory.storyboard */; };
 		F713F09420F534B50014D505 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F713F09320F534B50014D505 /* Category.storyboard */; };
@@ -74,6 +74,7 @@
 		170E022120EE8D730012405F /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
 		17510F1020E59E7500E706CB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1770ACE120E6CC25005DBDF5 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		17A46CA220F7C512008E9322 /* SearchItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchItems.storyboard; sourceTree = "<group>"; };
 		7E19043A20EC7A8B004DBE2D /* AutoCropCameraScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropCameraScanner.swift; sourceTree = "<group>"; };
 		7E19043D20EC7AC9004DBE2D /* PhotoPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewController.swift; sourceTree = "<group>"; };
 		7E19043E20EC7AC9004DBE2D /* AutoCropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCropViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		7EFC782F20F5814B0096238A /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7EFC783120F581630096238A /* PinPad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PinPad.storyboard; sourceTree = "<group>"; };
 		F713F08720F531880014D505 /* FavoriteItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteItems.storyboard; sourceTree = "<group>"; };
-		F713F08920F531D00014D505 /* SearchItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchItems.storyboard; sourceTree = "<group>"; };
 		F713F08D20F532980014D505 /* CameraPreview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CameraPreview.storyboard; sourceTree = "<group>"; };
 		F713F08F20F5344B0014D505 /* AddCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddCategory.storyboard; sourceTree = "<group>"; };
 		F713F09320F534B50014D505 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 				F713F09720F534F40014D505 /* MyStuff.storyboard */,
 				F713F09B20F53D000014D505 /* AddItem.storyboard */,
 				F713F08720F531880014D505 /* FavoriteItems.storyboard */,
-				F713F08920F531D00014D505 /* SearchItems.storyboard */,
+				17A46CA220F7C512008E9322 /* SearchItems.storyboard */,
 				F713F08D20F532980014D505 /* CameraPreview.storyboard */,
 				F713F08F20F5344B0014D505 /* AddCategory.storyboard */,
 				7EFC781D20F5774B0096238A /* Dashboard.storyboard */,
@@ -396,7 +396,7 @@
 				F713F09820F534F40014D505 /* MyStuff.storyboard in Resources */,
 				F713F09C20F53D010014D505 /* AddItem.storyboard in Resources */,
 				7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */,
-				F713F08A20F531D00014D505 /* SearchItems.storyboard in Resources */,
+				17A46CA320F7C512008E9322 /* SearchItems.storyboard in Resources */,
 				F731E98320F527EA00ACE318 /* Main.storyboard in Resources */,
 				F7A08C2620EFF7D600E37754 /* Assets.xcassets in Resources */,
 				7EFC783020F5814B0096238A /* Settings.storyboard in Resources */,
