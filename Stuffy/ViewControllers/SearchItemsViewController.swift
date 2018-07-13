@@ -76,9 +76,16 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         searchBar.barStyle = UIBarStyle.default
         searchBar.layer.backgroundColor = UIColor.white.cgColor
         searchBar.placeholder = "Search"
+        searchBar.showsCancelButton = true
+        let cancelButtonAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
+        //let cancelButtton = searchBar.value(forKey: "cancelButton") as? UIButton
         self.searchBar = searchBar
         self.searchBar?.delegate = self
         navigationItem.titleView = searchBar
+        if (searchBar.text?.count)! < 1  {
+            searchBar.resignFirstResponder()
+        }
     }
     
     func setupShadowView() {
@@ -162,6 +169,13 @@ extension SearchItemsViewController: UISearchBarDelegate {
             }
         }
         tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchArray = allItems
+        tableView.reloadData()
+        searchBar.resignFirstResponder()
     }
 }
 
