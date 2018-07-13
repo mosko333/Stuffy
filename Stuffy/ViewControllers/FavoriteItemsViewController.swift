@@ -124,7 +124,7 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
             return cell
         }
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemSearchCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemSearchCell
           
             let item = favoritedItems[indexPath.row]
             cell.updateItem(with: item)
