@@ -32,7 +32,7 @@
                                             <constraint firstAttribute="width" constant="60" id="AsH-vX-58r"/>
                                             <constraint firstAttribute="height" constant="60" id="hxP-kZ-2uM"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="xcaCaptureButtonScan"/>
+                                        <state key="normal" backgroundImage="xcaCameraBtn"/>
                                         <connections>
                                             <action selector="captureButton:" destination="6Rz-CR-NzX" eventType="touchUpInside" id="NTC-Ey-o3Q"/>
                                         </connections>
@@ -66,7 +66,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5XY-8q-oze"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Scan " id="QiL-sT-G3C"/>
+                    <navigationItem key="navigationItem" title="Scan " id="QiL-sT-G3C">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m9G-W7-b5M">
+                            <connections>
+                                <action selector="cancelBtnPresses:" destination="6Rz-CR-NzX" id="S26-ER-vYm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cameraViewController" destination="cCr-ly-HgQ" id="GLy-yS-vB7"/>
                         <outlet property="focusIndicator" destination="dD8-yf-2Ue" id="yFv-PX-oKb"/>
@@ -147,7 +153,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xcaCaptureButtonScan" width="66" height="66"/>
+        <image name="xcaCameraBtn" width="61" height="61"/>
         <image name="xcaFocusIndicator" width="75" height="75"/>
         <image name="xcaNoImage" width="615" height="448"/>
     </resources>

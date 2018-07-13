@@ -27,7 +27,8 @@ class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
     var categoryItems: [ItemCD] = []
     var categoryPicked: CategoryCD? {
         didSet {
-            print("category has been passed along \(categoryPicked?.name)")
+            let catName = categoryPicked?.name ?? "error selecting category"
+            print("category has been passed along \(catName)")
         }
     }
     

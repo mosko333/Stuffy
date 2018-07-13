@@ -21,6 +21,7 @@ class CustomTabBarViewController: UITabBarController, CustomTabBarViewMainDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
         tabView.translatesAutoresizingMaskIntoConstraints = false
         tabView.delegate = self
         selectedIndex = 0
@@ -39,6 +40,23 @@ class CustomTabBarViewController: UITabBarController, CustomTabBarViewMainDelega
     
     func tabBarViewChangedSelectedIndex(at index: Int) {
         selectedIndex = index
+    }
+    
+    func addItemTabPressed() {
+        // TODO - Do Model segue here to addItem screen
+        let storyBoard = UIStoryboard(name: "AddItem", bundle: nil)
+        let destinationVC = storyBoard.instantiateViewController(withIdentifier: "AddItemNavController") as! UINavigationController
+        present(destinationVC, animated: true)
+        print("Present AddItem modelly here")
+    }
+    
+    func setupView() {
+        
+//        guard let items = tabBar.items else { return }
+//        let firstTab = items[0]
+//        firstTab.selectedImage = #imageLiteral(resourceName: "xca6")
+//        firstTab.image = #imageLiteral(resourceName: "xca7")
+
     }
     
 }

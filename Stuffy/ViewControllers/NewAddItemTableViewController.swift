@@ -310,6 +310,9 @@ class NewAddItemTableViewController: UITableViewController {
         present(DV, animated: true)
         
     }
+    @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
 }
 
 extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDelegate {

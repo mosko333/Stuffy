@@ -34,7 +34,6 @@ class CategoryTableViewCell: UITableViewCell {
         if category.isFavorited == false {
             isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaCatFavStarEmpty"), for: .normal)
         }
-        
     }
     
     @IBAction func isFavoritedButtonTapped(_ sender: UIButton) {
