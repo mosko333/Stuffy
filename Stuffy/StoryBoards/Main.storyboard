@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="-1463" y="384"/>
         </scene>
-        <!--SearchItemsViewController-->
+        <!--SearchItems-->
         <scene sceneID="pdg-Mj-99E">
             <objects>
-                <viewControllerPlaceholder storyboardName="SearchItems" referencedIdentifier="SearchItemsViewController" id="ulO-j0-xPC" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="SearchItems" id="ulO-j0-xPC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="pDG-Yx-r8h"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfl-Xl-jSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
