@@ -31,13 +31,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="bCh-rR-hsR">
-                                                    <rect key="frame" x="22" y="19.5" width="184.5" height="22"/>
+                                                    <rect key="frame" x="22" y="19.5" width="185.5" height="22"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xcaCategoryBox" translatesAutoresizingMaskIntoConstraints="NO" id="WUs-uu-dFe">
-                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="21" height="22"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ota-HO-cFb">
-                                                            <rect key="frame" x="37" y="0.0" width="147.5" height="22"/>
+                                                            <rect key="frame" x="38" y="0.0" width="147.5" height="22"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="categoryName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDU-3x-q69">
                                                                     <rect key="frame" x="0.0" y="0.0" width="106.5" height="22"/>
@@ -55,8 +55,8 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaFullStar" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-d8-z0g">
-                                                    <rect key="frame" x="330" y="16" width="30" height="29"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaItemFavStarFull" translatesAutoresizingMaskIntoConstraints="NO" id="6Ia-d8-z0g">
+                                                    <rect key="frame" x="330" y="16" width="25" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ogs-AB-4Ig">
@@ -120,7 +120,7 @@
                                                                 <constraint firstAttribute="width" constant="25" id="0vS-L0-kdn"/>
                                                                 <constraint firstAttribute="height" constant="25" id="QAI-k7-VPk"/>
                                                             </constraints>
-                                                            <state key="normal" backgroundImage="xcaEmptyStar"/>
+                                                            <state key="normal" backgroundImage="xcaItemFavStarFull"/>
                                                             <connections>
                                                                 <action selector="isFavoritedButtonTapped:" destination="qNB-TB-qXB" eventType="touchUpInside" id="Ipr-xy-Bvs"/>
                                                             </connections>
@@ -207,8 +207,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xcaCategoryBox" width="20" height="22"/>
-        <image name="xcaEmptyStar" width="17" height="16"/>
-        <image name="xcaFullStar" width="17" height="15"/>
+        <image name="xcaCategoryBox" width="21" height="22"/>
+        <image name="xcaItemFavStarFull" width="30" height="30"/>
     </resources>
 </document>

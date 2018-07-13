@@ -62,7 +62,7 @@
                                                                 <constraint firstAttribute="height" constant="25" id="9pE-wz-zMy"/>
                                                                 <constraint firstAttribute="width" constant="25" id="SCO-8P-YZO"/>
                                                             </constraints>
-                                                            <state key="normal" backgroundImage="xcaEmptyStar"/>
+                                                            <state key="normal" backgroundImage="xcaItemFavStarEmpty"/>
                                                             <connections>
                                                                 <action selector="isFavoritedButtonTapped:" destination="hII-c5-e0f" eventType="touchUpInside" id="3WD-4o-SGA"/>
                                                             </connections>
@@ -137,6 +137,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="xcaEmptyStar" width="17" height="16"/>
+        <image name="xcaItemFavStarEmpty" width="30" height="30"/>
     </resources>
 </document>

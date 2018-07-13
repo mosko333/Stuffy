@@ -34,9 +34,9 @@ class ItemSearchCell: UITableViewCell {
         itemNameLabel.text = item.title
         datePurchasedLabel.text = "need to add in"
         if item.isFavorited == true{
-             isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaFullStar"), for: .normal)
+             isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaItemFavStarFull"), for: .normal)
         } else {
-             isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaEmptyStar"), for: .normal)
+             isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaItemFavStarEmpty"), for: .normal)
         }
         let data = item.image ?? Data.init()
         let image = UIImage(data: data)
