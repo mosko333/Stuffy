@@ -13,5 +13,13 @@ class FavCategoryCell: UITableViewCell {
     @IBOutlet weak var categoryNameLabel: UILabel!
     @IBOutlet weak var categoryCountLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //updateLabel()
+    }
+    
+    func updateLabel() {
+        categoryNameLabel.sizeToFit()
+    }
     
 }

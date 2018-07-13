@@ -42,9 +42,11 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
     
     var favoritedCategories: [CategoryCD] = []
     var favoritedItems: [ItemCD] = []
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        favoritedItems = []
         do {
             try categoryFRC.performFetch()
             guard categoryFRC.fetchedObjects != nil else { return }
@@ -52,8 +54,12 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
             for category in categories {
                 if category.isFavorited == true {
                     favoritedCategories.append(category)
+//                    let set = Set(favoritedCategories)
                 }
             }
+            
+            let favCategoriesSet = Set(favoritedCategories)
+            favoritedCategories = Array(favCategoriesSet)
         } catch  {
             print("\(error.localizedDescription)")
         }
@@ -65,14 +71,16 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
                     favoritedItems.append(item)
                 }
             }
+            let faveItemsSet = Set(favoritedItems)
+            favoritedItems = Array(faveItemsSet)
         } catch  {
             print("\(error.localizedDescription)")
         }
         
         
-        
-        
-        
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor(displayP3Red: 30, green: 57, blue: 81, alpha: 0)
+        UIApplication.shared.statusBarStyle = .lightContent
+        self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -82,9 +90,11 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
+        tableView.backgroundColor = Colors.stuffyBackgroundGray
+
     }
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -93,16 +103,14 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
         if section == 0 {
             print(favoritedCategories.count)
             return favoritedCategories.count
-           
         }
         if section == 1 {
             return favoritedItems.count
-        
         }
         
         return 0
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
@@ -111,10 +119,12 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
             cell.categoryNameLabel.text = category.name
             let itemCount = category.items?.count ?? 0
             cell.categoryCountLabel.text = "(\(itemCount))"
+            cell.backgroundColor = Colors.stuffyBackgroundGray
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
             return cell
         }
         if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemSearchCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemSearchCell
           
             let item = favoritedItems[indexPath.row]
             cell.updateItem(with: item)
@@ -124,18 +134,38 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
 }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
+        if indexPath.section == 0 {
+            return 61.0
+        } else {
+            return 95
+        }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 63
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let categoryHeaderView = UIView()
+        let label = UILabel()
+        label.layer.backgroundColor = Colors.stuffyBackgroundGray.cgColor
+        
+        label.font = UIFont.init(name: "Avenir-Heavy", size: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        categoryHeaderView.addSubview(label)
+        categoryHeaderView.backgroundColor = Colors.stuffyBackgroundGray
         if section == 0 {
-            return "Categories"
+            label.text = "     Categories"
         }
         if section == 1 {
-            return "Items"
+            label.text = "     Items"
         }
-        return ""
+        return categoryHeaderView
     }
+    
+
     
     /*
     // MARK: - Navigation

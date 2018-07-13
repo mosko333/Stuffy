@@ -49,6 +49,9 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
             print("\(error.localizedDescription)")
         }
         
+        UIApplication.shared.statusBarStyle = .default
+        UIApplication.shared.statusBarView?.backgroundColor = .white
+        
     }
     
     override func viewDidLoad() {
@@ -59,8 +62,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         tableView.backgroundColor = Colors.stuffyBackgroundGray
         setSearchBar()
         setupShadowView()
-        UIApplication.shared.statusBarStyle = .default
-        UIApplication.shared.statusBarView?.backgroundColor = .white
+        
         print(allItems.count)
     }
     

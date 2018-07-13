@@ -20,10 +20,10 @@
             </objects>
             <point key="canvasLocation" x="-2342" y="387"/>
         </scene>
-        <!--FavoriteItemsViewController-->
+        <!--FavoriteItems-->
         <scene sceneID="1An-MV-9Tc">
             <objects>
-                <viewControllerPlaceholder storyboardName="FavoriteItems" referencedIdentifier="FavoriteItemsViewController" id="C7W-OW-hBs" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="FavoriteItems" id="C7W-OW-hBs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="4GQ-iX-Y83"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvg-0S-LuD" userLabel="First Responder" sceneMemberID="firstResponder"/>
