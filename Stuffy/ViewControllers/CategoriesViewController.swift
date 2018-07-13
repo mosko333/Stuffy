@@ -32,25 +32,17 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
-        //categoryFRC.delegate = self
         fetch()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         categoryTextField.delegate = self
-        setupView()
-        
         categoryFRC.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         fetch()
-                tableView.delegate = self
-                tableView.dataSource = self
-        //
-        //categoryNameTextField.addDoneButtonOnKeyboard()
-        
-        
+        setupView()
     }
     
     
@@ -108,26 +100,71 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let categorypicked = categoryFRC.object(at: indexPath)
-        let storyBoard = UIStoryboard(name: "MyStuff", bundle: nil)
-        let destinationVC = storyBoard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-        let topVC = destinationVC.topViewController as! myStuffViewController
-        topVC.categoryPicked = categorypicked
-        //self.navigationController?.pushViewController(myStuffViewController(), animated: true)
-        present(destinationVC, animated: true, completion: nil)
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            guard let category = categoryFRC.fetchedObjects?[indexPath.row] else { return }
+//            CoreDataStack.context.delete(category)
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+//        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
+//            //TODO: edit the row at indexPath here
+//        }
+//        editAction.backgroundColor = .blue
+
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
+            //TODO: Delete the row at indexPath here
+//            self.catNames.remove(at: indexPath.row)
+//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            guard let category = self.categoryFRC.fetchedObjects?[indexPath.row] else { return }
+            CoreDataStack.context.delete(category)
+        }
+        deleteAction.backgroundColor = Colors.stuffyOrange
+
+        //return [editAction,deleteAction]
+        return [deleteAction]
     }
     
+//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//                print("\(Thread.isMainThread)")
+//            DispatchQueue.main.async {
+//                self.performSegue(withIdentifier: "MyStuffSegue",sender: self)
+//            }
+//
+////            categoryFRC.object(at: indexPath)
+////            self.navigationController?.performSegue(withIdentifier: "MyStuffSegue", sender: self)
+//
+//
+//
+////            let categorypicked = categoryFRC.object(at: indexPath)
+////            let storyBoard = UIStoryboard(name: "MyStuff", bundle: nil)
+////            let destinationVC = storyBoard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
+////            let topVC = destinationVC.topViewController as! myStuffViewController
+////            topVC.categoryPicked = categorypicked
+////            //self.navigationController?.pushViewController(myStuffViewController(), animated: true)
+////            present(destinationVC, animated: true, completion: nil)
+//        }
+//
     
     // MARK: - Navigation
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "MyStuffSegue" {
-//            if let destinationVC = segue.destination as? myStuffViewController {
-//                destinationVC.categoryPicked = categoryPicked
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MyStuffSegue" {
+
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let categorypicked = categoryFRC.object(at: indexPath)
+            //
+            if let destinationVC = segue.destination as? MyStuffViewController {
+                //
+                destinationVC.categoryPicked = categorypicked
+                print("\(Thread.isMainThread)")
+              
+                
+            }
+        }
+    }
 }
 
 
@@ -194,6 +231,7 @@ extension CategoriesViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.textColor = .black
+        textField.text = ""
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -208,7 +246,7 @@ extension CategoriesViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        guard let categoryName = categoryTextField.text, categoryName.count > 0 else { return true}
+        if let categoryName = categoryTextField.text, categoryName.count > 0{
         
         ItemCoreDataController.shared.createCategory(name: categoryName)
         
@@ -217,6 +255,7 @@ extension CategoriesViewController: UITextFieldDelegate {
         tableView.reloadData()
         
         categoryTextField.text = ""
+        }
         textField.resignFirstResponder()
         return true
     }

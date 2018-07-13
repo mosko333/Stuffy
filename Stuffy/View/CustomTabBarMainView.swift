@@ -8,8 +8,10 @@
 
 import UIKit
 
+
 protocol  CustomTabBarViewMainDelegate:class {
     func tabBarViewChangedSelectedIndex(at index: Int)
+    func addItemTabPressed()
 }
 
 class CustomTabBarMainView: UIView {
@@ -42,15 +44,37 @@ class CustomTabBarMainView: UIView {
         tabViewBackgroundView.layer.shadowRadius = Constants.shadowRadius
         tabViewBackgroundView.layer.shadowOffset = Constants.shadowOffset
         tabViewBackgroundView.layer.shadowOpacity = Constants.shadowOpacity
-        
-        tabBarButton1.setImage(#imageLiteral(resourceName: "xcaHouse"), for: .normal)
-        tabBarButton2.setImage(#imageLiteral(resourceName: "xcaHeart"), for: .normal)
-        tabBarButton4.setImage(#imageLiteral(resourceName: "xcaSearch"), for: .normal)
-        tabBarButton5.setImage(#imageLiteral(resourceName: "xcaUser"), for: .normal)
     }
     
     @IBAction func tabBarBtnPressed(_ sender: UIButton) {
+        
+        if sender == tabBarButton3 {
+            delegate?.addItemTabPressed()
+            print("AddItem Btn Pressed")
+            return
+        }
+        
+        reset()
+        switch sender {
+        case tabBarButton1:
+            sender.setImage(#imageLiteral(resourceName: "xcaHomeBarDark"), for: .normal)
+        case tabBarButton2:
+            sender.setImage(#imageLiteral(resourceName: "xcaFavBarDark"), for: .normal)
+        case tabBarButton4:
+            sender.setImage(#imageLiteral(resourceName: "xcaSearchMenuDark"), for: .normal)
+        case tabBarButton5:
+            sender.setImage(#imageLiteral(resourceName: "xcaUserMenuDark"), for: .normal)
+        default:
+            sender.setImage(#imageLiteral(resourceName: "xcaSampleImage"), for: .normal)
+        }
         delegate?.tabBarViewChangedSelectedIndex(at: sender.tag)
+    }
+    
+    func reset() {
+        tabBarButton1.setImage(#imageLiteral(resourceName: "xcaHomeBarLight"), for: .normal)
+        tabBarButton2.setImage(#imageLiteral(resourceName: "xcaFavBarLight"), for: .normal)
+        tabBarButton4.setImage(#imageLiteral(resourceName: "xcaSearchMenuLight"), for: .normal)
+        tabBarButton5.setImage(#imageLiteral(resourceName: "xcaUserMenuLight"), for: .normal)
     }
     
 }

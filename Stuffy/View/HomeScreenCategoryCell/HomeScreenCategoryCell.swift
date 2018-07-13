@@ -30,10 +30,10 @@ class HomeScreenCategoryCell: UITableViewCell {
         categoryCountLabel.text = "(\(itemCount))"
        
         if category.isFavorited == true {
-            isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaFullStar"), for: .normal)
+            isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaCatFavStarFull"), for: .normal)
         }
         if category.isFavorited == false {
-            isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaEmptyStar"), for: .normal)
+            isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaCatFavStarEmpty"), for: .normal)
         }
         
     }
