@@ -305,7 +305,7 @@ class NewAddItemTableViewController: UITableViewController {
        
         let storyboard = UIStoryboard(name: "MyStuff", bundle: nil)
         let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-        let topVC = DV.topViewController as! myStuffViewController
+        let topVC = DV.topViewController as! MyStuffViewController
         topVC.categoryPicked = categoypicked
         present(DV, animated: true)
         

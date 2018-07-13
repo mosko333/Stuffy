@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0Eh-ve-nUY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WOO-e9-ouz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Stuff-->
+        <!--My Stuff View Controller-->
         <scene sceneID="iTU-48-7BW">
             <objects>
-                <viewController storyboardIdentifier="myStuffVC" id="WOO-e9-ouz" customClass="myStuffViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tsc-wp-W5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="MyStuffViewController" id="WOO-e9-ouz" customClass="MyStuffViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YEL-2I-Qwo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,16 +61,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Dn7-u4-HTe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Stuff" id="8O7-Gc-bvP">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="gEG-um-vwX">
+                    <navigationItem key="navigationItem" id="qyI-SG-tOx">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="xcaBackArrow" id="cJM-Pa-b4f">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="Nj1-3e-cJu" kind="show" id="9SN-9P-Kuy"/>
+                                <action selector="backBtnPressed:" destination="WOO-e9-ouz" id="dNd-Ug-I3O"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DZf-12-F5q">
+                        <barButtonItem key="rightBarButtonItem" image="xcaEllipsis" id="6JJ-Gg-H3b">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="addNewItemButtonPressed:" destination="WOO-e9-ouz" id="DS1-5A-pDd"/>
-                                <segue destination="t4s-13-7b1" kind="show" identifier="toAddItemNavController" id="jkt-2I-BaO"/>
+                                <action selector="addNewItemButtonPressed:" destination="WOO-e9-ouz" id="2K1-Zp-LVD"/>
+                                <segue destination="t4s-13-7b1" kind="show" id="bhR-4M-vxt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -77,9 +80,8 @@
                         <outlet property="collectionView" destination="veE-7x-2eh" id="mDe-Jr-USV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Tsc-wp-W5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="904.79999999999995" y="257.72113943028489"/>
+            <point key="canvasLocation" x="1844" y="257.72113943028489"/>
         </scene>
         <!--AddItemNavController-->
         <scene sceneID="niu-et-f9q">
@@ -87,33 +89,11 @@
                 <viewControllerPlaceholder storyboardName="AddItem" referencedIdentifier="AddItemNavController" id="t4s-13-7b1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGS-2v-Jj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="257"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dra-BD-dJw">
-            <objects>
-                <navigationController storyboardIdentifier="MyStuffNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="0Eh-ve-nUY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qno-Mg-MkA">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="WOO-e9-ouz" kind="relationship" relationship="rootViewController" id="HX4-IY-349"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Dr-qB-5Cs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-388" y="258"/>
-        </scene>
-        <!--CustomTabBarViewContoller-->
-        <scene sceneID="Y23-8U-w5u">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CustomTabBarViewContoller" id="Nj1-3e-cJu" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wsO-aA-Ra2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="737" y="-399"/>
+            <point key="canvasLocation" x="2723.1999999999998" y="256.37181409295357"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xcaBackArrow" width="12" height="21"/>
+        <image name="xcaEllipsis" width="23" height="5"/>
+    </resources>
 </document>

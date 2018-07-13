@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate  {
+class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate  {
     
     let itemsFRC:NSFetchedResultsController<ItemCD> = {
         let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
@@ -58,9 +58,14 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
     
         collectionView.delegate = self
         collectionView.dataSource = self
-
+        navigationItem.title = categoryPicked?.name
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        navigationController?.popViewController(animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myStuffCell", for: indexPath) as? myStuffCell else {return UICollectionViewCell()}
@@ -80,17 +85,20 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         
     }
     
+    @IBAction func backBtnPressed(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func addNewItemButtonPressed(_ sender: UIBarButtonItem) {
         print("add item button pressed")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddItemNavController" {
-            let destinationVC = segue.destination as! UINavigationController
-            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
-            topVC.categoryPicked = categoryPicked
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toAddItemNavController" {
+//            let destinationVC = segue.destination as! UINavigationController
+//            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+//            topVC.categoryPicked = categoryPicked
+//        }
+//    }
 
 }

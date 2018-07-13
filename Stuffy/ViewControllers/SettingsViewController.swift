@@ -23,6 +23,11 @@ class SettingsViewController: UIViewController {
         setupView()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        navigationController?.popViewController(animated: true)
+    }
+    
     func setupView() {
     }
     @IBAction func backBarButton(_ sender: UIBarButtonItem) {
