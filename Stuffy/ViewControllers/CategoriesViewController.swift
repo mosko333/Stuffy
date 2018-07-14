@@ -155,13 +155,8 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
 
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let categorypicked = categoryFRC.object(at: indexPath)
-            //
             if let destinationVC = segue.destination as? MyStuffViewController {
-                //
                 destinationVC.categoryPicked = categorypicked
-                print("\(Thread.isMainThread)")
-              
-                
             }
         }
     }
