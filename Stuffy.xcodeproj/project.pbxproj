@@ -21,6 +21,7 @@
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
+		7EF32F3C20FA9B4D0057D7EF /* CustomUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */; };
 		7EFC781E20F5774B0096238A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EFC781D20F5774B0096238A /* Dashboard.storyboard */; };
 		7EFC782220F577810096238A /* PinPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC781F20F577810096238A /* PinPadViewController.swift */; };
 		7EFC782320F577810096238A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC782020F577810096238A /* SettingsViewController.swift */; };
@@ -86,6 +87,7 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
+		7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationBar.swift; sourceTree = "<group>"; };
 		7EFC781D20F5774B0096238A /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7EFC781F20F577810096238A /* PinPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPadViewController.swift; sourceTree = "<group>"; };
 		7EFC782020F577810096238A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */,
 				F77BB3E720EAEC2A00D2FCD4 /* NewAddItemCustomCells */,
 				7EFC783320F6BAB00096238A /* CategoryTableViewCell.swift */,
+				7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				F77BB3E920EAEC5E00D2FCD4 /* NewCameraCell.swift in Sources */,
 				F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */,
 				F78D660A20E18C14003407E7 /* Item+Convenience.swift in Sources */,
+				7EF32F3C20FA9B4D0057D7EF /* CustomUINavigationBar.swift in Sources */,
 				F78D661420E1A260003407E7 /* myStuffCell.swift in Sources */,
 				F731E97A20F3176A00ACE318 /* ItemSearchCell.swift in Sources */,
 				F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */,

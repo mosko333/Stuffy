@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3XC-1v-QLt">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -84,15 +84,15 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWV-eb-elQ" userLabel="BigView">
-                            <rect key="frame" x="0.0" y="10" width="376" height="94"/>
+                            <rect key="frame" x="0.0" y="30" width="376" height="74"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pG4-0g-WNe" userLabel="BackCircleView">
-                            <rect key="frame" x="143" y="-30" width="90" height="90"/>
+                            <rect key="frame" x="149" y="-16" width="78" height="78"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="90" id="4BT-UW-KU8"/>
-                                <constraint firstAttribute="width" constant="90" id="DFd-sk-iTU"/>
+                                <constraint firstAttribute="height" constant="78" id="4BT-UW-KU8"/>
+                                <constraint firstAttribute="width" constant="78" id="DFd-sk-iTU"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -101,17 +101,21 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBG-2n-Ctx">
-                            <rect key="frame" x="0.0" y="10" width="376" height="50"/>
+                            <rect key="frame" x="0.0" y="30" width="376" height="30"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P1v-bl-gNK">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
+                                    <rect key="frame" x="0.0" y="-10" width="376" height="50"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KyJ-ra-kCD" userLabel="L1View">
-                                            <rect key="frame" x="0.0" y="0.0" width="37.5" height="50"/>
+                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="KyJ-ra-kCD" userLabel="L1View">
+                                            <rect key="frame" x="0.0" y="0.0" width="38" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="GRQ-kc-OXY"/>
+                                            </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-Z0-Vho" userLabel="tabBarButton1">
-                                            <rect key="frame" x="37.5" y="10" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-Z0-Vho" userLabel="tabBarButton1">
+                                            <rect key="frame" x="38" y="10" width="30" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="0H1-0p-ZkF"/>
                                                 <constraint firstAttribute="height" constant="30" id="v6l-DK-b40"/>
@@ -122,11 +126,15 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-ci-zdr" userLabel="L2View">
-                                            <rect key="frame" x="67.5" y="0.0" width="38" height="50"/>
+                                            <rect key="frame" x="68" y="0.0" width="38" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="VQA-gz-fbM"/>
+                                            </constraints>
                                         </view>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-7p-N8f" userLabel="tabBarButton2">
-                                            <rect key="frame" x="105.5" y="10" width="30" height="30"/>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-7p-N8f" userLabel="tabBarButton2">
+                                            <rect key="frame" x="106" y="10" width="30" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="Skd-ue-md5"/>
                                                 <constraint firstAttribute="height" constant="30" id="rmj-wg-KYU"/>
@@ -138,20 +146,30 @@
                                                 <action selector="tabBarBtnPressed:" destination="COI-NZ-51a" eventType="touchUpInside" id="0Xi-Hk-hEf"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sau-Hm-Gdv" userLabel="L3View">
-                                            <rect key="frame" x="135.5" y="0.0" width="37.5" height="50"/>
+                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="sau-Hm-Gdv" userLabel="L3View">
+                                            <rect key="frame" x="136" y="0.0" width="38" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="0Q9-tg-z5N"/>
+                                            </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RI1-gS-Oo9" userLabel="MidSpace">
-                                            <rect key="frame" x="173" y="0.0" width="50" height="50"/>
+                                        <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="RI1-gS-Oo9" userLabel="MidSpace">
+                                            <rect key="frame" x="174" y="0.0" width="50" height="50"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Jwr-P5-a1Z"/>
+                                            </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-mg-B0F" userLabel="R3View">
-                                            <rect key="frame" x="223" y="0.0" width="17.5" height="50"/>
+                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-mg-B0F" userLabel="R3View">
+                                            <rect key="frame" x="224" y="0.0" width="22" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="4Mn-i9-Q5F"/>
+                                            </constraints>
                                         </view>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bd-jS-wmD" userLabel="tabBarButton4">
-                                            <rect key="frame" x="240.5" y="10" width="30" height="30"/>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bd-jS-wmD" userLabel="tabBarButton4">
+                                            <rect key="frame" x="246" y="10" width="30" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="oLO-qy-byS"/>
                                                 <constraint firstAttribute="width" constant="30" id="zJH-Mg-H5p"/>
@@ -161,12 +179,16 @@
                                                 <action selector="tabBarBtnPressed:" destination="COI-NZ-51a" eventType="touchUpInside" id="FMr-Lz-IGg"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SLN-K7-e5K" userLabel="L2View">
-                                            <rect key="frame" x="270.5" y="0.0" width="38" height="50"/>
+                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="SLN-K7-e5K" userLabel="L2View">
+                                            <rect key="frame" x="276" y="0.0" width="38" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="Q8R-Z2-Vgb"/>
+                                            </constraints>
                                         </view>
-                                        <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyt-0G-NRR" userLabel="tabBarButton5">
-                                            <rect key="frame" x="308.5" y="10" width="30" height="30"/>
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyt-0G-NRR" userLabel="tabBarButton5">
+                                            <rect key="frame" x="314" y="10" width="30" height="30"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="cIK-ff-7w1"/>
                                                 <constraint firstAttribute="height" constant="30" id="fn7-kD-3Hz"/>
@@ -176,38 +198,58 @@
                                                 <action selector="tabBarBtnPressed:" destination="COI-NZ-51a" eventType="touchUpInside" id="t5p-tf-qpR"/>
                                             </connections>
                                         </button>
-                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UNm-tX-sBt" userLabel="R1View">
-                                            <rect key="frame" x="338.5" y="0.0" width="37.5" height="50"/>
+                                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="UNm-tX-sBt" userLabel="R1View">
+                                            <rect key="frame" x="344" y="0.0" width="32" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="FGr-7n-kMg"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mq-Gb-pfc" userLabel="CircleView">
-                                    <rect key="frame" x="143" y="-40" width="90" height="90"/>
+                                    <rect key="frame" x="143" y="-60" width="90" height="90"/>
                                     <subviews>
-                                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRw-Ib-Ffz" userLabel="tabBarButton3">
-                                            <rect key="frame" x="15" y="15" width="60" height="60"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-bC-CoI" userLabel="SmallVisibleFrontCircleView">
+                                            <rect key="frame" x="6" y="10" width="78" height="78"/>
+                                            <subviews>
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRw-Ib-Ffz" userLabel="tabBarButton3">
+                                                    <rect key="frame" x="9" y="9" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="2id-tU-E9G"/>
+                                                        <constraint firstAttribute="width" constant="60" id="iIz-z4-ZfT"/>
+                                                    </constraints>
+                                                    <state key="normal" image="xcaAddItemBarBtn"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tabBarBtnPressed:" destination="COI-NZ-51a" eventType="touchUpInside" id="s4I-7j-L2b"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="2id-tU-E9G"/>
-                                                <constraint firstAttribute="width" constant="60" id="iIz-z4-ZfT"/>
+                                                <constraint firstItem="lRw-Ib-Ffz" firstAttribute="centerY" secondItem="mzv-bC-CoI" secondAttribute="centerY" id="3fq-iF-Gi3"/>
+                                                <constraint firstAttribute="height" constant="78" id="4zd-Bx-8NS"/>
+                                                <constraint firstAttribute="width" constant="78" id="S04-L0-pWS"/>
+                                                <constraint firstItem="lRw-Ib-Ffz" firstAttribute="centerX" secondItem="mzv-bC-CoI" secondAttribute="centerX" id="xlG-ox-VW6"/>
                                             </constraints>
-                                            <state key="normal" image="xcaAddItemBarBtn"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="30"/>
+                                                    <integer key="value" value="39"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <action selector="tabBarBtnPressed:" destination="COI-NZ-51a" eventType="touchUpInside" id="s4I-7j-L2b"/>
-                                            </connections>
-                                        </button>
+                                        </view>
                                     </subviews>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstItem="lRw-Ib-Ffz" firstAttribute="centerY" secondItem="3mq-Gb-pfc" secondAttribute="centerY" id="1PE-Ef-Wks"/>
                                         <constraint firstAttribute="width" constant="90" id="3pC-bP-Bg2"/>
+                                        <constraint firstItem="mzv-bC-CoI" firstAttribute="centerX" secondItem="3mq-Gb-pfc" secondAttribute="centerX" id="67Q-j6-OdP"/>
                                         <constraint firstAttribute="height" constant="90" id="IaN-8Z-i3k"/>
-                                        <constraint firstItem="lRw-Ib-Ffz" firstAttribute="centerX" secondItem="3mq-Gb-pfc" secondAttribute="centerX" id="qaE-J5-dTD"/>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="l6v-g0-6hr"/>
+                                        <constraint firstAttribute="bottom" secondItem="mzv-bC-CoI" secondAttribute="bottom" constant="2" id="w9D-SZ-xUQ"/>
                                     </constraints>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -235,7 +277,7 @@
                         <constraint firstItem="iWV-eb-elQ" firstAttribute="trailing" secondItem="pdN-zi-1LU" secondAttribute="trailing" id="YJp-1J-a7Z"/>
                         <constraint firstItem="iWV-eb-elQ" firstAttribute="leading" secondItem="pdN-zi-1LU" secondAttribute="leading" id="chk-vx-BRJ"/>
                         <constraint firstItem="pdN-zi-1LU" firstAttribute="trailing" secondItem="xBG-2n-Ctx" secondAttribute="trailing" id="iDr-of-7VU"/>
-                        <constraint firstItem="pG4-0g-WNe" firstAttribute="bottom" secondItem="xBG-2n-Ctx" secondAttribute="bottom" id="kb4-Rr-v1K"/>
+                        <constraint firstItem="pG4-0g-WNe" firstAttribute="bottom" secondItem="xBG-2n-Ctx" secondAttribute="bottom" constant="2" id="kb4-Rr-v1K"/>
                         <constraint firstItem="xBG-2n-Ctx" firstAttribute="leading" secondItem="pdN-zi-1LU" secondAttribute="leading" id="n34-y6-BI2"/>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="pdN-zi-1LU"/>
