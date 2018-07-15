@@ -30,11 +30,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        fetch()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryTextField.delegate = self
@@ -45,8 +40,20 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetch()
+        setupView()
+    }
+    
     
     func setupView() {
+        // Setup status bar to lightContent because it's changed to dark in the searchVC
+        // We set the background colors alpha to 0 because otherwise it's translucent
+                UIApplication.shared.statusBarView?.backgroundColor = UIColor(displayP3Red: 30, green: 57, blue: 81, alpha: 0)
+        UIApplication.shared.statusBarStyle = .lightContent
+
+        
         // Set logo on Nav Bar
         let logo = UIImageView(image: #imageLiteral(resourceName: "xcaBannerNeatly"))
         logo.contentMode = .scaleAspectFit // set imageview's content mode

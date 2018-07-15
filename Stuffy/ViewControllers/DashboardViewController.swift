@@ -66,26 +66,33 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //warrantyTable.delegate = self
-        //warrantyTable.dataSource = self
+        updateViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         updateViews()
     }
 
     func updateViews() {
+        // Setup status bar to lightContent because it's changed to dark in the searchVC
+        // We set the background colors alpha to 0 because otherwise it's translucent
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 0, alpha: 0)
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         // TODO - Populate Views using search data
         
         try? categoryFRC.performFetch()
         numberOfCatLabel.text = "\(categoryFRC.fetchedObjects!.count)"
         
         try? itemFRC.performFetch()
-        let moneyMoneyMoney = itemFRC.fetchedObjects ?? []
-        for money in moneyMoneyMoney {
-            let value = money.price
-        }
+        //let moneyMoneyMoney = itemFRC.fetchedObjects ?? []
+        //for money in moneyMoneyMoney {
+            //let value = money.price
+        //}
         
         try? userFRC.performFetch()
-        let pin = userFRC.fetchedObjects?.first
+        //let pin = userFRC.fetchedObjects?.first
     }
     /*
     // MARK: - Navigation
