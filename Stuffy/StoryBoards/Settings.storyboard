@@ -226,7 +226,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="PinPadViewController" storyboardName="PinPad" referencedIdentifier="PinPadViewController" id="hxa-PF-9ef" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCX-Ki-TUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3209" y="27"/>
+            <point key="canvasLocation" x="3192" y="-122"/>
         </scene>
     </scenes>
     <resources>
@@ -235,7 +235,7 @@
         <image name="xcaForwardArrow" width="8" height="14"/>
         <image name="xcaLock" width="20" height="22"/>
         <image name="xcaRubbish" width="22" height="24"/>
-        <image name="xcaTouchID" width="21" height="21"/>
+        <image name="xcaTouchID" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3QH-BJ-Obn"/>
