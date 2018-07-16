@@ -61,7 +61,8 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
     @IBOutlet var returnItemDateLabel: [UILabel]!
     @IBOutlet weak var warrantyTable: UITableView!
     
-    
+    var currency = "$"
+    // TODO - Pull Currency from CoreData
     
 
     override func viewDidLoad() {
@@ -93,6 +94,8 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
         
         try? userFRC.performFetch()
         //let pin = userFRC.fetchedObjects?.first
+        
+        currencyLabel.text = currency
     }
     /*
     // MARK: - Navigation
@@ -156,7 +159,6 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-       
         let backgroundView = UIView()
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.backgroundColor = UIColor.white
@@ -182,9 +184,12 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell") as! DashboardTableViewCell
-        
         return cell
     }
-    
-    
+}
+
+extension DashboardViewController: CurrencyViewControllerDelegate {
+    func selectCurrency(currency: String) {
+        self.currency = currency
+    }
 }

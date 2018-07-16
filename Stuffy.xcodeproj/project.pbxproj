@@ -21,6 +21,8 @@
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
+		7EBDD5EE20FD109500A01533 /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBDD5ED20FD109500A01533 /* Currency.storyboard */; };
+		7EBDD5F020FD10DA00A01533 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */; };
 		7EF32F3C20FA9B4D0057D7EF /* CustomUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */; };
 		7EFC781E20F5774B0096238A /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EFC781D20F5774B0096238A /* Dashboard.storyboard */; };
 		7EFC782220F577810096238A /* PinPadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC781F20F577810096238A /* PinPadViewController.swift */; };
@@ -87,6 +89,8 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
+		7EBDD5ED20FD109500A01533 /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
+		7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationBar.swift; sourceTree = "<group>"; };
 		7EFC781D20F5774B0096238A /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7EFC781F20F577810096238A /* PinPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPadViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				7EFC781D20F5774B0096238A /* Dashboard.storyboard */,
 				7EFC782F20F5814B0096238A /* Settings.storyboard */,
 				7EFC783120F581630096238A /* PinPad.storyboard */,
+				7EBDD5ED20FD109500A01533 /* Currency.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 				F7A08C2120EEC97200E37754 /* CategoriesDetailViewController.swift */,
 				F7D9D97D20F2F75F00F429A1 /* FavoriteItemsViewController.swift */,
 				F7D9D97F20F2F7A600F429A1 /* SearchItemsViewController.swift */,
+				7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				F713F08820F531880014D505 /* FavoriteItems.storyboard in Resources */,
 				F713F0A220F53FC20014D505 /* CameraCropPreview.storyboard in Resources */,
 				F713F08E20F532980014D505 /* CameraPreview.storyboard in Resources */,
+				7EBDD5EE20FD109500A01533 /* Currency.storyboard in Resources */,
 				7EFC781E20F5774B0096238A /* Dashboard.storyboard in Resources */,
 				F731E98220F527EA00ACE318 /* LaunchScreen.storyboard in Resources */,
 				F713F09420F534B50014D505 /* Category.storyboard in Resources */,
@@ -459,6 +466,7 @@
 				7EFC783420F6BAB00096238A /* CategoryTableViewCell.swift in Sources */,
 				170E021C20EE8BFB0012405F /* Category.swift in Sources */,
 				F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */,
+				7EBDD5F020FD10DA00A01533 /* CurrencyViewController.swift in Sources */,
 				F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */,
 				F7A08C2220EEC97200E37754 /* CategoriesDetailViewController.swift in Sources */,
 			);

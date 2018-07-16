@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XSe-h0-eay">
-                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -190,6 +190,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="w3s-gh-STQ" kind="show" identifier="toCurrencySegue" id="fLG-EX-c9b"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -199,7 +202,7 @@
                         <constraints>
                             <constraint firstItem="XSe-h0-eay" firstAttribute="leading" secondItem="Pzz-s8-vZh" secondAttribute="leading" id="NeF-aZ-NLt"/>
                             <constraint firstItem="Pzz-s8-vZh" firstAttribute="trailing" secondItem="XSe-h0-eay" secondAttribute="trailing" id="PX9-H8-dQt"/>
-                            <constraint firstItem="XSe-h0-eay" firstAttribute="top" secondItem="Pzz-s8-vZh" secondAttribute="top" constant="30" id="i1R-Y2-rfT"/>
+                            <constraint firstItem="XSe-h0-eay" firstAttribute="top" secondItem="Pzz-s8-vZh" secondAttribute="top" id="i1R-Y2-rfT"/>
                             <constraint firstItem="Pzz-s8-vZh" firstAttribute="bottom" secondItem="XSe-h0-eay" secondAttribute="bottom" id="oQm-UZ-1t1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pzz-s8-vZh"/>
@@ -218,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdD-s8-Dom" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2276" y="-121"/>
+            <point key="canvasLocation" x="82" y="-122"/>
         </scene>
         <!--PinPadViewController-->
         <scene sceneID="Yd5-Hd-9X7">
@@ -226,7 +229,15 @@
                 <viewControllerPlaceholder storyboardIdentifier="PinPadViewController" storyboardName="PinPad" referencedIdentifier="PinPadViewController" id="hxa-PF-9ef" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCX-Ki-TUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3192" y="-122"/>
+            <point key="canvasLocation" x="1013" y="-152"/>
+        </scene>
+        <!--Currency-->
+        <scene sceneID="pcJ-ig-XSB">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CurrencyViewController" storyboardName="Currency" id="w3s-gh-STQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGU-Ap-bRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1030" y="-55"/>
         </scene>
     </scenes>
     <resources>
@@ -238,6 +249,6 @@
         <image name="xcaTouchID" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3QH-BJ-Obn"/>
+        <segue reference="bLw-lt-P7H"/>
     </inferredMetricsTieBreakers>
 </document>
