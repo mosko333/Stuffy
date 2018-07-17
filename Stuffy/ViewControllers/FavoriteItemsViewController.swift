@@ -121,6 +121,7 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
             cell.categoryCountLabel.text = "(\(itemCount))"
             cell.backgroundColor = Colors.stuffyBackgroundGray
             cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
+            
             return cell
         }
         if indexPath.section == 1 {
@@ -153,14 +154,23 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
         
         label.font = UIFont.init(name: "Avenir-Heavy", size: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 64).isActive = true
         categoryHeaderView.addSubview(label)
         categoryHeaderView.backgroundColor = Colors.stuffyBackgroundGray
         if section == 0 {
-            label.text = "     Categories"
+            label.text = "    Categories"
+            let lineSeparatorView = UIView()
+            categoryHeaderView.addSubview(lineSeparatorView)
+            lineSeparatorView.layer.backgroundColor = Colors.stuffyLightGray.cgColor
+            lineSeparatorView.translatesAutoresizingMaskIntoConstraints = false
+            lineSeparatorView.bottomAnchor.constraint(equalTo: categoryHeaderView.bottomAnchor, constant: 0).isActive = true
+            lineSeparatorView.leftAnchor.constraint(equalTo: categoryHeaderView.leftAnchor, constant: 0).isActive = true
+            lineSeparatorView.rightAnchor.constraint(equalTo: categoryHeaderView.rightAnchor, constant: 0).isActive = true
+            lineSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            return categoryHeaderView
         }
         if section == 1 {
-            label.text = "     Items"
+            label.text = "    Items"
         }
         return categoryHeaderView
     }
