@@ -9,6 +9,8 @@
 import UIKit
 
 class OnboardingPageViewController: UIPageViewController {
+    
+    weak var onboardingDelegate: OnboardingPageViewControllerDelegate?
 
     private ( set ) lazy var orderedViewControllers: [UIViewController] = {
         return [self.getViewController(withIdentifier: "1"), self.getViewController(withIdentifier: "2"), self.getViewController(withIdentifier: "3")]
@@ -23,6 +25,8 @@ class OnboardingPageViewController: UIPageViewController {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
+        
+        onboardingDelegate?.onboardingPageViewController(onboardinPageViewController: self, didUpdatePageCount: orderedViewControllers.count)
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -59,22 +63,23 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
         
         return orderedViewControllers[nextIndex]
     }
+}
+
+extension OnboardingPageViewController: UIPageViewControllerDelegate {
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return orderedViewControllers.count
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        guard let firstViewController = viewControllers?.first,
-            let firstViewControllerIndex = orderedViewControllers.index(of: firstViewController) else {
-                return 0
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let firstViewController = viewControllers?.first,
+            let index = orderedViewControllers.index(of: firstViewController) {
+            onboardingDelegate?.onboardingPageViewController(onboardingPageViewController: self, didUPdatePageIndex: index)
         }
-        
-        return firstViewControllerIndex
     }
 }
 
-extension OnboardingPageViewController: UIPageViewControllerDelegate {}
+protocol OnboardingPageViewControllerDelegate: class {
+    func onboardingPageViewController(onboardinPageViewController: OnboardingPageViewController, didUpdatePageCount count: Int)
+    
+    func onboardingPageViewController(onboardingPageViewController: OnboardingPageViewController, didUPdatePageIndex index: Int)
+}
 
 
 
