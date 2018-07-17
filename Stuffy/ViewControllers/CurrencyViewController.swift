@@ -34,6 +34,9 @@ class CurrencyViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    @IBAction func backBarButton(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource {

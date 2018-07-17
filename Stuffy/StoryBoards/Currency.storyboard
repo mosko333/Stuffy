@@ -51,7 +51,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bh9-Kq-Gid"/>
                     </view>
-                    <navigationItem key="navigationItem" id="2L8-rb-pl0"/>
+                    <navigationItem key="navigationItem" id="2L8-rb-pl0">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="xcaBackArrow" id="B6J-sX-sc9">
+                            <connections>
+                                <action selector="backBarButton:" destination="Dds-Wb-x75" id="hdK-Dw-5jB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JHs-m1-G8h" id="R5Q-cw-2cD"/>
                     </connections>
@@ -61,4 +67,7 @@
             <point key="canvasLocation" x="1040.8" y="147.97601199400302"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xcaBackArrow" width="12" height="21"/>
+    </resources>
 </document>
