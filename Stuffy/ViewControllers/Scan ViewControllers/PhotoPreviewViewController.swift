@@ -24,8 +24,9 @@ class PhotoPreviewViewController: UIViewController {
     }
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
        performSegue(withIdentifier: "toNewAddItemVC", sender: self)
-        
+        guard let photo = photo else {return}
         print("recepit save button pressed")
+        ItemCoreDataController.shared.photos.append(photo)
         
     }
     
@@ -42,7 +43,7 @@ class PhotoPreviewViewController: UIViewController {
         if segue.identifier == "toNewAddItemVC"{
           let destinationVC = segue.destination as! UINavigationController
             let topVC = destinationVC.topViewController as! NewAddItemTableViewController
-            topVC.receipt = photo
+            topVC.image = photo
             topVC.categoryPicked = categoryPicked
         }
     }

@@ -66,11 +66,11 @@ class myStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myStuffCell", for: indexPath) as? myStuffCell else {return UICollectionViewCell()}
         
         let item =  categoryItems[indexPath.row]
-         let data = item.image ?? Data.init()
-        let image = UIImage(data: data)
-        let finalImage = UIImage(cgImage: (image?.cgImage)!, scale: 1.0, orientation: .right)
-        cell.namelabel.text = item.title
-        cell.imageThumbnailView.image = finalImage
+       //  let data = item.image ?? Data.init()
+       // let image = UIImage(data: data)
+       // let finalImage = UIImage(cgImage: (image?.cgImage)!, scale: 1.0, orientation: .right)
+      //  cell.namelabel.text = item.title
+      //  cell.imageThumbnailView.image = finalImage
         
     return cell
     }

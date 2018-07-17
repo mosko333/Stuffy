@@ -33,9 +33,9 @@ class ItemSearchCell: UITableViewCell {
         if item.isFavorited == false {
              isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaEmptyStar"), for: .normal)
         }
-        let data = item.image ?? Data.init()
-        let image = UIImage(data: data)
-        itemImageView.image   = image
+      //  let data = item.image ?? Data.init()
+      //  let image = UIImage(data: data)
+       // itemImageView.image   = image
         let dateformatter = DateFormatter()
         datePurchasedLabel.text = dateformatter.string(from: item.purchaseDate ?? Date())
         

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,13 +14,13 @@
         <scene sceneID="gSh-Hl-oif">
             <objects>
                 <tableViewController storyboardIdentifier="NewAddItemTableViewController" id="lfv-ti-21s" customClass="NewAddItemTableViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="B8d-qU-TnN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="B8d-qU-TnN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCameraCell" rowHeight="373" id="Vwt-HK-8a0" customClass="NewCameraCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1" width="375" height="373"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="373"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vwt-HK-8a0" id="qzZ-Y7-mRH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="372.5"/>
@@ -28,27 +29,38 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHW-qi-bOl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="312"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94L-b0-xRR">
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94L-b0-xRR">
                                                     <rect key="frame" x="157" y="205" width="61" height="61"/>
                                                     <state key="normal" image="xcaCameraButton-2"/>
                                                     <connections>
                                                         <action selector="takePictureButtonTapped:" destination="Vwt-HK-8a0" eventType="touchUpInside" id="j7A-1j-BVr"/>
-                                                        <segue destination="RcP-4B-jgw" kind="show" identifier="toShowPhoto" id="UZc-en-poR"/>
                                                     </connections>
                                                 </button>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaMultiple" translatesAutoresizingMaskIntoConstraints="NO" id="SRC-ug-mKe">
                                                     <rect key="frame" x="125" y="62" width="127" height="127"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5w-ys-vIM">
+                                                    <rect key="frame" x="13" y="191" width="100" height="87"/>
+                                                    <connections>
+                                                        <segue destination="RcP-4B-jgw" kind="show" identifier="toCameraPreviewController" id="xfT-T4-5Nt">
+                                                            <segue key="commit" inheritsFrom="parent" id="uJN-ah-7b8"/>
+                                                            <segue key="preview" inheritsFrom="commit" id="w9a-GK-FQN"/>
+                                                        </segue>
+                                                    </connections>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeY-2O-08C">
-                                                    <rect key="frame" x="125" y="79" width="111" height="110"/>
+                                                    <rect key="frame" x="32" y="203" width="63" height="63"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="94L-b0-xRR" secondAttribute="trailing" constant="157" id="6JO-hn-DLh"/>
-                                                <constraint firstItem="94L-b0-xRR" firstAttribute="leading" secondItem="gHW-qi-bOl" secondAttribute="leading" constant="157" id="fMA-s3-G15"/>
+                                                <constraint firstItem="94L-b0-xRR" firstAttribute="leading" secondItem="C5w-ys-vIM" secondAttribute="trailing" constant="44" id="Jnf-rD-G1S"/>
+                                                <constraint firstAttribute="bottom" secondItem="C5w-ys-vIM" secondAttribute="bottom" constant="34" id="egl-BJ-BTb"/>
+                                                <constraint firstItem="C5w-ys-vIM" firstAttribute="leading" secondItem="gHW-qi-bOl" secondAttribute="leading" constant="13" id="fQI-Fq-Jpo"/>
+                                                <constraint firstItem="C5w-ys-vIM" firstAttribute="top" secondItem="gHW-qi-bOl" secondAttribute="top" constant="191" id="fmm-oT-ND3"/>
                                                 <constraint firstAttribute="bottom" secondItem="94L-b0-xRR" secondAttribute="bottom" constant="46" id="nmb-3H-Nso"/>
                                             </constraints>
                                         </view>
@@ -57,10 +69,10 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="046-cw-5aV">
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="63"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.23529411764705882" green="0.23137254901960785" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <state key="normal" title="Library">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="titleColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="libraryButtonTapped:" destination="Vwt-HK-8a0" eventType="touchUpInside" id="9OP-8T-C94"/>
@@ -68,18 +80,18 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QU6-ez-dHB">
                                                     <rect key="frame" x="125" y="0.0" width="125" height="63"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.23529411759999999" green="0.23137254900000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <state key="normal" title="Camera">
-                                                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="titleColor" red="0.46274509803921571" green="0.70980392156862748" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2C-9t-tYY">
                                                     <rect key="frame" x="250" y="0.0" width="125" height="63"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.23529411759999999" green="0.23137254900000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <state key="normal" title="Scan">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="titleColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                     <connections>
                                                         <segue destination="TcZ-QS-YVM" kind="show" identifier="toNavControllerAutoCrop" id="Cjl-p5-nGM"/>
@@ -109,7 +121,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameandCategoryCell" rowHeight="257" id="0nA-eu-5r2" customClass="NameandCategoryCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="374" width="375" height="257"/>
+                                <rect key="frame" x="0.0" y="428.5" width="375" height="257"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0nA-eu-5r2" id="SdN-Uc-hnD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="256.5"/>
@@ -201,7 +213,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemDetailCell" rowHeight="437" id="sxE-bF-0cG" customClass="ItemDetailsCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="631" width="375" height="437"/>
+                                <rect key="frame" x="0.0" y="685.5" width="375" height="437"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sxE-bF-0cG" id="eIe-OY-csd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="436.5"/>
@@ -400,7 +412,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="227" id="I6O-Qz-wwg" customClass="NotesCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1068" width="375" height="227"/>
+                                <rect key="frame" x="0.0" y="1122.5" width="375" height="227"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I6O-Qz-wwg" id="J9Z-5e-vbc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="226.5"/>
@@ -448,13 +460,13 @@
             </objects>
             <point key="canvasLocation" x="911.20000000000005" y="143.47826086956522"/>
         </scene>
-        <!--CameraPreviewViewController-->
+        <!--cameraPreviewViewController-->
         <scene sceneID="EZE-bh-Hj9">
             <objects>
-                <viewControllerPlaceholder storyboardName="CameraPreview" referencedIdentifier="CameraPreviewViewController" id="RcP-4B-jgw" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="CameraPreview" referencedIdentifier="cameraPreviewViewController" id="RcP-4B-jgw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9h-S8-zuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1661" y="3"/>
+            <point key="canvasLocation" x="1660" y="-43"/>
         </scene>
         <!--navControllerCameraCrop-->
         <scene sceneID="PT5-wK-3T1">
@@ -501,4 +513,7 @@
         <image name="xcaMultiple" width="127" height="127"/>
         <image name="xcadatePickerIcon" width="20" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xfT-T4-5Nt"/>
+    </inferredMetricsTieBreakers>
 </document>
