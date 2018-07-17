@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3XC-1v-QLt">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -84,7 +84,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWV-eb-elQ" userLabel="BigView">
-                            <rect key="frame" x="0.0" y="30" width="376" height="74"/>
+                            <rect key="frame" x="0.0" y="10" width="376" height="94"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pG4-0g-WNe" userLabel="BackCircleView">
@@ -101,10 +101,10 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBG-2n-Ctx">
-                            <rect key="frame" x="0.0" y="30" width="376" height="30"/>
+                            <rect key="frame" x="0.0" y="10" width="376" height="50"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="P1v-bl-gNK">
-                                    <rect key="frame" x="0.0" y="-10" width="376" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="KyJ-ra-kCD" userLabel="L1View">
                                             <rect key="frame" x="0.0" y="0.0" width="38" height="50"/>
@@ -147,28 +147,28 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="sau-Hm-Gdv" userLabel="L3View">
-                                            <rect key="frame" x="136" y="0.0" width="38" height="50"/>
+                                            <rect key="frame" x="136" y="0.0" width="32" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="0Q9-tg-z5N"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="RI1-gS-Oo9" userLabel="MidSpace">
-                                            <rect key="frame" x="174" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="168" y="0.0" width="50" height="50"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Jwr-P5-a1Z"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-mg-B0F" userLabel="R3View">
-                                            <rect key="frame" x="224" y="0.0" width="22" height="50"/>
+                                            <rect key="frame" x="218" y="0.0" width="22" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="4Mn-i9-Q5F"/>
                                             </constraints>
                                         </view>
                                         <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bd-jS-wmD" userLabel="tabBarButton4">
-                                            <rect key="frame" x="246" y="10" width="30" height="30"/>
+                                            <rect key="frame" x="240" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="oLO-qy-byS"/>
@@ -180,14 +180,14 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="SLN-K7-e5K" userLabel="L2View">
-                                            <rect key="frame" x="276" y="0.0" width="38" height="50"/>
+                                            <rect key="frame" x="270" y="0.0" width="38" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="Q8R-Z2-Vgb"/>
                                             </constraints>
                                         </view>
                                         <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyt-0G-NRR" userLabel="tabBarButton5">
-                                            <rect key="frame" x="314" y="10" width="30" height="30"/>
+                                            <rect key="frame" x="308" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="cIK-ff-7w1"/>
@@ -199,16 +199,16 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="UNm-tX-sBt" userLabel="R1View">
-                                            <rect key="frame" x="344" y="0.0" width="32" height="50"/>
+                                            <rect key="frame" x="338" y="0.0" width="38" height="50"/>
                                             <color key="backgroundColor" red="0.210382297" green="0.210382297" blue="0.210382297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="FGr-7n-kMg"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="FGr-7n-kMg"/>
                                             </constraints>
                                         </view>
                                     </subviews>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mq-Gb-pfc" userLabel="CircleView">
-                                    <rect key="frame" x="143" y="-60" width="90" height="90"/>
+                                    <rect key="frame" x="143" y="-40" width="90" height="90"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-bC-CoI" userLabel="SmallVisibleFrontCircleView">
                                             <rect key="frame" x="6" y="10" width="78" height="78"/>
