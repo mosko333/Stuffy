@@ -30,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="-1924" y="383"/>
         </scene>
-        <!--NewAddItemTableViewController-->
+        <!--BlackTabScreen-->
         <scene sceneID="HOn-CA-Nf3">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddItem" referencedIdentifier="NewAddItemTableViewController" id="tVH-dI-6Iy" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="BlackTabScreen" referencedIdentifier="BlackTabScreen" id="tVH-dI-6Iy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="7PG-zT-m2J"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQv-yB-OEF" userLabel="First Responder" sceneMemberID="firstResponder"/>

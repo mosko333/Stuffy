@@ -21,6 +21,9 @@
 		7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE90220E1811B00F1CD79 /* AppDelegate.swift */; };
 		7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */; };
 		7E9EE96E20E317AD00F1CD79 /* CustomTabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */; };
+		7EADE38D20FE60020023215C /* BlackTabScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EADE38C20FE60020023215C /* BlackTabScreen.storyboard */; };
+		7EADE38F20FE63AC0023215C /* StartCheckScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EADE38E20FE63AC0023215C /* StartCheckScreen.storyboard */; };
+		7EADE39120FE64540023215C /* StartCheckScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EADE39020FE64540023215C /* StartCheckScreenViewController.swift */; };
 		7EBDD5EE20FD109500A01533 /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBDD5ED20FD109500A01533 /* Currency.storyboard */; };
 		7EBDD5F020FD10DA00A01533 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */; };
 		7EF32F3C20FA9B4D0057D7EF /* CustomUINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */; };
@@ -89,6 +92,9 @@
 		7E9EE90E20E1811C00F1CD79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E9EE96920E3119D00F1CD79 /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		7E9EE96D20E317AD00F1CD79 /* CustomTabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarMainView.swift; sourceTree = "<group>"; };
+		7EADE38C20FE60020023215C /* BlackTabScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BlackTabScreen.storyboard; sourceTree = "<group>"; };
+		7EADE38E20FE63AC0023215C /* StartCheckScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartCheckScreen.storyboard; sourceTree = "<group>"; };
+		7EADE39020FE64540023215C /* StartCheckScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCheckScreenViewController.swift; sourceTree = "<group>"; };
 		7EBDD5ED20FD109500A01533 /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
 		7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		7EF32F3B20FA9B4D0057D7EF /* CustomUINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUINavigationBar.swift; sourceTree = "<group>"; };
@@ -217,6 +223,8 @@
 				7EFC782F20F5814B0096238A /* Settings.storyboard */,
 				7EFC783120F581630096238A /* PinPad.storyboard */,
 				7EBDD5ED20FD109500A01533 /* Currency.storyboard */,
+				7EADE38C20FE60020023215C /* BlackTabScreen.storyboard */,
+				7EADE38E20FE63AC0023215C /* StartCheckScreen.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				F7D9D97D20F2F75F00F429A1 /* FavoriteItemsViewController.swift */,
 				F7D9D97F20F2F7A600F429A1 /* SearchItemsViewController.swift */,
 				7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */,
+				7EADE39020FE64540023215C /* StartCheckScreenViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -397,6 +406,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EADE38F20FE63AC0023215C /* StartCheckScreen.storyboard in Resources */,
 				7EFC783220F581630096238A /* PinPad.storyboard in Resources */,
 				F713F09020F5344B0014D505 /* AddCategory.storyboard in Resources */,
 				F713F08820F531880014D505 /* FavoriteItems.storyboard in Resources */,
@@ -409,6 +419,7 @@
 				F713F09820F534F40014D505 /* MyStuff.storyboard in Resources */,
 				F713F09C20F53D010014D505 /* AddItem.storyboard in Resources */,
 				7E19044220EC7BCB004DBE2D /* CameraCrop.storyboard in Resources */,
+				7EADE38D20FE60020023215C /* BlackTabScreen.storyboard in Resources */,
 				17A46CA320F7C512008E9322 /* SearchItems.storyboard in Resources */,
 				F731E98320F527EA00ACE318 /* Main.storyboard in Resources */,
 				F7A08C2620EFF7D600E37754 /* Assets.xcassets in Resources */,
@@ -437,6 +448,7 @@
 				F7D9D97E20F2F75F00F429A1 /* FavoriteItemsViewController.swift in Sources */,
 				F731E97C20F40A5300ACE318 /* User+Convenience.swift in Sources */,
 				170E022220EE8D730012405F /* CategoryController.swift in Sources */,
+				7EADE39120FE64540023215C /* StartCheckScreenViewController.swift in Sources */,
 				F731E97420F2FDA200ACE318 /* FavItemCell.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
 				F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */,
