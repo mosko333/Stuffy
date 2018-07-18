@@ -125,7 +125,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemSearchCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemSearchCell else { return UITableViewCell()}
         cell.delegate = self
         let item = searchArray[indexPath.row]
         cell.updateItem(with: item)
