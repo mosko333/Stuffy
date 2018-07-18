@@ -31,6 +31,7 @@ class ItemDetailsCell: UITableViewCell {
     @IBOutlet weak var returnDateLabel: UILabel!
     @IBOutlet weak var warrantyExpirationDateLabe:UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     weak var delegate: CustomDatePickerDelegate?
     
@@ -64,6 +65,8 @@ class ItemDetailsCell: UITableViewCell {
     }
     
     func addDoneButton() {
+        saveButton.layer.cornerRadius = 10
+        cancelButton.layer.cornerRadius = 10
         storeVenderTextField.addDoneButtonOnKeyboard()
         modelTextField.addDoneButtonOnKeyboard()
         serialTextField.addDoneButtonOnKeyboard()

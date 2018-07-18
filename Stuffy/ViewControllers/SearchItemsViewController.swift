@@ -9,8 +9,10 @@
 import UIKit
 import CoreData
 
-class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
-   
+class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+    
+    
+    var searchBar: UISearchBar?
     
     
     let itemFRC:NSFetchedResultsController<ItemCD> = {
@@ -25,18 +27,15 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         return controller
     }()
     
-    
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
-    var beginSearch = false
-    
-    var searchedItems: [ItemCD] = []{
-        didSet{
-            print("item added to search items array")
+    var searchArray: [ItemCD] = []
+    var allItems: [ItemCD] = [] {
+        didSet {
+            searchArray = allItems
+            tableView.reloadData()
         }
     }
-    var emptyArray: [ItemCD] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -44,10 +43,14 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         do {
             try itemFRC.performFetch()
             guard let items = itemFRC.fetchedObjects else {return }
-            emptyArray = items
+            allItems = items
+            tableView.reloadData()
         } catch  {
             print("\(error.localizedDescription)")
         }
+        
+        UIApplication.shared.statusBarStyle = .default
+        UIApplication.shared.statusBarView?.backgroundColor = .white
         
     }
     
@@ -56,72 +59,91 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         itemFRC.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
-        searchBar.showsCancelButton = true
-        print(searchedItems.count)
+        tableView.backgroundColor = Colors.stuffyBackgroundGray
+        setSearchBar()
+        setupShadowView()
         
+        print(allItems.count)
+    }
+    
+    fileprivate func setSearchBar() {
+        let searchBar = UISearchBar()
+        
+        let textFieldInUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInUISearchBar?.font = UIFont(name: "Avenir-Roman", size: 16)
+        textFieldInUISearchBar?.layer.borderWidth = 1.5
+        textFieldInUISearchBar?.layer.borderColor = Colors.stuffyDarkGray.cgColor
+        textFieldInUISearchBar?.layer.cornerRadius = 18
+        textFieldInUISearchBar?.clipsToBounds = true
+        searchBar.barStyle = UIBarStyle.default
+        searchBar.layer.backgroundColor = UIColor.white.cgColor
+        searchBar.placeholder = "Search"
+        searchBar.showsCancelButton = true
+        let cancelButtonAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)]
+        UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
+        //let cancelButtton = searchBar.value(forKey: "cancelButton") as? UIButton
+        self.searchBar = searchBar
+        self.searchBar?.delegate = self
+        navigationItem.titleView = searchBar
+        if (searchBar.text?.count)! < 1  {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func setupShadowView() {
+        guard let navBar = navigationController?.navigationBar else { return }
+        let shadowView = UIView(frame: navBar.frame)
+        shadowView.backgroundColor = UIColor.white
+        shadowView.layer.masksToBounds = false
+        shadowView.layer.shadowColor = UIColor(white: 0.75, alpha: 1).cgColor
+        shadowView.layer.shadowOpacity = 0.8
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 15)
+        shadowView.layer.shadowRadius = 2
+        view.addSubview(shadowView)
     }
     
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if beginSearch == false {
-            return emptyArray.count
-        }
-        if beginSearch == true {
-            return searchedItems.count
-        }
-        return 0
+        return searchArray.count
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Items"
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        let label = UILabel()
+        label.layer.backgroundColor = Colors.stuffyBackgroundGray.cgColor
+        label.text = "     Items"
+        label.font = UIFont.init(name: "Avenir-Heavy", size: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        headerView.addSubview(label)
+        headerView.backgroundColor = Colors.stuffyBackgroundGray
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 63
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if beginSearch == false {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemSearchCell
-            cell.delegate = self
-            let item = emptyArray[indexPath.row]
-            cell.updateItem(with: item)
-            return cell
-            
-        }
-        if beginSearch == true {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemSearchCell
-            cell.delegate = self
-            let item = searchedItems[indexPath.row]
-            cell.updateItem(with: item)
-            return cell
-            
-        }
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemSearchCell
+        cell.delegate = self
+        let item = searchArray[indexPath.row]
+        cell.updateItem(with: item)
+        return cell
+        
     }
-   
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        beginSearch = true
-        guard let searchText = searchBar.text else { return }
-        let characterSet = CharacterSet(charactersIn: searchText)
-        for item in emptyArray {
-            if item.title?.rangeOfCharacter(from: characterSet) != nil {
-                searchedItems.append(item)
-            }
-        }
-        tableView.reloadData()
-        searchBar.resignFirstResponder()
-    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     
+     }
+     */
+    
 }
 
 extension SearchItemsViewController: FavoriteItemDelegate {
@@ -135,6 +157,37 @@ extension SearchItemsViewController: FavoriteItemDelegate {
         cell.updateItem(with: item)
         CoreDataStack.saveContext()
     }
-    
-    
 }
+
+extension SearchItemsViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.isEmpty {
+            searchArray = allItems
+        } else {
+            searchArray = allItems.filter {
+                guard let title = $0.title?.lowercased() else { return false }
+                return title.lowercased().contains(searchText.lowercased())
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchArray = allItems
+        tableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
+}
+
+extension UIApplication {
+    var statusBarView: UIView? {
+        if responds(to: Selector("statusBar")) {
+            return value(forKey: "statusBar") as? UIView
+        }
+        return nil
+    }
+}
+
+

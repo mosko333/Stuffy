@@ -40,31 +40,31 @@ class PinPadViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet var pinDidgitViews: [UIView]!
+    @IBOutlet var pinDidgitImageViews: [UIImageView]!
     @IBOutlet var pinBtn: [UIButton]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         isThereAPin()
-        setupView()
+        // setupView()
         cancelBtn.isHidden = actionWanted == .login ? true : false
         setTitle()
     }
     
-    func setupView() {
-        for button in pinBtn {
-            button.layer.cornerRadius = button.bounds.height/2 + 4
-            button.layer.borderColor = Colors.stuffyNavyBlue.cgColor
-            button.layer.borderWidth = Constancts.buttonBorderWidth
-        }
-        for digit in pinDidgitViews {
-            digit.layer.cornerRadius = digit.frame.height / 2 + 2
-            digit.layer.borderColor = Colors.stuffySoftBlue.cgColor
-            digit.layer.borderWidth = Constancts.digitViewBorderWidth
-            digit.layer.backgroundColor = Colors.stuffyBackgroundGray.cgColor
-        }
-    }
+//    func setupView() {
+//        for button in pinBtn {
+//            button.layer.cornerRadius = button.bounds.height/2 + 4
+//            button.layer.borderColor = Colors.stuffyNavyBlue.cgColor
+//            button.layer.borderWidth = Constancts.buttonBorderWidth
+//        }
+//        for digit in pinDidgitImageViews {
+//            digit.layer.cornerRadius = digit.frame.height / 2 + 2
+//            digit.layer.borderColor = Colors.stuffySoftBlue.cgColor
+//            digit.layer.borderWidth = Constancts.digitViewBorderWidth
+//            digit.layer.backgroundColor = Colors.stuffyBackgroundGray.cgColor
+//        }
+//    }
     
     func isThereAPin() {
         if correctPin.count == 0 {
@@ -90,7 +90,7 @@ class PinPadViewController: UIViewController {
     }
     
     @IBAction func pinBtnPressed(_ sender: UIButton) {
-        pinDidgitViews[pinNumber.count].backgroundColor = Colors.stuffySoftBlue
+        pinDidgitImageViews[pinNumber.count].image = #imageLiteral(resourceName: "xcaDigitFull")
         switch pinNumber.count {
         case 0, 1, 2:
             pinNumber += "\(sender.tag)"
@@ -99,8 +99,8 @@ class PinPadViewController: UIViewController {
         case 3:
             pinNumber += "\(sender.tag)"
             print(pinNumber)
-            pinDidgitViews.forEach {didgit in
-                didgit.backgroundColor = Colors.stuffyBackgroundGray }
+            pinDidgitImageViews.forEach {didgit in
+                didgit.image = #imageLiteral(resourceName: "xcaDigitEmpty") }
             determineActionOnCompletePin()
             return
         default:
@@ -210,7 +210,7 @@ class PinPadViewController: UIViewController {
     @IBAction func deleteSinglePin(_ sender: UIButton) {
         guard pinNumber.count > 0 else { return }
         pinNumber.removeLast()
-        pinDidgitViews[pinNumber.count].backgroundColor = UIColor(white: 1, alpha: 0.01)
+        pinDidgitImageViews[pinNumber.count].image = #imageLiteral(resourceName: "xcaDigitEmpty")
         print(pinNumber)
     }
     @IBAction func cancelBtnTapped(_ sender: UIButton) {

@@ -26,7 +26,7 @@ class PhotoPreviewViewController: UIViewController {
        performSegue(withIdentifier: "toNewAddItemVC", sender: self)
         guard let photo = photo else {return}
         print("recepit save button pressed")
-        ItemCoreDataController.shared.photos.append(photo)
+        CoreDataController.shared.photos.append(photo)
         
     }
     

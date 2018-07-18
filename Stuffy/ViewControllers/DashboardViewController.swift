@@ -7,8 +7,47 @@
 //
 
 import UIKit
+import CoreData
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, NSFetchedResultsControllerDelegate {
+        
+        let categoryFRC: NSFetchedResultsController<CategoryCD> = {
+            let request: NSFetchRequest<CategoryCD> = CategoryCD.fetchRequest()
+            
+            let sortDescriptors = NSSortDescriptor(key: "name", ascending: true)
+            
+            request.sortDescriptors = [sortDescriptors]
+            print("Categories were sorted")
+            
+            let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+            
+            return controller
+            
+        }()
+    
+    let itemFRC:NSFetchedResultsController<ItemCD> = {
+        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
+        
+        let sortDescriptors = NSSortDescriptor(key: "title", ascending: true)
+        
+        request.sortDescriptors = [sortDescriptors]
+        
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return controller
+    }()
+    
+    let userFRC:NSFetchedResultsController<User> = {
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        
+        let sortDescriptors = NSSortDescriptor(key: "pin", ascending: true)
+        
+        request.sortDescriptors = [sortDescriptors]
+        
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return controller
+    }()
     
     //////////////////////
     // MARK: Properties
@@ -21,18 +60,40 @@ class DashboardViewController: UIViewController {
     @IBOutlet var returnItemDateLabel: [UILabel]!
     @IBOutlet weak var warrantyTable: UITableView!
     
-    
+    var currency = "$"
+    // TODO - Pull Currency from CoreData
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //warrantyTable.delegate = self
-        //warrantyTable.dataSource = self
+        updateViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         updateViews()
     }
 
     func updateViews() {
+        // Setup status bar to lightContent because it's changed to dark in the searchVC
+        // We set the background colors alpha to 0 because otherwise it's translucent
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 0, alpha: 0)
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         // TODO - Populate Views using search data
+        try? categoryFRC.performFetch()
+        numberOfCatLabel.text = "\(categoryFRC.fetchedObjects!.count)"
+        
+        try? itemFRC.performFetch()
+        //let moneyMoneyMoney = itemFRC.fetchedObjects ?? []
+        //for money in moneyMoneyMoney {
+            //let value = money.price
+        //}
+        
+        try? userFRC.performFetch()
+        //let pin = userFRC.fetchedObjects?.first
+        
+        currencyLabel.text = currency
     }
     /*
     // MARK: - Navigation
@@ -96,7 +157,6 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-       
         let backgroundView = UIView()
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.backgroundColor = UIColor.white
@@ -122,9 +182,12 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dashboardCell") as! DashboardTableViewCell
-        
         return cell
     }
-    
-    
+}
+
+extension DashboardViewController: CurrencyViewControllerDelegate {
+    func selectCurrency(currency: String) {
+        self.currency = currency
+    }
 }

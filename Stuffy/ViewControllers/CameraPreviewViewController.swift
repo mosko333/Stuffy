@@ -31,18 +31,18 @@ class cameraPreviewViewController: UIViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return ItemCoreDataController.shared.photos.count
+       return CoreDataController.shared.photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as! CameraPreviewCollectionViewCell
-        let photo = ItemCoreDataController.shared.photos[indexPath.row]
+        let photo = CoreDataController.shared.photos[indexPath.row]
         cell.collectionViewPhotoThumbnail.image = photo
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let image = ItemCoreDataController.shared.photos[indexPath.row]
+        let image = CoreDataController.shared.photos[indexPath.row]
         self.image = image
         
         tableView.reloadData()

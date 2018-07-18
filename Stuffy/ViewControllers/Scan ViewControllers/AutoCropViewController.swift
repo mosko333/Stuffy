@@ -64,6 +64,9 @@ class AutoCropViewController: UIViewController {
         button.setTitleColor((enabled) ? UIColor(red: CGFloat(1), green: CGFloat(0.81), blue: CGFloat(0), alpha: CGFloat(1)) : UIColor.white, for: .normal)
     }
     
+    @IBAction func cancelBtnPresses(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
     @IBAction func captureButton(_ sender: UIButton) {
         cameraViewController.captureImage(withCompletionHander: {(_ imageFilePath: String) -> Void in
             let captureImageView = UIImageView(image: UIImage(contentsOfFile: imageFilePath))

@@ -50,6 +50,7 @@ class NewAddItemTableViewController: UITableViewController {
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = false
         
+        
     }
 
 
@@ -105,9 +106,6 @@ class NewAddItemTableViewController: UITableViewController {
             cell.startRunningCaptureSession()
             cell.cameraButton.isUserInteractionEnabled = true
             cell.imageBackgroundView.isHidden = true
-    
-            
-            
             return cell
             
         }
@@ -117,8 +115,6 @@ class NewAddItemTableViewController: UITableViewController {
              cell.backgroundColor = Colors.Grey
             cell.itemNameTextField.addDoneButtonOnKeyboard()
             cell.priceTextField.addDoneButtonOnKeyboard()
-            let categoryName = categoryPicked?.name ?? ""
-            cell.categoryNameLabel.text = categoryName
             cell.quantityTextField.text = "\(numberOfItems)"
             cell.priceTextField.keyboardType = .decimalPad
             cell.delegate = self
@@ -127,9 +123,11 @@ class NewAddItemTableViewController: UITableViewController {
         
         if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell", for: indexPath) as? ItemDetailsCell else {return UITableViewCell()}
-            cell.datePickerView.backgroundColor = .white
+        
             cell.datePickerView.layer.cornerRadius = 10 
             cell.datePickerView.frame.origin.y += 700
+            cell.datePicker.backgroundColor = .white
+            
             cell.addDoneButton()
             cell.delegate = self
             return cell
@@ -138,6 +136,7 @@ class NewAddItemTableViewController: UITableViewController {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NotesCell else {return UITableViewCell()}
             
             cell.backgroundColor = Colors.Grey
+            
             cell.addDoneButton()
             return cell
         }
@@ -232,28 +231,25 @@ class NewAddItemTableViewController: UITableViewController {
             return superview
         }
         return UIView()
-
     }
     @objc func openCloseCell(_ button: UIButton){
-        if section2Open == true  && button.tag == 1{
-            
+        if section2Open == true {
             section2Open = false
-            let indexPath = IndexPath(row: 0, section: 2)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            
             button.setTitle("Open", for: .normal)
-            
+            let indexPath = IndexPath(row: 0, section: 2)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
             print("closed itemDetailCell")
             
             // open Section
-        } else if section2Open == false && button.tag == 1 {
-            
-            button.setTitle("Close", for: .normal)
-            
+        }
+        
+        if section2Open == false {
             section2Open = true
-            let indexPath = IndexPath(row: 0, section: 2)
-            tableView.insertRows(at: [indexPath], with: .automatic)
             
+            let indexPath = IndexPath(row: 0, section: 2)
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            button.setTitle("Close", for: .normal)
+        
             print("opened itemDetailCell")
             }
         }
@@ -261,6 +257,48 @@ class NewAddItemTableViewController: UITableViewController {
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
+        guard let categoypicked = categoryPicked else { return }
+        let favorited = isFavorited
+        let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! NameandCategoryCell
+        guard let title = nameCell.itemNameTextField.text, title != "" else { return }
+        print(title)
+        let itemPrice = Double("\(nameCell.priceTextField.text ?? "")") ?? 0
+        let quantity = Double(nameCell.quantityTextField.text!)
+        let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell") as! ItemDetailsCell
+        let modelNumber = itemCell.modelTextField.text ?? ""
+        let dateFormatter = DateFormatter()
+        
+        let purchaseDate = dateFormatter.date(from:"\(itemCell.purchaseDateTextField.text ?? "")") ?? Date()
+        let returnDate =  dateFormatter.date(from:"\(itemCell.returnDateTextField.text ?? "")") ?? Date()
+        let serialNumber =  itemCell.serialTextField.text ?? ""
+        let vendor = itemCell.storeVenderTextField.text ?? ""
+        let warranty = itemCell.warrantyExpirationDateTextField.text ?? ""
+        
+        let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
+        let notes = noteCell.notesTextView.text ?? ""
+        
+        CoreDataController.shared.createItem(category: categoypicked, title: title, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate)
+        
+        let item = ItemCD(title: title, isFavorited: favorited, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate, lastDayToReturn: returnDate)
+        
+        for photo in CoreDataController.shared.photos {
+            
+            CoreDataController.shared.createImage(item: item, image: photo)
+        }
+        
+        print("item was created")
+        
+        let storyboard = UIStoryboard(name: "MyStuff", bundle: nil)
+        let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
+        let topVC = DV.topViewController as! MyStuffViewController
+        topVC.categoryPicked = categoypicked
+        present(DV, animated: true)
+
+       
+
+    }
+    @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
 }
 
@@ -276,9 +314,10 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
                              kCVPixelBufferHeightKey as String: 160]
         settings.previewPhotoFormat = previewFormat
         cell.photoOutput?.capturePhoto(with: settings, delegate: self)
-    
+        
         cell.endRunningSession()
-
+       
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -307,7 +346,8 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
             let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImageOrientation.right)
             
             self.image = image
-            ItemCoreDataController.shared.photos.append(image)
+
+            CoreDataController.shared.photos.append(image)
            
     }
 }
@@ -468,23 +508,30 @@ extension NewAddItemTableViewController: UIImagePickerControllerDelegate, UINavi
 extension NewAddItemTableViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+    
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
             print("reached bottom")
+             let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
+            cell.captureSession.stopRunning()
+            
+            let storyboard = UIStoryboard(name: <#T##String#>, bundle: <#T##Bundle?#>)
         }
         
         if (scrollView.contentOffset.y <= 0){
             //reach top
         }
         
-        if (scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < (scrollView.contentSize.height - scrollView.frame.size.height)){
+        if (scrollView.contentOffset.y > 200 && scrollView.contentOffset.y < (scrollView.contentSize.height - scrollView.frame.size.height)){
             //not top and not bottom
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
+            cell.captureSession.stopRunning()
+            print("scroll view print statement")
+           
+            
         }
     
     }
-    override func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        
-    }
+   
 
 
 @objc func doneButtonPressed(){
@@ -509,20 +556,20 @@ extension NewAddItemTableViewController {
     let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
     let notes = noteCell.notesTextView.text
     
-    ItemCoreDataController.shared.createItem(category: categoypicked, title: title!, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate)
+    CoreDataController.shared.createItem(category: categoypicked, title: title!, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate)
     
     let item = ItemCD(title: title!, isFavorited: favorited, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate, lastDayToReturn: returnDate)
     
-    for photo in ItemCoreDataController.shared.photos {
+    for photo in CoreDataController.shared.photos {
         
-        ItemCoreDataController.shared.createImage(item: item, image: photo)
+        CoreDataController.shared.createImage(item: item, image: photo)
     }
     
     print("item was created")
     
     let storyboard = UIStoryboard(name: "MyStuff", bundle: nil)
     let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-    let topVC = DV.topViewController as! myStuffViewController
+    let topVC = DV.topViewController as! MyStuffViewController
     topVC.categoryPicked = categoypicked
     present(DV, animated: true)
     
@@ -542,3 +589,5 @@ extension NewAddItemTableViewController {
         }
     }
 }
+
+
