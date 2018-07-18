@@ -176,24 +176,24 @@ class NewAddItemTableViewController: UITableViewController {
             superview.backgroundColor = .white
             
             
-            let cheveronButton = UIButton(type: .system)
-            cheveronButton.setTitle("Open", for: .normal)
-            cheveronButton.setTitleColor(UIColor.black, for: .normal)
-            cheveronButton.backgroundColor = .white
-            cheveronButton.addTarget(self, action: #selector(openCloseCell), for: .touchUpInside)
-            cheveronButton.contentMode = .center
-            cheveronButton.tag = 1
+            let button = UIButton(type: .system)
+            button.setTitle("Open", for: .normal)
+            button.setTitleColor(UIColor.black, for: .normal)
+            button.backgroundColor = .white
+            button.addTarget(self, action: #selector(openCloseCell), for: .touchUpInside)
+            button.contentMode = .center
+            button.tag = 1
             
             
             
-            cheveronButton.translatesAutoresizingMaskIntoConstraints = false
+            button.translatesAutoresizingMaskIntoConstraints = false
             
-            superview.addSubview(cheveronButton)
+            superview.addSubview(button)
             
-            let buttonTop = NSLayoutConstraint(item: cheveronButton, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 0)
-            let buttonCenterX = NSLayoutConstraint(item: cheveronButton, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 130)
-            let buttonWidth = NSLayoutConstraint(item: cheveronButton, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0.25, constant: 0)
-            let buttonHeight = NSLayoutConstraint(item: cheveronButton, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 36)
+            let buttonTop = NSLayoutConstraint(item: button, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1, constant: 0)
+            let buttonCenterX = NSLayoutConstraint(item: button, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 130)
+            let buttonWidth = NSLayoutConstraint(item: button, attribute: .width, relatedBy: .equal, toItem: superview, attribute: .width, multiplier: 0.25, constant: 0)
+            let buttonHeight = NSLayoutConstraint(item: button, attribute: .height, relatedBy: .equal, toItem: superview, attribute: .height, multiplier: 0, constant: 36)
             
             superview.addConstraints([buttonTop, buttonCenterX, buttonWidth, buttonHeight])
             
@@ -514,7 +514,7 @@ extension NewAddItemTableViewController {
              let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
             cell.captureSession.stopRunning()
             
-            let storyboard = UIStoryboard(name: <#T##String#>, bundle: <#T##Bundle?#>)
+           
         }
         
         if (scrollView.contentOffset.y <= 0){
@@ -527,54 +527,8 @@ extension NewAddItemTableViewController {
             cell.captureSession.stopRunning()
             print("scroll view print statement")
            
-            
         }
     
-    }
-   
-
-
-@objc func doneButtonPressed(){
-    print("Done button pressed")
-    guard let categoypicked = categoryPicked else { return }
-    let favorited = isFavorited
-    let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! NameandCategoryCell
-    let title = nameCell.itemNameTextField.text
-    print(title)
-    let itemPrice = Double(nameCell.priceTextField.text!)
-    let quantity = Double(nameCell.quantityTextField.text!)
-    let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell") as! ItemDetailsCell
-    let modelNumber = itemCell.modelTextField.text
-    let dateFormatter = DateFormatter()
-    
-    let purchaseDate = dateFormatter.date(from:"\(itemCell.purchaseDateTextField.text ?? "")") ?? Date()
-    let returnDate =  dateFormatter.date(from:"\(itemCell.returnDateTextField.text ?? "")") ?? Date()
-    let serialNumber =  itemCell.serialTextField.text
-    let vendor = itemCell.storeVenderTextField.text
-    let warranty = itemCell.warrantyExpirationDateTextField.text
-    
-    let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
-    let notes = noteCell.notesTextView.text
-    
-    CoreDataController.shared.createItem(category: categoypicked, title: title!, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate)
-    
-    let item = ItemCD(title: title!, isFavorited: favorited, modelNumber: modelNumber!, notes: notes!, price: itemPrice!, purchasedFrom: vendor!, quantity: quantity!, serialNumber: serialNumber!, warranty: warranty!, purchaseDate: purchaseDate, lastDayToReturn: returnDate)
-    
-    for photo in CoreDataController.shared.photos {
-        
-        CoreDataController.shared.createImage(item: item, image: photo)
-    }
-    
-    print("item was created")
-    
-    let storyboard = UIStoryboard(name: "MyStuff", bundle: nil)
-    let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-    let topVC = DV.topViewController as! MyStuffViewController
-    topVC.categoryPicked = categoypicked
-    present(DV, animated: true)
-    
-    
-}
     @objc func isFavoritedButtonPressed(button: UIButton) {
         print("itemFavoritedButtonPressed")
         
