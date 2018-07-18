@@ -10,8 +10,9 @@ import Foundation
 import CoreData
 
 extension User {
-    convenience init(pin: String, context:  NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(pin: String, currency: String, context:  NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.pin = pin
+        self.currency = currency
     }
 }

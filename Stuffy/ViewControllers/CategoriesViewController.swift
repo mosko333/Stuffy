@@ -250,7 +250,7 @@ extension CategoriesViewController: UITextFieldDelegate {
         
         if let categoryName = categoryTextField.text, categoryName.count > 0{
         
-        ItemCoreDataController.shared.createCategory(name: categoryName)
+        CoreDataController.shared.createCategory(name: categoryName)
         
         fetch()
         

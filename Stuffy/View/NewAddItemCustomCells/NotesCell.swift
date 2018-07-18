@@ -30,6 +30,7 @@ class NotesCell: UITableViewCell {
     
     func addDoneButton() {
         notesTextView.addDoneButtonOnKeyboard()
+    
     }
     
 }

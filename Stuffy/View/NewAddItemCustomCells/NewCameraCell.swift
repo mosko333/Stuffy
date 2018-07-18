@@ -55,6 +55,7 @@ class NewCameraCell: UITableViewCell {
         currentCamera = backCamera
         
     }
+    
     func setupInputOutput() {
         do {
             
@@ -89,6 +90,11 @@ class NewCameraCell: UITableViewCell {
     func startRunningCaptureSession() {
         captureSession.startRunning()
     }
+    
+    func endRunningSession() {
+        captureSession.stopRunning()
+        captureSession.removeOutput(photoOutput!)
+    }
 
     @IBAction func takePictureButtonTapped(_ sender: Any) {
         
@@ -98,4 +104,5 @@ class NewCameraCell: UITableViewCell {
     @IBAction func libraryButtonTapped(_ sender: Any) {
         delegate?.toPictureLibrary(self)
     }
+    
 }
