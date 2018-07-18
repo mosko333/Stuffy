@@ -526,8 +526,8 @@ extension NewAddItemTableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
             cell.captureSession.stopRunning()
             print("scroll view print statement")
-           
         }
+    }
     
     @objc func isFavoritedButtonPressed(button: UIButton) {
         print("itemFavoritedButtonPressed")
@@ -539,9 +539,8 @@ extension NewAddItemTableViewController {
         } else {
             isFavorited = true
             button.setImage(#imageLiteral(resourceName: "xcaFullStar"), for: .normal)
-             print("true/false item is favorited: \(isFavorited)")
+            print("true/false item is favorited: \(isFavorited)")
         }
     }
 }
-
 
