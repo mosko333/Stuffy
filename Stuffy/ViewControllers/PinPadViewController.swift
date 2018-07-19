@@ -22,6 +22,7 @@ class PinPadViewController: UIViewController {
     }
     
     struct Constancts {
+        static let pinKeyString = "SeenOnbourdingScreen"
         static let systemBlueColor = "xcaStuffyDarkBlueColor"
         static let buttonBorderWidth: CGFloat = 2
         static let digitViewBorderWidth: CGFloat = 1
@@ -30,10 +31,11 @@ class PinPadViewController: UIViewController {
     //////////////////////
     // TODO: Connect to data
     //////////////////////
+    let defaults = UserDefaults.standard
     let myContext = LAContext()
-    let myLocalizedReasonString = "Give me your 👍🏼!"
+    let myLocalizedReasonString = "👍🏼"
     var pinNumber = ""
-    var correctPin = "5555"
+    var correctPin = UserDefaults().object(forKey: Constancts.pinKeyString) as? String ?? ""
     var newPin = ""
     var pinIsOn: Bool?
     var actionWanted: pinActionWanted = .create
@@ -67,7 +69,7 @@ class PinPadViewController: UIViewController {
 //    }
     
     func isThereAPin() {
-        if correctPin.count == 0 {
+        if correctPin.count != 4 {
             actionWanted = .create
         }
     }
