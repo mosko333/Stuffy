@@ -9,17 +9,13 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    struct Constants {
-        static let isPinActiveKey = "isPinActive"
-        static let currencyKey = "currency"
-    }
     
     @IBOutlet weak var settingsTable: UITableView!
     
     var currency: String {
-        return UserDefaults.standard.object(forKey: Constants.currencyKey) as? String ?? "$ Dollar" }
+        return UserDefaults.standard.object(forKey: CurrencyViewController.Constants.currencyKey) as? String ?? "$ Dollar" }
     var pinIsOn: Bool {
-        return UserDefaults.standard.object(forKey: Constants.isPinActiveKey) as? Bool ?? false }
+        return UserDefaults.standard.object(forKey: PinPadViewController.Constants.isPinActiveKey) as? Bool ?? false }
     
     override func viewDidLoad() {
         super.viewDidLoad()

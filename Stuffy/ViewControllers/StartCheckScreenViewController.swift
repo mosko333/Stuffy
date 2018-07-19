@@ -11,7 +11,6 @@ import UIKit
 class StartCheckScreenViewController: UIViewController {
     
     struct Constants {
-        static let isPinActiveKey = "isPinActive"
         static let onboardingKey = "Onboarding"
     }
     
@@ -35,7 +34,7 @@ class StartCheckScreenViewController: UIViewController {
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
         // Takes you to the pin pad if it's password is required
-        else if UserDefaults().object(forKey: Constants.isPinActiveKey) as? Bool == true {
+        else if UserDefaults().object(forKey: PinPadViewController.Constants.isPinActiveKey) as? Bool == true {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "PinPad", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "PinPadViewController") as! PinPadViewController
             viewController.actionWanted = .login
