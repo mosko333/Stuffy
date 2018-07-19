@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="771" y="-196"/>
         </scene>
-        <!--Currency-->
+        <!--CurrencyViewController-->
         <scene sceneID="pcJ-ig-XSB">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CurrencyViewController" storyboardName="Currency" id="w3s-gh-STQ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="CurrencyViewController" storyboardName="Currency" referencedIdentifier="CurrencyViewController" id="w3s-gh-STQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGU-Ap-bRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="-61"/>

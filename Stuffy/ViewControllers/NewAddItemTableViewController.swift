@@ -13,20 +13,30 @@ class NewAddItemTableViewController: UITableViewController {
     
     var pictureTaken = false
     var section2Open = false
+    var itemDetail = false
+    var datePickerSetPurchaseDate = false
+    var datePickerSetReturnDate = false
+    var datePickerSetWarrantyDate = false
+    var isFavorited = false
+    let imagePicker = UIImagePickerController()
     var categoryPicked: CategoryCD? {
         didSet{
             print("item category name is \(String(describing: categoryPicked?.name))")
         }
     }
-    var isFavorited = false
-    let dummyViewHeight = 40
+    
     var numberOfItems = 1{
         didSet {
             print("There are \(numberOfItems)")
             tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
         }
     }
-    var item: Item?
+    var item: ItemCD?{
+        didSet {
+            print("Item was pushed along. Showing Detail on \(String(describing: item?.title))")
+        
+        }
+    }
     var image: UIImage? {
         didSet{
             print("image has been set")
@@ -34,16 +44,13 @@ class NewAddItemTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if item != nil {
+            itemDetail = true
+        }
+    }
     
-    var datePickerSetPurchaseDate = false
-    var datePickerSetReturnDate = false
-    var datePickerSetWarrantyDate = false
-    
-
-    let imagePicker = UIImagePickerController()
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -82,7 +89,7 @@ class NewAddItemTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 && pictureTaken == false  {
+        if indexPath.section == 0 && pictureTaken == false && itemDetail == false  {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
         
         cell.delegate = self
@@ -94,9 +101,8 @@ class NewAddItemTableViewController: UITableViewController {
         
         return cell
     }
-        
-         if indexPath.section == 0 && pictureTaken ==  true {
-             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
+         if indexPath.section == 0 && pictureTaken ==  true  && itemDetail == false {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
             cell.delegate = self
             cell.thumbnailImage.image = image
             cell.setupCaptureSession()
@@ -105,7 +111,7 @@ class NewAddItemTableViewController: UITableViewController {
             cell.setupPreviewLayer()
             cell.startRunningCaptureSession()
             cell.cameraButton.isUserInteractionEnabled = true
-            cell.imageBackgroundView.isHidden = true
+    
             return cell
             
         }
@@ -118,26 +124,30 @@ class NewAddItemTableViewController: UITableViewController {
             cell.quantityTextField.text = "\(numberOfItems)"
             cell.priceTextField.keyboardType = .decimalPad
             cell.delegate = self
+            cell.updateCell(with: item)
             return cell
         }
         
         if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell", for: indexPath) as? ItemDetailsCell else {return UITableViewCell()}
-        
+            cell.delegate = self
             cell.datePickerView.layer.cornerRadius = 10 
             cell.datePickerView.frame.origin.y += 700
             cell.datePicker.backgroundColor = .white
-            
             cell.addDoneButton()
-            cell.delegate = self
+
             return cell
         }
         if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NotesCell else {return UITableViewCell()}
-            
+            cell.delegate = self
             cell.backgroundColor = Colors.Grey
-            
             cell.addDoneButton()
+            cell.setupNotesCell()
+
+            cell.notesTextView.delegate = self
+            
+            
             return cell
         }
         
@@ -151,10 +161,7 @@ class NewAddItemTableViewController: UITableViewController {
         if indexPath.section == 1{
          return 253
         }
-        if indexPath.section == 2 && section2Open == false{
-            return 0
-        }
-        if indexPath.section == 2 && section2Open == true {
+        if indexPath.section == 2 {
             return 437
         }
         if indexPath.section == 3 {
@@ -162,6 +169,7 @@ class NewAddItemTableViewController: UITableViewController {
         }
         return 0
     }
+   
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 2 {
@@ -170,22 +178,23 @@ class NewAddItemTableViewController: UITableViewController {
         return 0
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // this will setup the headers for the item details and documents
-        if section == 2 {
+        if section == 2  {
             let superview = UIView()
             superview.backgroundColor = .white
-            
-            
+        
             let button = UIButton(type: .system)
-            button.setTitle("Open", for: .normal)
+            
+            if section2Open == true {
+                button.setTitle("Close", for: .normal)
+            } else {
+                button.setTitle("Open", for: .normal)
+            }
             button.setTitleColor(UIColor.black, for: .normal)
             button.backgroundColor = .white
             button.addTarget(self, action: #selector(openCloseCell), for: .touchUpInside)
             button.contentMode = .center
             button.tag = 1
-            
-            
-            
+    
             button.translatesAutoresizingMaskIntoConstraints = false
             
             superview.addSubview(button)
@@ -214,7 +223,7 @@ class NewAddItemTableViewController: UITableViewController {
             superview.addConstraints([labelTop, labelCenterX, labelWidth, labelHeight])
             
             let plusImage = UIImageView()
-            plusImage.image = UIImage(named: "xcaPlus")
+            plusImage.image = UIImage(named: "xcabluePlusIcon")
             
             superview.addSubview(plusImage)
             
@@ -233,23 +242,19 @@ class NewAddItemTableViewController: UITableViewController {
         return UIView()
     }
     @objc func openCloseCell(_ button: UIButton){
+        
         if section2Open == true {
             section2Open = false
-            button.setTitle("Open", for: .normal)
             let indexPath = IndexPath(row: 0, section: 2)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
             print("closed itemDetailCell")
-            
-            // open Section
-        }
-        
-        if section2Open == false {
+          
+        } else {
             section2Open = true
             
             let indexPath = IndexPath(row: 0, section: 2)
             self.tableView.insertRows(at: [indexPath], with: .automatic)
-            button.setTitle("Close", for: .normal)
-        
+    
             print("opened itemDetailCell")
             }
         }
@@ -370,13 +375,6 @@ extension NewAddItemTableViewController: ChangeQuantityDelegate {
          numberOfItems -= 1
         print("one item has been removed")
     }
-    
-    func openCategories(_ cell: NameandCategoryCell) {
-        print("open categories button tapped")
-    }
-    
-    
-    
 }
 
 
@@ -385,8 +383,6 @@ extension NewAddItemTableViewController: deleteItemDelegate {
         print("Delete item button pressed")
         
     }
-    
-    
 }
 
 extension NewAddItemTableViewController: CustomDatePickerDelegate {
@@ -462,26 +458,29 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
     }
     
     func dateChanged(_ cell: ItemDetailsCell) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        dateFormatter.dateFormat = "M/d/yy"
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateStyle = DateFormatter.Style.short
+        dateFormatter1.timeStyle = DateFormatter.Style.short
+        dateFormatter1.dateFormat = "M/d/yy"
+        
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateStyle = DateFormatter.Style.long
         if datePickerSetPurchaseDate == true {
             cell.purchaseDateLabel.isHidden = false
-            let purchaseDate = dateFormatter.string(from: cell.datePicker.date)
+            let purchaseDate = dateFormatter1.string(from: cell.datePicker.date)
             cell.purchaseDateLabel.text = purchaseDate
             
         }
         if datePickerSetReturnDate == true {
             cell.returnDateLabel.isHidden = false
-            let returnDate = dateFormatter.string(from: cell.datePicker.date)
+            let returnDate = dateFormatter1.string(from: cell.datePicker.date)
             cell.returnDateLabel.text = returnDate
             
         }
         
         if datePickerSetWarrantyDate == true {
             cell.warrantyExpirationDateLabe.isHidden = false
-            let warrantyDate = dateFormatter.string(from: cell.datePicker.date)
+            let warrantyDate = dateFormatter2.string(from: cell.datePicker.date)
             cell.warrantyExpirationDateLabe.text = warrantyDate
         }
         cell.saveButton.backgroundColor = .blue
@@ -513,8 +512,6 @@ extension NewAddItemTableViewController {
             print("reached bottom")
              let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
             cell.captureSession.stopRunning()
-            
-           
         }
         
         if (scrollView.contentOffset.y <= 0){
@@ -529,18 +526,20 @@ extension NewAddItemTableViewController {
         }
     }
     
-    @objc func isFavoritedButtonPressed(button: UIButton) {
-        print("itemFavoritedButtonPressed")
-        
-        if isFavorited == true {
-            isFavorited = false
-            button.setImage(#imageLiteral(resourceName: "xcaEmptyStar"), for: .normal)
-            print("true/false item is favorited: \(isFavorited)")
-        } else {
-            isFavorited = true
-            button.setImage(#imageLiteral(resourceName: "xcaFullStar"), for: .normal)
-            print("true/false item is favorited: \(isFavorited)")
-        }
-    }
 }
 
+extension NewAddItemTableViewController: UITextViewDelegate {
+ 
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let indexPath = IndexPath(row: 0, section: 3)
+        let noteCell = tableView.cellForRow(at: indexPath) as! NotesCell
+        
+        noteCell.notesTextView.textColor = .black
+        
+    }
+   
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        textView.resignFirstResponder()
+    }
+}

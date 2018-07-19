@@ -51,6 +51,7 @@
 		F731E97C20F40A5300ACE318 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F731E97B20F40A5300ACE318 /* User+Convenience.swift */; };
 		F731E98220F527EA00ACE318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F731E98020F527E900ACE318 /* LaunchScreen.storyboard */; };
 		F731E98320F527EA00ACE318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F731E98120F527E900ACE318 /* Main.storyboard */; };
+		F770EE9520FFD3160031CFE3 /* Currency.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F770EE9420FFD3160031CFE3 /* Currency.storyboard */; };
 		F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */; };
 		F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */; };
 		F77BB3E620EAEB1700D2FCD4 /* NewAddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */; };
@@ -58,6 +59,7 @@
 		F77BB3EB20EC127A00D2FCD4 /* NameandCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */; };
 		F77BB3ED20EC46A800D2FCD4 /* ItemDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */; };
 		F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3EE20EE7C1400D2FCD4 /* NotesCell.swift */; };
+		F78D4D9720FFBD9900D487D1 /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D4D9620FFBD9900D487D1 /* ItemDetailTableViewController.swift */; };
 		F78D660820E18BBC003407E7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660720E18BBC003407E7 /* CoreDataStack.swift */; };
 		F78D660A20E18C14003407E7 /* Item+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660920E18C14003407E7 /* Item+Convenience.swift */; };
 		F78D660C20E191EC003407E7 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78D660B20E191EC003407E7 /* CoreDataController.swift */; };
@@ -102,7 +104,6 @@
 		7EADE38C20FE60020023215C /* BlackTabScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BlackTabScreen.storyboard; sourceTree = "<group>"; };
 		7EADE38E20FE63AC0023215C /* StartCheckScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartCheckScreen.storyboard; sourceTree = "<group>"; };
 		7EADE39020FE64540023215C /* StartCheckScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCheckScreenViewController.swift; sourceTree = "<group>"; };
-		7EBDD5ED20FD109500A01533 /* Currency.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
 		7EBDD5EF20FD10DA00A01533 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		7EFC781D20F5774B0096238A /* Dashboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Dashboard.storyboard; sourceTree = "<group>"; };
 		7EFC781F20F577810096238A /* PinPadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinPadViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		F731E97B20F40A5300ACE318 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		F731E98020F527E900ACE318 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F731E98120F527E900ACE318 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F770EE9420FFD3160031CFE3 /* Currency.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Currency.storyboard; sourceTree = "<group>"; };
 		F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
 		F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		F77BB3E520EAEB1700D2FCD4 /* NewAddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddItemTableViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		F77BB3EA20EC127A00D2FCD4 /* NameandCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameandCategoryCell.swift; sourceTree = "<group>"; };
 		F77BB3EC20EC46A800D2FCD4 /* ItemDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsCell.swift; sourceTree = "<group>"; };
 		F77BB3EE20EE7C1400D2FCD4 /* NotesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesCell.swift; sourceTree = "<group>"; };
+		F78D4D9620FFBD9900D487D1 /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
 		F78D660720E18BBC003407E7 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		F78D660920E18C14003407E7 /* Item+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Convenience.swift"; sourceTree = "<group>"; };
 		F78D660B20E191EC003407E7 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -220,6 +223,7 @@
 		7E9EE91520E1816400F1CD79 /* StoryBoards */ = {
 			isa = PBXGroup;
 			children = (
+				F770EE9420FFD3160031CFE3 /* Currency.storyboard */,
 				F731E98020F527E900ACE318 /* LaunchScreen.storyboard */,
 				F731E98120F527E900ACE318 /* Main.storyboard */,
 				7E19044120EC7BCA004DBE2D /* CameraCrop.storyboard */,
@@ -235,7 +239,6 @@
 				7EFC782F20F5814B0096238A /* Settings.storyboard */,
 				7EFC783120F581630096238A /* PinPad.storyboard */,
 				17A46CA420FD2DAA008E9322 /* Onboarding.storyboard */,
-				7EBDD5ED20FD109500A01533 /* Currency.storyboard */,
 				7EADE38C20FE60020023215C /* BlackTabScreen.storyboard */,
 				7EADE38E20FE63AC0023215C /* StartCheckScreen.storyboard */,
 			);
@@ -319,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				F78F675620FE6974001320D1 /* CurrencyViewController.swift */,
+				F78D4D9620FFBD9900D487D1 /* ItemDetailTableViewController.swift */,
 				7EFC782120F577810096238A /* DashboardViewController.swift */,
 				7EFC781F20F577810096238A /* PinPadViewController.swift */,
 				7EFC782020F577810096238A /* SettingsViewController.swift */,
@@ -426,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EADE38F20FE63AC0023215C /* StartCheckScreen.storyboard in Resources */,
+				F770EE9520FFD3160031CFE3 /* Currency.storyboard in Resources */,
 				7EFC783220F581630096238A /* PinPad.storyboard in Resources */,
 				F713F09020F5344B0014D505 /* AddCategory.storyboard in Resources */,
 				F713F08820F531880014D505 /* FavoriteItems.storyboard in Resources */,
@@ -470,6 +475,7 @@
 				F731E97C20F40A5300ACE318 /* User+Convenience.swift in Sources */,
 				170E022220EE8D730012405F /* CategoryController.swift in Sources */,
 				7EADE39120FE64540023215C /* StartCheckScreenViewController.swift in Sources */,
+				F78D4D9720FFBD9900D487D1 /* ItemDetailTableViewController.swift in Sources */,
 				F731E97420F2FDA200ACE318 /* FavItemCell.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
 				F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */,

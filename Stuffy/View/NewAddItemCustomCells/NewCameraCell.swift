@@ -20,7 +20,7 @@ class NewCameraCell: UITableViewCell {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var thumbnailImage: UIImageView!
-    @IBOutlet weak var imageBackgroundView: UIImageView!
+   
     
     weak var delegate: CameraDelegate?
     
@@ -106,3 +106,4 @@ class NewCameraCell: UITableViewCell {
     }
     
 }
+
