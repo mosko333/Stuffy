@@ -33,6 +33,8 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     var allItems: [ItemCD] = [] {
         didSet {
             searchArray = allItems
+            let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+            self.tableView.contentInset = insets
             tableView.reloadData()
         }
     }
@@ -125,7 +127,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemSearchCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemSearchCell else { return UITableViewCell()}
         cell.delegate = self
         let item = searchArray[indexPath.row]
         cell.updateItem(with: item)

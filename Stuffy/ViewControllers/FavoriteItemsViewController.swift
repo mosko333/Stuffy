@@ -47,6 +47,7 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         favoritedItems = []
+        favoritedCategories = []
         do {
             try categoryFRC.performFetch()
             guard categoryFRC.fetchedObjects != nil else { return }
@@ -80,6 +81,8 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
         
         UIApplication.shared.statusBarView?.backgroundColor = UIColor(displayP3Red: 30, green: 57, blue: 81, alpha: 0)
         UIApplication.shared.statusBarStyle = .lightContent
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        self.tableView.contentInset = insets
         self.tableView.reloadData()
     }
     
@@ -120,7 +123,7 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
             let itemCount = category.items?.count ?? 0
             cell.categoryCountLabel.text = "(\(itemCount))"
             cell.backgroundColor = Colors.stuffyBackgroundGray
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
+            //cell.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
             
             return cell
         }

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate  {
+class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate  {
     
     let itemsFRC:NSFetchedResultsController<ItemCD> = {
         let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
@@ -23,6 +23,8 @@ class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         return controller
     }()
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var items: [ItemCD] = []
     var categoryItems: [ItemCD] = []
     var categoryPicked: CategoryCD? {
@@ -32,7 +34,6 @@ class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         }
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -50,15 +51,16 @@ class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         } catch  {
             print("\(error.localizedDescription)")
         }
-        
-       collectionView.reloadData()
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        self.tableView.contentInset = insets
+       tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         navigationItem.title = categoryPicked?.name
     }
 
@@ -67,23 +69,23 @@ class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
         navigationController?.popViewController(animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoryItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myStuffCell", for: indexPath) as? myStuffCell else {return UICollectionViewCell()}
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "myStuffCell", for: indexPath) as? ItemSearchCell else {return UITableViewCell()}
+        cell.delegate = self
         let item =  categoryItems[indexPath.row]
-       //  let data = item.image ?? Data.init()
-       // let image = UIImage(data: data)
-       // let finalImage = UIImage(cgImage: (image?.cgImage)!, scale: 1.0, orientation: .right)
-      //  cell.namelabel.text = item.title
-      //  cell.imageThumbnailView.image = finalImage
-        
+        cell.updateItem(with: item)
+
+    
     return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryItems.count
-        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 95
     }
     
     @IBAction func backBtnPressed(_ sender: UIBarButtonItem) {
@@ -102,4 +104,19 @@ class MyStuffViewController: UIViewController,  UICollectionViewDataSource, UICo
 //        }
 //    }
 
+}
+
+extension MyStuffViewController: FavoriteItemDelegate {
+    func itemFavorited(_ cell: ItemSearchCell) {
+        let indexPath = tableView.indexPath(for: cell)
+        
+        let item = itemsFRC.object(at: indexPath!)
+        
+        item.isFavorited = !item.isFavorited
+        print(item.isFavorited)
+        cell.updateItem(with: item)
+        CoreDataStack.saveContext()
+    }
+    
+    
 }
