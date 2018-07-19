@@ -62,6 +62,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="pinSwitch" destination="7TE-H3-BRN" id="VYr-3X-6nR"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResetCell" rowHeight="77" id="qsE-fQ-fAa" customClass="ResetAndEraseTableViewCell" customModule="Stuffy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="105" width="375" height="77"/>

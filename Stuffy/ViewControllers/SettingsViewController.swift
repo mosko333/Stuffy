@@ -9,11 +9,15 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    struct Constants {
+        static let isPinActiveKey = "isPinActive"
+    }
     
     @IBOutlet weak var settingsTable: UITableView!
     
     let currency = ["$", "£", "₪", "€", "₫", "₱", "р.", "₨", "₣", "¥", "₩", "₴", "kr", "د.إ", "ر.س"]
-    var pinIsOn: Bool = true
+    var pinIsOn: Bool {
+        return UserDefaults.standard.object(forKey: Constants.isPinActiveKey) as? Bool ?? false }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +68,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as! TouchIDTableViewCell
-            cell.delegate = self
             return cell
         }
         if indexPath.row == 1 {
@@ -77,11 +80,4 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyPickerTableViewCell
         } else {return UITableViewCell()}
     }
-}
-
-extension SettingsViewController: TouchIDTableViewCellDelegate {
-    func pinOnOffToggle(pinIsOn: Bool) {
-        self.pinIsOn = pinIsOn
-    }
-    
 }

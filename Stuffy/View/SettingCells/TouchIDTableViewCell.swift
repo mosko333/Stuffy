@@ -7,25 +7,30 @@
 //
 
 import UIKit
-protocol TouchIDTableViewCellDelegate: class {
-    func pinOnOffToggle(pinIsOn: Bool)
-}
 
 class TouchIDTableViewCell: UITableViewCell {
-
-    weak var delegate: TouchIDTableViewCellDelegate?
+    
+    struct Constants {
+        static let isPinActiveKey = "isPinActive"
+    }
+    
+    @IBOutlet weak var pinSwitch: UISwitch!
+    
+    let defaults = UserDefaults.standard
+    var pinIsOn: Bool {
+        return UserDefaults.standard.object(forKey: Constants.isPinActiveKey) as? Bool ?? false }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // set switch state to UserDefaults state
+        pinSwitch.isOn = pinIsOn
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     @IBAction func pinSwitchToggled(_ sender: UISwitch) {
-        delegate?.pinOnOffToggle(pinIsOn: sender.isOn)
+        defaults.set(sender.isOn, forKey: Constants.isPinActiveKey)
     }
 }

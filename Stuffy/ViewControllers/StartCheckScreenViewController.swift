@@ -10,6 +10,11 @@ import UIKit
 
 class StartCheckScreenViewController: UIViewController {
     
+    struct Constants {
+        static let isPinActiveKey = "isPinActive"
+        static let onboardingKey = "Onboarding"
+    }
+    
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -22,26 +27,25 @@ class StartCheckScreenViewController: UIViewController {
     }
     
     func checkUserStatus() {
-        if !isKeyPresentInUserDefaults(key: "SeenOnbourdingScreen") {
-            defaults.set(true, forKey: "SeenOnbourdingScreen")
+        // Takes them to the onboarding screen on first login
+        if UserDefaults.standard.object(forKey: Constants.onboardingKey) != nil {
+            defaults.set(true, forKey: Constants.onboardingKey)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "OnboardPageControlViewController") as! OnboardPageControlViewController
             UIApplication.shared.keyWindow?.rootViewController = viewController
-        } else if defaults.string(forKey: "Pin")?.count == 4 {
+        }
+        // Takes you to the pin pad if it's password is required
+        else if UserDefaults().object(forKey: Constants.isPinActiveKey) as? Bool == true {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "PinPad", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "PinPadViewController") as! PinPadViewController
             viewController.actionWanted = .login
             UIApplication.shared.keyWindow?.rootViewController = viewController
-        } else {
+        }
+        // Moves to the main storyboard if onboarding has been done and no password required
+        else {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "CustomTabBarViewContoller") as! CustomTabBarViewController
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
     }
-    
-    func isKeyPresentInUserDefaults(key: String) -> Bool {
-        return UserDefaults.standard.object(forKey: key) != nil
-    }
 }
-
-
