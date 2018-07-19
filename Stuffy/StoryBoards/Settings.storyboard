@@ -229,7 +229,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="PinPadViewController" storyboardName="PinPad" referencedIdentifier="PinPadViewController" id="hxa-PF-9ef" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCX-Ki-TUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="-152"/>
+            <point key="canvasLocation" x="771" y="-196"/>
         </scene>
         <!--CurrencyViewController-->
         <scene sceneID="pcJ-ig-XSB">
@@ -237,7 +237,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="CurrencyViewController" storyboardName="Currency" referencedIdentifier="CurrencyViewController" id="w3s-gh-STQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGU-Ap-bRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="-55"/>
+            <point key="canvasLocation" x="709" y="-61"/>
         </scene>
     </scenes>
     <resources>

@@ -63,7 +63,7 @@
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="iix-aE-WR0">
             <objects>
-                <tabBarController storyboardIdentifier="CustomTabBarViewContoller" id="3XC-1v-QLt" customClass="CustomTabBarViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CustomTabBarViewContoller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3XC-1v-QLt" customClass="CustomTabBarViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dPu-uS-LHH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
