@@ -20,6 +20,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         return controller
     }()
     
+    
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     

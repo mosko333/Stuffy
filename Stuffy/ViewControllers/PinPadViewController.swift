@@ -21,22 +21,25 @@ class PinPadViewController: UIViewController {
         case unassigned
     }
     
-    struct Constancts {
-        static let systemBlueColor = "xcaStuffyDarkBlueColor"
-        static let buttonBorderWidth: CGFloat = 2
-        static let digitViewBorderWidth: CGFloat = 1
+    struct Constants {
+        static let isPinActiveKey = "isPinActive"
+        static let pinKey = "Pin"
     }
     
     //////////////////////
     // TODO: Connect to data
     //////////////////////
+    let defaults = UserDefaults.standard
     let myContext = LAContext()
-    let myLocalizedReasonString = "Give me your 👍🏼!"
+    let myLocalizedReasonString = "👍🏼"
     var pinNumber = ""
-    var correctPin = "5555"
     var newPin = ""
-    var pinIsOn: Bool?
     var actionWanted: pinActionWanted = .create
+    
+    var pinIsOn: Bool {
+        return UserDefaults.standard.object(forKey: Constants.isPinActiveKey) as? Bool ?? false }
+    var correctPin: String {
+        return UserDefaults.standard.object(forKey: Constants.pinKey) as? String ?? "" }
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -47,27 +50,12 @@ class PinPadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         isThereAPin()
-        // setupView()
         cancelBtn.isHidden = actionWanted == .login ? true : false
         setTitle()
     }
     
-//    func setupView() {
-//        for button in pinBtn {
-//            button.layer.cornerRadius = button.bounds.height/2 + 4
-//            button.layer.borderColor = Colors.stuffyNavyBlue.cgColor
-//            button.layer.borderWidth = Constancts.buttonBorderWidth
-//        }
-//        for digit in pinDidgitImageViews {
-//            digit.layer.cornerRadius = digit.frame.height / 2 + 2
-//            digit.layer.borderColor = Colors.stuffySoftBlue.cgColor
-//            digit.layer.borderWidth = Constancts.digitViewBorderWidth
-//            digit.layer.backgroundColor = Colors.stuffyBackgroundGray.cgColor
-//        }
-//    }
-    
     func isThereAPin() {
-        if correctPin.count == 0 {
+        if correctPin.count != 4 {
             actionWanted = .create
         }
     }
@@ -123,9 +111,10 @@ class PinPadViewController: UIViewController {
             // check if newPin == entered Pin
             if pinNumber == newPin {
                 // change pin
-                correctPin = newPin
+                defaults.set(newPin, forKey: Constants.pinKey)
                 print("new Pin created \(correctPin)")
-                pinIsOn = true
+                // Turn on pin in user defaults
+                defaults.set(true, forKey: Constants.isPinActiveKey)
                 print("Pin is on")
                 // dissmiss
                 dismiss(animated: true)
@@ -134,9 +123,6 @@ class PinPadViewController: UIViewController {
                 print("Wrong Pin")
                 titleLabel.text = "Wrong Pin, Please try again"
             }
-            
-            // else
-            // change label, wrong pin, please try again
             return
         default:
             return
@@ -157,20 +143,16 @@ class PinPadViewController: UIViewController {
     func pinEnteredCorrectly() {
         switch actionWanted {
         case .login:
-//            let storyboard = UIStoryboard(name: "StuffyHome", bundle: nil)
-//            let destinationVC = storyboard.instantiateViewController(withIdentifier: "StuffyHome")
-//            present(destinationVC, animated: true, completion: nil)
+            loginToMain()
             return
         case .create, .resetPin:
             enterNewPinNumber()
             return
-        case .confirmPinChange:
-            newPinConfirmed()
-            return
         case .turnOff:
             pinNumber = ""
-            pinIsOn = false
-            print("Pin state is \(pinIsOn!)")
+            // Turn off pin in user defaults
+            defaults.set(false, forKey: Constants.isPinActiveKey)
+            print("Pin state is \(pinIsOn)")
             dismiss(animated: true)
             return
         default:
@@ -189,22 +171,18 @@ class PinPadViewController: UIViewController {
         actionWanted = .confirmPinChange
     }
     
-    func newPinConfirmed() {
-        print("New Pin set as \(newPin)")
-        //Turn on Pin
-        //set pin == newPin
-        activateTouchID()
-        dismiss(animated: true)
-    }
-    
     func turnOffPin() {
         // Turn off Pin
-        correctPin = ""
+        defaults.set("", forKey: Constants.pinKey)
         dismiss(animated: true)
     }
     
-    func activateTouchID() {
-        
+    func loginToMain() {
+        DispatchQueue.main.async {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "CustomTabBarViewContoller") as! CustomTabBarViewController
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
     }
     
     @IBAction func deleteSinglePin(_ sender: UIButton) {
@@ -222,7 +200,16 @@ class PinPadViewController: UIViewController {
             if myContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &authError) {
                 myContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: myLocalizedReasonString) { success, evaluateError in
                     if success {
-                        self.performSegue(withIdentifier: "segueStuffyHome", sender: self)
+                        switch self.actionWanted {
+                        case .turnOff:
+                            self.turnOffPin()
+                        case .resetPin:
+                            self.enterNewPinNumber()
+                        case .login:
+                        self.loginToMain()
+                        default:
+                            self.dismiss(animated: true)
+                        }
                     } else {
                         // User did not authenticate successfully, look at error and take appropriate action
                     }
@@ -234,15 +221,5 @@ class PinPadViewController: UIViewController {
             // Fallback on earlier versions
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
