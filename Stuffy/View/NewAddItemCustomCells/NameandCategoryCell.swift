@@ -19,7 +19,6 @@ class NameandCategoryCell: UITableViewCell {
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var changeCategoryButton: UIButton!
     
-    var item: ItemCD?
     
     weak var delegate: ChangeQuantityDelegate?
     
@@ -30,14 +29,16 @@ class NameandCategoryCell: UITableViewCell {
         delegate?.minusItemQuantity(self)
     }
     
-    func updateCell(with item: ItemCD?){
-        guard let item = item else {return}
-        
+    func updateCell(with item: ItemCD?) {
+        guard let item = item else { return }
+
         itemNameTextField.text = item.title
         priceTextField.text = ("\(item.price)")
         quantityTextField.text = ("\(item.quantity)")
-        changeCategoryButton.titleLabel?.text =                             item.category?.name
         
     }
-
+    func updateCell(with category: CategoryCD?) {
+        changeCategoryButton.setTitle("\(String(describing: category?.name))", for: .normal)
+        print("category has been updated")
+    }
 }
