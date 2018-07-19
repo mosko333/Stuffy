@@ -14,13 +14,13 @@
         <scene sceneID="gSh-Hl-oif">
             <objects>
                 <tableViewController storyboardIdentifier="NewAddItemTableViewController" id="lfv-ti-21s" customClass="NewAddItemTableViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="B8d-qU-TnN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="B8d-qU-TnN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewCameraCell" rowHeight="373" id="Vwt-HK-8a0" customClass="NewCameraCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="373"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="373"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vwt-HK-8a0" id="qzZ-Y7-mRH">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="372.5"/>
@@ -36,10 +36,6 @@
                                                         <action selector="takePictureButtonTapped:" destination="Vwt-HK-8a0" eventType="touchUpInside" id="j7A-1j-BVr"/>
                                                     </connections>
                                                 </button>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaMultiple" translatesAutoresizingMaskIntoConstraints="NO" id="SRC-ug-mKe">
-                                                    <rect key="frame" x="125" y="62" width="127" height="127"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5w-ys-vIM">
                                                     <rect key="frame" x="13" y="191" width="100" height="87"/>
                                                     <connections>
@@ -116,12 +112,11 @@
                                 <connections>
                                     <outlet property="cameraButton" destination="94L-b0-xRR" id="kp7-We-gAZ"/>
                                     <outlet property="cameraView" destination="gHW-qi-bOl" id="yB0-9G-fjO"/>
-                                    <outlet property="imageBackgroundView" destination="SRC-ug-mKe" id="ISW-vO-jxG"/>
                                     <outlet property="thumbnailImage" destination="EeY-2O-08C" id="a3D-Qb-CEQ"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameandCategoryCell" rowHeight="257" id="0nA-eu-5r2" customClass="NameandCategoryCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="428.5" width="375" height="257"/>
+                                <rect key="frame" x="0.0" y="401" width="375" height="257"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0nA-eu-5r2" id="SdN-Uc-hnD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="256.5"/>
@@ -178,17 +173,13 @@
                                             <rect key="frame" x="16" y="11" width="179" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                            <state key="normal" title="  Select Category " image="xcaCategoryBox">
+                                            <state key="normal" title="Select Category ">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
                                                 <segue destination="TTN-N5-keP" kind="show" id="QHa-tm-Wc8"/>
                                             </connections>
                                         </button>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaDownChevron" translatesAutoresizingMaskIntoConstraints="NO" id="d91-me-ThA">
-                                            <rect key="frame" x="189" y="16" width="16" height="11"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PURCHASE PRICE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IK9-ai-3Rk">
                                             <rect key="frame" x="16" y="118" width="128" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -196,24 +187,25 @@
                                             <color key="textColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-DG-PZr">
-                                            <rect key="frame" x="58" y="11" width="147" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaCategoryBox" translatesAutoresizingMaskIntoConstraints="NO" id="dH3-Ai-YEQ">
+                                            <rect key="frame" x="16" y="13" width="18" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaDownChevron" translatesAutoresizingMaskIntoConstraints="NO" id="d91-me-ThA">
+                                            <rect key="frame" x="177" y="16" width="18" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="categoryNameLabel" destination="xeR-DG-PZr" id="w0w-fY-IWv"/>
+                                    <outlet property="changeCategoryButton" destination="PwI-F6-65a" id="5kV-dA-98a"/>
                                     <outlet property="itemNameTextField" destination="oNG-Ta-OSL" id="R0a-i3-HJu"/>
                                     <outlet property="priceTextField" destination="Hih-Jd-muP" id="rbb-W9-rKx"/>
                                     <outlet property="quantityTextField" destination="YsA-Am-CD0" id="eKa-Vy-6l3"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemDetailCell" rowHeight="437" id="sxE-bF-0cG" customClass="ItemDetailsCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="685.5" width="375" height="437"/>
+                                <rect key="frame" x="0.0" y="658" width="375" height="437"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sxE-bF-0cG" id="eIe-OY-csd">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="436.5"/>
@@ -414,14 +406,22 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="227" id="I6O-Qz-wwg" customClass="NotesCell" customModule="Stuffy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="1122.5" width="375" height="227"/>
+                                <rect key="frame" x="0.0" y="1095" width="375" height="227"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I6O-Qz-wwg" id="J9Z-5e-vbc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="226.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QCv-WP-yid">
+                                            <rect key="frame" x="14" y="16" width="347" height="167"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVh-WR-PMy">
-                                            <rect key="frame" x="69" y="168" width="237" height="22"/>
+                                            <rect key="frame" x="69" y="191" width="237" height="22"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Delete This Item">
                                                 <color key="titleColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -430,17 +430,10 @@
                                                 <action selector="deleteItemButtonTappped:" destination="I6O-Qz-wwg" eventType="touchUpInside" id="hLi-yL-0cl"/>
                                             </connections>
                                         </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add Notes" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QCv-WP-yid">
-                                            <rect key="frame" x="21" y="15" width="333" height="129"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="deleteButton" destination="iVh-WR-PMy" id="KSr-v6-8iM"/>
                                     <outlet property="notesTextView" destination="QCv-WP-yid" id="jzc-ul-UKZ"/>
                                 </connections>
                             </tableViewCell>
@@ -519,7 +512,6 @@
         <image name="xcaCategoryBox" width="21" height="22"/>
         <image name="xcaDownChevron" width="14" height="8"/>
         <image name="xcaMinus" width="39" height="38"/>
-        <image name="xcaMultiple" width="127" height="127"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xfT-T4-5Nt"/>
