@@ -11,17 +11,6 @@ import CoreData
 
 class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate  {
     
-    let itemsFRC:NSFetchedResultsController<ItemCD> = {
-        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
-        
-        let sortDescriptors = NSSortDescriptor(key: "title", ascending: true)
-        
-        request.sortDescriptors = [sortDescriptors]
-        
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        return controller
-    }()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,6 +18,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     var categoryItems: [ItemCD] = []
     var categoryPicked: CategoryCD? {
         didSet {
+            guard let items = categoryPicked?.items?.allObjects as? [ItemCD] else { return }
+            categoryItems = items
             let catName = categoryPicked?.name ?? "error selecting category"
             print("category has been passed along \(catName)")
         }
@@ -37,22 +28,10 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        itemsFRC.delegate = self
-        
-        do {
-            try itemsFRC.performFetch()
-            guard let itemsFetched = itemsFRC.fetchedObjects else { return }
-            for item in itemsFetched {
-                if item.category == categoryPicked {
-                    categoryItems.append(item)
-                }
-            }
-            print("number of items fetched \(categoryItems.count)")
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
+
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         self.tableView.contentInset = insets
+        
        tableView.reloadData()
     }
     
@@ -108,10 +87,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
 
 extension MyStuffViewController: FavoriteItemDelegate {
     func itemFavorited(_ cell: ItemSearchCell) {
-        let indexPath = tableView.indexPath(for: cell)
-        
-        let item = itemsFRC.object(at: indexPath!)
-        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let item = categoryItems[indexPath.row]
         item.isFavorited = !item.isFavorited
         print(item.isFavorited)
         cell.updateItem(with: item)

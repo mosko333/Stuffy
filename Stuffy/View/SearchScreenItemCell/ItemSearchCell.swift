@@ -38,14 +38,26 @@ class ItemSearchCell: UITableViewCell {
         } else {
              isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaItemFavStarEmpty"), for: .normal)
         }
-
-       // let data = item.image ?? Data.init()
-       // let image = UIImage(data: data)
-       // itemImageView.image   = image
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         datePurchasedLabel.text = dateFormatter.string(from: item.purchaseDate ?? Date()).uppercased()
 
+        guard let images = item.images else {
+            print("no images")
+            return
+        }
+        
+        guard let coreDataImages = images.allObjects as? [ImageCD] else {
+            print(":III(")
+            return
+        }
+        
+//        itemImageView.image = UIImage(data: coreDataImages.first!.image!)
+        
+        
+        
+        
         
     }
     
