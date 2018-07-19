@@ -192,7 +192,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaDownChevron" translatesAutoresizingMaskIntoConstraints="NO" id="d91-me-ThA">
-                                            <rect key="frame" x="177" y="16" width="18" height="15"/>
+                                            <rect key="frame" x="175" y="16" width="20" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
