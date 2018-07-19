@@ -11,7 +11,7 @@ import CoreData
 
 extension ItemCD {
     
-    convenience init(title: String, image: Data, isFavorited: Bool, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String, receipt: Data,  purchaseDate: Date, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
+    convenience init(title: String, isFavorited: Bool, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: String,  purchaseDate: Date, lastDayToReturn: Date,  context: NSManagedObjectContext = CoreDataStack.context)
     {
         self.init(context: context)
         
@@ -24,10 +24,9 @@ extension ItemCD {
         self.quantity = quantity
         self.serialNumber = serialNumber
         self.warranty = warranty
-        self.receipt = receipt
         self.lastDayToReturn = lastDayToReturn
         self.purchaseDate = purchaseDate
-        self.image = image
+        
         
     }
 }

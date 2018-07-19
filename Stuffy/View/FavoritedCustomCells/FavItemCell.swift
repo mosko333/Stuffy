@@ -33,9 +33,9 @@ class FavItemCell: UITableViewCell {
         } else {
             isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaEmptyStar"), for: .normal)
         }
-        let data = item.image ?? Data.init()
-        let image = UIImage(data: data)
-        itemImageView.image = image
+        //let data = item.image ?? Data.init()
+       // let image = UIImage(data: data)
+        // itemImageView.image = image
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         datePurchasedLabel.text = dateFormatter.string(from: item.purchaseDate ?? Date()).uppercased()

@@ -51,7 +51,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         } catch  {
             print("\(error.localizedDescription)")
         }
-        
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        self.tableView.contentInset = insets
        tableView.reloadData()
     }
     
@@ -78,7 +79,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         cell.delegate = self
         let item =  categoryItems[indexPath.row]
         cell.updateItem(with: item)
-        
+
+    
     return cell
     }
     

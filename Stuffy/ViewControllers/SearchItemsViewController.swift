@@ -33,6 +33,8 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     var allItems: [ItemCD] = [] {
         didSet {
             searchArray = allItems
+            let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+            self.tableView.contentInset = insets
             tableView.reloadData()
         }
     }

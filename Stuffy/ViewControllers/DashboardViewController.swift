@@ -25,7 +25,6 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
             
         }()
     
-    
     let itemFRC:NSFetchedResultsController<ItemCD> = {
         let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
         
@@ -82,7 +81,6 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
         UIApplication.shared.statusBarStyle = .lightContent
         
         // TODO - Populate Views using search data
-        
         try? categoryFRC.performFetch()
         numberOfCatLabel.text = "\(categoryFRC.fetchedObjects!.count)"
         

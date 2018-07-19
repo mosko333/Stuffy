@@ -96,7 +96,7 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
         
     }
  guard let newCategory = categoryNameTextField.text, newCategory.count > 0 else { return }
-        ItemCoreDataController.shared.createCategory(name: newCategory)
+        CoreDataController.shared.createCategory(name: newCategory)
         
        
         
