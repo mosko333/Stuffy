@@ -8,9 +8,8 @@
 
 import UIKit
 import AVFoundation
-
+import CoreData
 class NewAddItemTableViewController: UITableViewController {
-    
     var pictureTaken = false
     var section2Open = false
     var itemDetail = false
@@ -19,19 +18,20 @@ class NewAddItemTableViewController: UITableViewController {
     var datePickerSetWarrantyDate = false
     var isFavorited = false
     let imagePicker = UIImagePickerController()
+    var adamsIdea: String = ""
     var categoryPicked: CategoryCD? {
         didSet{
             print("item category name is \(String(describing: categoryPicked?.name))")
         }
     }
     
-    var numberOfItems = 1{
+    var numberOfItems = 1 {
         didSet {
             print("There are \(numberOfItems)")
             tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
         }
     }
-    var item: ItemCD?{
+    var item: ItemCD? {
         didSet {
             print("Item was pushed along. Showing Detail on \(String(describing: item?.title))")
         
@@ -49,6 +49,7 @@ class NewAddItemTableViewController: UITableViewController {
         if item != nil {
             itemDetail = true
         }
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class NewAddItemTableViewController: UITableViewController {
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = false
         
-        
+    
     }
 
 
@@ -90,18 +91,18 @@ class NewAddItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 && pictureTaken == false && itemDetail == false  {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
-        
-        cell.delegate = self
-        cell.setupCaptureSession()
-        cell.setupDevice()
-        cell.setupInputOutput()
-        cell.setupPreviewLayer()
-        cell.startRunningCaptureSession()
-        
-        return cell
-    }
-         if indexPath.section == 0 && pictureTaken ==  true  && itemDetail == false {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
+            
+            cell.delegate = self
+            cell.setupCaptureSession()
+            cell.setupDevice()
+            cell.setupInputOutput()
+            cell.setupPreviewLayer()
+            cell.startRunningCaptureSession()
+            
+            return cell
+        }
+        if indexPath.section == 0 && pictureTaken ==  true  && itemDetail == false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
             cell.delegate = self
             cell.thumbnailImage.image = image
@@ -113,7 +114,6 @@ class NewAddItemTableViewController: UITableViewController {
             cell.cameraButton.isUserInteractionEnabled = true
     
             return cell
-            
         }
         
         if indexPath.section == 1 {
@@ -124,7 +124,9 @@ class NewAddItemTableViewController: UITableViewController {
             cell.quantityTextField.text = "\(numberOfItems)"
             cell.priceTextField.keyboardType = .decimalPad
             cell.delegate = self
+            cell.updateCell(with: categoryPicked)
             cell.updateCell(with: item)
+            
             return cell
         }
         
@@ -134,19 +136,19 @@ class NewAddItemTableViewController: UITableViewController {
             cell.datePickerView.layer.cornerRadius = 10 
             cell.datePickerView.frame.origin.y += 700
             cell.datePicker.backgroundColor = .white
+            cell.updateItemCell(with: item)
             cell.addDoneButton()
 
             return cell
         }
+        
         if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NotesCell else {return UITableViewCell()}
             cell.delegate = self
             cell.backgroundColor = Colors.Grey
             cell.addDoneButton()
             cell.setupNotesCell()
-
             cell.notesTextView.delegate = self
-            
             
             return cell
         }
@@ -261,7 +263,7 @@ class NewAddItemTableViewController: UITableViewController {
     
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        
+        print("the category that the item will save as is : \(String(describing: categoryPicked?.name))")
         guard let categoypicked = categoryPicked else { return }
         let favorited = isFavorited
         let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! NameandCategoryCell
@@ -270,7 +272,7 @@ class NewAddItemTableViewController: UITableViewController {
         let itemPrice = Double("\(nameCell.priceTextField.text ?? "")") ?? 0
         let quantity = Double(nameCell.quantityTextField.text!)
         let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell") as! ItemDetailsCell
-        let modelNumber = itemCell.modelTextField.text ?? ""
+        let modelNumber = itemCell.modelNumberTextField.text ?? ""
         let dateFormatter = DateFormatter()
         
         let purchaseDate = dateFormatter.date(from:"\(itemCell.purchaseDateTextField.text ?? "")") ?? Date()
@@ -293,11 +295,7 @@ class NewAddItemTableViewController: UITableViewController {
         
         print("item was created")
         
-        let storyboard = UIStoryboard(name: "MyStuff", bundle: nil)
-        let DV = storyboard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-        let topVC = DV.topViewController as! MyStuffViewController
-        topVC.categoryPicked = categoypicked
-        present(DV, animated: true)
+      self.dismiss(animated: true, completion: nil)
 
        
 
@@ -336,7 +334,7 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
             let destinationVC = segue.destination as! cameraPreviewViewController
             destinationVC.image = image
         }
-}
+    }
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let error = error {
@@ -434,7 +432,7 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
         
         if datePickerSetWarrantyDate == true {
             
-            cell.warrantyExpirationDateLabe.text = ""
+            cell.warrantyExpirationDateLabel.text = ""
         }
         
         datePickerSetWarrantyDate = false
@@ -479,9 +477,9 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
         }
         
         if datePickerSetWarrantyDate == true {
-            cell.warrantyExpirationDateLabe.isHidden = false
+            cell.warrantyExpirationDateLabel.isHidden = false
             let warrantyDate = dateFormatter2.string(from: cell.datePicker.date)
-            cell.warrantyExpirationDateLabe.text = warrantyDate
+            cell.warrantyExpirationDateLabel.text = warrantyDate
         }
         cell.saveButton.backgroundColor = .blue
         cell.saveButton.isUserInteractionEnabled = true

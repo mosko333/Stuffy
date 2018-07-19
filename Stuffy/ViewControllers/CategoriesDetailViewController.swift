@@ -49,13 +49,15 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
     }
+    
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -80,7 +82,6 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
         UIView.animate(withDuration: 0.5) {
             self.categoryView.frame.origin.y -= 700
         }
-        
     }
     
     
@@ -88,8 +89,8 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5) {
             self.categoryView.frame.origin.y += 700
+        }
     }
-}
     @IBAction func categorySaveButtonTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.5) {
             self.categoryView.frame.origin.y += 700
@@ -97,34 +98,45 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     }
  guard let newCategory = categoryNameTextField.text, newCategory.count > 0 else { return }
         CoreDataController.shared.createCategory(name: newCategory)
-        
-       
-        
         do {
             try itemsFRC.performFetch()
         } catch  {
             print("\(error.localizedDescription)")
         }
         tableView.reloadData()
-}
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddItemVC2"{
             let destinationVC = segue.destination as! UINavigationController
             let topVC = destinationVC.topViewController as! NewAddItemTableViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            
             let categorypicked = itemsFRC.object(at: indexPath)
-            
             topVC.categoryPicked = categorypicked
         
+        }
     }
-}
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let navVC = self.presentingViewController as? UINavigationController else { return }
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let categorypicked = itemsFRC.object(at: indexPath)
+        
+        for viewController in navVC.viewControllers {
+            if let newAddItemVC = viewController as? NewAddItemTableViewController {
+                newAddItemVC.categoryPicked = categorypicked
+            }
+            
+        }
+       
+        self.dismiss(animated: true) {
+            print("CategoriesDetailViewController dismissed")
+        }
+    }
     
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
-    
-    
+
 }

@@ -34,13 +34,15 @@ class CoreDataController {
     func removeItem(with item: ItemCD) {
         
         CoreDataStack.context.delete(item)
-        
+    
         CoreDataStack.saveContext()
     }
     
     func createCategory(name: String){
+        let categoryName = name.replacingOccurrences(of: " ", with: "")
         
-      _ = CategoryCD(name: name, isFavorited: false)
+        
+      _ = CategoryCD(name: categoryName, isFavorited: false)
         
         CoreDataStack.saveContext()
     }
