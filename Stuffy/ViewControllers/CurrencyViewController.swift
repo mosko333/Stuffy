@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol CurrencyViewControllerDelegate: class {
-    func selectCurrency(currency: String)
-}
-
 class CurrencyViewController: UIViewController {
-
+    
+    struct Constants {
+        static let currencyKey = "currency"
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
-    weak var delegate: CurrencyViewControllerDelegate?
+    let defaults = UserDefaults.standard
     
-        let currency = ["$ Dollar",
+    let currency = ["$ Dollar",
                     "£ Pound",
                     "₪ Shekel",
                     "€ Euro",
@@ -40,25 +40,25 @@ class CurrencyViewController: UIViewController {
 }
 
 extension CurrencyViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currency.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Currency Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath)
         cell.textLabel?.font = UIFont.init(name: "Avenir-Book", size: 16)
         cell.textLabel?.text = currency[indexPath.row]
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 77
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let currency = currency[indexPath.row].first else { return }
-        self.delegate?.selectCurrency(currency: String(currency))
+        let currency = self.currency[indexPath.row]
+        defaults.set(currency, forKey: Constants.currencyKey)
         navigationController?.popViewController(animated: true)
     }
 }

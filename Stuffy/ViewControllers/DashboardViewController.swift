@@ -185,9 +185,3 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-extension DashboardViewController: CurrencyViewControllerDelegate {
-    func selectCurrency(currency: String) {
-        self.currency = currency
-    }
-}

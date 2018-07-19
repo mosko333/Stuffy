@@ -194,7 +194,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="w3s-gh-STQ" kind="show" identifier="toCurrencySegue" id="fLG-EX-c9b"/>
+                                            <outlet property="currencyLabel" destination="xAX-2z-4hT" id="Ejt-ra-XCR"/>
+                                            <segue destination="FMb-tN-EXt" kind="show" identifier="toSelectedCurrency" id="dNf-cH-Hdb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -234,13 +235,13 @@
             </objects>
             <point key="canvasLocation" x="771" y="-196"/>
         </scene>
-        <!--CurrencyViewController-->
-        <scene sceneID="pcJ-ig-XSB">
+        <!--Currency-->
+        <scene sceneID="0R3-sU-dyK">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="CurrencyViewController" storyboardName="Currency" referencedIdentifier="CurrencyViewController" id="w3s-gh-STQ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cGU-Ap-bRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Currency" id="FMb-tN-EXt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49w-kM-n11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="-61"/>
+            <point key="canvasLocation" x="760" y="-71"/>
         </scene>
     </scenes>
     <resources>

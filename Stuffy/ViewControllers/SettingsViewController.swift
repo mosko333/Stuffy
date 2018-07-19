@@ -11,11 +11,13 @@ import UIKit
 class SettingsViewController: UIViewController {
     struct Constants {
         static let isPinActiveKey = "isPinActive"
+        static let currencyKey = "currency"
     }
     
     @IBOutlet weak var settingsTable: UITableView!
     
-    let currency = ["$", "£", "₪", "€", "₫", "₱", "р.", "₨", "₣", "¥", "₩", "₴", "kr", "د.إ", "ر.س"]
+    var currency: String {
+        return UserDefaults.standard.object(forKey: Constants.currencyKey) as? String ?? "$ Dollar" }
     var pinIsOn: Bool {
         return UserDefaults.standard.object(forKey: Constants.isPinActiveKey) as? Bool ?? false }
     
@@ -24,11 +26,12 @@ class SettingsViewController: UIViewController {
         settingsTable.delegate = self
         settingsTable.dataSource = self
         self.settingsTable.rowHeight = 77
-        setupView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        settingsTable.reloadData()
     }
     
-    func setupView() {
-    }
     @IBAction func backBarButton(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
@@ -68,6 +71,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as! TouchIDTableViewCell
+            cell.pinSwitch.isOn = pinIsOn
             return cell
         }
         if indexPath.row == 1 {
@@ -77,7 +81,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: "EraseCell") as! ResetAndEraseTableViewCell
         }
         if indexPath.row == 3 {
-            return tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyPickerTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyPickerTableViewCell
+            cell.currencyLabel.text = currency
+            return cell
         } else {return UITableViewCell()}
     }
 }
