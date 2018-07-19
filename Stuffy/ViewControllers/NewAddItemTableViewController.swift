@@ -185,11 +185,11 @@ class NewAddItemTableViewController: UITableViewController {
             let button = UIButton(type: .system)
             
             if section2Open == true {
-                button.setTitle("Close", for: .normal)
+                button.setImage(#imageLiteral(resourceName: "xcaDownChevron"), for: .normal)
             } else {
-                button.setTitle("Open", for: .normal)
+                button.setImage(#imageLiteral(resourceName: "xcaUpChevron"), for: .normal)
             }
-            button.setTitleColor(UIColor.black, for: .normal)
+        
             button.backgroundColor = .white
             button.addTarget(self, action: #selector(openCloseCell), for: .touchUpInside)
             button.contentMode = .center
