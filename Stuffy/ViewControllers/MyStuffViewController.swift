@@ -11,15 +11,11 @@ import CoreData
 
 class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate  {
     
-    let itemsFRC:NSFetchedResultsController<ItemCD> = {
-        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
-        
-        let sortDescriptors = NSSortDescriptor(key: "title", ascending: true)
-        
+    let imageFRC: NSFetchedResultsController<ImageCD> = {
+        let request: NSFetchRequest<ImageCD> = ImageCD.fetchRequest()
+        let sortDescriptors = NSSortDescriptor(key: "image", ascending: true)
         request.sortDescriptors = [sortDescriptors]
-        
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
         return controller
     }()
     
@@ -27,8 +23,13 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     
     var items: [ItemCD] = []
     var categoryItems: [ItemCD] = []
+    var photosForItems: [ImageCD] = []
+    var photosForPage: [ImageCD] = []
     var categoryPicked: CategoryCD? {
         didSet {
+            guard let items = categoryPicked?.items?.allObjects as? [ItemCD] else { return }
+            categoryItems = items
+    
             let catName = categoryPicked?.name ?? "error selecting category"
             print("category has been passed along \(catName)")
         }
@@ -37,25 +38,26 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        itemsFRC.delegate = self
         
-        do {
-            try itemsFRC.performFetch()
-            guard let itemsFetched = itemsFRC.fetchedObjects else { return }
-            for item in itemsFetched {
-                if item.category == categoryPicked {
-                    categoryItems.append(item)
-                }
-            }
-            print("number of items fetched \(categoryItems.count)")
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
+        
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         self.tableView.contentInset = insets
-       tableView.reloadData()
-    }
+        
+        try? imageFRC.performFetch()
+        photosForItems = imageFRC.fetchedObjects!
+        print(photosForItems.count)
+        for photo in photosForItems {
+            for item in categoryItems {
+                if photo.item?.title == item.title {
+                    photosForPage.append(photo)
+                    print("the total amount of picture in this category is :\(photosForPage.count)")
+            }
+        }
+          
+        tableView.reloadData()
     
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -78,6 +80,17 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "myStuffCell", for: indexPath) as? ItemSearchCell else {return UITableViewCell()}
         cell.delegate = self
         let item =  categoryItems[indexPath.row]
+        for photo in photosForPage{
+            if photo.item?.title == item.title {
+                let firstPhoto = UIImage(data: photo.image!)
+                cell.itemImageView.image = firstPhoto
+                continue
+            }
+        }
+        
+        
+        
+        cell.item = item
         cell.updateItem(with: item)
 
     
@@ -108,10 +121,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
 
 extension MyStuffViewController: FavoriteItemDelegate {
     func itemFavorited(_ cell: ItemSearchCell) {
-        let indexPath = tableView.indexPath(for: cell)
-        
-        let item = itemsFRC.object(at: indexPath!)
-        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let item = categoryItems[indexPath.row]
         item.isFavorited = !item.isFavorited
         print(item.isFavorited)
         cell.updateItem(with: item)

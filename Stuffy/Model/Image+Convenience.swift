@@ -10,8 +10,9 @@ import Foundation
 import CoreData
 
 extension ImageCD {
-    convenience init(image: Data, context:  NSManagedObjectContext = CoreDataStack.context) {
+    convenience init(image: Data, item: ItemCD, context:  NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: context)
         self.image = image
+        self.item = item
     }
 }

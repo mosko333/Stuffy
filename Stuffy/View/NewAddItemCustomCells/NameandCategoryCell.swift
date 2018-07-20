@@ -38,7 +38,9 @@ class NameandCategoryCell: UITableViewCell {
         
     }
     func updateCell(with category: CategoryCD?) {
-        changeCategoryButton.setTitle("\(String(describing: category?.name))", for: .normal)
+        guard let category = category else {return}
+        let name = category.name
+        changeCategoryButton.setTitle("\(String(describing: name)))", for: .normal)
         print("category has been updated")
     }
 }

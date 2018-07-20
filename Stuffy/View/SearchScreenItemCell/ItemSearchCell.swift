@@ -22,11 +22,14 @@ class ItemSearchCell: UITableViewCell {
     
     weak var delegate: FavoriteItemDelegate?
     
-    var item: ItemCD?
+    var item: ItemCD? 
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
+        
+      
+        
     }
     
     func updateItem(with item: ItemCD) {
@@ -38,16 +41,16 @@ class ItemSearchCell: UITableViewCell {
         } else {
              isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaItemFavStarEmpty"), for: .normal)
         }
-
-       // let data = item.image ?? Data.init()
-       // let image = UIImage(data: data)
-       // itemImageView.image   = image
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         datePurchasedLabel.text = dateFormatter.string(from: item.purchaseDate ?? Date()).uppercased()
-
         
-    }
+       
+        }
+        
+//        itemImageView.image = UIImage(data: coreDataImages.first!.image!)
+    
     
     func setupCell() {
         self.shadowView.layer.masksToBounds = false
