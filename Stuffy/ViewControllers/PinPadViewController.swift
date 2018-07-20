@@ -112,6 +112,8 @@ class PinPadViewController: UIViewController {
             if pinNumber == newPin {
                 // change pin
                 defaults.set(newPin, forKey: Constants.pinKey)
+                // turn on pin
+                defaults.set(true, forKey: Constants.isPinActiveKey)
                 print("new Pin created \(correctPin)")
                 // Turn on pin in user defaults
                 defaults.set(true, forKey: Constants.isPinActiveKey)
