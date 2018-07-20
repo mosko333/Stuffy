@@ -113,14 +113,16 @@
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="GRQ-kc-OXY"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-Z0-Vho" userLabel="tabBarButton1">
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-Z0-Vho" userLabel="tabBarButton1">
                                             <rect key="frame" x="38" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="0H1-0p-ZkF"/>
                                                 <constraint firstAttribute="height" constant="30" id="v6l-DK-b40"/>
                                             </constraints>
-                                            <state key="normal" image="xcaHomeBarDark"/>
+                                            <state key="normal" image="xcaHomeBarDark">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <action selector="tabBarBtnPressed:" destination="COI-NZ-51a" eventType="touchUpInside" id="P5O-QQ-WBX"/>
                                             </connections>
@@ -132,7 +134,7 @@
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="VQA-gz-fbM"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-7p-N8f" userLabel="tabBarButton2">
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-7p-N8f" userLabel="tabBarButton2">
                                             <rect key="frame" x="106" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -167,7 +169,7 @@
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="22" id="4Mn-i9-Q5F"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bd-jS-wmD" userLabel="tabBarButton4">
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Bd-jS-wmD" userLabel="tabBarButton4">
                                             <rect key="frame" x="240" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -186,7 +188,7 @@
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="38" id="Q8R-Z2-Vgb"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyt-0G-NRR" userLabel="tabBarButton5">
+                                        <button opaque="NO" tag="4" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyt-0G-NRR" userLabel="tabBarButton5">
                                             <rect key="frame" x="308" y="10" width="30" height="30"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>

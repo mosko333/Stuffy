@@ -64,6 +64,25 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
     var currency: String {
         return UserDefaults.standard.object(forKey: CurrencyViewController.Constants.currencyKey) as? String ?? "$" }
     
+    var categories: [CategoryCD] {
+        do {
+            try categoryFRC.performFetch()
+        } catch {
+            print("❌ Error getting cats in the dashboardVC \(error.localizedDescription)")
+        }
+        let cat = categoryFRC.fetchedObjects ?? [CategoryCD()]
+        return cat
+    }
+    
+    var items: [ItemCD] {
+        do {
+            try itemFRC.performFetch()
+        } catch {
+            print("❌ Error getting items in the dashboardVC \(error.localizedDescription)")
+        }
+        let items = itemFRC.fetchedObjects ?? [ItemCD()]
+        return items
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -213,8 +232,16 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TotalCell") as! TotalValueTableViewCell
             let currencySymbol = currency.first ?? "$"
             cell.currencyLabel.text = "\(currencySymbol)"
-            try? categoryFRC.performFetch()
-            cell.numberOfCats.text = "\(categoryFRC.fetchedObjects!.count)"
+            cell.numberOfCats.text = "\(categories.count)"
+            cell.numberOfItems.text = "\(items.count)"
+            var totalValueOfItems: Double {
+                var sum: Double = 0
+                for item in items {
+                    sum += item.price
+                }
+                return sum
+            }
+            cell.totalValueLabel.text = "\(totalValueOfItems)"
             return cell
         }
         if indexPath.row == 1 {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fCR-s5-n2K">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController storyboardIdentifier="PinPadViewController" id="fCR-s5-n2K" customClass="PinPadViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hzP-Ee-j5x">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="xcaPinBackground" translatesAutoresizingMaskIntoConstraints="NO" id="QDK-Z9-gZr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPO-8X-pdn">
-                                <rect key="frame" x="151.5" y="130" width="72.5" height="25"/>
+                                <rect key="frame" x="171" y="199.33333333333334" width="72.333333333333314" height="24.666666666666657"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalCentering" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="cTL-tg-eWy">
-                                <rect key="frame" x="49" y="206" width="278" height="381"/>
+                                <rect key="frame" x="68.666666666666686" y="275" width="278" height="381"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="center" distribution="equalCentering" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="GX3-CZ-709">
                                         <rect key="frame" x="0.0" y="0.0" width="278" height="72"/>
@@ -150,7 +150,7 @@
                                         <rect key="frame" x="15" y="309" width="248" height="72"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jG-5I-yds">
-                                                <rect key="frame" x="0.0" y="14.5" width="43" height="43"/>
+                                                <rect key="frame" x="0.0" y="14.666666666666629" width="43" height="43"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="43" id="JGM-Lu-mgl"/>
                                                     <constraint firstAttribute="height" constant="43" id="b7G-sF-01z"/>
@@ -161,7 +161,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adV-U9-wBq">
-                                                <rect key="frame" x="88" y="0.0" width="72" height="72"/>
+                                                <rect key="frame" x="87.999999999999986" y="0.0" width="72.000000000000014" height="72"/>
                                                 <state key="normal" image="xca0">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -201,7 +201,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="axE-ax-KO6">
-                                <rect key="frame" x="131.5" y="170" width="112" height="16"/>
+                                <rect key="frame" x="151" y="239" width="112" height="16"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xcaDigitEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="K2h-rI-Xm9" userLabel="xcaDigit0">
                                         <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
