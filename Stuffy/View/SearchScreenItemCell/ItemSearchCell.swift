@@ -22,11 +22,14 @@ class ItemSearchCell: UITableViewCell {
     
     weak var delegate: FavoriteItemDelegate?
     
-    var item: ItemCD?
+    var item: ItemCD? 
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
+        
+      
+        
     }
     
     func updateItem(with item: ItemCD) {
@@ -42,24 +45,12 @@ class ItemSearchCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         datePurchasedLabel.text = dateFormatter.string(from: item.purchaseDate ?? Date()).uppercased()
-
-        guard let images = item.images else {
-            print("no images")
-            return
-        }
         
-        guard let coreDataImages = images.allObjects as? [ImageCD] else {
-            print(":III(")
-            return
+       
         }
         
 //        itemImageView.image = UIImage(data: coreDataImages.first!.image!)
-        
-        
-        
-        
-        
-    }
+    
     
     func setupCell() {
         self.shadowView.layer.masksToBounds = false

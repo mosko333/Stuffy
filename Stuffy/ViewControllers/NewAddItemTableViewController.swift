@@ -19,6 +19,7 @@ class NewAddItemTableViewController: UITableViewController {
     var isFavorited = false
     let imagePicker = UIImagePickerController()
     var adamsIdea: String = ""
+    var testPhotosArray: [UIImage] = []
     var categoryPicked: CategoryCD? {
         didSet{
             print("item category name is \(String(describing: categoryPicked?.name))")
@@ -263,6 +264,8 @@ class NewAddItemTableViewController: UITableViewController {
     
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        
+        // FIXME: - Return out of this function if the user doesn't have everything necessary to save an item
         print("the category that the item will save as is : \(String(describing: categoryPicked?.name))")
         guard let categoypicked = categoryPicked else { return }
         let favorited = isFavorited
@@ -291,7 +294,10 @@ class NewAddItemTableViewController: UITableViewController {
         for photo in CoreDataController.shared.photos {
             
             CoreDataController.shared.createImage(item: item, image: photo)
+            testPhotosArray.append(photo)
+            print(testPhotosArray.count)
         }
+        CoreDataController.shared.photos.removeAll()
         
         print("item was created")
         

@@ -58,11 +58,11 @@ class CoreDataController {
         
     guard let imageData = UIImagePNGRepresentation(image) else {return}
         
-    let createdImage = ImageCD(image: imageData)
+        let createdImage = ImageCD(image: imageData, item: item)
         
-        createdImage.item = item
+//        createdImage.item = item
         
-        CoreDataStack.saveContext()
+      CoreDataStack.saveContext()
     }
     
     func deleteImage(with image: ImageCD){
