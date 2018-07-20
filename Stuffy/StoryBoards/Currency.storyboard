@@ -53,6 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2L8-rb-pl0">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="xcaBackArrow" id="B6J-sX-sc9">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="backBarButton:" destination="Dds-Wb-x75" id="hdK-Dw-5jB"/>
                             </connections>

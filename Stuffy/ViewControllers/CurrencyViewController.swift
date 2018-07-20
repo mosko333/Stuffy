@@ -33,6 +33,9 @@ class CurrencyViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        // Set insets to see the bottom cells of the table
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        self.tableView.contentInset = insets
     }
     @IBAction func backBarButton(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)

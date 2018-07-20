@@ -54,6 +54,9 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
                 UIApplication.shared.statusBarView?.backgroundColor = UIColor(displayP3Red: 30, green: 57, blue: 81, alpha: 0)
         UIApplication.shared.statusBarStyle = .lightContent
 
+        // Set insets to see the bottom cells of the table
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        self.tableView.contentInset = insets
         
         // Set logo on Nav Bar
         let logo = UIImageView(image: #imageLiteral(resourceName: "xcaBannerNeatly"))
