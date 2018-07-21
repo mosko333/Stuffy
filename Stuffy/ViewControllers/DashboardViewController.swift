@@ -244,7 +244,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             if let returns = upcomingReturns, returns.count > 0 {
                 cell.nameLabel.text = returns[0].title ?? ""
                 if let lastDayToReturn = returns[0].lastDayToReturn {
-                    cell.dateLabel.text = "\(lastDayToReturn)"
+                    let date = DateFormatter.localizedString(from: lastDayToReturn, dateStyle: .medium, timeStyle: .none)
+                    cell.dateLabel.text = "\(date)"
                 } else {
                     cell.dateLabel.text = ""
                 }
@@ -259,7 +260,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             if let returns = upcomingReturns, returns.count > 1 {
                 cell.nameLabel.text = returns[1].title ?? ""
                 if let lastDayToReturn = returns[1].lastDayToReturn {
-                    cell.dateLabel.text = "\(lastDayToReturn)"
+                    let date = DateFormatter.localizedString(from: lastDayToReturn, dateStyle: .medium, timeStyle: .none)
+                    cell.dateLabel.text = "\(date)"
                 } else {
                     cell.dateLabel.text = ""
                 }
@@ -271,7 +273,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             if let returns = upcomingReturns, returns.count > 2 {
                 cell.nameLabel.text = returns[2].title ?? ""
                 if let lastDayToReturn = returns[2].lastDayToReturn {
-                    cell.dateLabel.text = "\(lastDayToReturn)"
+                    let date = DateFormatter.localizedString(from: lastDayToReturn, dateStyle: .medium, timeStyle: .none)
+                    cell.dateLabel.text = "\(date)"
                 } else {
                     cell.dateLabel.text = ""
                 }
@@ -286,7 +289,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             if let warranty = upcomingWarranty, warranty.count > 0 {
                 cell.nameLabel.text = warranty[0].title ?? ""
                 if let lastDayToOfwarranty = warranty[0].lastDayToReturn {
-                    cell.dateLabel.text = "\(lastDayToOfwarranty)"
+                    let date = DateFormatter.localizedString(from: lastDayToOfwarranty, dateStyle: .medium, timeStyle: .none)
+                    cell.dateLabel.text = "\(date)"
                 } else {
                     cell.dateLabel.text = ""
                 }
@@ -301,7 +305,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             if let warranty = upcomingWarranty, warranty.count > 1 {
                 cell.nameLabel.text = warranty[1].title ?? ""
                 if let lastDayToOfwarranty = warranty[1].lastDayToReturn {
-                    cell.dateLabel.text = "\(lastDayToOfwarranty)"
+                    let date = DateFormatter.localizedString(from: lastDayToOfwarranty, dateStyle: .medium, timeStyle: .none)
+                    cell.dateLabel.text = "\(date)"
                 } else {
                     cell.dateLabel.text = ""
                 }
@@ -313,7 +318,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             if let warranty = upcomingWarranty, warranty.count > 2 {
                 cell.nameLabel.text = warranty[2].title ?? ""
                 if let lastDayToOfwarranty = warranty[2].lastDayToReturn {
-                    cell.dateLabel.text = "\(lastDayToOfwarranty)"
+                    let date = DateFormatter.localizedString(from: lastDayToOfwarranty, dateStyle: .medium, timeStyle: .none)
+                    cell.dateLabel.text = "\(date)"
                 } else {
                     cell.dateLabel.text = ""
                 }

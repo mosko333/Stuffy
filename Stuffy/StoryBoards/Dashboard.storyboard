@@ -213,12 +213,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07/19/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBl-d7-v1T">
-                                                    <rect key="frame" x="305" y="16" width="63" height="16.5"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                                    <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGV-Tf-awN" userLabel="BaseLine">
                                                     <rect key="frame" x="22" y="48" width="331" height="1"/>
                                                     <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -226,9 +220,15 @@
                                                         <constraint firstAttribute="height" constant="1" id="B2n-FI-YDM"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07/19/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBl-d7-v1T">
+                                                    <rect key="frame" x="290" y="17" width="63" height="16.5"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                                    <color key="textColor" red="0.61176470589999998" green="0.61176470589999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vBl-d7-v1T" secondAttribute="trailing" constant="-8" id="GZ6-Fb-eUn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vBl-d7-v1T" secondAttribute="trailing" constant="7" id="Mjj-16-ajY"/>
                                                 <constraint firstItem="5Vb-Y6-SHv" firstAttribute="leading" secondItem="8aQ-vx-ggb" secondAttribute="leadingMargin" constant="8" id="NHT-P8-Hmc"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="eGV-Tf-awN" secondAttribute="trailing" constant="7" id="RdB-2I-Dhl"/>
                                                 <constraint firstItem="5Vb-Y6-SHv" firstAttribute="centerY" secondItem="8aQ-vx-ggb" secondAttribute="centerY" id="gNG-Lw-xh1"/>
