@@ -282,8 +282,7 @@ class NewAddItemTableViewController: UITableViewController {
         let returnDate =  dateFormatter.date(from:"\(itemCell.returnDateTextField.text ?? "")") ?? Date()
         let serialNumber =  itemCell.serialTextField.text ?? ""
         let vendor = itemCell.storeVenderTextField.text ?? ""
-        let warranty = itemCell.warrantyExpirationDateTextField.text ?? ""
-        
+        let warranty = dateFormatter.date(from:"\(itemCell.warrantyExpirationDateTextField.text ?? "")") ?? Date()
         let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
         let notes = noteCell.notesTextView.text ?? ""
         

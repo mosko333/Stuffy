@@ -527,11 +527,8 @@
 				7EFC782B20F577F50096238A /* CurrencyPickerTableViewCell.swift in Sources */,
 				7E19043B20EC7A8B004DBE2D /* AutoCropCameraScanner.swift in Sources */,
 				F78D661120E1A142003407E7 /* MyStuffViewController.swift in Sources */,
-<<<<<<< HEAD
 				177881B321025D7800FF76B9 /* UIImageExtensions.swift in Sources */,
-=======
 				7EBCE2A521014C6D0031A9CC /* ReturnAndWarrantyTableViewCell.swift in Sources */,
->>>>>>> 66df83e41fc2f1b2ad8db6ac9437fbe228d9f15f
 				17A46CD120FD7420008E9322 /* OnboardPageControlViewController.swift in Sources */,
 				7EFC782A20F577F50096238A /* DashboardTableViewCell.swift in Sources */,
 				7E19044020EC7AC9004DBE2D /* AutoCropViewController.swift in Sources */,
