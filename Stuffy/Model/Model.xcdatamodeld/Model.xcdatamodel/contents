@@ -20,7 +20,7 @@
         <attribute name="quantity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <attribute name="warranty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="warranty" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryCD" inverseName="items" inverseEntity="CategoryCD" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ImageCD" inverseName="item" inverseEntity="ImageCD" syncable="YES"/>
     </entity>
@@ -31,7 +31,7 @@
     <elements>
         <element name="CategoryCD" positionX="-45" positionY="108" width="128" height="88"/>
         <element name="ImageCD" positionX="115" positionY="231" width="128" height="75"/>
-        <element name="ItemCD" positionX="-225" positionY="228" width="128" height="238"/>
+        <element name="ItemCD" positionX="-225" positionY="228" width="128" height="240"/>
         <element name="User" positionX="169" positionY="108" width="128" height="75"/>
     </elements>
 </model>
