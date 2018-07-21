@@ -72,8 +72,40 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.stuffyDarkGray, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 16)!], range: getRangeOfSubString(subString: "Add a Category", fromString: placeHolderText)) // Dark Gray color attribute
         
         categoryTextField.attributedText = attributedText
-        
     }
+    
+//    func setUpNavbarHeight() {
+//        for subview in (self.navigationController?.navigationBar.subviews)! {
+//            if NSStringFromClass(subview.classForCoder).contains("BarBackground") {
+//                var subViewFrame: CGRect = subview.frame
+//                let subView = UIView()
+//                // subViewFrame.origin.y = -20;
+//                subViewFrame.size.height = 90
+//                subView.frame = subViewFrame
+//                // Convert an image view to a view
+//                // Constrain it to the center and size it
+//                let logo = UIImage(named: "DineRiteNew")
+//                var imageView = UIImageView()
+//                imageView = UIImageView(image: logo)
+//                imageView.contentMode = .scaleAspectFit
+//                //                self.navigationItem.titleView = imageView
+//                subView.addSubview(imageView)
+//                imageView.translatesAutoresizingMaskIntoConstraints = false
+//                imageView.topAnchor.constraint(equalTo: subView.topAnchor, constant: 0).isActive = true
+//                imageView.bottomAnchor.constraint(equalTo: subView.bottomAnchor, constant: -15).isActive = true
+//                imageView.centerXAnchor.constraint(equalTo: subView.centerXAnchor).isActive = true
+//                imageView.widthAnchor.constraint(equalToConstant: 114).isActive = true
+//                imageView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//                subview.backgroundColor = .clear
+//                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
+//                navigationController?.navigationBar.addSubview(subView)
+//                
+//                //                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
+//                //
+//                //                self.view.addSubview(titleImage)
+//            }
+//        }
+//    }
     
     func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
         let sampleLinkRange = fromString.range(of: subString)!
@@ -129,8 +161,9 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
             //TODO: Delete the row at indexPath here
 //            self.catNames.remove(at: indexPath.row)
 //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            guard let category = self.categoryFRC.fetchedObjects?[indexPath.row] else { return }
-            CoreDataStack.context.delete(category)
+            self.presentDeleteAlertController(indexPathRow: indexPath.row)
+//            guard let category = self.categoryFRC.fetchedObjects?[indexPath.row] else { return }
+//            CoreDataStack.context.delete(category)
         }
         deleteAction.backgroundColor = Colors.stuffyOrange
 
@@ -265,5 +298,23 @@ extension CategoriesViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+}
+
+// MARK: - Create and Present AlertController
+extension CategoriesViewController {
+    func presentDeleteAlertController(indexPathRow: Int) {
+        let alertController = UIAlertController(title: "Are you sure you want to delete this category?", message: "", preferredStyle: .alert)
+        // - Add Actions
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            // AKA What happens when we press the button
+            guard let category = self.categoryFRC.fetchedObjects?[indexPathRow] else { return }
+            CoreDataStack.context.delete(category)
+        }
+        let cancelAction  = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        // - Add actions to alert controller
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        // - Present Alert Controller
+        present(alertController, animated: true)
+    }
 }

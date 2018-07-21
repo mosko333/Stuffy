@@ -44,12 +44,33 @@
                                             <constraint firstAttribute="width" constant="60" id="jWj-RN-Hsr"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gD-m3-G8e" userLabel="MessageBackground">
+                                        <rect key="frame" x="45" y="448.5" width="286.5" height="36.5"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25286279965753422" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place documents on contrasting background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUA-BO-b9U">
+                                        <rect key="frame" x="67" y="458.5" width="242.5" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="OUA-BO-b9U" firstAttribute="leading" secondItem="6gD-m3-G8e" secondAttribute="leading" constant="22" id="Hf1-ry-bNg"/>
+                                    <constraint firstItem="bMP-3A-VhS" firstAttribute="top" secondItem="OUA-BO-b9U" secondAttribute="bottom" constant="28" id="KcJ-nw-J1L"/>
                                     <constraint firstItem="bMP-3A-VhS" firstAttribute="centerX" secondItem="cCr-ly-HgQ" secondAttribute="centerX" id="Mwh-eg-PqF"/>
                                     <constraint firstAttribute="bottom" secondItem="bMP-3A-VhS" secondAttribute="bottom" constant="40" id="NSX-QD-yx9"/>
+                                    <constraint firstItem="OUA-BO-b9U" firstAttribute="trailing" secondItem="6gD-m3-G8e" secondAttribute="trailing" constant="-22" id="Q7o-Ff-KlS"/>
+                                    <constraint firstItem="OUA-BO-b9U" firstAttribute="bottom" secondItem="6gD-m3-G8e" secondAttribute="bottom" constant="-10" id="RWq-ox-K61"/>
                                     <constraint firstItem="dD8-yf-2Ue" firstAttribute="top" secondItem="cCr-ly-HgQ" secondAttribute="topMargin" id="Y6t-kj-oba"/>
+                                    <constraint firstItem="OUA-BO-b9U" firstAttribute="top" secondItem="6gD-m3-G8e" secondAttribute="top" constant="10" id="cfj-LY-g9v"/>
+                                    <constraint firstItem="OUA-BO-b9U" firstAttribute="centerX" secondItem="cCr-ly-HgQ" secondAttribute="centerX" id="fb5-LI-nBY"/>
                                     <constraint firstItem="dD8-yf-2Ue" firstAttribute="leading" secondItem="cCr-ly-HgQ" secondAttribute="leadingMargin" id="yjN-OG-JSZ"/>
                                 </constraints>
                                 <connections>
