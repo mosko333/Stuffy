@@ -37,6 +37,30 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
         return controller
     }()
     
+    let upcomingReturnsItemFRC:NSFetchedResultsController<ItemCD> = {
+        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
+        
+        let sortDescriptors = NSSortDescriptor(key: "lastDayToReturn", ascending: false)
+        
+        request.sortDescriptors = [sortDescriptors]
+        
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return controller
+    }()
+    
+    let upcomingWarrantyItemFRC:NSFetchedResultsController<ItemCD> = {
+        let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
+        
+        let sortDescriptors = NSSortDescriptor(key: "warranty", ascending: false)
+        
+        request.sortDescriptors = [sortDescriptors]
+        
+        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        return controller
+    }()
+    
     let userFRC:NSFetchedResultsController<User> = {
         let request: NSFetchRequest<User> = User.fetchRequest()
         
@@ -52,12 +76,6 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
     //////////////////////
     // MARK: Properties
     //////////////////////
-    
-    @IBOutlet weak var currencyLabel: UILabel!
-    @IBOutlet weak var totalValueLabel: UILabel!
-    @IBOutlet weak var numberOfCatLabel: UILabel!
-    @IBOutlet var returnItemNameLabel: [UILabel]!
-    @IBOutlet var returnItemDateLabel: [UILabel]!
     
     @IBOutlet weak var warrantyTable: UITableView!
     
@@ -81,6 +99,26 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
             print("❌ Error getting items in the dashboardVC \(error.localizedDescription)")
         }
         let items = itemFRC.fetchedObjects ?? [ItemCD()]
+        return items
+    }
+    
+    var upcomingReturns: [ItemCD]? {
+        do {
+            try upcomingReturnsItemFRC.performFetch()
+        } catch {
+            print("❌ Error getting items in the dashboardVC \(error.localizedDescription)")
+        }
+        let items = itemFRC.fetchedObjects
+        return items
+    }
+    
+    var upcomingWarranty: [ItemCD]? {
+        do {
+            try upcomingWarrantyItemFRC.performFetch()
+        } catch {
+            print("❌ Error getting items in the dashboardVC \(error.localizedDescription)")
+        }
+        let items = itemFRC.fetchedObjects
         return items
     }
     
@@ -126,68 +164,6 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
 
 extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
-    //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    //        if section == 0 {
-    //            //return "Upcoming Return Dates"
-    //            let backgroundView = UIView()
-    //            backgroundView.backgroundColor = .white
-    //            let underline = UIView()
-    //            let title = UILabel()
-    //            title.font = UIFont(name: "Avenir-Medium", size: 10)
-    //            title.text = "Upcoming Return Dates"
-    //            title.textColor = Colors.stuffyMedGray
-    //            underline.backgroundColor = Colors.stuffyLightGray
-    //            backgroundView.addSubview(title)
-    //            backgroundView.addSubview(underline)
-    //            title.translatesAutoresizingMaskIntoConstraints = false
-    //            let labelTop = NSLayoutConstraint(item: title, attribute: .top, relatedBy: .equal, toItem: backgroundView, attribute: .top, multiplier: 1, constant: 0)
-    //            let labelLeft = NSLayoutConstraint(item: title, attribute: .leftMargin, relatedBy: .equal, toItem: backgroundView, attribute: .leftMargin, multiplier: 1, constant: 22)
-    //            underline.translatesAutoresizingMaskIntoConstraints = false
-    //            let underlineBottem = NSLayoutConstraint(item: underline, attribute: .bottom, relatedBy: .equal, toItem: backgroundView, attribute: .bottom, multiplier: 1, constant: 0)
-    //            let underlineLeft = NSLayoutConstraint(item: underline, attribute: .left, relatedBy: .equal, toItem: backgroundView, attribute: .left, multiplier: 1, constant: 22)
-    //            let underlineRight = NSLayoutConstraint(item: underline, attribute: .right, relatedBy: .equal, toItem: backgroundView, attribute: .right, multiplier: 1, constant: -22)
-    //            let underlineHeight = NSLayoutConstraint(item: underline, attribute: .height, relatedBy: .equal, toItem: backgroundView, attribute: .height, multiplier: 0, constant: 1)
-    //            backgroundView.addConstraints([labelTop, labelLeft, underlineBottem, underlineLeft, underlineRight, underlineHeight])
-    //            return backgroundView
-    //        }
-    //        if section == 1 {
-    //            //return "Upcoming Return Dates"
-    //            let backgroundView = UIView()
-    //            let title = UILabel()
-    //            title.font = UIFont(name: "Avenir-Medium", size: 10)
-    //            title.text = "Upcoming Warranty Expirations"
-    //            title.textColor = Colors.stuffyMedGray
-    //            backgroundView.addSubview(title)
-    //            title.translatesAutoresizingMaskIntoConstraints = false
-    //            let labelTop = NSLayoutConstraint(item: title, attribute: .top, relatedBy: .equal, toItem: backgroundView, attribute: .top, multiplier: 1, constant: 0)
-    //            let labelCenterX = NSLayoutConstraint(item: title, attribute: .leftMargin, relatedBy: .equal, toItem: backgroundView, attribute: .leftMargin, multiplier: 1, constant: 22)
-    //
-    //            backgroundView.addConstraints([labelTop, labelCenterX])
-    //            return backgroundView
-    //        }
-    //        return UIView()
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    //        return 80
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    //        let backgroundView = UIView()
-    //        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-    //        backgroundView.backgroundColor = UIColor.white
-    //        let underline = UIView()
-    //        backgroundView.addSubview(underline)
-    //        underline.backgroundColor = Colors.stuffyOrange
-    //        underline.translatesAutoresizingMaskIntoConstraints = false
-    //        let underlineTop = NSLayoutConstraint(item: underline, attribute: .top, relatedBy: .equal, toItem: backgroundView, attribute: .top, multiplier: 1, constant: 0)
-    //        let underlineLeft = NSLayoutConstraint(item: underline, attribute: .left, relatedBy: .equal, toItem: backgroundView, attribute: .left, multiplier: 1, constant: 22)
-    //        let underlineRight = NSLayoutConstraint(item: underline, attribute: .right, relatedBy: .equal, toItem: backgroundView, attribute: .right, multiplier: 1, constant: -22)
-    //        let underlineHeight = NSLayoutConstraint(item: underline, attribute: .height, relatedBy: .equal, toItem: backgroundView, attribute: .height, multiplier: 0, constant: 100)
-    //        backgroundView.addConstraints([underlineTop, underlineLeft, underlineRight, underlineHeight])
-    //        return backgroundView
-    //    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if  indexPath.row == 0 {
             return 280
@@ -199,10 +175,16 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return 50
         }
         if indexPath.row == 3 {
-            return 50
+            guard let returns = upcomingReturns else { return 0 }
+            if returns.count > 1 {
+                return 50
+            }
         }
         if indexPath.row == 4 {
-            return 50
+            guard let returns = upcomingReturns else { return 0 }
+            if returns.count > 2 {
+                return 50
+            }
         }
         if indexPath.row == 5 {
             return 48
@@ -211,10 +193,16 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return 50
         }
         if indexPath.row == 7 {
-            return 50
+            guard let returns = upcomingWarranty else { return 0 }
+            if returns.count > 1 {
+                return 50
+            }
         }
         if indexPath.row == 8 {
-            return 50
+            guard let returns = upcomingWarranty else { return 0 }
+            if returns.count > 2 {
+                return 50
+            }
         }
         return 0
     }
@@ -237,7 +225,11 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             var totalValueOfItems: Double {
                 var sum: Double = 0
                 for item in items {
-                    sum += item.price
+                    var price = item.price
+                    if item.quantity >= 0 {
+                        price *= item.quantity
+                    }
+                    sum += (price)
                 }
                 return sum
             }
@@ -248,31 +240,85 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: "ReturnHeaderCell") as! HeaderTableViewCell
         }
         if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCellOne") as! ReturnAndWarrantyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+            if let returns = upcomingReturns, returns.count > 0 {
+                cell.nameLabel.text = returns[0].title ?? ""
+                if let lastDayToReturn = returns[0].lastDayToReturn {
+                    cell.dateLabel.text = "\(lastDayToReturn)"
+                } else {
+                    cell.dateLabel.text = ""
+                }
+            } else {
+                cell.nameLabel.text = "None"
+                cell.dateLabel.text = ""
+            }
             return cell
         }
         if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCellTwo") as! ReturnAndWarrantyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+            if let returns = upcomingReturns, returns.count > 1 {
+                cell.nameLabel.text = returns[1].title ?? ""
+                if let lastDayToReturn = returns[1].lastDayToReturn {
+                    cell.dateLabel.text = "\(lastDayToReturn)"
+                } else {
+                    cell.dateLabel.text = ""
+                }
+            }
             return cell
         }
         if indexPath.row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCellThree") as! ReturnAndWarrantyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+            if let returns = upcomingReturns, returns.count > 2 {
+                cell.nameLabel.text = returns[2].title ?? ""
+                if let lastDayToReturn = returns[2].lastDayToReturn {
+                    cell.dateLabel.text = "\(lastDayToReturn)"
+                } else {
+                    cell.dateLabel.text = ""
+                }
+            }
             return cell
         }
         if indexPath.row == 5 {
             return tableView.dequeueReusableCell(withIdentifier: "WarrantyHeaderCell") as! HeaderTableViewCell
         }
         if indexPath.row == 6 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WarrantyCellOne") as! ReturnAndWarrantyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+            if let warranty = upcomingWarranty, warranty.count > 0 {
+                cell.nameLabel.text = warranty[0].title ?? ""
+                if let lastDayToOfwarranty = warranty[0].lastDayToReturn {
+                    cell.dateLabel.text = "\(lastDayToOfwarranty)"
+                } else {
+                    cell.dateLabel.text = ""
+                }
+            } else {
+                cell.nameLabel.text = "None"
+                cell.dateLabel.text = ""
+            }
             return cell
         }
         if indexPath.row == 7 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WarrantyCellTwo") as! ReturnAndWarrantyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+            if let warranty = upcomingWarranty, warranty.count > 1 {
+                cell.nameLabel.text = warranty[1].title ?? ""
+                if let lastDayToOfwarranty = warranty[1].lastDayToReturn {
+                    cell.dateLabel.text = "\(lastDayToOfwarranty)"
+                } else {
+                    cell.dateLabel.text = ""
+                }
+            }
             return cell
         }
         if indexPath.row == 8 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "WarrantyCellThree") as! ReturnAndWarrantyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+            if let warranty = upcomingWarranty, warranty.count > 2 {
+                cell.nameLabel.text = warranty[2].title ?? ""
+                if let lastDayToOfwarranty = warranty[2].lastDayToReturn {
+                    cell.dateLabel.text = "\(lastDayToOfwarranty)"
+                } else {
+                    cell.dateLabel.text = ""
+                }
+            }
             return cell
-    } else {return UITableViewCell()}
-}
+        } else {return UITableViewCell()}
+    }
 }

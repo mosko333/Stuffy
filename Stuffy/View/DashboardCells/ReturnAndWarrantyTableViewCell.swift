@@ -10,8 +10,9 @@ import UIKit
 
 class ReturnAndWarrantyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var returnNameLabel: UILabel!
-    @IBOutlet weak var returnDateLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
