@@ -99,7 +99,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
 //                subview.backgroundColor = .clear
 //                //                navigationController?.navigationItem.titleView?.backgroundColor = .red
 //                navigationController?.navigationBar.addSubview(subView)
-//                
+//
 //                //                let titleImage = #imageLiteral(resourceName: "DineRiteNew")
 //                //
 //                //                self.view.addSubview(titleImage)
