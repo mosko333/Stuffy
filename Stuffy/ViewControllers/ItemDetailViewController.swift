@@ -9,59 +9,98 @@
 import UIKit
 import CoreData
 
-class ItemDetailViewController: UIViewController, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
     
-    let imageFRC: NSFetchedResultsController<ImageCD> = {
-        let request: NSFetchRequest<ImageCD> = ImageCD.fetchRequest()
-        let sortDescriptors = NSSortDescriptor(key: "image", ascending: true)
-        request.sortDescriptors = [sortDescriptors]
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        return controller
-        
-    }()
-    var itemPhotos: [ImageCD] = []
-    var allPhotos: [ImageCD] = []
-    var item: ItemCD?{
+ 
+    var itemPhotosArray: [ImageCD] = []
+    var item: ItemCD? {
         didSet{
             print("item was passed along")
         }
     }
-   
+    var category: CategoryCD? {
+        didSet {
+            print("category has been set")
+        }
+    }
     @IBOutlet weak var itemDetailCollectionView: UICollectionView!
-    @IBOutlet weak var itemDetailTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-       try? imageFRC.performFetch()
-        allPhotos = imageFRC.fetchedObjects!
-        for photo in allPhotos {
-            if photo.item?.title == item?.title {
-                   itemPhotos.append(photo)
-                    print("the total amount of pictures for this item is :\(itemPhotos.count)")
+        guard var itemPhotos = item?.images?.allObjects as? [ImageCD] else {return}
         
-            }
-        }
+        itemPhotos = itemPhotosArray
+         category = item?.category
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         itemDetailCollectionView.dataSource = self
-        imageFRC.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
     }
-
+    // CollectionView fuctions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return itemPhotos.count
+        return itemPhotosArray.count
     
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = itemDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "ItemDetailImageCell", for: indexPath) as? ItemDetailCollectionViewCell else {return UICollectionViewCell()}
-        let photo = itemPhotos[indexPath.row]
-    
-        cell.updateCell(with: photo)
         
+        let photo = itemPhotosArray[indexPath.row]
+        cell.updateCell(with: photo)
+    
         return cell
     }
 
+}
+
+extension ItemDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+           return 253
+        }
+        if indexPath.section == 1 {
+            return 437
+        }
+        if indexPath.section == 2 {
+            return 233
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemDetailNameCell", for: indexPath) as? NameCell else { return UITableViewCell()}
+            
+            cell.updateNameCell(with: item, with: category)
+            
+            return cell
+        }
+        if indexPath.section == 1 {
+             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemDetailDetailCell", for: indexPath) as? ItemInfoCell else { return UITableViewCell()}
+            
+            cell.updateCell(with: item)
+            
+            return cell
+        }
+        if indexPath.section == 2 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemDetailNoteCell", for: indexPath) as? ItemDetailsCell else { return UITableViewCell()}
+            
+            cell.updateItemCell(with: item)
+            
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
 }

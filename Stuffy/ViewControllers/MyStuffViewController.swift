@@ -112,11 +112,12 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "toItemDetailVC" {
-         guard let destinationVC = segue.destination as? ItemDetailViewController,
-            let indexPath = tableView.indexPathForSelectedRow else { return}
+            guard let destinationVC = segue.destination as? UINavigationController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let item = categoryItems[indexPath.row]
+            let topVC = destinationVC.topViewController as! ItemDetailViewController
         
-           destinationVC.item = item
+           topVC.item = item
         }
     }
 }

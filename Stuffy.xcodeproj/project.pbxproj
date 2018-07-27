@@ -61,6 +61,9 @@
 		F7789D1A2108E13400ED22FE /* ItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7789D192108E13400ED22FE /* ItemDetail.storyboard */; };
 		F7789D1C2108EC9400ED22FE /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7789D1B2108EC9400ED22FE /* ItemDetailViewController.swift */; };
 		F7789D202108EEC000ED22FE /* ItemDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7789D1F2108EEC000ED22FE /* ItemDetailCollectionViewCell.swift */; };
+		F7789D24210BCEC900ED22FE /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7789D23210BCEC900ED22FE /* NameCell.swift */; };
+		F7789D28210BCF2000ED22FE /* ItemInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7789D27210BCF2000ED22FE /* ItemInfoCell.swift */; };
+		F7789D2A210BCF4600ED22FE /* ItemDetailNoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7789D29210BCF4600ED22FE /* ItemDetailNoteCell.swift */; };
 		F77BB3E220E6DA9900D2FCD4 /* KeyboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */; };
 		F77BB3E420E6DA9900D2FCD4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */; };
 		F77BB3E620EAEB1700D2FCD4 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77BB3E520EAEB1700D2FCD4 /* AddItemTableViewController.swift */; };
@@ -146,6 +149,9 @@
 		F7789D192108E13400ED22FE /* ItemDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetail.storyboard; sourceTree = "<group>"; };
 		F7789D1B2108EC9400ED22FE /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		F7789D1F2108EEC000ED22FE /* ItemDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		F7789D23210BCEC900ED22FE /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		F7789D27210BCF2000ED22FE /* ItemInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInfoCell.swift; sourceTree = "<group>"; };
+		F7789D29210BCF4600ED22FE /* ItemDetailNoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailNoteCell.swift; sourceTree = "<group>"; };
 		F77BB3E120E6DA9900D2FCD4 /* KeyboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardExtensions.swift; sourceTree = "<group>"; };
 		F77BB3E320E6DA9900D2FCD4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		F77BB3E520EAEB1700D2FCD4 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +312,16 @@
 			path = SearchScreenItemCell;
 			sourceTree = "<group>";
 		};
+		F7789D22210BCE9F00ED22FE /* ItemDetailCustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				F7789D23210BCEC900ED22FE /* NameCell.swift */,
+				F7789D27210BCF2000ED22FE /* ItemInfoCell.swift */,
+				F7789D29210BCF4600ED22FE /* ItemDetailNoteCell.swift */,
+			);
+			path = ItemDetailCustomCells;
+			sourceTree = "<group>";
+		};
 		F77BB3E720EAEC2A00D2FCD4 /* AddItemCustomCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +387,7 @@
 		F78D661520E1A265003407E7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F7789D22210BCE9F00ED22FE /* ItemDetailCustomCells */,
 				7EBCE29721014B390031A9CC /* DashboardCells */,
 				F78F675820FE6997001320D1 /* CategoryTableViewCell.swift */,
 				F78F675920FE6998001320D1 /* CustomUINavigationBar.swift */,
@@ -504,6 +521,7 @@
 				F731E97C20F40A5300ACE318 /* User+Convenience.swift in Sources */,
 				170E022220EE8D730012405F /* CategoryController.swift in Sources */,
 				7EADE39120FE64540023215C /* StartCheckScreenViewController.swift in Sources */,
+				F7789D24210BCEC900ED22FE /* NameCell.swift in Sources */,
 				F731E97420F2FDA200ACE318 /* FavItemCell.swift in Sources */,
 				7E9EE96A20E3119D00F1CD79 /* CustomTabBarViewController.swift in Sources */,
 				F77BB3EF20EE7C1400D2FCD4 /* NotesCell.swift in Sources */,
@@ -516,6 +534,7 @@
 				F78F675A20FE6998001320D1 /* CategoryTableViewCell.swift in Sources */,
 				7EFBDABA210130AF00820978 /* CurrencyViewController.swift in Sources */,
 				F731E97A20F3176A00ACE318 /* ItemSearchCell.swift in Sources */,
+				F7789D2A210BCF4600ED22FE /* ItemDetailNoteCell.swift in Sources */,
 				F78F675120F7CEC7001320D1 /* CameraPreviewCollectionViewCell.swift in Sources */,
 				F78D661820E2B36C003407E7 /* Model.xcdatamodeld in Sources */,
 				F78D660C20E191EC003407E7 /* CoreDataController.swift in Sources */,
@@ -528,6 +547,7 @@
 				7E9EE90320E1811B00F1CD79 /* AppDelegate.swift in Sources */,
 				170E021E20EE8C1C0012405F /* Photo.swift in Sources */,
 				7EBCE2A121014C050031A9CC /* TotalValueTableViewCell.swift in Sources */,
+				F7789D28210BCF2000ED22FE /* ItemInfoCell.swift in Sources */,
 				1770ACE220E6CC25005DBDF5 /* ItemController.swift in Sources */,
 				F7D9D98020F2F7A600F429A1 /* SearchItemsViewController.swift in Sources */,
 				7EFC782C20F577F50096238A /* ResetAndEraseTableViewCell.swift in Sources */,
