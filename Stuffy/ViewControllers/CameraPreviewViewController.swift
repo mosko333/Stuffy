@@ -76,7 +76,7 @@ class cameraPreviewViewController: UIViewController, UICollectionViewDelegate, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItemVC" {
             let destinationVC = segue.destination as! UINavigationController
-           let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+           let topVC = destinationVC.topViewController as! AddItemTableViewController
             topVC.image = image
             topVC.categoryPicked = categoryPicked
         }

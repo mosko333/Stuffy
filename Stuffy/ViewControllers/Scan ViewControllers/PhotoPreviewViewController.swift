@@ -42,7 +42,7 @@ class PhotoPreviewViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNewAddItemVC"{
           let destinationVC = segue.destination as! UINavigationController
-            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+            let topVC = destinationVC.topViewController as! AddItemTableViewController
             topVC.image = photo
             topVC.categoryPicked = categoryPicked
         }

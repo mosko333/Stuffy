@@ -39,8 +39,8 @@ class CoreDataController {
     }
     
     func createCategory(name: String){
-        let categoryName = name.replacingOccurrences(of: " ", with: "")
         
+        let categoryName = name.trimmingCharacters(in: .whitespaces)
         
       _ = CategoryCD(name: categoryName, isFavorited: false)
         

@@ -35,6 +35,7 @@ class NotesCell: UITableViewCell {
     
     }
     func setupNotesCell() {
+        
         if item != nil {
         deleteButton.isHidden = false
         deleteButton.isUserInteractionEnabled = true
@@ -42,17 +43,15 @@ class NotesCell: UITableViewCell {
         deleteButton.isHidden = true
         deleteButton.isUserInteractionEnabled = false
         }
-        
+        // setting up place holder text. 
         let placeHolderText = "Add Notes"
         let attributedText = NSMutableAttributedString(string: placeHolderText)
         
         attributedText.addAttributes([NSAttributedStringKey.foregroundColor:Colors.stuffyLightGray, NSAttributedStringKey.font: UIFont(name: "Avenir-Roman", size: 16)!], range: getRangeOfSubString(subString: "Add Notes", fromString: placeHolderText))
         
-        
         notesTextView.attributedText = attributedText
-    
     }
-    
+    // fuction for the placeholder text.
     func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
         let sampleLinkRange = fromString.range(of: subString)!
         let startPos = fromString.distance(from: fromString.startIndex, to: sampleLinkRange.lowerBound)

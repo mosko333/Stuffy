@@ -109,7 +109,7 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddItemVC2"{
             let destinationVC = segue.destination as! UINavigationController
-            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
+            let topVC = destinationVC.topViewController as! AddItemTableViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let categorypicked = itemsFRC.object(at: indexPath)
             topVC.categoryPicked = categorypicked
@@ -123,7 +123,7 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
         let categorypicked = itemsFRC.object(at: indexPath)
         
         for viewController in navVC.viewControllers {
-            if let newAddItemVC = viewController as? NewAddItemTableViewController {
+            if let newAddItemVC = viewController as? AddItemTableViewController {
                 newAddItemVC.categoryPicked = categorypicked
             }
             

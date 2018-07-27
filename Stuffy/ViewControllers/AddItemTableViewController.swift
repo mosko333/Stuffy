@@ -9,7 +9,8 @@
 import UIKit
 import AVFoundation
 import CoreData
-class NewAddItemTableViewController: UITableViewController {
+class AddItemTableViewController: UITableViewController {
+    
     var pictureTaken = false
     var section2Open = false
     var itemDetail = false
@@ -20,6 +21,7 @@ class NewAddItemTableViewController: UITableViewController {
     let imagePicker = UIImagePickerController()
     var adamsIdea: String = ""
     var testPhotosArray: [UIImage] = []
+    
     var categoryPicked: CategoryCD? {
         didSet{
             print("item category name is \(String(describing: categoryPicked?.name))")
@@ -32,6 +34,7 @@ class NewAddItemTableViewController: UITableViewController {
             tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .none)
         }
     }
+    
     var item: ItemCD? {
         didSet {
             print("Item was pushed along. Showing Detail on \(String(describing: item?.title))")
@@ -45,8 +48,10 @@ class NewAddItemTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        //Checking to see if item is passed along
         if item != nil {
             itemDetail = true
         }
@@ -55,6 +60,7 @@ class NewAddItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Image picker delgate functions
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
         imagePicker.allowsEditing = false
@@ -92,8 +98,8 @@ class NewAddItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 && pictureTaken == false && itemDetail == false  {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
-            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
+            // setting up camera cell.
             cell.delegate = self
             cell.setupCaptureSession()
             cell.setupDevice()
@@ -104,7 +110,8 @@ class NewAddItemTableViewController: UITableViewController {
             return cell
         }
         if indexPath.section == 0 && pictureTaken ==  true  && itemDetail == false {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? NewCameraCell else {return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
+            // setting up camera cell after picture has been taken
             cell.delegate = self
             cell.thumbnailImage.image = image
             cell.setupCaptureSession()
@@ -119,12 +126,14 @@ class NewAddItemTableViewController: UITableViewController {
         
         if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NameandCategoryCell", for: indexPath) as? NameandCategoryCell else {return UITableViewCell()}
+            // setting up name and category cell
              cell.backgroundColor = Colors.Grey
             cell.itemNameTextField.addDoneButtonOnKeyboard()
             cell.priceTextField.addDoneButtonOnKeyboard()
             cell.quantityTextField.text = "\(numberOfItems)"
             cell.priceTextField.keyboardType = .decimalPad
             cell.delegate = self
+            // this where we update the custom cell if a category or item has been sent across. 
             cell.updateCell(with: categoryPicked)
             cell.updateCell(with: item)
             
@@ -133,6 +142,7 @@ class NewAddItemTableViewController: UITableViewController {
         
         if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell", for: indexPath) as? ItemDetailsCell else {return UITableViewCell()}
+            // setting up item detail cell
             cell.delegate = self
             cell.datePickerView.layer.cornerRadius = 10 
             cell.datePickerView.frame.origin.y += 700
@@ -145,6 +155,7 @@ class NewAddItemTableViewController: UITableViewController {
         
         if indexPath.section == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "noteCell", for: indexPath) as? NotesCell else {return UITableViewCell()}
+            // setting up note cell
             cell.delegate = self
             cell.backgroundColor = Colors.Grey
             cell.addDoneButton()
@@ -158,6 +169,7 @@ class NewAddItemTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
        if  indexPath.section == 0 {
            return 375
         }
@@ -181,6 +193,7 @@ class NewAddItemTableViewController: UITableViewController {
         return 0
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // setting up header for third tableview
         if section == 2  {
             let superview = UIView()
             superview.backgroundColor = .white
@@ -264,8 +277,8 @@ class NewAddItemTableViewController: UITableViewController {
     
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        // 1. We grab everything off the custom cells
         
-        // FIXME: - Return out of this function if the user doesn't have everything necessary to save an item
         print("the category that the item will save as is : \(String(describing: categoryPicked?.name))")
         guard let categoypicked = categoryPicked else { return }
         let favorited = isFavorited
@@ -286,12 +299,17 @@ class NewAddItemTableViewController: UITableViewController {
         let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
         let notes = noteCell.notesTextView.text ?? ""
         
+        // 2. we save item to Core Data
+        
         CoreDataController.shared.createItem(category: categoypicked, title: title, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate)
         
+        // 3. We have a constant of item we have created
+        
         let item = ItemCD(title: title, isFavorited: favorited, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate, lastDayToReturn: returnDate)
+        // 4. we use the item we have made to make a relationship to it's photos.
         
         for photo in CoreDataController.shared.photos {
-
+            
             CoreDataController.shared.createImage(item: item, image: photo)
             testPhotosArray.append(photo)
             print(testPhotosArray.count)
@@ -299,22 +317,31 @@ class NewAddItemTableViewController: UITableViewController {
        
         
         print("item was created")
+        
+        // 5. we remove all photos in arrays
+        
         testPhotosArray.removeAll()
         CoreDataController.shared.photos.removeAll()
-        
-      self.dismiss(animated: true, completion: nil)
-
+        // 6. close camera Session and dissmiss_ Note to self, we could run a clean up of the arrays here in the completion. 
+        self.dismiss(animated: true) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
+            cell.captureSession.stopRunning()
+        }
        
 
     }
     @IBAction func cancelBtn(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
+        print("Add Item table view has been dismissed")
+        // Force closing the camera Session
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
+        cell.captureSession.stopRunning()
     }
 }
 
-extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDelegate {
-    
-    func capturePhoto(_ cell: NewCameraCell) {
+extension AddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDelegate {
+    // what happens when we hit the photo button.
+    func capturePhoto(_ cell: CameraCell) {
         cell.cameraButton.isUserInteractionEnabled = false
         let settings = AVCapturePhotoSettings()
         
@@ -344,7 +371,7 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
     }
     
 
-    
+    // this is where we process the photo and set it to the thumbnail on the camera cell.
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
@@ -364,36 +391,41 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
         }
     }
     
-    func toPictureLibrary(_ cell: NewCameraCell) {
+    func toPictureLibrary(_ cell: CameraCell) {
          present(imagePicker, animated: true)
     }
     
 }
 
 
-extension NewAddItemTableViewController: ChangeQuantityDelegate {
+extension AddItemTableViewController: ChangeQuantityDelegate {
+    
     func addItemQuantity(_ cell: NameandCategoryCell) {
+        // function when we hit the plus button
         numberOfItems += 1
         print("one item has been added")
         
     }
     
     func minusItemQuantity(_ cell: NameandCategoryCell) {
+        // function where we hit the minus button
          numberOfItems -= 1
         print("one item has been removed")
     }
 }
 
 
-extension NewAddItemTableViewController: deleteItemDelegate {
+extension AddItemTableViewController: deleteItemDelegate {
+    
     func deleteItem(_ cell: NotesCell) {
+        // this runs when we hit the delete item in the notes cell.
         print("Delete item button pressed")
         
     }
 }
 
-extension NewAddItemTableViewController: CustomDatePickerDelegate {
-    
+extension AddItemTableViewController: CustomDatePickerDelegate {
+    // Date Picker Logic
     func showPurchaseDatePicker(_ cell: ItemDetailsCell) {
         UIView.animate(withDuration: 0.5) {
             cell.datePickerView.frame.origin.y -= 700
@@ -426,12 +458,8 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
     }
     
     func cancelButton(_ cell: ItemDetailsCell) {
-        
         if datePickerSetPurchaseDate == true {
-           
             cell.purchaseDateLabel.text = ""
-            
-            
         }
         if datePickerSetReturnDate == true {
            
@@ -496,10 +524,12 @@ extension NewAddItemTableViewController: CustomDatePickerDelegate {
     
 }
 
-extension NewAddItemTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+extension AddItemTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // Image picker logic. We set the thumbnail to the image that has been picked.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage
+        CoreDataController.shared.photos.append(imagePicked)
+        imagePicked = image
         print("imagePickerController func called")
         dismiss(animated: true)
     }
@@ -511,23 +541,23 @@ extension NewAddItemTableViewController: UIImagePickerControllerDelegate, UINavi
     
     
 }
-extension NewAddItemTableViewController {
-    
+extension AddItemTableViewController {
+    // Scroll View Logic. We have the camera session being closed.
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
     
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
-            print("reached bottom")
-             let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
+            // reached bottom
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
             cell.captureSession.stopRunning()
         }
         
         if (scrollView.contentOffset.y <= 0){
-            //reach top
+            //reached top: Please keep in in case we need it.
         }
         
         if (scrollView.contentOffset.y > 200 && scrollView.contentOffset.y < (scrollView.contentSize.height - scrollView.frame.size.height)){
             //not top and not bottom
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! NewCameraCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
             cell.captureSession.stopRunning()
             print("scroll view print statement")
         }
@@ -535,8 +565,9 @@ extension NewAddItemTableViewController {
     
 }
 
-extension NewAddItemTableViewController: UITextViewDelegate {
- 
+extension AddItemTableViewController: UITextViewDelegate {
+ // This is for the note cell so it can have a place holder text.
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         let indexPath = IndexPath(row: 0, section: 3)
         let noteCell = tableView.cellForRow(at: indexPath) as! NotesCell
