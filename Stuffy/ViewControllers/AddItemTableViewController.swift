@@ -324,7 +324,7 @@ class AddItemTableViewController: UITableViewController {
         CoreDataController.shared.photos.removeAll()
         // 6. close camera Session and dissmiss_ Note to self, we could run a clean up of the arrays here in the completion. 
         self.dismiss(animated: true) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
             cell.captureSession.stopRunning()
         }
        
@@ -528,8 +528,9 @@ extension AddItemTableViewController: UIImagePickerControllerDelegate, UINavigat
     // Image picker logic. We set the thumbnail to the image that has been picked.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let imagePicked = info[UIImagePickerControllerOriginalImage] as? UIImage
-        CoreDataController.shared.photos.append(imagePicked)
-        imagePicked = image
+        guard let image = imagePicked else { return }
+        CoreDataController.shared.photos.append(image)
+        self.image = image
         print("imagePickerController func called")
         dismiss(animated: true)
     }
