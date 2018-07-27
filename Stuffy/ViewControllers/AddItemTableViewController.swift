@@ -20,7 +20,6 @@ class AddItemTableViewController: UITableViewController {
     var isFavorited = false
     let imagePicker = UIImagePickerController()
     var adamsIdea: String = ""
-    var testPhotosArray: [UIImage] = []
     
     var categoryPicked: CategoryCD? {
         didSet{
@@ -311,16 +310,13 @@ class AddItemTableViewController: UITableViewController {
         for photo in CoreDataController.shared.photos {
             
             CoreDataController.shared.createImage(item: item, image: photo)
-            testPhotosArray.append(photo)
-            print(testPhotosArray.count)
         }
-       
-        
+    
         print("item was created")
         
         // 5. we remove all photos in arrays
         
-        testPhotosArray.removeAll()
+       
         CoreDataController.shared.photos.removeAll()
         // 6. close camera Session and dissmiss_ Note to self, we could run a clean up of the arrays here in the completion. 
         self.dismiss(animated: true) {
@@ -336,6 +332,11 @@ class AddItemTableViewController: UITableViewController {
         // Force closing the camera Session
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
         cell.captureSession.stopRunning()
+        
+        // removing anything in the The photo arrays that might have been saved
+        
+        CoreDataController.shared.photos.removeAll()
+        
     }
 }
 
