@@ -291,14 +291,16 @@ class NewAddItemTableViewController: UITableViewController {
         let item = ItemCD(title: title, isFavorited: favorited, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate, lastDayToReturn: returnDate)
         
         for photo in CoreDataController.shared.photos {
-            
+
             CoreDataController.shared.createImage(item: item, image: photo)
             testPhotosArray.append(photo)
             print(testPhotosArray.count)
         }
-        CoreDataController.shared.photos.removeAll()
+       
         
         print("item was created")
+        testPhotosArray.removeAll()
+        CoreDataController.shared.photos.removeAll()
         
       self.dismiss(animated: true, completion: nil)
 
@@ -341,24 +343,26 @@ extension NewAddItemTableViewController: CameraDelegate, AVCapturePhotoCaptureDe
         }
     }
     
+
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photoSampleBuffer: CMSampleBuffer?, previewPhoto previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
         if let error = error {
             print(error.localizedDescription)
         }
-        
+
         if let sampleBuffer = photoSampleBuffer, let previewBuffer = previewPhotoSampleBuffer, let dataImage =
             AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: sampleBuffer, previewPhotoSampleBuffer: previewBuffer) {
-           
+
             let dataProvider = CGDataProvider(data: dataImage as CFData)
             let cgImageRef: CGImage! = CGImage(jpegDataProviderSource: dataProvider!, decode: nil, shouldInterpolate: true, intent: .defaultIntent)
-            let image = UIImage(cgImage: cgImageRef, scale: 1.0, orientation: UIImageOrientation.right)
-            
+            let image = UIImage(cgImage: cgImageRef, scale: 1, orientation: .right)
+
             self.image = image
 
             CoreDataController.shared.photos.append(image)
-           
+
+        }
     }
-}
     
     func toPictureLibrary(_ cell: NewCameraCell) {
          present(imagePicker, animated: true)

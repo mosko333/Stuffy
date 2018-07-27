@@ -93,7 +93,7 @@
                                             <outlet property="itemImageView" destination="Btc-hV-H33" id="qit-fS-Bm0"/>
                                             <outlet property="itemNameLabel" destination="GPt-xh-MWj" id="mUS-uV-PXB"/>
                                             <outlet property="shadowView" destination="RjD-vg-pry" id="ys7-wp-ZQT"/>
-                                            <segue destination="t4s-13-7b1" kind="show" id="Sl8-EH-foG"/>
+                                            <segue destination="t4s-13-7b1" kind="presentation" identifier="toItemDetailVC" id="Sl8-EH-foG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -108,21 +108,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h7T-LY-SFm"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nTn-tI-vUf"/>
                     <connections>
                         <outlet property="tableView" destination="DxL-2n-rJX" id="cFM-bF-HQB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L90-Wt-phu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2134" y="136"/>
+            <point key="canvasLocation" x="3072.8000000000002" y="135.38230884557723"/>
         </scene>
-        <!--AddItemNavController-->
+        <!--ItemDetailViewController-->
         <scene sceneID="niu-et-f9q">
             <objects>
-                <viewControllerPlaceholder storyboardName="AddItem" referencedIdentifier="AddItemNavController" id="t4s-13-7b1" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ItemDetail" referencedIdentifier="ItemDetailViewController" id="t4s-13-7b1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGS-2v-Jj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2909" y="135"/>
+            <point key="canvasLocation" x="3847.1999999999998" y="134.93253373313345"/>
         </scene>
     </scenes>
     <resources>

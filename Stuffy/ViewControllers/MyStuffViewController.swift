@@ -83,7 +83,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         for photo in photosForPage{
             if photo.item?.title == item.title {
                 let firstPhoto = UIImage(data: photo.image!)
-                cell.itemImageView.image = firstPhoto
+               let fixedPhoto = firstPhoto?.fixedOrientation()
+                cell.itemImageView.image = fixedPhoto
                 continue
             }
         }
@@ -109,14 +110,15 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         print("add item button pressed")
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toAddItemNavController" {
-//            let destinationVC = segue.destination as! UINavigationController
-//            let topVC = destinationVC.topViewController as! NewAddItemTableViewController
-//            topVC.categoryPicked = categoryPicked
-//        }
-//    }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if segue.identifier == "toItemDetailVC" {
+         guard let destinationVC = segue.destination as? ItemDetailViewController,
+            let indexPath = tableView.indexPathForSelectedRow else { return}
+            let item = categoryItems[indexPath.row]
+        
+           destinationVC.item = item
+        }
+    }
 }
 
 extension MyStuffViewController: FavoriteItemDelegate {

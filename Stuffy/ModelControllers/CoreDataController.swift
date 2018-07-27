@@ -60,7 +60,7 @@ class CoreDataController {
         
         let createdImage = ImageCD(image: imageData, item: item)
         
-//        createdImage.item = item
+        createdImage.item = item
         
       CoreDataStack.saveContext()
     }
