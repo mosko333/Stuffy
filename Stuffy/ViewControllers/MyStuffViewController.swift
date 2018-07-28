@@ -92,7 +92,7 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         
         
         cell.item = item
-        cell.updateItem(with: item)
+        cell.updateCell(with: item)
 
     
     return cell
@@ -128,7 +128,7 @@ extension MyStuffViewController: FavoriteItemDelegate {
         let item = categoryItems[indexPath.row]
         item.isFavorited = !item.isFavorited
         print(item.isFavorited)
-        cell.updateItem(with: item)
+        cell.updateCell(with: item)
         CoreDataStack.saveContext()
     }
     

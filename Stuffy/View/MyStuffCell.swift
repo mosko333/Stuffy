@@ -8,7 +8,7 @@
 
 import UIKit
 
-class myStuffCell: UICollectionViewCell {
+class MyStuffCell: UICollectionViewCell {
     
     
     @IBOutlet weak var namelabel: UILabel!

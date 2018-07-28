@@ -32,8 +32,8 @@ class ItemSearchCell: UITableViewCell {
         
     }
     
-    func updateItem(with item: ItemCD) {
-        
+    func updateCell(with item: ItemCD) {
+
         itemNameLabel.text = item.title
         datePurchasedLabel.text = "need to add in"
         if item.isFavorited == true{
@@ -45,12 +45,21 @@ class ItemSearchCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         datePurchasedLabel.text = dateFormatter.string(from: item.purchaseDate ?? Date()).uppercased()
+        let photo = getPhoto(with: item)
+        itemImageView.image = photo
         
        
-        }
-        
-//        itemImageView.image = UIImage(data: coreDataImages.first!.image!)
+    }
     
+    func getPhoto(with item: ItemCD) -> UIImage {
+        guard let photos = item.images?.allObjects as? [ImageCD] else {return UIImage()}
+        for photo in photos {
+            let image = UIImage(data: photo.image!)
+            let fixedPhoto = image?.fixedOrientation()
+            return fixedPhoto!
+        }
+        return UIImage()
+    }
     
     func setupCell() {
         self.shadowView.layer.masksToBounds = false
@@ -63,5 +72,6 @@ class ItemSearchCell: UITableViewCell {
     @IBAction func isFavoritedButtonTapped(_ sender: UIButton) {
         delegate?.itemFavorited(self)
     }
+    
     
 }

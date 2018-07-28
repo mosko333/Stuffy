@@ -41,6 +41,7 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
         let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
         
         let sortDescriptors = NSSortDescriptor(key: "lastDayToReturn", ascending: false)
+    
         
         request.sortDescriptors = [sortDescriptors]
         
@@ -127,6 +128,7 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
         warrantyTable.delegate = self
         warrantyTable.dataSource = self
         updateViews()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

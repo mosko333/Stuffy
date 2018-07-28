@@ -131,7 +131,7 @@ class FavoriteItemsViewController: UIViewController, UITableViewDataSource, UITa
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemSearchCell
           
             let item = favoritedItems[indexPath.row]
-            cell.updateItem(with: item)
+            cell.updateCell(with: item)
             return cell
         }
       return UITableViewCell()

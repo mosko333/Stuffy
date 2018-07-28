@@ -38,6 +38,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
             tableView.reloadData()
         }
     }
+    var photos: [[ImageCD]] = []
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -130,7 +131,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemSearchCell else { return UITableViewCell()}
         cell.delegate = self
         let item = searchArray[indexPath.row]
-        cell.updateItem(with: item)
+        cell.updateCell(with: item)
         return cell
         
     }
@@ -156,7 +157,7 @@ extension SearchItemsViewController: FavoriteItemDelegate {
         
         item.isFavorited = !item.isFavorited
         print(item.isFavorited)
-        cell.updateItem(with: item)
+        cell.updateCell(with: item)
         CoreDataStack.saveContext()
     }
 }
