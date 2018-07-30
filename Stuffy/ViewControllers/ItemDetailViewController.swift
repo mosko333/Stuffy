@@ -12,7 +12,7 @@ import CoreData
 class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
     
     var section1isOpen = false
-    var itemPhotosArray: [ImageCD] = []
+    var photosOfItem: [UIImage] = []
     var item: ItemCD? {
         didSet{
             print("item was passed along")
@@ -28,11 +28,12 @@ class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        guard var itemPhotos = item?.images?.allObjects as? [ImageCD] else {return}
-        
-        itemPhotos = itemPhotosArray
-        category = item?.category
+        guard let item = item else {return}
+        category = item.category
+        photosOfItem = getPhotos(with: item)
+        print(photosOfItem.count)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +44,14 @@ class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
     // CollectionView fuctions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return itemPhotosArray.count
+        return item?.images?.count ?? 0
     
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = itemDetailCollectionView.dequeueReusableCell(withReuseIdentifier: "ItemDetailImageCell", for: indexPath) as? ItemDetailCollectionViewCell else {return UICollectionViewCell()}
+        let photo = photosOfItem[indexPath.row]
         
-        let photo = itemPhotosArray[indexPath.row]
         cell.updateCell(with: photo)
     
         return cell
@@ -206,6 +207,18 @@ extension ItemDetailViewController: UITableViewDataSource, UITableViewDelegate {
             
             print("opened itemDetailCell")
         }
+    }
+    func getPhotos(with item: ItemCD) -> [UIImage] {
+        guard let photos = item.images?.allObjects as? [ImageCD] else {return [UIImage()]}
+        var getPhotosArray: [UIImage] = []
+        for photo in photos {
+            let image = UIImage(data: photo.image!)
+            let fixedPhoto = image?.fixedOrientation()
+            getPhotosArray.append(fixedPhoto!)
+
+        }
+
+        return getPhotosArray
     }
     
 }

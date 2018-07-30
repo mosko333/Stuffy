@@ -16,16 +16,10 @@ class ItemDetailCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var coverPhotoButton: UIButton!
     
-    var item: ItemCD?
     
-    func updateCell(with photo: ImageCD){
+    func updateCell(with photo: UIImage){
         
-        let convertedImage = UIImage(data: photo.image!)
-        let fixedImage = convertedImage?.fixedOrientation()
-        photoImageView.image = fixedImage
-    
+        photoImageView.image = photo
     }
-    
-    
     
 }
