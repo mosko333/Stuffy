@@ -23,6 +23,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyCategoryView: UIView!
     
     var categoryPicked: CategoryCD? {
         didSet {
@@ -51,6 +52,13 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupView() {
         // Setup status bar to lightContent because it's changed to dark in the searchVC
         // We set the background colors alpha to 0 because otherwise it's translucent
+        
+        if categoryFRC.fetchedObjects?.count == 0 {
+            emptyCategoryView.isHidden = false
+        } else {
+            emptyCategoryView.isHidden = true
+        }
+        
                 UIApplication.shared.statusBarView?.backgroundColor = UIColor(displayP3Red: 30, green: 57, blue: 81, alpha: 0)
         UIApplication.shared.statusBarStyle = .lightContent
 

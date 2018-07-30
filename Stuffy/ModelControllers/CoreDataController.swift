@@ -13,11 +13,17 @@ class CoreDataController {
     
     static let shared = CoreDataController()
     
+    // This array holds all the categories
+    
+    var allCategories: [CategoryCD] = []
+    // This array holds all the Items
+    
     var items: [ItemCD] = []
+    // this array holds photos to be saved for the add item tableViewController
+    
     var photos: [UIImage] = [] {
         didSet {
             print ("photo was added to to photos array")
-            print(photos.count)
         }
     }
     

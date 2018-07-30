@@ -19,7 +19,6 @@ class AddItemTableViewController: UITableViewController {
     var datePickerSetWarrantyDate = false
     var isFavorited = false
     let imagePicker = UIImagePickerController()
-    var adamsIdea: String = ""
     
     var categoryPicked: CategoryCD? {
         didSet{
@@ -37,7 +36,11 @@ class AddItemTableViewController: UITableViewController {
     var item: ItemCD? {
         didSet {
             print("Item was pushed along. Showing Detail on \(String(describing: item?.title))")
-        
+            if (item?.images?.count)! > 0 {
+                pictureTaken = true
+                image = getPhotoForThumbNail(with: item!)
+                CoreDataController.shared.photos = getAllPhotosForItem(with: item!)
+            }
         }
     }
     var image: UIImage? {
@@ -96,7 +99,7 @@ class AddItemTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 && pictureTaken == false && itemDetail == false  {
+        if indexPath.section == 0 && pictureTaken == false  {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
             // setting up camera cell.
             cell.delegate = self
@@ -108,7 +111,7 @@ class AddItemTableViewController: UITableViewController {
             
             return cell
         }
-        if indexPath.section == 0 && pictureTaken ==  true  && itemDetail == false {
+        if indexPath.section == 0 && pictureTaken ==  true  {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell", for: indexPath) as? CameraCell else {return UITableViewCell()}
             // setting up camera cell after picture has been taken
             cell.delegate = self
@@ -122,6 +125,7 @@ class AddItemTableViewController: UITableViewController {
     
             return cell
         }
+        
         
         if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "NameandCategoryCell", for: indexPath) as? NameandCategoryCell else {return UITableViewCell()}
@@ -157,6 +161,7 @@ class AddItemTableViewController: UITableViewController {
             // setting up note cell
             cell.delegate = self
             cell.backgroundColor = Colors.Grey
+            cell.item = item
             cell.addDoneButton()
             cell.setupNotesCell()
             cell.notesTextView.delegate = self
@@ -281,21 +286,24 @@ class AddItemTableViewController: UITableViewController {
         print("the category that the item will save as is : \(String(describing: categoryPicked?.name))")
         guard let categoypicked = categoryPicked else { return }
         let favorited = isFavorited
-        let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! NameandCategoryCell
+        guard let nameCell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? NameandCategoryCell else { return }
         guard let title = nameCell.itemNameTextField.text, title != "" else { return }
         print(title)
         let itemPrice = Double("\(nameCell.priceTextField.text ?? "")") ?? 0
         let quantity = Double(nameCell.quantityTextField.text!)
-        let itemCell = tableView.dequeueReusableCell(withIdentifier: "itemDetailCell") as! ItemDetailsCell
+        guard let itemCell = tableView.cellForRow(at: IndexPath(row: 0, section: 2 )) as? ItemDetailsCell else {return}
         let modelNumber = itemCell.modelNumberTextField.text ?? ""
         let dateFormatter = DateFormatter()
-        
-        let purchaseDate = dateFormatter.date(from:"\(itemCell.purchaseDateTextField.text ?? "")") ?? Date()
-        let returnDate =  dateFormatter.date(from:"\(itemCell.returnDateTextField.text ?? "")") ?? Date()
+        dateFormatter.dateFormat = "M-d-yy"
+        let purchaseDate = dateFormatter.date(from: itemCell.purchaseDateLabel.text ?? "") ?? Date()
+        print("\(String(describing: purchaseDate))")
+
+        let returnDate =  dateFormatter.date(from: itemCell.returnDateLabel.text ?? "")  ?? Date()
         let serialNumber =  itemCell.serialTextField.text ?? ""
         let vendor = itemCell.storeVenderTextField.text ?? ""
-        let warranty = dateFormatter.date(from:"\(itemCell.warrantyExpirationDateTextField.text ?? "")") ?? Date()
-        let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
+        let warranty = dateFormatter.date(from:"\(itemCell.warrantyExpirationDateLabel.text ?? "")") ?? Date()
+        print(warranty)
+        guard let noteCell = tableView.cellForRow(at: IndexPath(row: 0, section: 3 )) as? NotesCell else { return }
         let notes = noteCell.notesTextView.text ?? ""
         
         let photos = CoreDataController.shared.photos
@@ -488,10 +496,11 @@ extension AddItemTableViewController: CustomDatePickerDelegate {
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateStyle = DateFormatter.Style.short
         dateFormatter1.timeStyle = DateFormatter.Style.short
-        dateFormatter1.dateFormat = "M/d/yy"
-        
+        dateFormatter1.dateFormat = "M-d-yy"
+    
         let dateFormatter2 = DateFormatter()
         dateFormatter2.dateStyle = DateFormatter.Style.long
+        dateFormatter2.dateFormat = "M-d-yy"
         if datePickerSetPurchaseDate == true {
             cell.purchaseDateLabel.isHidden = false
             let purchaseDate = dateFormatter1.string(from: cell.datePicker.date)
@@ -552,7 +561,7 @@ extension AddItemTableViewController {
             //not top and not bottom
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
             cell.captureSession.stopRunning()
-            print("scroll view print statement")
+    
         }
     }
     
@@ -574,3 +583,33 @@ extension AddItemTableViewController: UITextViewDelegate {
         textView.resignFirstResponder()
     }
 }
+
+extension AddItemTableViewController {
+    // These functions are for Item Detail Pictures.
+    func getPhotoForThumbNail(with item: ItemCD) -> UIImage {
+        
+        guard let photos = item.images?.allObjects as? [ImageCD] else {return UIImage()}
+        
+        for photo in photos {
+            let image = UIImage(data: photo.image!)
+            let fixedPhoto = image?.fixedOrientation()
+            return fixedPhoto!
+        }
+        return UIImage()
+    }
+
+    func getAllPhotosForItem(with item: ItemCD) -> [UIImage] {
+        
+    guard let photos = item.images?.allObjects as? [ImageCD] else {return [UIImage()]}
+        
+    var getPhotosArray: [UIImage] = []
+    for photo in photos {
+    let image = UIImage(data: photo.image!)
+    let fixedPhoto = image?.fixedOrientation()
+    getPhotosArray.append(fixedPhoto!)
+    
+        }
+    return getPhotosArray
+    }
+}
+

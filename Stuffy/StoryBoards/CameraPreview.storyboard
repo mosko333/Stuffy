@@ -21,7 +21,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="38t-FW-zvz">
                                 <rect key="frame" x="0.0" y="502" width="375" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="26" minimumInteritemSpacing="21" sectionInsetReference="layoutMargins" id="Xfz-ba-q0q">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,19 +65,19 @@
                                 </cells>
                             </collectionView>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="662-R8-Lfa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="494"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="517"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraPreviewTableViewCell" rowHeight="473" id="Wm5-ov-Dae" customClass="CameraPreviewTableViewCell" customModule="Stuffy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="473"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraPreviewTableViewCell" rowHeight="482" id="Wm5-ov-Dae" customClass="CameraPreviewTableViewCell" customModule="Stuffy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="482"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wm5-ov-Dae" id="czt-ue-d3K">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="472.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="481.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xW7-gO-lL8">
-                                                    <rect key="frame" x="31" y="102" width="313" height="269"/>
+                                                    <rect key="frame" x="31" y="93" width="313" height="269"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -93,14 +93,7 @@
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pLU-mQ-0FN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zb6-dy-2SM">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="uHm-Lk-HqP">
-                            <connections>
-                                <action selector="savePhotoButtonTapped:" destination="wFa-8e-Kf4" id="xro-zr-DHa"/>
-                                <segue destination="NE5-ez-TTg" kind="show" identifier="addItemVC" id="vIM-aj-hsS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="zb6-dy-2SM"/>
                     <connections>
                         <outlet property="photoCollectionView" destination="38t-FW-zvz" id="a7s-hC-AP3"/>
                         <outlet property="tableView" destination="662-R8-Lfa" id="dzq-Mv-gFP"/>

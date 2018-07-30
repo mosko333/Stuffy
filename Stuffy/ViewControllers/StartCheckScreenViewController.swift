@@ -22,7 +22,10 @@ class StartCheckScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        fetchCategories()
+        fetchItems()
         checkUserStatus()
+        
     }
     
     func checkUserStatus() {
@@ -46,5 +49,11 @@ class StartCheckScreenViewController: UIViewController {
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "CustomTabBarViewContoller") as! CustomTabBarViewController
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
+    }
+    func fetchCategories() {
+       CoreDataController.shared.allCategories = CoreDataFetchController.shared.fetchAllCategories()
+    }
+    func fetchItems() {
+        CoreDataController.shared.items = CoreDataFetchController.shared.fetchAllItems()
     }
 }

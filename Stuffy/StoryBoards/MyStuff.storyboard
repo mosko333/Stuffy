@@ -98,6 +98,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xD-lh-Ds1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="xcaBoxBackground" translatesAutoresizingMaskIntoConstraints="NO" id="jDO-7s-0zk">
+                                        <rect key="frame" x="88" y="264" width="198" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap the + to add your first item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NA-70-XZy">
+                                        <rect key="frame" x="56" y="427" width="262" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -110,6 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nTn-tI-vUf"/>
                     <connections>
+                        <outlet property="emptyItemView" destination="1xD-lh-Ds1" id="YcL-Xd-bmP"/>
                         <outlet property="tableView" destination="DxL-2n-rJX" id="cFM-bF-HQB"/>
                     </connections>
                 </viewController>
@@ -127,6 +146,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xcaBoxBackground" width="198" height="147"/>
         <image name="xcaItemFavStarEmpty" width="30" height="30"/>
     </resources>
 </document>

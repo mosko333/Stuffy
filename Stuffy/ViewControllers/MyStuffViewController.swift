@@ -13,6 +13,8 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     
     var categoryItems: [ItemCD] = []
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyItemView: UIView!
+    
     
     var categoryPicked: CategoryCD? {
         didSet {
@@ -31,14 +33,14 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
         guard let items = categoryPicked?.items?.allObjects as? [ItemCD] else { return }
         categoryItems = items
         print(categoryItems.count)
-        print("there are this many images \(categoryItems.first!.images?.count)")
+        setupView()
         tableView.reloadData()
-    
+        
         }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+       
         tableView.delegate = self
         tableView.dataSource = self
         navigationItem.title = categoryPicked?.name
@@ -65,7 +67,13 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
     return cell
     }
 
-    
+    func setupView() {
+        if categoryItems.count == 0 {
+            emptyItemView.isHidden = false
+        } else {
+            emptyItemView.isHidden = true
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95

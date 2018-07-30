@@ -31,7 +31,8 @@ class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
         guard let item = item else {return}
         category = item.category
         photosOfItem = getPhotos(with: item)
-        print(photosOfItem.count)
+    
+        itemDetailCollectionView.backgroundColor = Colors.stuffyBackgroundGray
     }
     
     
@@ -109,16 +110,16 @@ extension ItemDetailViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
         if indexPath.section == 1 {
-             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemDetailDetailCell", for: indexPath) as? ItemInfoCell else { return UITableViewCell()}
+             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemInfoCell", for: indexPath) as? ItemInfoCell else { return UITableViewCell()}
             
             cell.updateCell(with: item)
             
             return cell
         }
         if indexPath.section == 2 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemDetailNoteCell", for: indexPath) as? ItemDetailsCell else { return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ItemDetailNoteCell", for: indexPath) as? ItemDetailNoteCell else { return UITableViewCell()}
             
-            cell.updateItemCell(with: item)
+            cell.updateCell(with: item)
             
             return cell
         }

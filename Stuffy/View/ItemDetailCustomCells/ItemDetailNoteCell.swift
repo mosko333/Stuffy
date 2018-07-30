@@ -12,14 +12,11 @@ import UIKit
 class ItemDetailNoteCell: UITableViewCell {
 
     @IBOutlet weak var notesTextView: UITextView!
-    @IBOutlet weak var deleteItemButton: UIButton!
-    
-    @IBAction func deleteItemButton(_ sender: UIButton) {
-    }
+
     
     func updateCell(with item: ItemCD?) {
         guard let item = item else {return}
-        
+        backgroundColor = Colors.stuffyBackgroundGray
         notesTextView.text = item.notes
     }
     

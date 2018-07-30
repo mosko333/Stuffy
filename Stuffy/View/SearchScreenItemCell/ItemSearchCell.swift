@@ -39,10 +39,11 @@ class ItemSearchCell: UITableViewCell {
         } else {
              isFavoritedButton.setBackgroundImage(#imageLiteral(resourceName: "xcaItemFavStarEmpty"), for: .normal)
         }
-        
+        print("\(item.purchaseDate)")
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         datePurchasedLabel.text = dateFormatter.string(from: item.purchaseDate ?? Date()).uppercased()
+        
         let photo = getPhoto(with: item)
         itemImageView.image = photo
         
