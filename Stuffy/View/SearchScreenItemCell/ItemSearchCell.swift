@@ -28,8 +28,6 @@ class ItemSearchCell: UITableViewCell {
         super.awakeFromNib()
         setupCell()
         
-      
-        
     }
     
     func updateCell(with item: ItemCD) {
@@ -48,11 +46,11 @@ class ItemSearchCell: UITableViewCell {
         let photo = getPhoto(with: item)
         itemImageView.image = photo
         
-       
     }
     
     func getPhoto(with item: ItemCD) -> UIImage {
         guard let photos = item.images?.allObjects as? [ImageCD] else {return UIImage()}
+        
         for photo in photos {
             let image = UIImage(data: photo.image!)
             let fixedPhoto = image?.fixedOrientation()

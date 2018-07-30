@@ -298,27 +298,18 @@ class AddItemTableViewController: UITableViewController {
         let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCell") as! NotesCell
         let notes = noteCell.notesTextView.text ?? ""
         
+        let photos = CoreDataController.shared.photos
         // 2. we save item to Core Data
         
-        CoreDataController.shared.createItem(category: categoypicked, title: title, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate)
+        CoreDataController.shared.createItem(category: categoypicked, photos: photos, title: title, isFavorited: favorited, lastDayToReturn: returnDate, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate)
         
-        // 3. We have a constant of item we have created
         
-        let item = ItemCD(title: title, isFavorited: favorited, modelNumber: modelNumber, notes: notes, price: itemPrice, purchasedFrom: vendor, quantity: quantity!, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate, lastDayToReturn: returnDate)
-        // 4. we use the item we have made to make a relationship to it's photos.
-        
-        for photo in CoreDataController.shared.photos {
-            
-            CoreDataController.shared.createImage(item: item, image: photo)
-        }
-    
-        print("item was created")
-        
-        // 5. we remove all photos in arrays
+        // 3. we remove all photos in arrays
         
        
         CoreDataController.shared.photos.removeAll()
-        // 6. close camera Session and dissmiss_ Note to self, we could run a clean up of the arrays here in the completion. 
+        
+        // 4. close camera Session and dissmiss_ Note to self, we could run a clean up of the arrays here in the completion. 
         self.dismiss(animated: true) {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "NewCameraCell") as! CameraCell
             cell.captureSession.stopRunning()

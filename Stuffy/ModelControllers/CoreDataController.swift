@@ -21,12 +21,14 @@ class CoreDataController {
         }
     }
     
-    func createItem(category: CategoryCD, title: String, isFavorited: Bool, lastDayToReturn: Date, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: Date, purchaseDate: Date ) {
+    func createItem(category: CategoryCD, photos: [UIImage], title: String, isFavorited: Bool, lastDayToReturn: Date, modelNumber: String, notes: String, price: Double, purchasedFrom: String, quantity: Double, serialNumber: String, warranty: Date, purchaseDate: Date ) {
         
         let item = ItemCD(title: title, isFavorited: isFavorited, modelNumber: modelNumber, notes: notes, price: price, purchasedFrom: purchasedFrom, quantity: quantity, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate, lastDayToReturn: lastDayToReturn)
         
         item.category = category
         
+        createImage(item: item, image: photos)
+       
         CoreDataStack.saveContext()
     }
     
@@ -54,15 +56,14 @@ class CoreDataController {
         CoreDataStack.saveContext()
     }
     
-    func createImage(item: ItemCD, image: UIImage){
-        
-    guard let imageData = UIImagePNGRepresentation(image) else {return}
-        
-        let createdImage = ImageCD(image: imageData, item: item)
-        
-        createdImage.item = item
-        
-      CoreDataStack.saveContext()
+    func createImage(item: ItemCD, image: [UIImage]){
+        for i in image{
+            guard let imageData = UIImagePNGRepresentation(i) else {return}
+            
+            let createdImage = ImageCD(image: imageData, item: item)
+            
+            createdImage.item = item
+        }
     }
     
     func deleteImage(with image: ImageCD){
