@@ -54,6 +54,12 @@ class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
         let photo = photosOfItem[indexPath.row]
         
         cell.updateCell(with: photo)
+        if indexPath.row == 0{
+            cell.coverPhotoButton.setTitleColor(Colors.stuffyOrange, for: .normal)
+        } else {
+            cell.coverPhotoButton.setTitleColor(UIColor.white, for: .normal)
+        }
+      
     
         return cell
     }

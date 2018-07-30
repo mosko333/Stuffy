@@ -27,7 +27,7 @@ class ReturnAndWarrantyTableViewCell: UITableViewCell {
         let items = CoreDataController.shared.items
         let closestDateItemArray = items.sorted { $0.lastDayToReturn! < $1.lastDayToReturn! }
         let df = DateFormatter()
-        df.dateFormat = "MM-dd-yyyy"
+        df.dateFormat = "MM/dd/yyyy"
        let date1 =  df.string(from: closestDateItemArray[0].lastDayToReturn ?? Date())
        let date2 = df.string(from: closestDateItemArray[1].lastDayToReturn ?? Date())
         let date3 = df.string(from: closestDateItemArray[2].lastDayToReturn ?? Date())
@@ -50,7 +50,7 @@ class ReturnAndWarrantyTableViewCell: UITableViewCell {
         let items = CoreDataController.shared.items
         let closestDateItemArray = items.sorted { $0.warranty! < $1.warranty! }
         let df = DateFormatter()
-        df.dateFormat = "MM-dd-yyyy"
+        df.dateFormat = "MM/dd/yyyy"
         let date1 =  df.string(from: closestDateItemArray[0].lastDayToReturn ?? Date())
         let date2 = df.string(from: closestDateItemArray[1].lastDayToReturn ?? Date())
         let date3 = df.string(from: closestDateItemArray[2].lastDayToReturn ?? Date())

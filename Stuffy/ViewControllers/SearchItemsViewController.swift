@@ -64,7 +64,6 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         setSearchBar()
         setupShadowView()
         
-        print(allItems.count)
     }
     
     fileprivate func setSearchBar() {
