@@ -31,6 +31,7 @@ class DashboardViewController: UIViewController, NSFetchedResultsControllerDeleg
     
     var currency: String {
         return UserDefaults.standard.object(forKey: CurrencyViewController.Constants.currencyKey) as? String ?? "$" }
+     let items = CoreDataController.shared.items
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -94,60 +95,98 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: "ReturnHeaderCell") as! HeaderTableViewCell
         }
         if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-            let upcommingDates = cell.getUpCommingReturnDates()
-            let upcommingItemNames = cell.getUpCommingReturnItemNames()
-            cell.dateLabel.text = upcommingDates.date1
-            cell.nameLabel.text = upcommingItemNames.item1Name
-            
-            return cell
+            if items.count == 0 {
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                cell.isHidden = true
+                return cell
+            } else {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                let upcommingDates = cell.getUpCommingReturnDates()
+                let upcommingItemNames = cell.getUpCommingReturnItemNames()
+                cell.dateLabel.text = upcommingDates.date1
+                cell.nameLabel.text = upcommingItemNames.item1Name
+                
+                return cell
+            }
         }
         if indexPath.row == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-            let upcommingDates = cell.getUpCommingReturnDates()
-            let upcommingItemNames = cell.getUpCommingReturnItemNames()
-            cell.dateLabel.text = upcommingDates.date2
-            cell.nameLabel.text = upcommingItemNames.item2Name
-            return cell
+            if items.count > 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                let upcommingDates = cell.getUpCommingReturnDates()
+                let upcommingItemNames = cell.getUpCommingReturnItemNames()
+                cell.dateLabel.text = upcommingDates.date2
+                cell.nameLabel.text = upcommingItemNames.item2Name
+                return cell
+            } else {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                cell.isHidden = true
+                return cell
+            }
         }
         if indexPath.row == 4 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-            let upcommingDates = cell.getUpCommingReturnDates()
-            let upcommingItemNames = cell.getUpCommingReturnItemNames()
-            cell.dateLabel.text = upcommingDates.date3
-            cell.nameLabel.text = upcommingItemNames.item3Name
-            return cell
+            if items.count > 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                let upcommingDates = cell.getUpCommingReturnDates()
+                let upcommingItemNames = cell.getUpCommingReturnItemNames()
+                cell.dateLabel.text = upcommingDates.date3
+                cell.nameLabel.text = upcommingItemNames.item3Name
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                cell.isHidden = true
+                return cell
+            }
         }
         if indexPath.row == 5 {
             return tableView.dequeueReusableCell(withIdentifier: "WarrantyHeaderCell") as! HeaderTableViewCell
         }
         if indexPath.row == 6 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-            let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
-            let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
-            cell.dateLabel.text = upcomingWarrantyDates.date1
-            cell.nameLabel.text = upcomingWarrantyNames.item1Name
-            
-            return cell
+            if items.count == 0 {
+                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                cell.isHidden = true
+                return cell
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
+                let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
+                cell.dateLabel.text = upcomingWarrantyDates.date1
+                cell.nameLabel.text = upcomingWarrantyNames.item1Name
+                
+                return cell
+            }
         }
         if indexPath.row == 7 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-            
-            let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
-            let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
-            cell.dateLabel.text = upcomingWarrantyDates.date2
-            cell.nameLabel.text = upcomingWarrantyNames.item2Name
-            
-            return cell
+            if items.count > 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                
+                let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
+                let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
+                cell.dateLabel.text = upcomingWarrantyDates.date2
+                cell.nameLabel.text = upcomingWarrantyNames.item2Name
+                
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                cell.isHidden = true
+                return cell
+            }
         }
         if indexPath.row == 8 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-            let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
-            let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
-            cell.dateLabel.text = upcomingWarrantyDates.date3
-            cell.nameLabel.text = upcomingWarrantyNames.item3Name
-            return cell
-        } else {return UITableViewCell()}
+            if items.count > 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
+                let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
+                cell.dateLabel.text = upcomingWarrantyDates.date3
+                cell.nameLabel.text = upcomingWarrantyNames.item3Name
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
+                cell.isHidden = true
+                return cell
+            }
+        }else { return UITableViewCell()}
     }
+
 }
 

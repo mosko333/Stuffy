@@ -33,6 +33,7 @@ class ItemDetailViewController: UIViewController, UICollectionViewDataSource {
         photosOfItem = getPhotos(with: item)
     
         itemDetailCollectionView.backgroundColor = Colors.stuffyBackgroundGray
+        itemDetailCollectionView.delaysContentTouches = true
     }
     
     

@@ -9,21 +9,8 @@
 import UIKit
 import CoreData
 
-class CategoriesDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class CategoriesDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    let itemsFRC: NSFetchedResultsController<CategoryCD> = {
-        let request: NSFetchRequest<CategoryCD> = CategoryCD.fetchRequest()
-        
-        let sortDescriptors = NSSortDescriptor(key: "name", ascending: true)
-        
-        request.sortDescriptors = [sortDescriptors]
-        print("Categories were sorted")
-        
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        
-        return controller
-        
-    }()
     
     var categoryPicked: CategoryCD? {
         didSet {
@@ -41,12 +28,6 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
         categoryView.frame.origin.y += 700
         categoryNameTextField.addDoneButtonOnKeyboard()
         
-        itemsFRC.delegate = self
-        do {
-            try itemsFRC.performFetch()
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
     }
     
     override func viewDidLoad() {
@@ -63,12 +44,12 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemsFRC.fetchedObjects?.count ?? 0
+        return CoreDataController.shared.allCategories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath)
-        let category = itemsFRC.object(at: indexPath)
+        let category = CoreDataController.shared.allCategories[indexPath.row]
         cell.textLabel?.text = category.name
     
         
@@ -98,11 +79,7 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     }
  guard let newCategory = categoryNameTextField.text, newCategory.count > 0 else { return }
         CoreDataController.shared.createCategory(name: newCategory)
-        do {
-            try itemsFRC.performFetch()
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
+    
         tableView.reloadData()
     }
     
@@ -111,7 +88,7 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
             let destinationVC = segue.destination as! UINavigationController
             let topVC = destinationVC.topViewController as! AddItemTableViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let categorypicked = itemsFRC.object(at: indexPath)
+            let categorypicked = CoreDataController.shared.allCategories[indexPath.row]
             topVC.categoryPicked = categorypicked
         
         }
@@ -120,7 +97,7 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navVC = self.presentingViewController as? UINavigationController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let categorypicked = itemsFRC.object(at: indexPath)
+        let categorypicked = CoreDataController.shared.allCategories[indexPath.row]
         
         for viewController in navVC.viewControllers {
             if let newAddItemVC = viewController as? AddItemTableViewController {

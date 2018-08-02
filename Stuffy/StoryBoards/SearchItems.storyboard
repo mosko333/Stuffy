@@ -93,6 +93,7 @@
                                             <outlet property="itemImageView" destination="m1w-TZ-8sd" id="a5D-zi-44k"/>
                                             <outlet property="itemNameLabel" destination="efa-De-rtY" id="u80-Fb-KDD"/>
                                             <outlet property="shadowView" destination="9Zx-g8-bi9" id="d27-nV-7lL"/>
+                                            <segue destination="Luu-qa-RXP" kind="presentation" identifier="toItemDetailVC2" id="3yJ-FU-Jv9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -116,6 +117,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DeS-OY-hSE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1228" y="1506.296851574213"/>
+        </scene>
+        <!--ItemDetailNavController-->
+        <scene sceneID="ZSl-2L-dQO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemDetail" referencedIdentifier="ItemDetailNavController" id="Luu-qa-RXP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jhf-dR-rFD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2090" y="1506"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ET6-vl-FVX">

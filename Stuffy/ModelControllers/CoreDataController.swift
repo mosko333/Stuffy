@@ -31,36 +31,57 @@ class CoreDataController {
         
         let item = ItemCD(title: title, isFavorited: isFavorited, modelNumber: modelNumber, notes: notes, price: price, purchasedFrom: purchasedFrom, quantity: quantity, serialNumber: serialNumber, warranty: warranty, purchaseDate: purchaseDate, lastDayToReturn: lastDayToReturn)
         
+        
         item.category = category
         
         createImage(item: item, image: photos)
+        
+        CoreDataController.shared.items.append(item)
        
         CoreDataStack.saveContext()
     }
     
     
-    func removeItem(with item: ItemCD) {
+    func deleteItem(with item: ItemCD) {
+        
+        if (item.images?.count)! > 0 {
+            guard let imagesToDelete = item.images?.allObjects as? [ImageCD] else { return }
+            for image in imagesToDelete {
+                
+                deleteImage(with: image)
+            }
+        }
         
         CoreDataStack.context.delete(item)
     
         CoreDataStack.saveContext()
+        
     }
     
     func createCategory(name: String){
         
         let categoryName = name.trimmingCharacters(in: .whitespaces)
         
-      _ = CategoryCD(name: categoryName, isFavorited: false)
+      let category = CategoryCD(name: categoryName, isFavorited: false)
+        CoreDataController.shared.allCategories.append(category)
         
         CoreDataStack.saveContext()
     }
     
     func deleteCategory(with category: CategoryCD){
         
+        if (category.items?.count)! > 0 {
+            guard let itemsToDelete = category.items?.allObjects as? [ItemCD] else { return }
+            for item in itemsToDelete{
+                deleteItem(with: item)
+        }
         CoreDataStack.context.delete(category)
-        
+    
         CoreDataStack.saveContext()
-    }
+       
+
+       }
+   }
     
     func createImage(item: ItemCD, image: [UIImage]){
         for i in image{

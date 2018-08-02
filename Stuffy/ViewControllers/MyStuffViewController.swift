@@ -97,6 +97,44 @@ class MyStuffViewController: UIViewController,  UITableViewDataSource, UITableVi
            topVC.item = item
         }
     }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
+            //TODO: Delete the row at indexPath here
+            
+            self.presentDeleteAlertController(indexPathRow: indexPath.row)
+        }
+        deleteAction.backgroundColor = Colors.stuffyRed
+        
+        //return [editAction,deleteAction]
+        return [deleteAction]
+    }
+    
+    func presentDeleteAlertController(indexPathRow: Int) {
+        let alertController = UIAlertController(title: "Are you sure you want to delete this Item?", message: "", preferredStyle: .alert)
+        // - Add Actions
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            // AKA What happens when we press the button
+            
+            let itemToDelete = self.categoryItems[indexPathRow]
+            
+            
+            CoreDataController.shared.deleteItem(with: itemToDelete)
+            
+           
+            
+            self.categoryItems.remove(at: indexPathRow)
+         
+            self.tableView.reloadData()
+            
+        }
+        let cancelAction  = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        // - Add actions to alert controller
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        // - Present Alert Controller
+        present(alertController, animated: true)
+    }
 }
 
 extension MyStuffViewController: FavoriteItemDelegate {

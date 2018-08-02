@@ -150,6 +150,17 @@ extension SearchItemsViewController: FavoriteItemDelegate {
         cell.updateCell(with: item)
         CoreDataStack.saveContext()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toItemDetailVC2" {
+            guard let destinationVC = segue.destination as? UINavigationController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let item = searchArray[indexPath.row]
+            let topVC = destinationVC.topViewController as! ItemDetailViewController
+            
+            topVC.item = item
+        }
+    }
 }
 
 extension SearchItemsViewController: UISearchBarDelegate {

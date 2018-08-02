@@ -30,7 +30,7 @@ class StartCheckScreenViewController: UIViewController {
     
     func checkUserStatus() {
         // Takes them to the onboarding screen on first login
-        if UserDefaults.standard.object(forKey: Constants.onboardingKey) != nil {
+        if UserDefaults.standard.object(forKey: Constants.onboardingKey) == nil {
             defaults.set(true, forKey: Constants.onboardingKey)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "OnboardPageControlViewController") as! OnboardPageControlViewController
@@ -51,9 +51,23 @@ class StartCheckScreenViewController: UIViewController {
         }
     }
     func fetchCategories() {
-       CoreDataController.shared.allCategories = CoreDataFetchController.shared.fetchAllCategories()
+       let categoriesFetched = CoreDataFetchController.shared.fetchAllCategories()
+        for category in categoriesFetched {
+            if CoreDataController.shared.allCategories.contains(category){
+                
+            }else {
+                CoreDataController.shared.allCategories.append(category)
+            }
+        }
     }
     func fetchItems() {
-        CoreDataController.shared.items = CoreDataFetchController.shared.fetchAllItems()
+       let itemsFetched = CoreDataFetchController.shared.fetchAllItems()
+        for item in itemsFetched {
+            if CoreDataController.shared.items.contains(item) {
+                
+            }else {
+                CoreDataController.shared.items.append(item)
+            }
+        }
     }
 }

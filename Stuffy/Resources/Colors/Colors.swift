@@ -20,4 +20,5 @@ public class Colors {
     static let stuffyMedGray = UIColor(red: 202/255, green: 202/255, blue: 202/255, alpha: 1)
     static let stuffyLightGray = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
     static let stuffyBackgroundGray = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1)
+    static let stuffyRed = UIColor(red: 255/255, green: 27/255, blue: 0/255, alpha: 1)
 }

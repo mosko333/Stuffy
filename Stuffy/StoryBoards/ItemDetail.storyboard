@@ -18,91 +18,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="veS-Xi-5VP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="436"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="A9t-AK-tR2">
-                                    <size key="itemSize" width="330" height="331"/>
-                                    <size key="headerReferenceSize" width="0.0" height="30"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemDetailImageCell" id="Iob-lY-MYX" customClass="ItemDetailCollectionViewCell" customModule="Stuffy" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="20.5" width="330" height="331"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="331"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29X-oC-PlR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="330" height="331"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IoP-JI-hCa">
-                                                    <rect key="frame" x="0.0" y="270.5" width="330" height="60"/>
-                                                    <subviews>
-                                                        <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVq-cb-biJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="110" height="60"/>
-                                                            <color key="backgroundColor" red="0.094117647058823528" green="0.2196078431372549" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                            <state key="normal" title="DELETE">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                        </button>
-                                                        <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="050-yx-42R">
-                                                            <rect key="frame" x="110" y="0.0" width="110" height="60"/>
-                                                            <color key="backgroundColor" red="0.094117647058823528" green="0.2196078431372549" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                            <state key="normal" title="+ADD PHOTO">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                        </button>
-                                                        <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN3-dj-6vl">
-                                                            <rect key="frame" x="220" y="0.0" width="110" height="60"/>
-                                                            <color key="backgroundColor" red="0.094117647058823528" green="0.2196078431372549" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                                            <state key="normal" title="COVER">
-                                                                <color key="titleColor" red="1" green="0.80000000000000004" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </state>
-                                                        </button>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="qWj-bY-19Q"/>
-                                                    </constraints>
-                                                </stackView>
-                                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2X9-jx-ejY">
-                                                    <rect key="frame" x="-23" y="-52.5" width="375" height="436"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </scrollView>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="IoP-JI-hCa" firstAttribute="leading" secondItem="Iob-lY-MYX" secondAttribute="leading" id="TBh-mW-1lV"/>
-                                            <constraint firstAttribute="bottom" secondItem="IoP-JI-hCa" secondAttribute="bottom" id="teZ-v8-Wsn"/>
-                                            <constraint firstAttribute="trailing" secondItem="IoP-JI-hCa" secondAttribute="trailing" id="tzo-O4-oTb"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="addPhotoButton" destination="050-yx-42R" id="Sz3-39-9MQ"/>
-                                            <outlet property="coverPhotoButton" destination="VN3-dj-6vl" id="PEV-BG-D51"/>
-                                            <outlet property="deleteButton" destination="IVq-cb-biJ" id="Bfn-aQ-tyt"/>
-                                            <outlet property="photoImageView" destination="29X-oC-PlR" id="Ry1-hh-aWt"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="NlS-kX-alX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
-                            </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-Bd-xvk">
-                                <rect key="frame" x="0.0" y="432" width="375" height="235"/>
+                                <rect key="frame" x="0.0" y="14" width="375" height="796"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionView key="tableHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="veS-Xi-5VP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="safeArea" id="A9t-AK-tR2">
+                                        <size key="itemSize" width="330" height="328"/>
+                                        <size key="headerReferenceSize" width="0.0" height="23"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ItemDetailImageCell" id="Iob-lY-MYX" customClass="ItemDetailCollectionViewCell" customModule="Stuffy" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="59" width="330" height="328"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="328"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29X-oC-PlR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="330" height="331"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IoP-JI-hCa">
+                                                        <rect key="frame" x="0.0" y="269" width="330" height="60"/>
+                                                        <subviews>
+                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IVq-cb-biJ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="110" height="60"/>
+                                                                <color key="backgroundColor" red="0.094117647058823528" green="0.2196078431372549" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <state key="normal" title="DELETE">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="050-yx-42R">
+                                                                <rect key="frame" x="110" y="0.0" width="110" height="60"/>
+                                                                <color key="backgroundColor" red="0.094117647058823528" green="0.2196078431372549" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <state key="normal" title="+ADD PHOTO">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                            <button opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN3-dj-6vl">
+                                                                <rect key="frame" x="220" y="0.0" width="110" height="60"/>
+                                                                <color key="backgroundColor" red="0.094117647058823528" green="0.2196078431372549" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <state key="normal" title="COVER">
+                                                                    <color key="titleColor" red="1" green="0.80000000000000004" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="qWj-bY-19Q"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </view>
+                                            <constraints>
+                                                <constraint firstItem="IoP-JI-hCa" firstAttribute="leading" secondItem="Iob-lY-MYX" secondAttribute="leading" id="TBh-mW-1lV"/>
+                                                <constraint firstAttribute="bottom" secondItem="IoP-JI-hCa" secondAttribute="bottom" id="teZ-v8-Wsn"/>
+                                                <constraint firstAttribute="trailing" secondItem="IoP-JI-hCa" secondAttribute="trailing" id="tzo-O4-oTb"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="addPhotoButton" destination="050-yx-42R" id="Sz3-39-9MQ"/>
+                                                <outlet property="coverPhotoButton" destination="VN3-dj-6vl" id="PEV-BG-D51"/>
+                                                <outlet property="deleteButton" destination="IVq-cb-biJ" id="Bfn-aQ-tyt"/>
+                                                <outlet property="photoImageView" destination="29X-oC-PlR" id="Ry1-hh-aWt"/>
+                                            </connections>
+                                        </collectionViewCell>
+                                    </cells>
+                                    <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="NlS-kX-alX">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="22"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </collectionReusableView>
+                                </collectionView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemDetailNameCell" rowHeight="253" id="i9D-sD-XjT" customClass="NameCell" customModule="Stuffy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="253"/>
+                                        <rect key="frame" x="0.0" y="474" width="375" height="253"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i9D-sD-XjT" id="U8m-Cz-lef">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="252.5"/>
@@ -182,7 +178,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemInfoCell" rowHeight="437" id="T4q-Y4-Kwn" customClass="ItemInfoCell" customModule="Stuffy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="281" width="375" height="437"/>
+                                        <rect key="frame" x="0.0" y="727" width="375" height="437"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T4q-Y4-Kwn" id="17O-MC-Yct">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="436.5"/>
@@ -320,7 +316,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemDetailNoteCell" rowHeight="233" id="hQE-Sm-3gm" customClass="ItemDetailNoteCell" customModule="Stuffy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="718" width="375" height="233"/>
+                                        <rect key="frame" x="0.0" y="1164" width="375" height="233"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hQE-Sm-3gm" id="NbV-wX-K2R">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="232.5"/>

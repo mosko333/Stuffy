@@ -92,6 +92,9 @@
                                 <state key="normal" title="SKIP">
                                     <color key="titleColor" red="0.45098039215686275" green="0.69411764705882351" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="VFA-da-KxN" kind="show" id="kLf-Ug-z8R"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -145,6 +148,9 @@
                                 <state key="normal" title="SKIP">
                                     <color key="titleColor" red="0.45098039220000002" green="0.69411764710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="VFA-da-KxN" kind="show" id="wZJ-dW-Rb1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -166,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dS6-Uf-JWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="206.44677661169416"/>
+            <point key="canvasLocation" x="1918" y="206"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rq4-1q-Lvw">
@@ -196,11 +202,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdd-hw-4B4">
-                                <rect key="frame" x="311" y="34" width="38" height="37"/>
+                                <rect key="frame" x="295" y="34" width="54" height="37"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="SKIP">
+                                <state key="normal" title="DONE">
                                     <color key="titleColor" red="0.45098039220000002" green="0.69411764710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="VFA-da-KxN" kind="show" id="S7N-cv-jCH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -222,7 +231,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sO0-Sx-51V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2694" y="207"/>
+            <point key="canvasLocation" x="2726" y="206"/>
+        </scene>
+        <!--CustomTabBarViewContoller-->
+        <scene sceneID="32y-kJ-5cU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="CustomTabBarViewContoller" id="VFA-da-KxN" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZjC-KS-ccD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1917" y="886"/>
         </scene>
     </scenes>
     <resources>
@@ -230,4 +247,7 @@
         <image name="xcaOnboardLamp" width="273" height="273"/>
         <image name="xcaOnboardPicture" width="273" height="304"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wZJ-dW-Rb1"/>
+    </inferredMetricsTieBreakers>
 </document>
