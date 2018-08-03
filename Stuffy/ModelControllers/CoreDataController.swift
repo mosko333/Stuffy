@@ -85,7 +85,7 @@ class CoreDataController {
     
     func createImage(item: ItemCD, image: [UIImage]){
         for i in image{
-            guard let imageData = UIImagePNGRepresentation(i) else {return}
+            guard let imageData = UIImageJPEGRepresentation(i, 1) else {return}
             
             let createdImage = ImageCD(image: imageData, item: item)
             

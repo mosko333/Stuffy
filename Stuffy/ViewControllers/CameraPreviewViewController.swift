@@ -70,6 +70,7 @@ class cameraPreviewViewController: UIViewController, UICollectionViewDelegate, U
     
     @IBAction func savePhotoButtonTapped(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addItemVC", sender: self)
+        
     }
     
    
@@ -80,6 +81,7 @@ class cameraPreviewViewController: UIViewController, UICollectionViewDelegate, U
             topVC.image = image
             topVC.categoryPicked = categoryPicked
         }
+    
     }
     
     

@@ -24,10 +24,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="f7S-T3-kIs" secondAttribute="bottom" id="5mh-k6-6CH"/>
-                            <constraint firstItem="f7S-T3-kIs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LqI-zX-4R0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f7S-T3-kIs" secondAttribute="trailing" id="hHc-1r-oRJ"/>
-                            <constraint firstItem="f7S-T3-kIs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="ph9-jO-CUR"/>
+                            <constraint firstAttribute="bottom" secondItem="f7S-T3-kIs" secondAttribute="bottom" id="5mh-k6-6CH"/>
+                            <constraint firstItem="f7S-T3-kIs" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="LqI-zX-4R0"/>
+                            <constraint firstAttribute="trailing" secondItem="f7S-T3-kIs" secondAttribute="trailing" id="hHc-1r-oRJ"/>
+                            <constraint firstItem="f7S-T3-kIs" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ph9-jO-CUR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

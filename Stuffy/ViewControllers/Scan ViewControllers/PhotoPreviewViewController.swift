@@ -16,27 +16,32 @@ class PhotoPreviewViewController: UIViewController {
     var categoryPicked: CategoryCD?
     
     @IBOutlet weak var photoImageView: UIImageView!
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
+        
     }
+    
+   
     @IBAction func saveBtnTapped(_ sender: UIBarButtonItem) {
-       performSegue(withIdentifier: "toNewAddItemVC", sender: self)
         guard let photo = photo else {return}
         print("recepit save button pressed")
         CoreDataController.shared.photos.append(photo)
+        performSegue(withIdentifier: "toNewAddItemVC", sender: self)
         
     }
     
     func updateView() {
-        //////////////////////
-        // TODO: Replace
-        //////////////////////
-        DispatchQueue.main.async {
-            self.photoImageView.image = self.photo
+        if photo != nil {
+            DispatchQueue.main.async {
+                self.photoImageView.image = self.photo
+            }
         }
+      
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,7 +50,9 @@ class PhotoPreviewViewController: UIViewController {
             let topVC = destinationVC.topViewController as! AddItemTableViewController
             topVC.image = photo
             topVC.categoryPicked = categoryPicked
+            
+            dismiss(animated: true, completion: nil)
         }
     }
-    
 }
+

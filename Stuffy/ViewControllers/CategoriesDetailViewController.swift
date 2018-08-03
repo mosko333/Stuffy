@@ -82,26 +82,17 @@ class CategoriesDetailViewController: UIViewController, UITableViewDataSource, U
     
         tableView.reloadData()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddItemVC2"{
-            let destinationVC = segue.destination as! UINavigationController
-            let topVC = destinationVC.topViewController as! AddItemTableViewController
-            guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let categorypicked = CoreDataController.shared.allCategories[indexPath.row]
-            topVC.categoryPicked = categorypicked
-        
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navVC = self.presentingViewController as? UINavigationController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let categorypicked = CoreDataController.shared.allCategories[indexPath.row]
-        
+      
         for viewController in navVC.viewControllers {
             if let newAddItemVC = viewController as? AddItemTableViewController {
                 newAddItemVC.categoryPicked = categorypicked
+               
             }
             
         }

@@ -95,12 +95,8 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: "ReturnHeaderCell") as! HeaderTableViewCell
         }
         if indexPath.row == 2 {
-            if items.count == 0 {
-                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-                cell.isHidden = true
-                return cell
-            } else {
-                
+         
+    
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
                 let upcommingDates = cell.getUpCommingReturnDates()
                 let upcommingItemNames = cell.getUpCommingReturnItemNames()
@@ -108,35 +104,24 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.nameLabel.text = upcommingItemNames.item1Name
                 
                 return cell
-            }
         }
         if indexPath.row == 3 {
-            if items.count > 1 {
+            
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
                 let upcommingDates = cell.getUpCommingReturnDates()
                 let upcommingItemNames = cell.getUpCommingReturnItemNames()
                 cell.dateLabel.text = upcommingDates.date2
                 cell.nameLabel.text = upcommingItemNames.item2Name
                 return cell
-            } else {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-                cell.isHidden = true
-                return cell
             }
-        }
         if indexPath.row == 4 {
-            if items.count > 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
                 let upcommingDates = cell.getUpCommingReturnDates()
                 let upcommingItemNames = cell.getUpCommingReturnItemNames()
                 cell.dateLabel.text = upcommingDates.date3
                 cell.nameLabel.text = upcommingItemNames.item3Name
                 return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-                cell.isHidden = true
-                return cell
-            }
+           
         }
         if indexPath.row == 5 {
             return tableView.dequeueReusableCell(withIdentifier: "WarrantyHeaderCell") as! HeaderTableViewCell
@@ -157,7 +142,6 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         if indexPath.row == 7 {
-            if items.count > 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
                 
                 let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
@@ -166,27 +150,18 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.nameLabel.text = upcomingWarrantyNames.item2Name
                 
                 return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-                cell.isHidden = true
-                return cell
-            }
         }
         if indexPath.row == 8 {
-            if items.count > 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
                 let upcomingWarrantyDates = cell.getUpCommingWarrantyDates()
                 let upcomingWarrantyNames = cell.getUpComingWarrantyTitles()
                 cell.dateLabel.text = upcomingWarrantyDates.date3
                 cell.nameLabel.text = upcomingWarrantyNames.item3Name
                 return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ReturnCell") as! ReturnAndWarrantyTableViewCell
-                cell.isHidden = true
-                return cell
             }
-        }else { return UITableViewCell()}
+        else { return UITableViewCell()}
+        }
     }
 
-}
+
 

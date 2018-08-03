@@ -19,6 +19,7 @@ class NameandCategoryCell: UITableViewCell {
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var changeCategoryButton: UIButton!
     
+    @IBOutlet weak var chevronImage: UIImageView!
     
     weak var delegate: ChangeQuantityDelegate?
     
@@ -41,6 +42,7 @@ class NameandCategoryCell: UITableViewCell {
         guard let category = category else {return}
         guard let name = category.name else {return}
         changeCategoryButton.setTitle("\(name)", for: .normal)
+        chevronImage.isHidden = true
         print("category has been updated")
     }
 }

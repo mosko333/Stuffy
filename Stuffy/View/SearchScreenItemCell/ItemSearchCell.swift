@@ -54,8 +54,8 @@ class ItemSearchCell: UITableViewCell {
         
         for photo in photos {
             let image = UIImage(data: photo.image!)
-            let fixedPhoto = image?.fixedOrientation()
-            return fixedPhoto!
+              
+                return image!
         }
         return UIImage()
     }

@@ -117,7 +117,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xcaNoImage" translatesAutoresizingMaskIntoConstraints="NO" id="qez-1V-ZMQ" userLabel="PhotoImage">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qez-1V-ZMQ" userLabel="PhotoImage">
                                 <rect key="frame" x="16" y="80" width="343" height="571"/>
                             </imageView>
                         </subviews>
@@ -176,6 +176,5 @@
     <resources>
         <image name="xcaCameraBtn" width="61" height="61"/>
         <image name="xcaFocusIndicator" width="75" height="75"/>
-        <image name="xcaNoImage" width="615" height="448"/>
     </resources>
 </document>
