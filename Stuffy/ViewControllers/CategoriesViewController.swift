@@ -9,19 +9,12 @@
 import UIKit
 import CoreData
 
-class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let categoryFRC: NSFetchedResultsController<CategoryCD> = {
-        let request: NSFetchRequest<CategoryCD> = CategoryCD.fetchRequest()
-        let sortDescriptors = NSSortDescriptor(key: "name", ascending: true)
-        request.sortDescriptors = [sortDescriptors]
-        print("Categories were sorted")
-        let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
-        return controller
-    }()
     
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyCategoryView: UIView!
     
     var categoryPicked: CategoryCD? {
         didSet {
@@ -33,16 +26,15 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryTextField.delegate = self
-        categoryFRC.delegate = self
+        
         tableView.delegate = self
         tableView.dataSource = self
-        fetch()
         setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        fetch()
+        tableView.reloadData()
         setupView()
     }
     
@@ -50,9 +42,19 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupView() {
         // Setup status bar to lightContent because it's changed to dark in the searchVC
         // We set the background colors alpha to 0 because otherwise it's translucent
+        
+        if CoreDataController.shared.allCategories.count == 0 {
+            emptyCategoryView.isHidden = false
+        } else {
+            emptyCategoryView.isHidden = true
+        }
+        
                 UIApplication.shared.statusBarView?.backgroundColor = UIColor(displayP3Red: 30, green: 57, blue: 81, alpha: 0)
         UIApplication.shared.statusBarStyle = .lightContent
 
+        // Set insets to see the bottom cells of the table
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        self.tableView.contentInset = insets
         
         // Set logo on Nav Bar
         let logo = UIImageView(image: #imageLiteral(resourceName: "xcaBannerNeatly"))
@@ -68,7 +70,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         attributedText.addAttributes([NSAttributedStringKey.foregroundColor: Colors.stuffyDarkGray, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 16)!], range: getRangeOfSubString(subString: "Add a Category", fromString: placeHolderText)) // Dark Gray color attribute
         
         categoryTextField.attributedText = attributedText
-        
     }
     
     func getRangeOfSubString(subString: String, fromString: String) -> NSRange {
@@ -79,19 +80,11 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
         return linkRange
     }
     
-    func fetch() {
-        do {
-            try categoryFRC.performFetch()
-        } catch  {
-            print("\(error.localizedDescription)")
-        }
-    }
-    
     
     //TABLEVIEW DATA SOURCE FUNCTIONS
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryFRC.fetchedObjects?.count ?? 0
+        return CoreDataController.shared.allCategories.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -101,67 +94,34 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
         cell.delegate = self
-        let category = categoryFRC.object(at: indexPath)
+        let category = CoreDataController.shared.allCategories[indexPath.row]
         cell.updateCell(category)
         
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            guard let category = categoryFRC.fetchedObjects?[indexPath.row] else { return }
-//            CoreDataStack.context.delete(category)
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 
-//        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
-//            //TODO: edit the row at indexPath here
-//        }
-//        editAction.backgroundColor = .blue
-
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
             //TODO: Delete the row at indexPath here
-//            self.catNames.remove(at: indexPath.row)
-//            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            guard let category = self.categoryFRC.fetchedObjects?[indexPath.row] else { return }
-            CoreDataStack.context.delete(category)
-        }
-        deleteAction.backgroundColor = Colors.stuffyOrange
 
+            self.presentDeleteAlertController(indexPathRow: indexPath.row)
+        }
+        deleteAction.backgroundColor = Colors.stuffyRed
+    
         //return [editAction,deleteAction]
         return [deleteAction]
     }
-    
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//                print("\(Thread.isMainThread)")
-//            DispatchQueue.main.async {
-//                self.performSegue(withIdentifier: "MyStuffSegue",sender: self)
-//            }
-//
-////            categoryFRC.object(at: indexPath)
-////            self.navigationController?.performSegue(withIdentifier: "MyStuffSegue", sender: self)
-//
-//
-//
-////            let categorypicked = categoryFRC.object(at: indexPath)
-////            let storyBoard = UIStoryboard(name: "MyStuff", bundle: nil)
-////            let destinationVC = storyBoard.instantiateViewController(withIdentifier: "MyStuffNavigationController") as! UINavigationController
-////            let topVC = destinationVC.topViewController as! myStuffViewController
-////            topVC.categoryPicked = categorypicked
-////            //self.navigationController?.pushViewController(myStuffViewController(), animated: true)
-////            present(destinationVC, animated: true, completion: nil)
-//        }
-//
-    
+
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MyStuffSegue" {
 
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let categorypicked = categoryFRC.object(at: indexPath)
+            
+            let categorypicked =  CoreDataController.shared.allCategories[indexPath.row]
             if let destinationVC = segue.destination as? MyStuffViewController {
                 destinationVC.categoryPicked = categorypicked
             }
@@ -175,7 +135,7 @@ extension CategoriesViewController: CategoryTableViewCellDelegate {
         
         let indexPath = tableView.indexPath(for: cell)
         
-        let category = categoryFRC.object(at: indexPath!)
+        let category =  CoreDataController.shared.allCategories[(indexPath?.row)!]
         
         category.isFavorited = !category.isFavorited
         
@@ -250,10 +210,8 @@ extension CategoriesViewController: UITextFieldDelegate {
         
         if let categoryName = categoryTextField.text, categoryName.count > 0{
         
-        ItemCoreDataController.shared.createCategory(name: categoryName)
-        
-        fetch()
-        
+        CoreDataController.shared.createCategory(name: categoryName)
+            
         tableView.reloadData()
         
         categoryTextField.text = ""
@@ -261,5 +219,27 @@ extension CategoriesViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
+}
+
+// MARK: - Create and Present AlertController
+extension CategoriesViewController {
+    func presentDeleteAlertController(indexPathRow: Int) {
+        let alertController = UIAlertController(title: "Are you sure you want to delete this category?", message: "", preferredStyle: .alert)
+        // - Add Actions
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            // AKA What happens when we press the button
+            
+             let categoryToDelete = CoreDataController.shared.allCategories[indexPathRow]
+            CoreDataController.shared.deleteCategory(with: categoryToDelete)
+            CoreDataController.shared.allCategories.remove(at: indexPathRow)
+           self.tableView.reloadData()
+            
+        }
+        let cancelAction  = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        // - Add actions to alert controller
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        // - Present Alert Controller
+        present(alertController, animated: true)
+    }
 }

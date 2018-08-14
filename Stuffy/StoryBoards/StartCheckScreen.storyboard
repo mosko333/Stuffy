@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fqQ-av-rnQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Start Check Screen View Controller-->
+        <scene sceneID="5xw-T0-gxJ">
+            <objects>
+                <viewController id="fqQ-av-rnQ" customClass="StartCheckScreenViewController" customModule="Stuffy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u0C-9b-5hS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xcaSplashScreen" translatesAutoresizingMaskIntoConstraints="NO" id="GwY-FY-qNW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GwY-FY-qNW" firstAttribute="top" secondItem="1TL-dm-sh2" secondAttribute="top" constant="-20" id="TR0-oy-sf3"/>
+                            <constraint firstItem="1TL-dm-sh2" firstAttribute="bottom" secondItem="GwY-FY-qNW" secondAttribute="bottom" id="qKp-X2-hMB"/>
+                            <constraint firstItem="GwY-FY-qNW" firstAttribute="leading" secondItem="1TL-dm-sh2" secondAttribute="leading" id="rD3-yC-fe3"/>
+                            <constraint firstItem="1TL-dm-sh2" firstAttribute="trailing" secondItem="GwY-FY-qNW" secondAttribute="trailing" id="t7m-DJ-Cve"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1TL-dm-sh2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="O93-1n-3af"/>
+                    <connections>
+                        <segue destination="Ip1-sY-3pk" kind="show" identifier="ToOnboarding" id="7NF-2i-XYd"/>
+                        <segue destination="L3P-uL-rhv" kind="show" identifier="ToPin" id="qAL-g3-zw0"/>
+                        <segue destination="ISO-bA-Vbz" kind="show" identifier="ToMain" id="u6O-iW-s5m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OfA-Ru-9U8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="124.58770614692655"/>
+        </scene>
+        <!--Onboarding-->
+        <scene sceneID="FuI-fM-3am">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="Ip1-sY-3pk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ieo-RX-otx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784.8" y="1.7991004497751126"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="ovJ-NY-pD8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="ISO-bA-Vbz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTd-3D-bv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1791" y="135"/>
+        </scene>
+        <!--PinPad-->
+        <scene sceneID="yD6-dR-krx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PinPad" id="L3P-uL-rhv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beB-Fe-AIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784" y="249.1754122938531"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="xcaSplashScreen" width="375" height="667"/>
+    </resources>
+</document>

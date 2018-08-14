@@ -7,25 +7,11 @@
 //
 
 import UIKit
-protocol TouchIDTableViewCellDelegate: class {
-    func pinOnOffToggle(pinIsOn: Bool)
-}
 
 class TouchIDTableViewCell: UITableViewCell {
-
-    weak var delegate: TouchIDTableViewCellDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    @IBOutlet weak var pinSwitch: UISwitch!
+    
     @IBAction func pinSwitchToggled(_ sender: UISwitch) {
-        delegate?.pinOnOffToggle(pinIsOn: sender.isOn)
     }
 }

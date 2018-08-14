@@ -12,24 +12,22 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var settingsTable: UITableView!
     
-    let currency = ["$", "£", "₪", "€", "₫", "₱", "р.", "₨", "₣", "¥", "₩", "₴", "kr", "د.إ", "ر.س"]
-    var pinIsOn: Bool = true
+    var currency: String {
+        return UserDefaults.standard.object(forKey: CurrencyViewController.Constants.currencyKey) as? String ?? "$ Dollar" }
+    var pinIsOn: Bool {
+        return UserDefaults.standard.object(forKey: PinPadViewController.Constants.isPinActiveKey) as? Bool ?? false }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsTable.delegate = self
         settingsTable.dataSource = self
         self.settingsTable.rowHeight = 77
-        setupView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        settingsTable.reloadData()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func setupView() {
-    }
     @IBAction func backBarButton(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
@@ -55,7 +53,6 @@ class SettingsViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -70,7 +67,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TouchIDCell") as! TouchIDTableViewCell
-            cell.delegate = self
+            cell.pinSwitch.isOn = pinIsOn
             return cell
         }
         if indexPath.row == 1 {
@@ -80,14 +77,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return tableView.dequeueReusableCell(withIdentifier: "EraseCell") as! ResetAndEraseTableViewCell
         }
         if indexPath.row == 3 {
-            return tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyPickerTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyPickerTableViewCell
+            cell.currencyLabel.text = currency
+            return cell
         } else {return UITableViewCell()}
     }
-}
-
-extension SettingsViewController: TouchIDTableViewCellDelegate {
-    func pinOnOffToggle(pinIsOn: Bool) {
-        self.pinIsOn = pinIsOn
-    }
-    
 }

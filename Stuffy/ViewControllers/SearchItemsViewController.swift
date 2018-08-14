@@ -10,10 +10,8 @@ import UIKit
 import CoreData
 
 class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-    
-    
+
     var searchBar: UISearchBar?
-    
     
     let itemFRC:NSFetchedResultsController<ItemCD> = {
         let request: NSFetchRequest<ItemCD> = ItemCD.fetchRequest()
@@ -33,10 +31,12 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     var allItems: [ItemCD] = [] {
         didSet {
             searchArray = allItems
+            let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+            self.tableView.contentInset = insets
             tableView.reloadData()
         }
     }
-    
+  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
@@ -44,6 +44,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
             try itemFRC.performFetch()
             guard let items = itemFRC.fetchedObjects else {return }
             allItems = items
+            print(items.count)
             tableView.reloadData()
         } catch  {
             print("\(error.localizedDescription)")
@@ -63,7 +64,6 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         setSearchBar()
         setupShadowView()
         
-        print(allItems.count)
     }
     
     fileprivate func setSearchBar() {
@@ -81,7 +81,7 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
         searchBar.showsCancelButton = true
         let cancelButtonAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes, for: .normal)
-        //let cancelButtton = searchBar.value(forKey: "cancelButton") as? UIButton
+       
         self.searchBar = searchBar
         self.searchBar?.delegate = self
         navigationItem.titleView = searchBar
@@ -125,10 +125,10 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemSearchCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemSearchCell else { return UITableViewCell()}
         cell.delegate = self
         let item = searchArray[indexPath.row]
-        cell.updateItem(with: item)
+        cell.updateCell(with: item)
         return cell
         
     }
@@ -136,13 +136,6 @@ class SearchItemsViewController: UIViewController,UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }
-    /*
-     // MARK: - Navigation
-
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-     }
-     */
     
 }
 
@@ -154,8 +147,19 @@ extension SearchItemsViewController: FavoriteItemDelegate {
         
         item.isFavorited = !item.isFavorited
         print(item.isFavorited)
-        cell.updateItem(with: item)
+        cell.updateCell(with: item)
         CoreDataStack.saveContext()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toItemDetailVC2" {
+            guard let destinationVC = segue.destination as? UINavigationController else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let item = searchArray[indexPath.row]
+            let topVC = destinationVC.topViewController as! ItemDetailViewController
+            
+            topVC.item = item
+        }
     }
 }
 

@@ -23,14 +23,15 @@ class ItemDetailsCell: UITableViewCell {
     @IBOutlet weak var returnDateTextField: UITextField!
     @IBOutlet weak var warrantyExpirationDateTextField: UITextField!
     @IBOutlet weak var storeVenderTextField: UITextField!
-    @IBOutlet weak var modelTextField: UITextField!
+    @IBOutlet weak var modelNumberTextField: UITextField!
     @IBOutlet weak var serialTextField: UITextField!
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var purchaseDateLabel: UILabel!
     @IBOutlet weak var returnDateLabel: UILabel!
-    @IBOutlet weak var warrantyExpirationDateLabe:UILabel!
+    @IBOutlet weak var warrantyExpirationDateLabel:UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     weak var delegate: CustomDatePickerDelegate?
     
@@ -63,9 +64,22 @@ class ItemDetailsCell: UITableViewCell {
         
     }
     
+    func updateItemCell(with item: ItemCD?){
+        guard let item = item else {return}
+        
+        purchaseDateLabel.text = "\(String(describing: item.purchaseDate))"
+        returnDateLabel.text = "\(String(describing: item.lastDayToReturn))"
+        warrantyExpirationDateLabel.text = "\(String(describing: item.warranty))"
+        storeVenderTextField.text = item.purchasedFrom
+        modelNumberTextField.text = item.modelNumber
+        serialTextField.text = item.serialNumber
+    }
+    
+    
     func addDoneButton() {
+
         storeVenderTextField.addDoneButtonOnKeyboard()
-        modelTextField.addDoneButtonOnKeyboard()
+        modelNumberTextField.addDoneButtonOnKeyboard()
         serialTextField.addDoneButtonOnKeyboard()
     }
 }

@@ -10,17 +10,17 @@ import UIKit
 import AVFoundation
 
 protocol CameraDelegate: class {
-    func capturePhoto(_ cell: NewCameraCell)
-    func toPictureLibrary(_ cell: NewCameraCell)
+    func capturePhoto(_ cell: CameraCell)
+    func toPictureLibrary(_ cell: CameraCell)
 }
 
-class NewCameraCell: UITableViewCell {
+class CameraCell: UITableViewCell {
     
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var thumbnailImage: UIImageView!
-    @IBOutlet weak var imageBackgroundView: UIImageView!
+   
     
     weak var delegate: CameraDelegate?
     
@@ -33,13 +33,13 @@ class NewCameraCell: UITableViewCell {
     var cameraPreviewLayer: AVCaptureVideoPreviewLayer?
     
     
-    
+    // we setup the captureSession
     func setupCaptureSession() {
     
             captureSession.sessionPreset = AVCaptureSession.Preset.photo
     
     }
-    
+    // we find the device we need
     func setupDevice() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
         
@@ -55,15 +55,18 @@ class NewCameraCell: UITableViewCell {
         currentCamera = backCamera
         
     }
+    // we setup input/output
     func setupInputOutput() {
         do {
             
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentCamera!)
+            // we run this logic so there isn't multiple inputs
             if captureSession.inputs.isEmpty{
                captureSession.addInput(captureDeviceInput)
             }
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])], completionHandler: nil)
+            // we run this logic so there isn't multiple outputs
             if captureSession.outputs.isEmpty {
                 captureSession.addOutput(photoOutput!)
             }
@@ -74,8 +77,8 @@ class NewCameraCell: UITableViewCell {
         
     }
     
+    // we setup the camera layer. It is set to the frame of the cameraView
     func setupPreviewLayer() {
-        
         
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -85,17 +88,23 @@ class NewCameraCell: UITableViewCell {
         
         
     }
-    
+    // we run the session.
     func startRunningCaptureSession() {
         captureSession.startRunning()
     }
+    // we end the session
+    func endRunningSession() {
+        captureSession.stopRunning()
+        captureSession.removeOutput(photoOutput!)
+    }
 
     @IBAction func takePictureButtonTapped(_ sender: Any) {
-        
         delegate?.capturePhoto(self)
         
     }
     @IBAction func libraryButtonTapped(_ sender: Any) {
         delegate?.toPictureLibrary(self)
     }
+    
 }
+
